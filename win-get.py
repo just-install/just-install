@@ -48,7 +48,7 @@ def main():
         download_file(CATALOG_URL, overwrite=True)
         print ""
 
-    catalog = get_catalog(CATALOG_FILE)
+    catalog = load_catalog(CATALOG_FILE)
 
     if args.list:
         for package in sorted(catalog.keys()):
@@ -67,9 +67,9 @@ def main():
         install(installer_path, installer_type)
 
 
-def get_catalog(path):
+def load_catalog(path):
     """
-    Parses the catalog.yml YAML file and returns its contents as a dictionary.
+    Loads the catalog YAML file and returns its dictionary representation.
     """
     with open(path) as catalog:
         return yaml.load(catalog)

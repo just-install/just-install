@@ -44,7 +44,7 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(CATALOG_FILE) or args.update:
-        print "Updating catalog ...  "
+        print "Updating catalog ...  ",
         download_file(CATALOG_URL, overwrite=True)
         print ""
 

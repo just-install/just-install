@@ -87,8 +87,7 @@ def download_file(url, overwrite=False):
     def progress_report(count, block_size, total_size):
         percent = int(count * block_size * 100 / total_size)
 
-        sys.stdout.write("%2d%%" % percent)
-        sys.stdout.write("\b\b\b")
+        sys.stdout.write("%2d%%\b\b\b" % percent)
         sys.stdout.flush()
 
     basename = os.path.basename(urllib.unquote(urlparse.urlparse(url).path))

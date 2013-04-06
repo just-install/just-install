@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pyinstaller.py -F win-get
+pyinstaller.py -F just-install.py

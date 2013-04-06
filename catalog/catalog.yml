@@ -115,7 +115,7 @@ pyyaml:
 pyqt:
     version: 4.10
     installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10/PyQt4-4.10-gpl-Py2.7-Qt4.8.4-x32.exe
-    type: innosetup
+    type: nsis
 
 #
 # Utilities

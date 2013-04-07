@@ -1,0 +1,5 @@
+*.spec
+*.msi
+*.wixobj
+*.wixpdb
+logdict*

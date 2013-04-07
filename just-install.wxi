@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="7A19930D-0000-4739-9B43-AC96834ABC7C" Name="just-install" Language="1033" Version="0.0.1" Manufacturer="Lorenzo Villani" UpgradeCode="AA190D4A-2506-42C9-AC9D-6CA7C235D458">
+        <Package InstallerVersion="200" Compressed="yes" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="JustInstall" Name="JustInstall">
+                    <Component Id="JUST_INSTALL_EXE" DiskId="1" KeyPath="yes" Guid="738beed0-4a77-4285-a8ce-be3bf5b023ea">
+                        <File Id="JUST_INSTALL.EXE" Name="just-install.exe" Source="\\vboxsrv\v-root\just-install\dist\just-install.exe" />
+                        <Environment Id="PATH" Name="PATH" Value="[INSTALLDIR]" Permanent="yes" Part="last" Action="set" System="yes" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="JUST_INSTALL_EXE" />
+        </Feature>
+        <UI />
+    </Product>
+</Wix>

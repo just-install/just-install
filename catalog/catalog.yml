@@ -93,8 +93,8 @@ pyinstaller:
     type: zip
 
 python:
-    version: 2.7.3
-    installer: http://python.org/ftp/python/2.7.3/python-2.7.3.msi
+    version: 2.7.4
+    installer: http://python.org/ftp/python/2.7.4/python-2.7.4.msi
     type: msi
 
 python-setuptools:

@@ -62,6 +62,11 @@ wix:
     installer: http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393
     type: microsoft
 
+wixedit:
+    version: 0.7.5
+    installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
+    type: msi
+
 
 #
 # Software Development: C/C++

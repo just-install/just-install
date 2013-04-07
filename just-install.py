@@ -120,7 +120,7 @@ def install(path, kind):
     elif kind == "microsoft":
         call(path, "/passive", "/quiet", "/norestart")
     elif kind == "msi":
-        call("msiexec.exe", "/q", "/i", path)
+        call("msiexec.exe", "/q", "/i", path, "REBOOT=ReallySuppress")
     elif kind == "msi-wrapped":
         call(path, "/q")
     elif kind == "nsis":

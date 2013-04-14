@@ -143,6 +143,10 @@ conemu:
     installer: https://conemu-maximus5.googlecode.com/files/ConEmuSetup.130401.exe
     type: conemu
 
+winscp:
+    version: 5.1.4
+    installer: http://download.winscp.net/download/files/201304141805504b263e1ce2710ef88589fed5d3ac20/winscp514setup.exe
+    type: innosetup
 notepad++:
     version: 6.3.2
     installer: http://download.tuxfamily.org/notepadplus/6.3.2/npp.6.3.2.Installer.exe

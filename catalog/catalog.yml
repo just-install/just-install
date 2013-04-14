@@ -90,6 +90,10 @@ visual-c++:
     installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
     type: as-is
 
+putty:
+    version: 0.62
+    installer: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe
+    type: innosetup
 #
 # Software Development: Python
 #

@@ -84,7 +84,7 @@ wixedit:
 qt:
     version: 4.8.4
     installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-4.8.4-vs2008.exe
-    type: nsis
+    type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
 visual-c++:
     version: 2008

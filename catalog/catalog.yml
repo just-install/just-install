@@ -21,6 +21,15 @@
 #
 
 #
+# Just-Install itself, how meta!
+#
+
+just-install:
+    version: snapshot
+    installer: http://lorenzo.villani.me/just-install/just-install.msi
+    type: msi
+
+#
 # Internet
 #
 

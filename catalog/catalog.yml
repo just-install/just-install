@@ -76,7 +76,6 @@ wixedit:
     installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
     type: msi
 
-
 #
 # Software Development: C/C++
 #
@@ -90,7 +89,6 @@ visual-c++:
     version: 2008
     installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
     type: as-is
-
 
 #
 # Software Development: Python

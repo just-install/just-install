@@ -29,6 +29,10 @@ just-install:
     installer: http://lorenzo.villani.me/just-install/just-install.msi
     type: msi
 
+catalyst:
+    version: 13.1
+    installer: http://www2.ati.com/drivers/13-1_vista_win7_win8_64_dd_ccc_whql.exe
+    type: as-is
 #
 # Internet
 #

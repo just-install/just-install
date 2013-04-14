@@ -20,40 +20,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-#
-# Just-Install itself, how meta!
-#
-
-just-install:
-    version: snapshot
-    installer: http://lorenzo.villani.me/just-install/just-install.msi
+7zip:
+    version: 9.20
+    installer: http://downloads.sourceforge.net/sevenzip/7z920-x64.msi
     type: msi
 
 catalyst:
     version: 13.1
     installer: http://www2.ati.com/drivers/13-1_vista_win7_win8_64_dd_ccc_whql.exe
     type: as-is
-#
-# Internet
-#
+
+conemu:
+    version: 130401
+    installer: https://conemu-maximus5.googlecode.com/files/ConEmuSetup.130401.exe
+    type: conemu
 
 firefox:
     version: 20.0.1
     installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0.1/win32/en-US/Firefox Setup 20.0.1.exe
     type: nsis
-
-#
-# Servers
-#
-
-sqlserverexpress:
-    version: 2008
-    installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
-    type: as-is
-
-#
-# Software Development Tools
-#
 
 git:
     version: 1.7.11-preview20120710
@@ -65,46 +50,25 @@ innosetup:
     installer: http://www.jrsoftware.org/download.php/is.exe
     type: innosetup
 
-upx:
-    version: 3.09
-    installer: http://upx.sourceforge.net/download/upx309w.zip
-    type: zip
-
-wix:
-    version: 3.7
-    installer: http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393
-    type: microsoft
-
-wixedit:
-    version: 0.7.5
-    installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
+just-install:
+    version: snapshot
+    installer: http://lorenzo.villani.me/just-install/just-install.msi
     type: msi
 
-#
-# Software Development: C/C++
-#
-
-qt:
-    version: 4.8.4
-    installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-4.8.4-vs2008.exe
-    type: as-is  # Prevents weird post-installation bug which happen in silent mode.
+notepad++:
+    version: 6.3.2
+    installer: http://download.tuxfamily.org/notepadplus/6.3.2/npp.6.3.2.Installer.exe
+    type: nsis
 
 perl:
     version: 5.16.3.1
     installer: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-64bit.msi
     type: msi
-visual-c++:
-    version: 2008
-    installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
-    type: as-is
 
 putty:
     version: 0.62
     installer: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe
     type: innosetup
-#
-# Software Development: Python
-#
 
 pycharm:
     version: 2.7.1
@@ -115,6 +79,11 @@ pyinstaller:
     version: 2.0.0
     installer: http://garr.dl.sourceforge.net/project/pyinstaller/2.0/pyinstaller-2.0.zip
     type: zip
+
+pyqt:
+    version: 4.10
+    installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10/PyQt4-4.10-gpl-Py2.7-Qt4.8.4-x32.exe
+    type: nsis
 
 python:
     version: 2.7.4
@@ -136,40 +105,42 @@ pyyaml:
     installer: http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe
     type: as-is
 
-pyqt:
-    version: 4.10
-    installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10/PyQt4-4.10-gpl-Py2.7-Qt4.8.4-x32.exe
-    type: nsis
+qt:
+    version: 4.8.4
+    installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-4.8.4-vs2008.exe
+    type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
-#
-# Utilities
-#
-
-7zip:
-    version: 9.20
-    installer: http://downloads.sourceforge.net/sevenzip/7z920-x64.msi
-    type: msi
-
-conemu:
-    version: 130401
-    installer: https://conemu-maximus5.googlecode.com/files/ConEmuSetup.130401.exe
-    type: conemu
-
-winscp:
-    version: 5.1.4
-    installer: http://download.winscp.net/download/files/201304141805504b263e1ce2710ef88589fed5d3ac20/winscp514setup.exe
-    type: innosetup
-notepad++:
-    version: 6.3.2
-    installer: http://download.tuxfamily.org/notepadplus/6.3.2/npp.6.3.2.Installer.exe
-    type: nsis
-
-qttabbar:
-    version: 1.5.0.0b2
-    installer: http://garr.dl.sourceforge.net/project/qttabbar/1.5.0.0%20Beta%202/qttabbar-v1.5.0.0b2.msi
-    type: msi
+sqlserverexpress:
+    version: 2008
+    installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
+    type: as-is
 
 sublimetext:
     version: 2.0.1
     installer: http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe
     type: innosetup
+
+upx:
+    version: 3.09
+    installer: http://upx.sourceforge.net/download/upx309w.zip
+    type: zip
+
+winscp:
+    version: 5.1.4
+    installer: http://download.winscp.net/download/files/201304141805504b263e1ce2710ef88589fed5d3ac20/winscp514setup.exe
+    type: innosetup
+
+wix:
+    version: 3.7
+    installer: http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393
+    type: microsoft
+
+wixedit:
+    version: 0.7.5
+    installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
+    type: msi
+
+visual-c++:
+    version: 2008
+    installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
+    type: as-is

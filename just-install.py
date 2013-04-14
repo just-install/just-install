@@ -121,12 +121,8 @@ def install(path, kind):
         call(path, "/p:x64", "/q")
     elif kind == "innosetup":
         call(path, "/sp-", "/verysilent", "/norestart")
-    elif kind == "microsoft":
-        call(path, "/passive", "/quiet", "/norestart")
     elif kind == "msi":
         call("msiexec.exe", "/q", "/i", path, "REBOOT=ReallySuppress")
-    elif kind == "msi-wrapped":
-        call(path, "/q")
     elif kind == "nsis":
         call(path, "/S", "/NCRC")
     elif kind == "zip":

@@ -87,6 +87,10 @@ def download_file(url, overwrite=False):
     def progress_report(count, block_size, total_size):
         percent = int(count * block_size * 100 / total_size)
 
+        # Sometimes, it goes over the top
+        if percent > 100:
+            percent = 100
+
         sys.stdout.write("%2d%%" % percent)
         sys.stdout.write("\b\b\b")
         sys.stdout.flush()

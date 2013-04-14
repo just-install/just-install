@@ -85,6 +85,10 @@ qt:
     installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-4.8.4-vs2008.exe
     type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
+perl:
+    version: 5.16.3.1
+    installer: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-64bit.msi
+    type: msi
 visual-c++:
     version: 2008
     installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe

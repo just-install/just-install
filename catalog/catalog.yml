@@ -44,7 +44,7 @@ firefox:
 
 sqlserverexpress:
     version: 2008
-    installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x64_ENU.exe
+    installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
     type: as-is
 
 #

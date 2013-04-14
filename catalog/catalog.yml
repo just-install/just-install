@@ -25,8 +25,8 @@
 #
 
 firefox:
-    version: 20.0
-    installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0/win32/en-US/Firefox Setup 20.0.exe
+    version: 20.0.1
+    installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0.1/win32/en-US/Firefox Setup 20.0.1.exe
     type: nsis
 
 #

@@ -62,7 +62,7 @@ def main():
         installer_url_template = string.Template(catalog[package]["installer"])
         installer_url = installer_url_template.substitute(version=installer_version)
 
-        print package
+        print "%s (%s)" % (package, installer_version)
         print "    Downloading ...  ",
         installer_path = download_file(installer_url, overwrite=args.force)
 

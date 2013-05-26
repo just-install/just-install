@@ -120,6 +120,11 @@ sublimetext:
     installer: http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe
     type: innosetup
 
+tortoisegit:
+    version: 1.8.3.0
+    installer: http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi
+    type: msi
+
 upx:
     version: 3.09
     installer: http://upx.sourceforge.net/download/upx309w.zip

@@ -115,6 +115,11 @@ sqlserverexpress:
     installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
     type: as-is
 
+steam:
+    version: 1.0
+    installer: http://cdn.steampowered.com/download/SteamInstall.msi
+    type: msi
+
 sublimetext:
     version: 2.0.1
     installer: http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe

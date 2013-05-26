@@ -20,6 +20,7 @@
 
 import argparse
 import os.path
+import string
 import subprocess
 import sys
 import tempfile
@@ -56,8 +57,10 @@ def main():
             print "%s - %s" % (package.rjust(20), catalog[package]["version"])
 
     for package in args.packages:
-        installer_url = catalog[package]["installer"]
         installer_type = catalog[package]["type"]
+        installer_version = catalog[package]["version"]
+        installer_url_template = string.Template(catalog[package]["installer"])
+        installer_url = installer_url_template.substitute(version=installer_version)
 
         print package
         print "    Downloading ...  ",

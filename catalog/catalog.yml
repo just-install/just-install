@@ -81,13 +81,13 @@ pyinstaller:
     type: zip
 
 pyqt:
-    version: 4.10
-    installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10/PyQt4-4.10-gpl-Py2.7-Qt4.8.4-x32.exe
+    version: 4.10.1
+    installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.1/PyQt4-4.10.1-gpl-Py2.7-Qt4.8.4-x32.exe
     type: nsis
 
 python:
-    version: 2.7.4
-    installer: http://python.org/ftp/python/2.7.4/python-2.7.4.msi
+    version: 2.7.5
+    installer: http://python.org/ftp/python/${version}/python-${version}.msi
     type: msi
 
 python-setuptools:

@@ -122,6 +122,8 @@ def install(path, kind):
         call(path, "/p:x64", "/q")
     elif kind == "innosetup":
         call(path, "/sp-", "/verysilent", "/norestart")
+    elif kind == "microsoft":
+        call(path, "/quiet", "/passive", "/norestart")
     elif kind == "msi":
         call("msiexec.exe", "/q", "/i", path, "REBOOT=ReallySuppress")
     elif kind == "nsis":
@@ -129,7 +131,7 @@ def install(path, kind):
     elif kind == "zip":
         zip_extract(path, "C:/")
     else:
-        raise TypeError("Unknown installer type")
+        raise TypeError("Unknown installer type: %s" % kind)
 
 
 def call(*args):

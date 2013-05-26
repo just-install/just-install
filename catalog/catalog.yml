@@ -130,6 +130,11 @@ upx:
     installer: http://upx.sourceforge.net/download/upx309w.zip
     type: zip
 
+windows7usbdvdtool:
+    version: 1.0
+    installer: http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe
+    type: microsoft
+
 winscp:
     version: 5.1.4
     installer: http://download.winscp.net/download/files/201304141805504b263e1ce2710ef88589fed5d3ac20/winscp514setup.exe

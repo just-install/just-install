@@ -37,6 +37,7 @@ CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 def main():
     """Entry point."""
     parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--force", action="store_true")
     parser.add_argument("-l", "--list", action="store_true")
     parser.add_argument("-u", "--update", action="store_true")
     parser.add_argument("packages", type=str, nargs="*")
@@ -60,7 +61,7 @@ def main():
 
         print package
         print "    Downloading ...  ",
-        installer_path = download_file(installer_url)
+        installer_path = download_file(installer_url, overwrite=args.force)
 
         print ""
         print "    Installing ..."

@@ -90,17 +90,22 @@ python:
     installer: http://python.org/ftp/python/${version}/python-${version}.msi
     type: msi
 
+python-pil:
+    version: 1.1.7
+    installer: http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe
+    type: as-is
+
 python-setuptools:
     version: 0.6c11
     installer: https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11.win32-py2.7.exe
     type: as-is
 
-pywin32:
+python-win32:
     version: 218
     installer: http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20218/pywin32-218.win32-py2.7.exe
     type: as-is
 
-pyyaml:
+python-yaml:
     version: 3.10
     installer: http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe
     type: as-is

@@ -74,7 +74,7 @@ def main():
 
         print ""
         print "    Installing ..."
-        install(installer_path, installer_type)
+        install(installer_path, installer_type, catalog[package])
 
 
 def load_catalog(path):
@@ -114,7 +114,7 @@ def download_file(url, overwrite=False):
     return destination
 
 
-def install(path, kind):
+def install(path, kind, env={}):
     """
     Calls the installer passing the appropriate switches to perform a silent
     install, if possible, unless the "as-is" installer kind is used.
@@ -127,8 +127,8 @@ def install(path, kind):
     """
     if kind == "as-is":
         call(path)
-    elif kind == "conemu":
-        call(path, "/p:x64", "/q")
+    elif kind == "custom" and "custom_arguments" in env:
+        call(path, *env["custom_arguments"].split(" "))
     elif kind == "innosetup":
         call(path, "/sp-", "/verysilent", "/norestart")
     elif kind == "microsoft":

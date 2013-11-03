@@ -31,7 +31,7 @@ structure of which is described below.
 * `url`: Direct URL to the installation program or MSI/ZIP archive.
 * `type`: The installer type, which is one of the following:
   + `as-is`: Runs the installer as-is;
-  + `conemu`: Specific to [ConEmu](http://code.google.com/p/conemu-maximus5/);
+  + `custom`: Runs the installer passing any argument defined in the `custom_arguments` key.
   + `innosetup`: An installer created with [InnoSetup](http://www.jrsoftware.org/isinfo.php);
   + `msi`: A [Windows Installer](http://msdn.microsoft.com/en-us/library/windows/desktop/cc185688%28v=vs.85%29.aspx) MSI package;
   + `nsis`: An installer created with [NSIS](http://nsis.sourceforge.net/Main_Page);

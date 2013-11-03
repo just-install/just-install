@@ -1,5 +1,6 @@
-*.spec
-*.msi
-*.wixobj
-*.wixpdb
-logdict*
+.idea/
+build/
+dist/
+
+just-install.spec
+just-install-setup.exe

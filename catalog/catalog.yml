@@ -70,9 +70,9 @@ putty:
     installer: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe
     type: innosetup
 
-pycharm:
-    version: 2.7.1
-    installer: http://download.jetbrains.com/python/pycharm-2.7.1.exe
+pycharm-community:
+    version: 3.0.1
+    installer: http://download.jetbrains.com/python/pycharm-community-${version}.exe
     type: nsis
 
 pyinstaller:

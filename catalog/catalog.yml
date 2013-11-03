@@ -66,8 +66,8 @@ perl:
     type: msi
 
 putty:
-    version: 0.62
-    installer: http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.62-installer.exe
+    version: 0.63
+    installer: http://the.earth.li/~sgtatham/putty/${version}/x86/putty-${version}-installer.exe
     type: innosetup
 
 pycharm-community:

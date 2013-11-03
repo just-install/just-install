@@ -20,6 +20,7 @@
 
 import argparse
 import os.path
+import shutil
 import string
 import subprocess
 import sys
@@ -31,6 +32,7 @@ import zipfile
 
 
 TEMP_DIR = tempfile.gettempdir()
+CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
 CATALOG_URL = "http://raw.github.com/lvillani/just-install/master/catalog/catalog.yml"
 CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 
@@ -44,6 +46,10 @@ def main():
     parser.add_argument("packages", type=str, nargs="*")
 
     args = parser.parse_args()
+
+    # Use our local catalog file from the repository when in development mode.
+    if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
+        shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
 
     if not os.path.exists(CATALOG_FILE) or args.update:
         print "Updating catalog ...  ",

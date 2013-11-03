@@ -146,10 +146,11 @@ upx:
     installer: http://upx.sourceforge.net/download/upx309w.zip
     type: zip
 
-windows7usbdvdtool:
+windows7-usb-dvd-tool:
     version: 1.0
     installer: http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe
-    type: microsoft
+    type: custom
+    custom_arguments: /Q
 
 winscp:
     version: 5.1.4

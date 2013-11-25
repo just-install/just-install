@@ -20,20 +20,6 @@ class FreezeCommand(Command):
         check_call(["pyinstaller.exe", "-c", "-F", "just-install.py"])
 
 
-class InstallerCommand(Command):
-    description = "Creates a distributable package"
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        check_call(["iscc.exe", "just-install.iss"])
-
-
 #
 # Setup
 #
@@ -45,6 +31,5 @@ setup(
     scripts=["just-install.py"],
     cmdclass={
         "freeze": FreezeCommand,
-        "installer": InstallerCommand,
     }
 )

@@ -87,7 +87,7 @@ pyqt:
     type: nsis
 
 python:
-    version: 2.7.5
+    version: 2.7.6
     installer: http://python.org/ftp/python/${version}/python-${version}.msi
     type: msi
 

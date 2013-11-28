@@ -145,7 +145,7 @@ def install(path, kind, env={}):
 
 def call(*args):
     """A vararg wrapper over subprocess.check_call()."""
-    subprocess.check_call(args)
+    subprocess.check_call(args, shell=True)
 
 
 def zip_extract(path, destination):

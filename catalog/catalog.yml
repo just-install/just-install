@@ -91,9 +91,14 @@ python-pil:
     installer: http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe
     type: as-is
 
+python-pip:
+    version: 1.4.1-current
+    installer: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    type: as-is
+
 python-setuptools:
-    version: 0.6c11
-    installer: https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11.win32-py2.7.exe
+    version: 1.4.1-current
+    installer: https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
     type: as-is
 
 python-win32:

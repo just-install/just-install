@@ -42,8 +42,8 @@ firefox:
     type: nsis
 
 git:
-    version: 1.7.11-preview20120710
-    installer: https://msysgit.googlecode.com/files/Git-1.7.11-preview20120710.exe
+    version: 1.8.4-preview20130916
+    installer: https://msysgit.googlecode.com/files/Git-${version}.exe
     type: innosetup
 
 innosetup:

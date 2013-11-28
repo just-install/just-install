@@ -76,11 +76,6 @@ pycharm-community:
     installer: http://download.jetbrains.com/python/pycharm-community-${version}.exe
     type: nsis
 
-pyinstaller:
-    version: 2.0.0
-    installer: http://garr.dl.sourceforge.net/project/pyinstaller/2.0/pyinstaller-2.0.zip
-    type: zip
-
 pyqt:
     version: 4.10.3
     installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe

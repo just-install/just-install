@@ -82,8 +82,7 @@ def fetch_catalog(force_update):
     """
     if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
         shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
-
-    if not os.path.exists(CATALOG_FILE) or force_update:
+    elif not os.path.exists(CATALOG_FILE) or force_update:
         print "Updating catalog ...  ",
         download_file(CATALOG_URL, overwrite=True)
         print ""

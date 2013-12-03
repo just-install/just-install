@@ -36,11 +36,13 @@ TEMP_DIR = tempfile.gettempdir()
 CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
 CATALOG_URL = "http://raw.github.com/lvillani/just-install/master/catalog/catalog.yml"
 CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
+DEFAULT_ARCH = platform.machine()
 
 
 def main():
     """Entry point."""
     args = parse_command_line_arguments()
+    arch = args.arch
 
     fetch_catalog(args.force)
 
@@ -53,7 +55,14 @@ def main():
     for package in args.packages:
         installer_type = catalog[package]["type"]
         installer_version = catalog[package]["version"]
-        installer_url_template = string.Template(catalog[package]["installer"])
+
+        if arch in catalog[package]["installer"]:
+            installer_url_template = string.Template(catalog[package]["installer"][arch])
+        elif isinstance(catalog[package]["installer"], basestring):
+            installer_url_template = string.Template(catalog[package]["installer"])
+        else:
+            raise ValueError("%s: architecture not supported." % arch)
+
         installer_url = installer_url_template.substitute(version=installer_version)
 
         print "%s (%s)" % (package, installer_version)
@@ -67,6 +76,7 @@ def main():
 
 def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
+    parser.add_argument("-a", "--arch", action="store", default=DEFAULT_ARCH, type=str)
     parser.add_argument("-f", "--force", action="store_true")
     parser.add_argument("-l", "--list", action="store_true")
     parser.add_argument("packages", type=str, nargs="*")

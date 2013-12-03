@@ -21,18 +21,22 @@
 #
 
 7zip:
-    version: 9.20
-    installer: http://downloads.sourceforge.net/sevenzip/7z920-x64.msi
+    version: 9.30
+    installer:
+        x86: http://dl.7-zip.org/7z930.msi
+        x86_64: http://dl.7-zip.org/7z930-x64.msi
     type: msi
 
 catalyst:
     version: 13.1
-    installer: http://www2.ati.com/drivers/13-1_vista_win7_win8_64_dd_ccc_whql.exe
+    installer:
+        x86_64: http://www2.ati.com/drivers/13-1_vista_win7_win8_64_dd_ccc_whql.exe
     type: as-is
 
 conemu:
     version: 131026
-    installer: http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe
+    installer:
+        x86_64: http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe
     type: custom
     custom_arguments: /p:x64 /passive
 
@@ -51,11 +55,6 @@ innosetup:
     installer: http://www.jrsoftware.org/download.php/is.exe
     type: innosetup
 
-just-install:
-    version: snapshot
-    installer: http://lorenzo.villani.me/just-install/just-install.msi
-    type: msi
-
 notepad++:
     version: 6.3.2
     installer: http://download.tuxfamily.org/notepadplus/6.3.2/npp.6.3.2.Installer.exe
@@ -63,7 +62,9 @@ notepad++:
 
 perl:
     version: 5.16.3.1
-    installer: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-64bit.msi
+    installer:
+        x86: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-32bit.msi
+        x86_64: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-64bit.msi
     type: msi
 
 putty:
@@ -78,12 +79,16 @@ pycharm-community:
 
 pyqt:
     version: 4.10.3
-    installer: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe
+    installer:
+        x86: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe
+        x86_64: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe
     type: nsis
 
 python:
     version: 2.7.6
-    installer: http://python.org/ftp/python/${version}/python-${version}.msi
+    installer:
+        x86: http://python.org/ftp/python/${version}/python-${version}.msi
+        x86_64: http://python.org/ftp/python/${version}/python-${version}.amd64.msi
     type: msi
 
 python-pil:

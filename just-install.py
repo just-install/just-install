@@ -42,7 +42,7 @@ def main():
     """Entry point."""
     args = parse_command_line_arguments()
 
-    fetch_catalog(args.update)
+    fetch_catalog(args.force)
 
     catalog = load_catalog(CATALOG_FILE)
 
@@ -69,7 +69,6 @@ def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--force", action="store_true")
     parser.add_argument("-l", "--list", action="store_true")
-    parser.add_argument("-u", "--update", action="store_true")
     parser.add_argument("packages", type=str, nargs="*")
 
     return parser.parse_args()

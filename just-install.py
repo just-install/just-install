@@ -20,6 +20,7 @@
 
 import argparse
 import os.path
+import platform
 import shutil
 import string
 import subprocess
@@ -39,22 +40,9 @@ CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 
 def main():
     """Entry point."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--force", action="store_true")
-    parser.add_argument("-l", "--list", action="store_true")
-    parser.add_argument("-u", "--update", action="store_true")
-    parser.add_argument("packages", type=str, nargs="*")
+    args = parse_command_line_arguments()
 
-    args = parser.parse_args()
-
-    # Use our local catalog file from the repository when in development mode.
-    if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
-        shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
-
-    if not os.path.exists(CATALOG_FILE) or args.update:
-        print "Updating catalog ...  ",
-        download_file(CATALOG_URL, overwrite=True)
-        print ""
+    fetch_catalog(args.update)
 
     catalog = load_catalog(CATALOG_FILE)
 
@@ -75,6 +63,31 @@ def main():
         print ""
         print "    Installing ..."
         install(installer_path, installer_type, catalog[package])
+
+
+def parse_command_line_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--force", action="store_true")
+    parser.add_argument("-l", "--list", action="store_true")
+    parser.add_argument("-u", "--update", action="store_true")
+    parser.add_argument("packages", type=str, nargs="*")
+
+    return parser.parse_args()
+
+
+def fetch_catalog(force_update):
+    """
+    Fetches the catalog, either from the local development directory (if running in development
+    mode) or from the official location.
+
+    """
+    if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
+        shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
+
+    if not os.path.exists(CATALOG_FILE) or force_update:
+        print "Updating catalog ...  ",
+        download_file(CATALOG_URL, overwrite=True)
+        print ""
 
 
 def load_catalog(path):
@@ -159,6 +172,7 @@ def zip_extract(path, destination):
     """
     zip_file = zipfile.ZipFile(path, "r")
     zip_file.extractall(destination)
+
 
 if __name__ == '__main__':
     main()

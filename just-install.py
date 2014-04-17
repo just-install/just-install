@@ -50,7 +50,7 @@ def main():
 
     if args.list:
         for package in sorted(catalog.keys()):
-            print "%s - %s" % (package.rjust(20), catalog[package]["version"])
+            print "%s - %s" % (package.rjust(30), catalog[package]["version"])
 
     for package in args.packages:
         installer_type = catalog[package]["type"]

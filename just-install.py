@@ -2,7 +2,7 @@
 #
 # just-install - The stupid package installer
 #
-# Copyright (C) 2013  Lorenzo Villani
+# Copyright (C) 2013, 2014  Lorenzo Villani
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

@@ -4,7 +4,7 @@
 #
 # just-install - The stupid package installer
 #
-# Copyright (C) 2013  Lorenzo Villani
+# Copyright (C) 2013, 2014  Lorenzo Villani
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -57,14 +57,14 @@ innosetup:
 
 notepad++:
     version: 6.3.2
-    installer: http://download.tuxfamily.org/notepadplus/6.3.2/npp.6.3.2.Installer.exe
+    installer: http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe
     type: nsis
 
 perl:
-    version: 5.16.3.1
+    version: 5.18.2.1801
     installer:
-        x86: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-32bit.msi
-        x86_64: http://strawberry-perl.googlecode.com/files/strawberry-perl-5.16.3.1-64bit.msi
+        x86: http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi
+        x86_64: http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi
     type: msi
 
 putty:
@@ -73,7 +73,7 @@ putty:
     type: innosetup
 
 pycharm-community:
-    version: 3.0.1
+    version: 3.1.2
     installer: http://download.jetbrains.com/python/pycharm-community-${version}.exe
     type: nsis
 
@@ -145,6 +145,13 @@ tortoisegit:
     version: 1.8.3.0
     installer: http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi
     type: msi
+    
+tortoisesvn:
+    version: 1.8.6
+    installer: 
+        x86: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi
+        x86_64: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi
+    type: msi
 
 upx:
     version: 3.09
@@ -172,7 +179,17 @@ wixedit:
     installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
     type: msi
 
-visual-c++:
+visual-c++-2008:
     version: 2008
     installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
+    type: as-is
+    
+visual-c++-2008-redist:
+    version: 2008
+    installer: http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe
+    type: as-is
+
+visual-c++-2008-redist-sp1:
+    version: 2008sp1
+    installer: http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe
     type: as-is

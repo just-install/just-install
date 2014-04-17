@@ -41,7 +41,7 @@ conemu:
     custom_arguments: /p:x64 /passive
 
 firefox:
-    version: 21.0
+    version: 28.0
     installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe
     type: nsis
 
@@ -50,6 +50,11 @@ git:
     installer: https://msysgit.googlecode.com/files/Git-${version}.exe
     type: innosetup
 
+google-chrome:
+    version: latest
+    installer: https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi
+    type: msi
+    
 innosetup:
     version: 5.5.3
     installer: http://www.jrsoftware.org/download.php/is.exe
@@ -137,8 +142,10 @@ sublimetext:
     type: innosetup
 
 sublimetext3:
-    version: 3047
-    installer: http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%20Build%203047%20x64%20Setup.exe
+    version: 3059
+    installer: 
+        x86: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe
+        x86_64: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe
     type: innosetup
 
 tortoisegit:

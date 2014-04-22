@@ -54,11 +54,16 @@ google-chrome:
     version: latest
     installer: https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi
     type: msi
-    
+
 innosetup:
     version: 5.5.3
     installer: http://www.jrsoftware.org/download.php/is.exe
     type: innosetup
+
+jom:
+    version: 1.0.14
+    installer: http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip
+    type: zip
 
 notepad++:
     version: 6.3.2
@@ -126,6 +131,11 @@ qt:
     installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe
     type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
+reshack:
+    version: 3.6.0
+    installer: http://www.angusj.com/resourcehacker/reshack_setup.exe
+    type: innosetup
+
 sqlserverexpress:
     version: 2008
     installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
@@ -152,7 +162,7 @@ tortoisegit:
     version: 1.8.3.0
     installer: http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi
     type: msi
-    
+
 tortoisesvn:
     version: 1.8.6
     installer: 
@@ -190,7 +200,7 @@ visual-c++-2008:
     version: 2008
     installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
     type: as-is
-    
+
 visual-c++-2008-redist:
     version: 2008
     installer: http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe

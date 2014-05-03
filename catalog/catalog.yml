@@ -140,6 +140,11 @@ reshack:
     version: 3.6.0
     installer: http://www.angusj.com/resourcehacker/reshack_setup.exe
     type: innosetup
+    
+sourcetree:
+    version: 1.5.2
+    installer: http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe
+    type: advancedinstaller
 
 sqlserverexpress:
     version: 2008

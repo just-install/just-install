@@ -52,7 +52,7 @@ git:
     type: innosetup
 
 google-chrome:
-    version: latest
+    version: stable
     installer: https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi
     type: msi
 
@@ -143,7 +143,7 @@ sqlserverexpress:
     type: as-is
 
 steam:
-    version: latest
+    version: stable
     installer: http://cdn.steampowered.com/download/SteamInstall.msi
     type: msi
 

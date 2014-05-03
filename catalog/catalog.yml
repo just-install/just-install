@@ -20,6 +20,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+#
+# NOTE: Keep entries in this file in alphabetical order.
+#
+
 7zip:
     version: 9.32
     installer:

@@ -28,7 +28,7 @@
     type: msi
 
 catalyst:
-    version: 13.1
+    version: 14.4
     installer:
         x86: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe
         x86_64: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe

@@ -1,1 +1,0 @@
-pyinstaller --clean --distpath=. -c -F -y just-install.py

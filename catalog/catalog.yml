@@ -21,16 +21,17 @@
 #
 
 7zip:
-    version: 9.30
+    version: 9.32
     installer:
-        x86: http://dl.7-zip.org/7z930.msi
-        x86_64: http://dl.7-zip.org/7z930-x64.msi
+        x86: http://dl.7-zip.org/7z932.msi
+        x86_64: http://dl.7-zip.org/7z932-x64.msi
     type: msi
 
 catalyst:
     version: 13.1
     installer:
-        x86_64: http://www2.ati.com/drivers/13-1_vista_win7_win8_64_dd_ccc_whql.exe
+        x86: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe
+        x86_64: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe
     type: as-is
 
 conemu:
@@ -41,13 +42,13 @@ conemu:
     custom_arguments: /p:x64 /passive
 
 firefox:
-    version: 28.0
+    version: 29.0
     installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe
     type: nsis
 
 git:
-    version: 1.8.4-preview20130916
-    installer: https://msysgit.googlecode.com/files/Git-${version}.exe
+    version: 1.9.2-preview20140411
+    installer: https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe
     type: innosetup
 
 google-chrome:
@@ -56,8 +57,8 @@ google-chrome:
     type: msi
 
 innosetup:
-    version: 5.5.3
-    installer: http://www.jrsoftware.org/download.php/is.exe
+    version: 5.5.4
+    installer: http://files.jrsoftware.org/is/5/isetup-${version}-unicode.exe
     type: innosetup
 
 jom:
@@ -66,7 +67,7 @@ jom:
     type: zip
 
 notepad++:
-    version: 6.3.2
+    version: 6.5.5
     installer: http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe
     type: nsis
 
@@ -88,7 +89,7 @@ pycharm-community:
     type: nsis
 
 pyqt:
-    version: 4.10.3
+    version: 4.10.4
     installer:
         x86: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe
         x86_64: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe
@@ -127,7 +128,7 @@ python-yaml:
     type: as-is
 
 qt:
-    version: 4.8.5
+    version: 4.8.6
     installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe
     type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
@@ -142,7 +143,7 @@ sqlserverexpress:
     type: as-is
 
 steam:
-    version: 1.0
+    version: latest
     installer: http://cdn.steampowered.com/download/SteamInstall.msi
     type: msi
 
@@ -171,8 +172,8 @@ tortoisesvn:
     type: msi
 
 upx:
-    version: 3.09
-    installer: http://upx.sourceforge.net/download/upx309w.zip
+    version: 3.91
+    installer: http://upx.sourceforge.net/download/upx391w.zip
     type: zip
 
 windows7-usb-dvd-tool:
@@ -182,8 +183,8 @@ windows7-usb-dvd-tool:
     custom_arguments: /Q
 
 winscp:
-    version: 5.1.4
-    installer: http://download.winscp.net/download/files/201304141805504b263e1ce2710ef88589fed5d3ac20/winscp514setup.exe
+    version: 5.5.3
+    installer: http://winscp.net/download/files/201405031411c9de1a51d9b2cdea0b1e5c2c4d4ad6d3/winscp553setup.exe
     type: innosetup
 
 wix:

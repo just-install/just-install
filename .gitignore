@@ -1,6 +1,3 @@
 .idea/
 build/
 dist/
-
-just-install.spec
-just-install-setup.exe

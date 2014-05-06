@@ -119,7 +119,9 @@ def download_file(url, overwrite=False):
 
 
 def install(path, kind, env={}):
-    if kind == "as-is":
+    if kind == "advancedinstaller":
+        call(path, "/q", "/i")
+    elif kind == "as-is":
         call(path)
     elif kind == "custom" and "custom_arguments" in env:
         call(path, *env["custom_arguments"].split(" "))

@@ -18,6 +18,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
+__version__ = "1.1.0"
+
+
 import argparse
 import os
 import os.path
@@ -45,6 +49,9 @@ SELF_UPDATE_URL = "http://github.com/lvillani/just-install/releases/download/lat
 def main():
     args = parse_command_line_arguments()
     arch = args.arch
+
+    if args.version:
+        print("just-install v" + __version__)
 
     if args.update:
         update()
@@ -98,6 +105,7 @@ def parse_command_line_arguments():
     parser.add_argument("-f", "--force", action="store_true")
     parser.add_argument("-l", "--list", action="store_true")
     parser.add_argument("-u", "--update", action="store_true")
+    parser.add_argument("-v", "--version", action="store_true")
     parser.add_argument("packages", type=str, nargs="*")
 
     return parser.parse_args()

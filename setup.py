@@ -24,9 +24,11 @@ class FreezeCommand(Command):
 # Setup
 #
 
+just_install = __import__("just-install")
+
 setup(
     name="JustInstall",
-    version="1.0.0",
+    version=just_install.__version__,
     license="GNU General Public License version 3",
     scripts=["just-install.py"],
     cmdclass={

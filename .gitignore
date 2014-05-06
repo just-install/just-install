@@ -2,5 +2,6 @@
 build/
 dist/
 
+*.pyc
 just-install.exe
 just-install.spec

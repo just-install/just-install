@@ -19,8 +19,9 @@ Download [just-install.exe](http://lvillani.github.io/just-install/just-install.
 and double click it. Boom! `just-install` is now in your `%PATH%`. How easy is
 that?
 
-In a hurry? Here's a quick mnemonic link you can use to bootstrap a new machine:
-<http://is.gd/justinstall>. *"Is Good? Just Install!"*, it's easy to remember.
+In a hurry? Here's a mnemonic link you can use to bootstrap a new machine, just type this in a
+browser [is.gd/justinstall](http://is.gd/justinstall). *"Is (it) Good? Just Install!"*.
+
 
 
 

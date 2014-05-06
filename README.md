@@ -5,9 +5,9 @@ Just Install
 
 *The stupid package installer for Windows*
 
-Chocolatey, Ninite, Npackd are way too slow, bloated and difficult to extend.
-I [needed](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) a no-
-frills solution to install stuff on Windows machines, here it is.
+Chocolatey, Ninite, Npackd are way too slow, bloated and difficult to extend. I
+[needed](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) a no-frills solution to
+install stuff on Windows machines, here it is.
 
 
 
@@ -25,4 +25,4 @@ that?
 Credits
 -------
 
-Box icon designed by Даниил Пронин from the Noun Project - Creative Commons – Attribution (CC BY 3.0) 
+Box icon designed by Даниил Пронин from the Noun Project - Creative Commons – Attribution (CC BY 3.0)

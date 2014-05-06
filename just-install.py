@@ -58,7 +58,7 @@ def main():
     else:
         maybe_auto_install()
 
-    fetch_catalog(args.force)
+    fetch_catalog(args.freshen)
 
     catalog = load_catalog(CATALOG_FILE)
 
@@ -82,7 +82,7 @@ def main():
 
         print "%s-%s %s" % (package, installer_version, arch)
         print "    Downloading ...  ",
-        installer_path = download_file(installer_url, overwrite=args.force)
+        installer_path = download_file(installer_url, overwrite=args.freshen)
 
         print ""
         print "    Installing ..."
@@ -103,7 +103,7 @@ def maybe_auto_install():
 def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--arch", action="store", help="Enorce a specific architecture", default=DEFAULT_ARCH, type=str)
-    parser.add_argument("-f", "--force", action="store_true", help="Always re-download files, including the catalog")
+    parser.add_argument("-f", "--freshen", action="store_true", help="Always re-download files, including the catalog")
     parser.add_argument("-l", "--list", action="store_true", help="List packages available for installation")
     parser.add_argument("-u", "--update", action="store_true", help="Update just-install itself")
     parser.add_argument("-v", "--version", action="store_true", help="Show version")

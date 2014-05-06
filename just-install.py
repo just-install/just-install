@@ -93,9 +93,7 @@ def maybe_auto_install():
     if not hasattr(sys, "frozen"):
         return
 
-    sysroot = os.environ["SystemRoot"]
-
-    if not sys.argv[0].startswith(sysroot):
+    if sys.argv[0] != SELF_INSTALL_PATH:
         print "Self-installing ...  "
         shutil.copyfile(sys.argv[0], SELF_INSTALL_PATH)
 

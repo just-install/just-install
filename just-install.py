@@ -41,7 +41,7 @@ TEMP_DIR = tempfile.gettempdir()
 CATALOG_URL = "http://raw.github.com/lvillani/just-install/master/catalog/catalog.yml"
 CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
-DEFAULT_ARCH = platform.machine()
+DEFAULT_ARCH = 'x86_64' if platform.machine() == 'AMD64' else platform.machine()
 SELF_INSTALL_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.exe')
 SELF_UPDATE_URL = "http://github.com/lvillani/just-install/releases/download/latest/just-install.exe"
 

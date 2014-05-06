@@ -103,7 +103,7 @@ python26:
     version: 2.6.5
     installer: https://www.python.org/ftp/python/${version}/python-${version}.msi
     type: msi
-    
+
 python26-win32:
     version: 219
     installer: http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe
@@ -153,7 +153,7 @@ reshack:
     version: 3.6.0
     installer: http://www.angusj.com/resourcehacker/reshack_setup.exe
     type: innosetup
-    
+
 sourcetree:
     version: 1.5.2
     installer: http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe
@@ -180,6 +180,13 @@ sublimetext3:
         x86: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe
         x86_64: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe
     type: innosetup
+
+subversion:
+    version: 1.8.8
+    installer:
+        x86: http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi
+        x86_64: http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi
+    type: msi
 
 tortoisegit:
     version: 1.8.3.0

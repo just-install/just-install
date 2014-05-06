@@ -19,6 +19,7 @@
 #
 
 import argparse
+import os
 import os.path
 import platform
 import shutil
@@ -134,7 +135,7 @@ def install(path, kind, env={}):
     elif kind == "nsis":
         call(path, "/S", "/NCRC")
     elif kind == "zip":
-        zip_extract(path, "C:/")
+        zip_extract(path, os.environ['SystemDrive'] + '\\')
     else:
         raise TypeError("Unknown installer type: %s" % kind)
 

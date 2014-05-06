@@ -124,8 +124,10 @@ def update(updated_exe):
         time.sleep(1)
         shutil.copyfile(updated_exe, SELF_INSTALL_PATH)
     else:
+        print ""
         print "WARNING: You might see a console window flashing for a short time."
-        print "         This is expected and normal."
+        print "         This is expected. Don't panic!"
+        print ""
         print "Updating ...  ",
         downloaded = download_file(SELF_UPDATER_URL, overwrite=True)
 

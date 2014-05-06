@@ -40,7 +40,6 @@ DEFAULT_ARCH = platform.machine()
 
 
 def main():
-    """Entry point."""
     args = parse_command_line_arguments()
     arch = args.arch
 
@@ -85,11 +84,6 @@ def parse_command_line_arguments():
 
 
 def fetch_catalog(force_update):
-    """
-    Fetches the catalog, either from the local development directory (if running in development
-    mode) or from the official location.
-
-    """
     if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
         shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
     elif not os.path.exists(CATALOG_FILE) or force_update:
@@ -99,22 +93,11 @@ def fetch_catalog(force_update):
 
 
 def load_catalog(path):
-    """
-    Loads the catalog YAML file and returns its dictionary representation.
-    """
     with open(path) as catalog:
         return yaml.load(catalog)
 
 
 def download_file(url, overwrite=False):
-    """
-    Downloads a file to a temporary directory.
-
-    @param url: Url of the file to download.
-    @type url: str
-    @param overwrite: True to overwrite a previously-downloaded file.
-    @type overwrite: bool
-    """
     def progress_report(count, block_size, total_size):
         percent = int(count * block_size * 100 / total_size)
 
@@ -136,16 +119,6 @@ def download_file(url, overwrite=False):
 
 
 def install(path, kind, env={}):
-    """
-    Calls the installer passing the appropriate switches to perform a silent
-    install, if possible, unless the "as-is" installer kind is used.
-
-    @param path: Absolute path to the installer.
-    @type path: str
-    @param kind: Installer kind.
-    @type kind: str
-    @raise TypeError: in case the "kind" is not recognized.
-    """
     if kind == "as-is":
         call(path)
     elif kind == "custom" and "custom_arguments" in env:
@@ -165,19 +138,10 @@ def install(path, kind, env={}):
 
 
 def call(*args):
-    """A vararg wrapper over subprocess.check_call()."""
     subprocess.check_call(args, shell=True)
 
 
 def zip_extract(path, destination):
-    """
-    Insecurely extracts all files from a ZIP archive.
-
-    @param path: Absolute path of the ZIP archive.
-    @type path: str
-    @param destination: Absolute path where files should be extracted.
-    @type destination: str
-    """
     zip_file = zipfile.ZipFile(path, "r")
     zip_file.extractall(destination)
 

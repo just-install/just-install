@@ -16,7 +16,7 @@ Installation
 ------------
 
 Download [just-install.exe](http://github.com/lvillani/just-install/releases/download/latest/just-install.exe)
-and double click it. Boom! `just-install` is in your `%PATH%` now. How easy is
+and double click it. Boom! `just-install` is now in your `%PATH%`. How easy is
 that?
 
 

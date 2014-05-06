@@ -73,13 +73,14 @@ def main():
         if arch in catalog[package]["installer"]:
             installer_url_template = string.Template(catalog[package]["installer"][arch])
         elif isinstance(catalog[package]["installer"], basestring):
+            arch = ""
             installer_url_template = string.Template(catalog[package]["installer"])
         else:
             raise ValueError("%s: architecture not supported." % arch)
 
         installer_url = installer_url_template.substitute(version=installer_version)
 
-        print "%s (%s)" % (package, installer_version)
+        print "%s-%s %s" % (package, installer_version, arch)
         print "    Downloading ...  ",
         installer_path = download_file(installer_url, overwrite=args.force)
 

@@ -18,3 +18,11 @@ Installation
 Download `just-install.exe` from the
 [Releases](https://github.com/lvillani/just-install/releases) page and copy
 it to `%SystemRoot%` or some other directory which is in your `%PATH%`.
+
+
+
+
+Credits
+-------
+
+Box icon designed by Даниил Пронин from the Noun Project - Creative Commons – Attribution (CC BY 3.0) 

@@ -144,6 +144,11 @@ qt:
     installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe
     type: as-is  # Prevents weird post-installation bug which happen in silent mode.
 
+rapidee:
+    version: 8.0.919
+    installer: http://www.rapidee.com/download/archive/919/RapidEE_setup.exe
+    type: innosetup
+
 reshack:
     version: 3.6.0
     installer: http://www.angusj.com/resourcehacker/reshack_setup.exe

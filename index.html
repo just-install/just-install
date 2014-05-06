@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html ng-app="just-install" ng-controller="JustInstallController">
+    <head>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <meta content="width=device-width" name="viewport">
+        <title>just-install</title>
+        <style type="text/css">
+         @import url(//fonts.googleapis.com/css?family=Stint+Ultra+Condensed);
+         @import url(//fonts.googleapis.com/css?family=Oswald:400,700);
+
+         body {
+             background-color: #253E4A;
+             position: static;
+         }
+
+         pre {
+             background-color: black;
+             border-radius: 0.5rem;
+             border: none;
+             color: white;
+             font-size: 1.25rem;
+             padding: 1rem;
+             width: auto;
+         }
+
+         h1 {
+             font-size: 5rem;
+         }
+
+         h1, h2 {
+             color: #EAC03C;
+             font-family: 'Oswald', sans-serif;
+         }
+
+         h1.subheader {
+             color: #EAC03C;
+             font-size: 1.5rem;
+         }
+
+         hr {
+             border: 0;
+             height: 1px;
+             background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+             background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+             background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+             background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+         }
+
+         p {
+             color: white;
+         }
+
+         table {
+             width: 100%;
+         }
+
+         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+             display: none !important;
+         }
+
+         .help-block p {
+             padding: 1rem;
+         }
+
+         .push-down {
+             margin-top: 3rem;
+         }
+        </style>
+    </head>
+    <body>
+        <a href="//github.com/just-install/just-install"><img style="position: absolute; top: 0; right: 0; border: 0;" src="//camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="//s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+        <div class="row push-down">
+            <div class="small-12 columns text-center">
+                <h1>just-install</h1>
+                <h1 class="subheader">The humble package installer for Windows</h1>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="small-12 columns text-center">
+                <h2>Installation</h2>
+                <p>Run this in cmd.exe, as Administrator:</p>
+                <pre>msiexec.exe /i http://go.just-install.it</pre>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="small-12 columns text-center help-block">
+                <h2>What can we do?</h2>
+                <br>
+                <div class="row">
+                    <div class="small-6 columns text-right"><p>Install a package</p></div>
+                    <div class="small-6 columns text-left"><pre>just-install firefox</pre></div>
+                </div>
+                <div class="row">
+                    <div class="small-6 columns text-right"><p>List Available Packages</p></div>
+                    <div class="small-6 columns text-left"><pre>just-install list</pre></div>
+                </div>
+                <div class="row">
+                    <div class="small-6 columns text-right"><p>Install for specific architecture</p></div>
+                    <div class="small-6 columns text-left"><pre>just-install -a x86 go</pre></div>
+                </div>
+                <div class="row">
+                    <div class="small-6 columns text-right"><p>Help!</p></div>
+                    <div class="small-6 columns text-left"><pre>just-install --help</pre></div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+
+        <div class="row" ng-cloak ng-show="packages">
+            <div class="small-12 columns">
+                <h2 class="text-center">Which packages do we have?</h2>
+                <p>{{ packages.length }} packages and counting.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="25%"">Package</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pkg in packages">
+                            <td>{{ pkg.name }}</td>
+                            <td>{{ pkg.version }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+        <script>
+         angular.module('just-install', []).controller('JustInstallController', function ($http, $scope) {
+             $scope.packages = null;
+             $scope.registryVersion = -1;
+
+             $http.get('//rawgit.com/just-install/registry/master/just-install.json').success(function (data) {
+                 $scope.registryVersion = data.version;
+                 $scope.packages = Object.keys(data.packages).map(function (v) {
+                     return {
+                         name: v,
+                         version: data.packages[v].version
+                     }
+                 })
+             });
+         });
+        </script>
+    </body>
+</html>

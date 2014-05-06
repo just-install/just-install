@@ -31,8 +31,10 @@ import string
 import subprocess
 import sys
 import tempfile
+import time
 import urllib
 import urlparse
+import win32process
 import yaml
 import zipfile
 
@@ -43,7 +45,8 @@ CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
 DEFAULT_ARCH = 'x86_64' if platform.machine() == 'AMD64' else platform.machine()
 SELF_INSTALL_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.exe')
-SELF_UPDATE_URL = "http://github.com/lvillani/just-install/releases/download/latest/just-install.exe"
+SELF_UPDATER_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.old.exe')
+SELF_UPDATER_URL = "http://github.com/lvillani/just-install/releases/download/latest/just-install.exe"
 
 
 def main():
@@ -54,7 +57,7 @@ def main():
         print("just-install v" + __version__)
 
     if args.update:
-        update()
+        update(args.updated_exe)
     else:
         maybe_auto_install()
 
@@ -90,7 +93,7 @@ def main():
 
 
 def maybe_auto_install():
-    if not hasattr(sys, "frozen"):
+    if not hasattr(sys, "frozen") or sys.argv[0] == SELF_UPDATER_PATH:
         return
 
     if sys.argv[0] != SELF_INSTALL_PATH:
@@ -100,6 +103,7 @@ def maybe_auto_install():
 
 def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--updated-exe", help=argparse.SUPPRESS, nargs='?')  # Internal
     parser.add_argument("-a", "--arch", action="store", help="Enorce a specific architecture", default=DEFAULT_ARCH, type=str)
     parser.add_argument("-f", "--freshen", action="store_true", help="Always re-download files, including the catalog")
     parser.add_argument("-l", "--list", action="store_true", help="List packages available for installation")
@@ -110,9 +114,24 @@ def parse_command_line_arguments():
     return parser.parse_args()
 
 
-def update():
-    print "Self-updating ...  ",
-    shutil.copyfile(download_file(SELF_UPDATE_URL, overwrite=True), SELF_INSTALL_PATH)
+def update(updated_exe):
+    # We copy ourselves (better safe than sorry), download the new executable and re-launch
+    # ourselves with the hidden --updated-exe flag. We wait a second to let Windows release file
+    # locks and copy the updated exe in place. Users should se a console window flashing for a short
+    # time. We have to do this since DETACHED_PROCESS doesn't give us stdout and we want to minimize
+    # the amount of time we appear silent.
+    if updated_exe:
+        time.sleep(1)
+        shutil.copyfile(updated_exe, SELF_INSTALL_PATH)
+    else:
+        print "WARNING: You might see a console window flashing for a short time."
+        print "         This is expected and normal."
+        print "Updating ...  ",
+        downloaded = download_file(SELF_UPDATER_URL, overwrite=True)
+
+        shutil.copyfile(SELF_INSTALL_PATH, SELF_UPDATER_PATH)
+        subprocess.Popen([SELF_UPDATER_PATH, '-u', '--updated-exe', downloaded], creationflags=win32process.DETACHED_PROCESS)
+        sys.exit(0)
 
 
 def fetch_catalog(force_update):

@@ -34,15 +34,22 @@ import zipfile
 
 
 TEMP_DIR = tempfile.gettempdir()
-CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
 CATALOG_URL = "http://raw.github.com/lvillani/just-install/master/catalog/catalog.yml"
 CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
+CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
 DEFAULT_ARCH = platform.machine()
+SELF_INSTALL_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.exe')
+SELF_UPDATE_URL = "http://github.com/lvillani/just-install/releases/download/latest/just-install.exe"
 
 
 def main():
     args = parse_command_line_arguments()
     arch = args.arch
+
+    if args.update:
+        update()
+    else:
+        maybe_auto_install()
 
     fetch_catalog(args.force)
 
@@ -74,14 +81,31 @@ def main():
         install(installer_path, installer_type, catalog[package])
 
 
+def maybe_auto_install():
+    if not hasattr(sys, "frozen"):
+        return
+
+    sysroot = os.environ["SystemRoot"]
+
+    if not sys.argv[0].startswith(sysroot):
+        print "Self-installing ...  "
+        shutil.copyfile(sys.argv[0], SELF_INSTALL_PATH)
+
+
 def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--arch", action="store", default=DEFAULT_ARCH, type=str)
     parser.add_argument("-f", "--force", action="store_true")
     parser.add_argument("-l", "--list", action="store_true")
+    parser.add_argument("-u", "--update", action="store_true")
     parser.add_argument("packages", type=str, nargs="*")
 
     return parser.parse_args()
+
+
+def update():
+    print "Self-updating ...  ",
+    shutil.copyfile(download_file(SELF_UPDATE_URL, overwrite=True), SELF_INSTALL_PATH)
 
 
 def fetch_catalog(force_update):

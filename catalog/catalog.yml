@@ -45,6 +45,13 @@ conemu:
     type: custom
     custom_arguments: /p:x64 /passive
 
+cygwin:
+    version: latest
+    installer:
+        x86: http://cygwin.com/setup-x86.exe
+        x86_64: http://cygwin.com/setup-x86_64.exe
+    type: as-is
+
 firefox:
     version: 29.0
     installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe

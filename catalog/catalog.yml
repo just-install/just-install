@@ -181,7 +181,7 @@ sublimetext:
 
 sublimetext3:
     version: 3059
-    installer: 
+    installer:
         x86: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe
         x86_64: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe
     type: innosetup
@@ -200,7 +200,7 @@ tortoisegit:
 
 tortoisesvn:
     version: 1.8.6
-    installer: 
+    installer:
         x86: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi
         x86_64: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi
     type: msi

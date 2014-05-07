@@ -154,6 +154,11 @@ reshack:
     installer: http://www.angusj.com/resourcehacker/reshack_setup.exe
     type: innosetup
 
+ruby:
+    version: 1.9.3-p545
+    installer: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct
+    type: innosetup
+
 sourcetree:
     version: 1.5.2
     installer: http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe

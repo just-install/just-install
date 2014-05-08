@@ -50,7 +50,8 @@ cygwin:
     installer:
         x86: 'http://cygwin.com/setup-x86.exe'
         x86_64: 'http://cygwin.com/setup-x86_64.exe'
-    type: 'as-is'
+    type: 'custom'
+    custom_arguments: '-q -s http://ftp.gwdg.de/pub/cygwin'
     env:
         PATH: '%SystemDrive%\cygwin\bin;%PATH%'
 

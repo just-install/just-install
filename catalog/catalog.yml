@@ -25,230 +25,239 @@
 #
 
 7zip:
-    version: 9.32
+    version: '9.32'
     installer:
-        x86: http://dl.7-zip.org/7z932.msi
-        x86_64: http://dl.7-zip.org/7z932-x64.msi
-    type: msi
+        x86: 'http://dl.7-zip.org/7z932.msi'
+        x86_64: 'http://dl.7-zip.org/7z932-x64.msi'
+    type: 'msi'
 
 catalyst:
-    version: 14.4
+    version: '14.4'
     installer:
-        x86: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe
-        x86_64: http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe
-    type: as-is
+        x86: 'http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe'
+        x86_64: 'http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe'
+    type: 'as-is'
 
 conemu:
-    version: 131026
+    version: '131026'
     installer:
-        x86_64: http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe
-    type: custom
-    custom_arguments: /p:x64 /passive
+        x86_64: 'http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe'
+    type: 'custom'
+    custom_arguments: '/p:x64 /passive'
 
 cygwin:
-    version: latest
+    version: 'latest'
     installer:
-        x86: http://cygwin.com/setup-x86.exe
-        x86_64: http://cygwin.com/setup-x86_64.exe
-    type: as-is
+        x86: 'http://cygwin.com/setup-x86.exe'
+        x86_64: 'http://cygwin.com/setup-x86_64.exe'
+    type: 'as-is'
+    env:
+        PATH: '%SystemDrive%\cygwin\bin;%PATH%'
 
 firefox:
-    version: 29.0
-    installer: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe
-    type: nsis
+    version: '29.0'
+    installer: 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe'
+    type: 'nsis'
 
 git:
-    version: 1.9.2-preview20140411
-    installer: https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe
-    type: innosetup
+    version: '1.9.2-preview20140411'
+    installer: 'https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe'
+    type: 'innosetup'
 
 google-chrome:
-    version: stable
-    installer: https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi
-    type: msi
+    version: 'stable'
+    installer: 'https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi'
+    type: 'msi'
 
 innosetup:
-    version: 5.5.4
-    installer: http://files.jrsoftware.org/is/5/isetup-${version}-unicode.exe
-    type: innosetup
+    version: '5.5.4'
+    installer: 'http://files.jrsoftware.org/is/5/isetup-${version}-unicode.exe'
+    type: 'innosetup'
 
 jom:
-    version: 1.0.14
-    installer: http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip
-    type: zip
+    version: '1.0.14'
+    installer: 'http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip'
+    type: 'zip'
 
 notepad++:
-    version: 6.5.5
-    installer: http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe
-    type: nsis
+    version: '6.5.5'
+    installer: 'http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe'
+    type: 'nsis'
 
 perl:
-    version: 5.18.2.1801
+    version: '5.18.2.1801'
     installer:
-        x86: http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi
-        x86_64: http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi
-    type: msi
+        x86: 'http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi'
+        x86_64: 'http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi'
+    type: 'msi'
+    env:
+        PATH: '"%SystemDrive%\Perl;%PATH%"'
 
 putty:
-    version: 0.63
-    installer: http://the.earth.li/~sgtatham/putty/${version}/x86/putty-${version}-installer.exe
-    type: innosetup
+    version: '0.63'
+    installer: 'http://the.earth.li/~sgtatham/putty/${version}/x86/putty-${version}-installer.exe'
+    type: 'innosetup'
+    env:
+        PATH: '%ProgramFiles%\PuTTY;%PATH%'
+        SSH: 'plink.exe'
 
 pycharm-community:
-    version: 3.1.2
-    installer: http://download.jetbrains.com/python/pycharm-community-${version}.exe
-    type: nsis
+    version: '3.1.2'
+    installer: 'http://download.jetbrains.com/python/pycharm-community-${version}.exe'
+    type: 'nsis'
 
 pyqt:
-    version: 4.10.4
+    version: '4.10.4'
     installer:
-        x86: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe
-        x86_64: http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe
-    type: nsis
+        x86: 'http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe'
+        x86_64: 'http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe'
+    type: 'nsis'
 
 python26:
-    version: 2.6.5
-    installer: https://www.python.org/ftp/python/${version}/python-${version}.msi
-    type: msi
+    version: '2.6.5'
+    installer: 'https://www.python.org/ftp/python/${version}/python-${version}.msi'
+    type: 'msi'
 
 python26-win32:
-    version: 219
-    installer: http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe
-    type: as-is
+    version: '219'
+    installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe'
+    type: 'as-is'
 
 python27:
-    version: 2.7.6
-    installer: http://python.org/ftp/python/${version}/python-${version}.msi
-    type: msi
+    version: '2.7.6'
+    installer: 'http://python.org/ftp/python/${version}/python-${version}.msi'
+    type: 'msi'
+    env:
+        PATH: '%SystemDrive%\Python27;%SystemDrive%\Python27\Scripts;%PATH%'
 
 python27-pil:
-    version: 1.1.7
-    installer: http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe
-    type: as-is
+    version: '1.1.7'
+    installer: 'http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe'
+    type: 'as-is'
 
 python27-pip:
-    version: 1.4.1-current
-    installer: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    type: as-is
+    version: '1.4.1-current'
+    installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
+    type: 'as-is'
 
 python27-setuptools:
-    version: 1.4.1-current
-    installer: https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-    type: as-is
+    version: '1.4.1-current'
+    installer: 'https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py'
+    type: 'as-is'
 
 python27-win32:
-    version: 219
-    installer: http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe
-    type: as-is
+    version: '219'
+    installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe'
+    type: 'as-is'
 
 python27-yaml:
-    version: 3.10
-    installer: http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe
-    type: as-is
+    version: '3.10'
+    installer: 'http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe'
+    type: 'as-is'
 
 qt:
-    version: 4.8.6
-    installer: http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe
-    type: as-is  # Prevents weird post-installation bug which happen in silent mode.
+    version: '4.8.6'
+    installer: 'http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe'
+    type: 'as-is'  # Prevents weird post-installation bug which happen in silent mode.
 
 rapidee:
-    version: 8.0.919
-    installer: http://www.rapidee.com/download/archive/919/RapidEE_setup.exe
-    type: innosetup
+    version: '8.0.919'
+    installer: 'http://www.rapidee.com/download/archive/919/RapidEE_setup.exe'
+    type: 'innosetup'
 
 reshack:
-    version: 3.6.0
-    installer: http://www.angusj.com/resourcehacker/reshack_setup.exe
-    type: innosetup
+    version: '3.6.0'
+    installer: 'http://www.angusj.com/resourcehacker/reshack_setup.exe'
+    type: 'innosetup'
 
 ruby:
-    version: 1.9.3-p545
-    installer: http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct
-    type: innosetup
+    version: '1.9.3-p545'
+    installer: 'http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct'
+    type: 'innosetup'
 
 sourcetree:
-    version: 1.5.2
-    installer: http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe
-    type: advancedinstaller
+    version: '1.5.2'
+    installer: 'http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe'
+    type: 'advancedinstaller'
 
 sqlserverexpress:
-    version: 2008
-    installer: http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe  # 32-bit edition for compatibility reason
-    type: as-is
+    version: '2008'
+    installer: 'http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe'  # 32-bit edition for compatibility reason
+    type: 'as-is'
 
 steam:
-    version: stable
-    installer: http://cdn.steampowered.com/download/SteamInstall.msi
-    type: msi
+    version: 'stable'
+    installer: 'http://cdn.steampowered.com/download/SteamInstall.msi'
+    type: 'msi'
 
 sublimetext:
-    version: 2.0.1
-    installer: http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe
-    type: innosetup
+    version: '2.0.1'
+    installer: 'http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe'
+    type: 'innosetup'
 
 sublimetext3:
-    version: 3059
+    version: '3059'
     installer:
-        x86: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe
-        x86_64: http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe
-    type: innosetup
+        x86: 'http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe'
+        x86_64: 'http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe'
+    type: 'innosetup'
 
 subversion:
-    version: 1.8.8
+    version: '1.8.8'
     installer:
-        x86: http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi
-        x86_64: http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi
-    type: msi
+        x86: 'http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi'
+        x86_64: 'http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi'
+    type: 'msi'
 
 tortoisegit:
-    version: 1.8.3.0
-    installer: http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi
-    type: msi
+    version: '1.8.3.0'
+    installer: 'http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi'
+    type: 'msi'
 
 tortoisesvn:
-    version: 1.8.6
+    version: '1.8.6'
     installer:
-        x86: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi
-        x86_64: http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi
-    type: msi
+        x86: 'http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi'
+        x86_64: 'http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi'
+    type: 'msi'
 
 upx:
-    version: 3.91
-    installer: http://upx.sourceforge.net/download/upx391w.zip
-    type: zip
+    version: '3.91'
+    installer: 'http://upx.sourceforge.net/download/upx391w.zip'
+    type: 'zip'
 
 windows7-usb-dvd-tool:
-    version: 1.0
-    installer: http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe
-    type: custom
-    custom_arguments: /Q
+    version: '1.0'
+    installer: 'http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe'
+    type: 'custom'
+    custom_arguments: '/Q'
 
 winscp:
-    version: 5.5.3
-    installer: http://winscp.net/download/files/201405031411c9de1a51d9b2cdea0b1e5c2c4d4ad6d3/winscp553setup.exe
-    type: innosetup
+    version: '5.5.3'
+    installer: 'http://winscp.net/download/files/201405031411c9de1a51d9b2cdea0b1e5c2c4d4ad6d3/winscp553setup.exe'
+    type: 'innosetup'
 
 wix:
-    version: 3.7
-    installer: http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393
-    type: microsoft
+    version: '3.7'
+    installer: 'http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393'
+    type: 'microsoft'
 
 wixedit:
-    version: 0.7.5
-    installer: http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi
-    type: msi
+    version: '0.7.5'
+    installer: 'http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi'
+    type: 'msi'
 
 visual-c++-2008:
-    version: 2008
-    installer: http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe
-    type: as-is
+    version: '2008'
+    installer: 'http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe'
+    type: 'as-is'
 
 visual-c++-2008-redist:
-    version: 2008
-    installer: http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe
-    type: as-is
+    version: '2008'
+    installer: 'http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe'
+    type: 'as-is'
 
 visual-c++-2008-redist-sp1:
-    version: 2008sp1
-    installer: http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe
-    type: as-is
+    version: '2008sp1'
+    installer: 'http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe'
+    type: 'as-is'

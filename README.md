@@ -23,9 +23,10 @@ In a hurry? Here's a mnemonic link you can use to bootstrap a new machine, just 
 browser [is.gd/justinstall](http://is.gd/justinstall) then double-click the downloaded file. *"Is
 (it) Good? Just Install!"*.
 
-Are you on a fresh Windows Server install and only have that annoying IE, blocking all downloads to
-give you a false sense of security? Copy and paste this line in a PowerShell console, then double
-click `just-install.exe` which is now your desktop.
+Are you on a fresh Windows Server install and only have the annoying Internet Explorer, with a bad
+habit of blocking all downloads to give you a false sense of security? Don't want to fiddle with its
+settings? Copy and paste this line in a PowerShell console, then double click `just-install.exe` on
+your Desktop.
 
     (New-Object System.Net.WebClient).DownloadFile("http://is.gd/justinstall", "${env:UserProfile}\Desktop\just-install.exe")
 

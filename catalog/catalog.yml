@@ -80,6 +80,13 @@ jom:
     installer: 'http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip'
     type: 'zip'
 
+mercurial:
+    version: '3.0.0'
+    installer:
+        x86: 'http://mercurial.selenic.com/release/windows/mercurial-${version}-x86.msi'
+        x86_64: 'http://mercurial.selenic.com/release/windows/mercurial-${version}-x64.msi'
+    type: 'msi'
+
 notepad++:
     version: '6.5.5'
     installer: 'http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe'

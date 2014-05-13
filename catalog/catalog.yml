@@ -217,6 +217,11 @@ subversion:
         x86_64: 'http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi'
     type: 'msi'
 
+teamviewer:
+    version: 'latest'
+    installer: 'http://download.teamviewer.com/download/TeamViewer_Setup.exe'
+    type: 'nsis'
+
 tortoisegit:
     version: '1.8.3.0'
     installer: 'http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi'

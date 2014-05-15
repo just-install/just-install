@@ -127,7 +127,7 @@ python26:
     type: 'msi'
 
 python26-win32:
-    version: '219'
+    version: '218'
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe'
     type: 'as-is'
 
@@ -154,7 +154,7 @@ python27-setuptools:
     type: 'as-is'
 
 python27-win32:
-    version: '219'
+    version: '218'
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe'
     type: 'as-is'
 

@@ -122,7 +122,7 @@ pyqt:
     type: 'nsis'
 
 python26:
-    version: '2.6.5'
+    version: '2.6.6'
     installer: 'https://www.python.org/ftp/python/${version}/python-${version}.msi'
     type: 'msi'
 

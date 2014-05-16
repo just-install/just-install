@@ -40,10 +40,9 @@ catalyst:
 
 conemu:
     version: '131026'
-    installer:
-        x86_64: 'http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe'
+    installer: 'http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe'
     type: 'custom'
-    custom_arguments: '/p:x64 /passive'
+    custom_arguments: '/passive'
 
 cygwin:
     version: 'latest'

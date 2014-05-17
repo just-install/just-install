@@ -29,6 +29,16 @@ your Desktop.
 
 
 
+Usage
+-----
+
+Open an "Administrative Console Prompt" (that is: run "cmd.exe" as an Administrator) and type:
+
+    just-install -h
+
+
+
+
 Credits
 -------
 

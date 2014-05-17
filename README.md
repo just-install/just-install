@@ -19,13 +19,9 @@ Download [just-install.exe](http://lvillani.github.io/just-install/just-install.
 and double click it. Boom! `just-install` is now in your `%PATH%`. How easy is
 that?
 
-In a hurry? Here's a mnemonic link you can use to bootstrap a new machine, just type this in a
-browser [is.gd/justinstall](http://is.gd/justinstall) then double-click the downloaded file. *"Is
-(it) Good? Just Install!"*.
+In a hurry? Here's a mnemonic link you can use to bootstrap a new machine: <http://go.just-install.it>
 
-Are you on a fresh Windows Server install and only have the annoying Internet Explorer, with a bad
-habit of blocking all downloads to give you a false sense of security? Don't want to fiddle with its
-settings? Copy and paste this line in a PowerShell console, then double click `just-install.exe` on
+Feeling geeky? Copy and paste this line in a PowerShell console, then double click `just-install.exe` on
 your Desktop.
 
     (New-Object System.Net.WebClient).DownloadFile("http://is.gd/justinstall", "${env:UserProfile}\Desktop\just-install.exe")

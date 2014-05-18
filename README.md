@@ -1,7 +1,7 @@
 Just Install
 ============
 
-![Gittip](http://img.shields.io/gittip/lvillani.svg)
+[![Gittip](http://img.shields.io/gittip/lvillani.svg)](https://www.gittip.com/lvillani/)
 
 ![Box](https://raw.githubusercontent.com/lvillani/just-install/master/box.png)
 

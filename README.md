@@ -2,6 +2,7 @@ Just Install
 ============
 
 ![Gittip](http://img.shields.io/gittip/lvillani.svg)
+
 ![Box](https://raw.githubusercontent.com/lvillani/just-install/master/box.png)
 
 *The stupid package installer for Windows*

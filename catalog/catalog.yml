@@ -90,6 +90,18 @@ notepad++:
     version: '6.5.5'
     installer: 'http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe'
     type: 'nsis'
+    
+npackd:
+    version: '1.18.7'
+    installer:
+        x86: 'https://windows-package-manager.googlecode.com/files/Npackd32-${version}.msi'
+        x86_64: 'https://windows-package-manager.googlecode.com/files/Npackd64-${version}.msi'
+    type: 'msi'
+
+npackdcl:
+    version: '1.18.7'
+    installer: 'https://windows-package-manager.googlecode.com/files/NpackdCL-${version}.msi' 
+    type: 'msi'
 
 perl:
     version: '5.18.2.1801'

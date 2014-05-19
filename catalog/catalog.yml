@@ -90,7 +90,7 @@ notepad++:
     version: '6.5.5'
     installer: 'http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe'
     type: 'nsis'
-    
+
 npackd:
     version: '1.18.7'
     installer:
@@ -100,7 +100,7 @@ npackd:
 
 npackdcl:
     version: '1.18.7'
-    installer: 'https://windows-package-manager.googlecode.com/files/NpackdCL-${version}.msi' 
+    installer: 'https://windows-package-manager.googlecode.com/files/NpackdCL-${version}.msi'
     type: 'msi'
 
 perl:
@@ -132,44 +132,51 @@ pyqt:
         x86_64: 'http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe'
     type: 'nsis'
 
-python26:
+python2.6:
     version: '2.6.6'
     installer: 'https://www.python.org/ftp/python/${version}/python-${version}.msi'
     type: 'msi'
+    env:
+        PATH: '%SystemDrive%\Python26;%SystemDrive%\Python26\Scripts;%PATH%'
 
-python26-win32:
-    version: '218'
+python2.6-pip:
+    version: '1.4.1-current'
+    installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
+    type: 'as-is'
+
+python2.6-win32:
+    version: '217'  # Version 218 and later are broken
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe'
     type: 'as-is'
 
-python27:
+python2.7:
     version: '2.7.6'
     installer: 'http://python.org/ftp/python/${version}/python-${version}.msi'
     type: 'msi'
     env:
         PATH: '%SystemDrive%\Python27;%SystemDrive%\Python27\Scripts;%PATH%'
 
-python27-pil:
+python2.7-pil:
     version: '1.1.7'
     installer: 'http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe'
     type: 'as-is'
 
-python27-pip:
+python2.7-pip:
     version: '1.4.1-current'
     installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
     type: 'as-is'
 
-python27-setuptools:
+python2.7-setuptools:
     version: '1.4.1-current'
     installer: 'https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py'
     type: 'as-is'
 
-python27-win32:
-    version: '218'
+python2.7-win32:
+    version: '218'  # Version 219 is broken
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe'
     type: 'as-is'
 
-python27-yaml:
+python2.7-yaml:
     version: '3.10'
     installer: 'http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe'
     type: 'as-is'

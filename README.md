@@ -7,8 +7,8 @@ Just Install
 
 *The stupid package installer for Windows*
 
-Chocolatey, Ninite, Npackd are way too slow, bloated and difficult to extend. I
-[needed](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) a no-frills solution to
+Chocolatey, Ninite and Npackd do way too much. I 
+[needed something simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to
 install stuff on Windows machines, here it is.
 
 

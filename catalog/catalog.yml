@@ -58,6 +58,16 @@ firefox:
     version: '29.0'
     installer: 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe'
     type: 'nsis'
+    
+flash-player:
+    version: '14.0.0.125'
+    installer: 'http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_plugin.msi'
+    type: 'msi'
+
+flash-player-ie:
+    version: '14.0.0.125'
+    installer: 'http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_active_x.msi'
+    type: 'msi'
 
 git:
     version: '1.9.2-preview20140411'

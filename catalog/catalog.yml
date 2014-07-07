@@ -55,7 +55,7 @@ cygwin:
         PATH: '%SystemDrive%\cygwin\bin;%PATH%'
 
 firefox:
-    version: '29.0'
+    version: '30.0'
     installer: 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe'
     type: 'nsis'
     

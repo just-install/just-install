@@ -61,9 +61,7 @@ def main():
     else:
         maybe_auto_install()
 
-    fetch_catalog(args.freshen)
-
-    catalog = load_catalog(CATALOG_FILE)
+    catalog = load_catalog(args.force)
 
     if args.list:
         for package in sorted(catalog.keys()):
@@ -85,7 +83,7 @@ def main():
 
         print "%s-%s %s" % (package, installer_version, arch)
         print "    Downloading ...  ",
-        installer_path = download_file(installer_url, overwrite=args.freshen)
+        installer_path = download_file(installer_url, overwrite=args.force)
 
         print ""
         print "    Installing ..."
@@ -105,7 +103,7 @@ def parse_command_line_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--updated-exe", help=argparse.SUPPRESS, nargs='?')  # Internal
     parser.add_argument("-a", "--arch", action="store", help="Enorce a specific architecture", default=DEFAULT_ARCH, type=str)
-    parser.add_argument("-f", "--freshen", action="store_true", help="Always re-download files, including the catalog")
+    parser.add_argument("-f", "--force", action="store_true", help="Always re-download files, including the catalog")
     parser.add_argument("-l", "--list", action="store_true", help="List packages available for installation")
     parser.add_argument("-u", "--update", action="store_true", help="Update just-install itself")
     parser.add_argument("-v", "--version", action="store_true", help="Show version")
@@ -136,17 +134,21 @@ def update(updated_exe):
         sys.exit(0)
 
 
-def fetch_catalog(force_update):
-    if not hasattr(sys, "frozen") and os.path.exists(CATALOG_LOCAL):
-        shutil.copyfile(CATALOG_LOCAL, CATALOG_FILE)
-    elif not os.path.exists(CATALOG_FILE) or force_update:
-        print "Updating catalog ...  ",
-        download_file(CATALOG_URL, overwrite=True)
-        print ""
+def load_catalog(force_update):
+    catalog_path = CATALOG_FILE
 
+    if os.path.exists(CATALOG_LOCAL):
+        catalog_path = CATALOG_LOCAL
+    else:
+        catalog_path = CATALOG_FILE
 
-def load_catalog(path):
-    with open(path) as catalog:
+        if not os.path.exists(CATALOG_FILE) or force_update:
+            print "Updating catalog ...  ",
+            download_file(CATALOG_URL, overwrite=True)
+
+    print "Loading catalog from " + catalog_path
+
+    with open(catalog_path) as catalog:
         return yaml.load(catalog)
 
 

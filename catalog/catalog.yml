@@ -197,8 +197,8 @@ qt:
     type: 'as-is'  # Prevents weird post-installation bug which happen in silent mode.
 
 rapidee:
-    version: '8.0.919'
-    installer: 'http://www.rapidee.com/download/archive/919/RapidEE_setup.exe'
+    version: '8.0.920'
+    installer: 'http://www.rapidee.com/download/archive/920/RapidEE_setup.exe'
     type: 'innosetup'
 
 reshack:

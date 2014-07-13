@@ -195,7 +195,7 @@ def install(path, kind, env={}):
     elif kind == "as-is":
         call(path)
     elif kind == "custom" and "custom_arguments" in env:
-        call(path, *env["custom_arguments"].split(" "))
+        call(*[expand_installer_path(a, path) for a in env["custom_arguments"].split(" ")])
     elif kind == "innosetup":
         call(path, "/sp-", "/verysilent", "/norestart")
     elif kind == "microsoft":
@@ -208,6 +208,10 @@ def install(path, kind, env={}):
         zip_extract(path, os.environ['SystemDrive'] + '\\')
     else:
         raise TypeError("Unknown installer type: %s" % kind)
+
+
+def expand_installer_path(s, installer_path):
+    return string.Template(s).substitute(installer=installer_path)
 
 
 def call(*args):

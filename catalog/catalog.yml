@@ -57,7 +57,7 @@ cygwin:
         x86: 'http://cygwin.com/setup-x86.exe'
         x86_64: 'http://cygwin.com/setup-x86_64.exe'
     type: 'custom'
-    custom_arguments: '-q -s http://ftp.gwdg.de/pub/cygwin'
+    custom_arguments: '${installer} -q -s http://ftp.gwdg.de/pub/cygwin'
     env:
         PATH: '%SystemDrive%\cygwin\bin;%PATH%'
 
@@ -159,7 +159,8 @@ python2.6:
 python2.6-pip:
     version: 'latest'
     installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
-    type: 'as-is'
+    type: 'custom'
+    custom_arguments: '\Python26\python.exe ${installer}'
 
 python2.6-win32:
     version: '217'  # Version 218 and later are broken
@@ -181,12 +182,8 @@ python2.7-pil:
 python2.7-pip:
     version: 'latest'
     installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
-    type: 'as-is'
-
-python2.7-setuptools:
-    version: '1.4.1-current'
-    installer: 'https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py'
-    type: 'as-is'
+    type: 'custom'
+    custom_arguments: '\Python27\python.exe ${installer}'
 
 python2.7-win32:
     version: '218'  # Version 219 is broken
@@ -278,7 +275,7 @@ windows7-usb-dvd-tool:
     version: '1.0'
     installer: 'http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe'
     type: 'custom'
-    custom_arguments: '/Q'
+    custom_arguments: '${installer} /Q'
 
 winscp:
     version: '5.5.3'

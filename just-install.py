@@ -196,6 +196,8 @@ def install(path, kind, env={}):
         call(path)
     elif kind == "custom" and "custom_arguments" in env:
         call(*[expand_installer_path(a, path) for a in env["custom_arguments"].split(" ")])
+    elif kind.startswith("easy_install"):
+        call(r'\Python' + kind[-2:] + '\Scripts\easy_install.exe', path)
     elif kind == "innosetup":
         call(path, "/sp-", "/verysilent", "/norestart")
     elif kind == "microsoft":

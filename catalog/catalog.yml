@@ -165,7 +165,7 @@ python2.6-pip:
 python2.6-win32:
     version: '217'  # Version 218 and later are broken
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe'
-    type: 'as-is'
+    type: 'easy_install_26'
 
 python2.7:
     version: '2.7.8'
@@ -177,7 +177,7 @@ python2.7:
 python2.7-pil:
     version: '1.1.7'
     installer: 'http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe'
-    type: 'as-is'
+    type: 'easy_install_27'
 
 python2.7-pip:
     version: 'latest'
@@ -188,12 +188,12 @@ python2.7-pip:
 python2.7-win32:
     version: '218'  # Version 219 is broken
     installer: 'http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe'
-    type: 'as-is'
+    type: 'easy_install_27'
 
 python2.7-yaml:
     version: '3.10'
     installer: 'http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe'
-    type: 'as-is'
+    type: 'easy_install_27'
 
 qt:
     version: '4.8.6'

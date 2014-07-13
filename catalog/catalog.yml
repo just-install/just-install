@@ -150,7 +150,7 @@ python2.6:
         PATH: '%SystemDrive%\Python26;%SystemDrive%\Python26\Scripts;%PATH%'
 
 python2.6-pip:
-    version: '1.4.1-current'
+    version: 'latest'
     installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
     type: 'as-is'
 
@@ -172,7 +172,7 @@ python2.7-pil:
     type: 'as-is'
 
 python2.7-pip:
-    version: '1.4.1-current'
+    version: 'latest'
     installer: 'https://raw.github.com/pypa/pip/master/contrib/get-pip.py'
     type: 'as-is'
 

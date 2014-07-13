@@ -215,6 +215,7 @@ def expand_installer_path(s, installer_path):
 
 
 def call(*args):
+    print('    (' + ' '.join(args) + ')')
     subprocess.check_call(args, shell=True)
 
 

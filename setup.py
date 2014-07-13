@@ -17,7 +17,7 @@ class FreezeCommand(Command):
         pass
 
     def run(self):
-        check_call(["pyinstaller.exe", "--clean", "--distpath=.", "-i", "misc/cube.ico", "-c", "-F", "-y", "just-install.py"])
+        check_call(["pyinstaller.exe", "--clean", "--upx-dir=\upx391w", "--distpath=.", "-i", "misc/cube.ico", "-c", "-F", "-y", "just-install.py"])
 
 
 #

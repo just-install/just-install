@@ -54,12 +54,24 @@ del /Q %TEMP%\catalog.json
 
 
 
+
 Usage
 -----
 
 Open an "Administrative Console Prompt" (that is: run "cmd.exe" as an Administrator) and type:
 
     just-install -h
+
+
+
+
+Caveats
+-------
+
+I received reports that some anti-virus programs violently flag just-install as a virus. This is
+probably due to PyInstaller's boot-loader code being recognized as one by some engines and probably
+also due to the fact just-install copies itself to `C:\Windows`. To work-around the problem simply
+white list just-install's executable.
 
 
 

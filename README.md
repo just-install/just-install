@@ -1,15 +1,19 @@
 Just Install
 ============
 
-[![Gittip](http://img.shields.io/gittip/lvillani.svg)](https://www.gittip.com/lvillani/)
-
-![Box](https://raw.githubusercontent.com/lvillani/just-install/master/box.png)
+<img align="right" src="misc/cube.png" width="200" height="200"/>
 
 *The stupid package installer for Windows*
 
-Chocolatey, Ninite and Npackd are way too complicated. I 
-[needed something simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to
-install stuff on Windows machines, here it is.
+Chocolatey, Ninite and Npackd are way too complicated. I [needed something
+simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to install stuff on Windows
+machines, here it is.
+
+And when I say stupid, I really mean it. It is so dumb it cannot even handle errors! If one occurs,
+just-install will happily spit an undecipherable stack trace on the console. The only thing it is
+capable of is downloading a setup program and silently execute it. This simplicity means that it's
+trivial to add support for new software, seriously, [check out the
+catalog](https://github.com/lvillani/just-install/blob/master/catalog/catalog.yml)!
 
 
 
@@ -26,8 +30,27 @@ In a hurry? Here's a mnemonic link you can use to bootstrap a new machine: <http
 Feeling geeky? Copy and paste this line in a PowerShell console, then double click `just-install.exe` on
 your Desktop.
 
-    (New-Object System.Net.WebClient).DownloadFile("http://is.gd/justinstall", "${env:UserProfile}\Desktop\just-install.exe")
+```posh
+(New-Object System.Net.WebClient).DownloadFile("http://go.just-install.it", "${env:UserProfile}\Desktop\just-install.exe")
+```
 
+
+
+Removal
+-------
+
+Remember when you double clicked on `just-install.exe` and magically found it in your `%PATH%`?
+That's because it copied itself to `%WINDIR%`.
+
+So, to completely remove `just-install` from your system, simply delete `%WINDIR%\just-install.exe`
+and `%TEMP%\catalog.json`. You might also have `just-install.old.exe` lying around (if you used the
+self-update function) so better delete it too. Run these commands from within `cmd.exe`:
+
+```bat
+del /Q %WINDIR%\just-install.exe
+del /Q %WINDIR%\just-install.old.exe
+del /Q %TEMP%\catalog.json
+```
 
 
 
@@ -44,4 +67,4 @@ Open an "Administrative Console Prompt" (that is: run "cmd.exe" as an Administra
 Credits
 -------
 
-Box icon designed by Даниил Пронин from the Noun Project - Creative Commons – Attribution (CC BY 3.0)
+Cube icon derived from the one available from [Ionicons](http://ionicons.com/).

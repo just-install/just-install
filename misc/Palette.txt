@@ -1,0 +1,7 @@
+Color Palette: https://kuler.adobe.com/Flat-Design-Colors-color-theme-4047855/
+
+- Teal: #334D5C
+- Cyan: #45B29D
+- Yellow: #EFC94C
+- Orange: #E27A3F
+- Red: #DF4949

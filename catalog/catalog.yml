@@ -58,7 +58,7 @@ firefox:
     version: '30.0'
     installer: 'http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe'
     type: 'nsis'
-    
+
 flash-player:
     version: '14.0.0.125'
     installer: 'http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_plugin.msi'
@@ -160,7 +160,7 @@ python2.6-win32:
     type: 'as-is'
 
 python2.7:
-    version: '2.7.6'
+    version: '2.7.8'
     installer: 'http://python.org/ftp/python/${version}/python-${version}.msi'
     type: 'msi'
     env:

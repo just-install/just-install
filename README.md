@@ -5,6 +5,8 @@ Just Install
 
 *The stupid package installer for Windows*
 
+[![Stories in Ready](https://badge.waffle.io/lvillani/just-install.png?label=ready&title=Ready)](https://waffle.io/lvillani/just-install)
+
 Chocolatey, Ninite and Npackd are way too complicated. I [needed something
 simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to install stuff on Windows
 machines, here it is.

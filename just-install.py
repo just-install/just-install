@@ -40,10 +40,14 @@ import zipfile
 
 
 TEMP_DIR = tempfile.gettempdir()
+
 CATALOG_URL = "http://raw.github.com/lvillani/just-install/master/catalog/catalog.yml"
 CATALOG_FILE = os.path.join(TEMP_DIR, os.path.basename(CATALOG_URL))
 CATALOG_LOCAL = os.path.join(os.path.dirname(__file__), "catalog", "catalog.yml")
+CATALOG_SUPPORTED_VERSION = 1
+
 DEFAULT_ARCH = 'x86_64' if platform.machine() == 'AMD64' else platform.machine()
+
 SELF_INSTALL_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.exe')
 SELF_UPDATER_PATH = os.path.join(os.environ['SystemRoot'], 'just-install.old.exe')
 SELF_UPDATER_URL = "http://github.com/lvillani/just-install/releases/download/latest/just-install.exe"
@@ -62,6 +66,8 @@ def main():
         maybe_auto_install()
 
     catalog = load_catalog(args.force)
+
+    check_catalog_version(catalog)
 
     if args.list:
         for package in sorted(catalog.keys()):
@@ -150,6 +156,16 @@ def load_catalog(force_update):
 
     with open(catalog_path) as catalog:
         return yaml.load(catalog)
+
+
+def check_catalog_version(catalog):
+    v = catalog["catalog_version"]
+
+    if not v == CATALOG_SUPPORTED_VERSION:
+        print "This version of just-install does not support catalog version " + str(v)
+        print "Please update just-install (run 'just-install -u') and try again."
+
+        sys.exit(1)
 
 
 def download_file(url, overwrite=False):

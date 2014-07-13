@@ -40,11 +40,16 @@ catalyst:
         x86_64: 'http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe'
     type: 'as-is'
 
+colemak:
+    version: '1.1'
+    installer: 'http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip'
+    type: 'as-is'
+
 conemu:
     version: '131026'
     installer: 'http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe'
     type: 'custom'
-    custom_arguments: '/passive'
+    custom_arguments: '${installer} /passive'
 
 cygwin:
     version: 'latest'

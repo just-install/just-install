@@ -295,17 +295,17 @@ wixedit:
     installer: 'http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi'
     type: 'msi'
 
-visual-c++-2008:
+vc2008express:
     version: '2008'
     installer: 'http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe'
     type: 'as-is'
 
-visual-c++-2008-redist:
+vc2008redist:
     version: '2008'
     installer: 'http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe'
     type: 'as-is'
 
-visual-c++-2008-redist-sp1:
+vc2008redist-sp1:
     version: '2008sp1'
     installer: 'http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe'
     type: 'as-is'

@@ -1,0 +1,399 @@
+{
+    "version": 1, 
+    "packages": {
+        "7zip": {
+            "version": "9.32", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://dl.7-zip.org/7z932.msi", 
+                "x86_64": "http://dl.7-zip.org/7z932-x64.msi"
+            }
+        }, 
+        "catalyst": {
+            "version": "14.4", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe", 
+                "x86_64": "http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe"
+            }
+        }, 
+        "cmake": {
+            "version": "3.0.0", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://www.cmake.org/files/v3.0/cmake-${version}-win32-x86.exe"
+            }
+        }, 
+        "colemak": {
+            "version": "1.1", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip"
+            }
+        }, 
+        "conemu": {
+            "version": "131026", 
+            "installer": {
+                "kind": "conemu", 
+                "x86": "http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe"
+            }
+        }, 
+        "cygwin": {
+            "version": "latest", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://cygwin.com/setup-x86.exe", 
+                "x86_64": "http://cygwin.com/setup-x86_64.exe", 
+                "options": {
+                    "arguments": [
+                        "${installer}", 
+                        "-q", 
+                        "-s", 
+                        "http://ftp.gwdg.de/pub/cygwin"
+                    ]
+                }
+            }
+        }, 
+        "firefox": {
+            "version": "31.0", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
+            }
+        }, 
+        "flash-player": {
+            "version": "14.0.0.125", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_plugin.msi"
+            }
+        }, 
+        "flash-player-ie": {
+            "version": "14.0.0.125", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_active_x.msi"
+            }
+        }, 
+        "git": {
+            "version": "1.9.2-preview20140411", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe"
+            }
+        }, 
+        "go": {
+            "version": "1.3", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://golang.org/dl/go${version}.windows-386.msi", 
+                "x86_64": "http://golang.org/dl/go${version}.windows-amd64.msi"
+            }
+        }, 
+        "google-chrome": {
+            "version": "stable", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi"
+            }
+        }, 
+        "innosetup": {
+            "version": "5.5.4", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://files.jrsoftware.org/is/5/isetup-${version}-unicode.exe"
+            }
+        }, 
+        "jom": {
+            "version": "1.0.14", 
+            "installer": {
+                "kind": "zip", 
+                "x86": "http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip"
+            }
+        }, 
+        "mercurial": {
+            "version": "3.0.0", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x86.msi", 
+                "x86_64": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x64.msi"
+            }
+        }, 
+        "notepad++": {
+            "version": "6.5.5", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe"
+            }
+        }, 
+        "npackd": {
+            "version": "1.18.7", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "https://windows-package-manager.googlecode.com/files/Npackd32-${version}.msi", 
+                "x86_64": "https://windows-package-manager.googlecode.com/files/Npackd64-${version}.msi"
+            }
+        }, 
+        "npackdcl": {
+            "version": "1.18.7", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "https://windows-package-manager.googlecode.com/files/NpackdCL-${version}.msi"
+            }
+        }, 
+        "perl": {
+            "version": "5.18.2.1801", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi", 
+                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi"
+            }
+        }, 
+        "putty": {
+            "version": "0.63", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://the.earth.li/~sgtatham/putty/${version}/x86/putty-${version}-installer.exe"
+            }
+        }, 
+        "pycharm-community": {
+            "version": "3.1.2", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://download.jetbrains.com/python/pycharm-community-${version}.exe"
+            }
+        }, 
+        "pyqt": {
+            "version": "4.10.4", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe", 
+                "x86_64": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe"
+            }
+        }, 
+        "python26": {
+            "version": "2.6.6", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "https://www.python.org/ftp/python/${version}/python-${version}.msi"
+            }
+        }, 
+        "python26-pip": {
+            "version": "latest", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "https://raw.github.com/pypa/pip/master/contrib/get-pip.py", 
+                "options": {
+                    "arguments": [
+                        "\\Python26\\python.exe", 
+                        "${installer}"
+                    ]
+                }
+            }
+        }, 
+        "python26-win32": {
+            "version": "217", 
+            "installer": {
+                "kind": "easy_install_26", 
+                "x86": "http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.6.exe"
+            }
+        }, 
+        "python27": {
+            "version": "2.7.8", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://python.org/ftp/python/${version}/python-${version}.msi"
+            }
+        }, 
+        "python27-pil": {
+            "version": "1.1.7", 
+            "installer": {
+                "kind": "easy_install_27", 
+                "x86": "http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe"
+            }
+        }, 
+        "python27-pip": {
+            "version": "latest", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "https://raw.github.com/pypa/pip/master/contrib/get-pip.py", 
+                "options": {
+                    "arguments": [
+                        "\\Python27\\python.exe", 
+                        "${installer}"
+                    ]
+                }
+            }
+        }, 
+        "python27-win32": {
+            "version": "218", 
+            "installer": {
+                "kind": "easy_install_27", 
+                "x86": "http://heanet.dl.sourceforge.net/project/pywin32/pywin32/Build%20${version}/pywin32-${version}.win32-py2.7.exe"
+            }
+        }, 
+        "python27-yaml": {
+            "version": "3.10", 
+            "installer": {
+                "kind": "easy_install_27", 
+                "x86": "http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe"
+            }
+        }, 
+        "qt": {
+            "version": "4.8.6", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://releases.qt-project.org/qt4/source/qt-win-opensource-${version}-vs2008.exe"
+            }
+        }, 
+        "rapidee": {
+            "version": "8.0.920", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://www.rapidee.com/download/archive/920/RapidEE_setup.exe"
+            }
+        }, 
+        "reshack": {
+            "version": "3.6.0", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://www.angusj.com/resourcehacker/reshack_setup.exe"
+            }
+        }, 
+        "ruby": {
+            "version": "1.9.3-p545", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct"
+            }
+        }, 
+        "sourcetree": {
+            "version": "1.5.2", 
+            "installer": {
+                "kind": "advancedinstaller", 
+                "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_${version}.exe"
+            }
+        }, 
+        "sqlserverexpress": {
+            "version": "2008", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe"
+            }
+        }, 
+        "steam": {
+            "version": "stable", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://cdn.steampowered.com/download/SteamInstall.msi"
+            }
+        }, 
+        "sublimetext": {
+            "version": "2.0.1", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe"
+            }
+        }, 
+        "sublimetext3": {
+            "version": "3059", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe", 
+                "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe"
+            }
+        }, 
+        "subversion": {
+            "version": "1.8.8", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi", 
+                "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi"
+            }
+        }, 
+        "teamviewer": {
+            "version": "latest", 
+            "installer": {
+                "kind": "nsis", 
+                "x86": "http://download.teamviewer.com/download/TeamViewer_Setup.exe"
+            }
+        }, 
+        "tortoisegit": {
+            "version": "1.8.3.0", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://tortoisegit.googlecode.com/files/TortoiseGit-${version}-64bit.msi"
+            }
+        }, 
+        "tortoisesvn": {
+            "version": "1.8.6", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi", 
+                "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi"
+            }
+        }, 
+        "upx": {
+            "version": "3.91", 
+            "installer": {
+                "kind": "zip", 
+                "x86": "http://upx.sourceforge.net/download/upx391w.zip"
+            }
+        }, 
+        "vc2008express": {
+            "version": "2008", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe"
+            }
+        }, 
+        "vc2008redist": {
+            "version": "2008", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://download.microsoft.com/download/1/1/1/1116b75a-9ec3-481a-a3c8-1777b5381140/vcredist_x86.exe"
+            }
+        }, 
+        "vc2008redist-sp1": {
+            "version": "2008sp1", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe"
+            }
+        }, 
+        "windows7-usb-dvd-tool": {
+            "version": "1.0", 
+            "installer": {
+                "kind": "as-is", 
+                "x86": "http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe", 
+                "options": {
+                    "arguments": [
+                        "${installer}", 
+                        "/Q"
+                    ]
+                }
+            }
+        }, 
+        "winscp": {
+            "version": "5.5.3", 
+            "installer": {
+                "kind": "innosetup", 
+                "x86": "http://winscp.net/download/files/201405031411c9de1a51d9b2cdea0b1e5c2c4d4ad6d3/winscp553setup.exe"
+            }
+        }, 
+        "wix": {
+            "version": "3.7", 
+            "installer": {
+                "kind": "microsoft", 
+                "x86": "http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393"
+            }
+        }, 
+        "wixedit": {
+            "version": "0.7.5", 
+            "installer": {
+                "kind": "msi", 
+                "x86": "http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi"
+            }
+        }
+    }
+}

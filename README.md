@@ -61,7 +61,7 @@ Usage
 -----
 
     NAME:
-       just-install - A new cli application
+       just-install - The stupid package installer for Windows
 
     USAGE:
        just-install [global options] command [command options] [arguments...]

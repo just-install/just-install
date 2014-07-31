@@ -138,7 +138,10 @@ func (e *RegistryEntry) exec(installer string, args ...string) {
 
 func main() {
 	app := cli.NewApp()
+	app.Author = "Lorenzo Villani"
+	app.Email = "lorenzo@villani.me"
 	app.Name = "just-install"
+	app.Usage = "The stupid package installer for Windows"
 	app.Version = "2.0.0"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{

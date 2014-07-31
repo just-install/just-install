@@ -33,7 +33,7 @@ Feeling geeky? Copy and paste this line in a PowerShell console, then double cli
 `just-install.exe` on your Desktop.
 
 ```posh
-(New-Object System.Net.WebClient).DownloadFile("http://go.just-install.it", "${env:UserProfile}\Desktop\just-install.exe")
+(New-Object System.Net.WebClient).DownloadFile("http://go.just-install.it", "${env:UserProfile}\\Desktop\\just-install.exe")
 ```
 
 

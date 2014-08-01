@@ -158,7 +158,7 @@ func main() {
 		selfInstall()
 
 		force := c.Bool("force")
-		registry := smartLoadRegistry(force)
+		registry := smartLoadRegistry(false)
 
 		// Architecture selection
 		arch := c.String("arch")

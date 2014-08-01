@@ -18,5 +18,6 @@ if [ "${1}" == "publish" ]; then
     git checkout gh-pages
     mv ../just-install.exe ./just-install.exe
     git commit -a --amend --no-edit
+    git push origin gh-pages -f
     git checkout master
 fi

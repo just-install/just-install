@@ -34,6 +34,7 @@ import (
 	"strings"
 	"time"
 
+	"bitbucket.org/kardianos/osext"
 	"github.com/codegangsta/cli"
 	"github.com/inconshreveable/go-update"
 	"gopkg.in/cheggaaa/pb.v0"
@@ -218,7 +219,14 @@ func main() {
 
 // Copy ourselves to %WINDIR%\just-install.exe in case we are not being executed from there.
 func selfInstall() {
-	if os.Args[0] != selfInstallPath {
+	executable, err := osext.Executable()
+	if err != nil {
+		log.Println("Unable to determine where I'm running from. Cannot self-install.")
+
+		return
+	}
+
+	if executable != selfInstallPath {
 		log.Println("Self installing to:", selfInstallPath)
 
 		copyFile(os.Args[0], selfInstallPath)

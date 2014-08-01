@@ -243,6 +243,8 @@ func smartLoadRegistry(force bool) Registry {
 		return loadRegistry("just-install.json")
 	} else {
 		if !fileExists(registryPath) || force {
+			log.Println("Updating registry from:", REGISTRY)
+
 			downloadRegistry()
 		}
 

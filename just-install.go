@@ -104,9 +104,9 @@ func (e *RegistryEntry) install(installer string) {
 		} else {
 			e.exec(installer, "/p:x86", "/q")
 		}
-	} else if e.Installer.Kind == "easy_install26" {
+	} else if e.Installer.Kind == "easy_install_26" {
 		e.exec("\\Python26\\Scripts\\easy_install.exe", installer)
-	} else if e.Installer.Kind == "easy_install27" {
+	} else if e.Installer.Kind == "easy_install_27" {
 		e.exec("\\Python27\\Scripts\\easy_install.exe", installer)
 	} else if e.Installer.Kind == "innosetup" {
 		e.exec(installer, "/norestart", "/sp-", "/verysilent")

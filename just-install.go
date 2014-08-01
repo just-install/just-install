@@ -326,12 +326,15 @@ func download(rawurl string, destinationPath string) {
 		log.Fatalf("Unexpected HTTP response code. Wanted 200 but got %d", response.StatusCode)
 	}
 
+	var progressBar *pb.ProgressBar
+
 	contentLength, err := strconv.Atoi(response.Header.Get("Content-Length"))
-	if err != nil {
-		log.Fatalf("Unable to read the Content-Length HTTP header")
+	if err == nil {
+		progressBar = pb.New(int(contentLength))
+	} else {
+		progressBar = pb.New(0)
 	}
 
-	progressBar := pb.New(int(contentLength))
 	progressBar.ShowSpeed = true
 	progressBar.SetRefreshRate(time.Millisecond * 1000)
 	progressBar.SetUnits(pb.U_BYTES)

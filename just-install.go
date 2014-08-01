@@ -177,8 +177,13 @@ func main() {
 
 		// Install packages
 		for _, pkg := range c.Args() {
-			entry := registry.Packages[pkg]
-			entry.JustInstall(force, arch)
+			entry, ok := registry.Packages[pkg]
+
+			if ok {
+				entry.JustInstall(force, arch)
+			} else {
+				log.Println("WARNING: Unknown package", pkg)
+			}
 		}
 	}
 	app.Commands = []cli.Command{

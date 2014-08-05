@@ -30,6 +30,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -193,8 +194,8 @@ func main() {
 			Action: func(c *cli.Context) {
 				registry := smartLoadRegistry(false)
 
-				for k, v := range registry.Packages {
-					fmt.Printf("%s: %s\n", k, v.Version)
+				for _, v := range sortedKeys(registry.Packages) {
+					fmt.Printf("%s: %s\n", v, registry.Packages[v].Version)
 				}
 			},
 		},
@@ -220,6 +221,20 @@ func main() {
 			},
 		}}
 	app.Run(os.Args)
+}
+
+func sortedKeys(m map[string]RegistryEntry) []string {
+	keys := make([]string, len(m))
+	i := 0
+
+	for k, _ := range m {
+		keys[i] = k
+		i++
+	}
+
+	sort.Strings(keys)
+
+	return keys
 }
 
 // Copy ourselves to %WINDIR%\just-install.exe in case we are not being executed from there.

@@ -311,6 +311,13 @@
                 "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi"
             }
         },
+        "thunderbird": {
+            "version": "31.0",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/${version}/win32/en-US/Thunderbird Setup ${version}.exe"
+            }
+        },
         "teamviewer": {
             "version": "latest",
             "installer": {

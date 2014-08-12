@@ -44,6 +44,7 @@ import (
 const (
 	REGISTRY        = "https://raw.github.com/lvillani/just-install/master/just-install.json"
 	SELF_UPDATE_URL = "https://github.com/lvillani/just-install/raw/gh-pages/just-install.exe"
+	VERSION         = "2.0.0"
 )
 
 var (
@@ -144,7 +145,7 @@ func main() {
 	app.Email = "lorenzo@villani.me"
 	app.Name = "just-install"
 	app.Usage = "The stupid package installer for Windows"
-	app.Version = "2.0.0"
+	app.Version = VERSION
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "arch, a",

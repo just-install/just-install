@@ -2,7 +2,7 @@
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
     <assemblyIdentity type="win32"
                       name="just-install"
-                      version="2.0.0.0"
+                      version="2.0.1.0"
                       processorArchitecture="x86"
                       publicKeyToken="0000000000000000"/>
     <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">

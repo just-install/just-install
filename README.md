@@ -3,8 +3,11 @@ Just Install
 
 <img align="right" src="misc/cube.png" width="200" height="200"/>
 
-*The stupid package installer for Windows*
+_The stupid package installer for Windows_
 
+[![Semver](http://img.shields.io/badge/semver-v2.0.1-blue.svg)](https://github.com/lvillani/just-install/releases)
+[![Gittip](http://img.shields.io/gittip/lvillani.svg)](https://www.gittip.com/lvillani/)
+[![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Stories in Ready](https://badge.waffle.io/lvillani/just-install.png?label=ready&title=Ready)](https://waffle.io/lvillani/just-install)
 
 Chocolatey, Ninite and Npackd are way too complicated. I

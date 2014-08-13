@@ -41,6 +41,12 @@ Feeling geeky? Copy and paste this line in a PowerShell console, then double cli
 (New-Object System.Net.WebClient).DownloadFile("http://go.just-install.it", "${env:UserProfile}\\Desktop\\just-install.exe")
 ```
 
+If you are using cmd.exe but have PowerShell available you can run:
+
+```batch
+powershell -Command "(New-Object System.Net.WebClient).DownloadFile(\"http://go.just-install.it\", \"${env:WinDir}\\\\just-install.exe\")"
+```
+
 
 
 Removal

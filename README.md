@@ -10,6 +10,8 @@ _The stupid package installer for Windows_
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Stories in Ready](https://badge.waffle.io/lvillani/just-install.png?label=ready&title=Ready)](https://waffle.io/lvillani/just-install)
 
+--------------------------------------------------------------------------------
+
 Chocolatey, Ninite and Npackd are way too complicated. I
 [needed something simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to install
 stuff on Windows machines, here it is.

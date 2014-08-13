@@ -20,7 +20,7 @@ And when I say stupid, I really mean it. It is so dumb it cannot even handle err
 occurs, just-install will happily spit an undecipherable stack trace on the console. The only
 thing it is capable of is downloading a setup program and silently execute it. This simplicity
 means that it's trivial to add support for new software, seriously,
-[check out the catalog](https://github.com/lvillani/just-install/blob/master/catalog/catalog.yml)!
+[check out the registry](https://github.com/lvillani/just-install/blob/master/just-install.json)!
 
 
 

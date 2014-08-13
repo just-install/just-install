@@ -4,5 +4,8 @@ build/
 dist/
 
 *.pyc
+just-install
 just-install.exe
 just-install.spec
+misc/tools/ResHacker.ini
+misc/tools/ResHacker.log

@@ -27,8 +27,13 @@
         "colemak": {
             "version": "1.1",
             "installer": {
-                "kind": "as-is",
-                "x86": "http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip"
+                "container": "zip",
+                "kind": "custom",
+                "x86": "http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip",
+                "options": {
+                    "install": "setup.exe",
+                    "arguments": "/a"
+                }
             }
         },
         "conemu": {
@@ -265,6 +270,17 @@
             "installer": {
                 "kind": "innosetup",
                 "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct"
+            }
+        },
+        "smartkey": {
+            "version": "12.1.0.0",
+            "installer": {
+                "container": "zip",
+                "kind": "msi",
+                "x86": "http://c3.safenet-inc.com/downloads/D/E/DEC51CE3-A053-446A-8047-2C7D9BAFDFD2/Driver_Installation_SDI.zip",
+                "options": {
+                    "install": "SmartKeyDriversInstaller.msi"
+                }
             }
         },
         "sourcetree": {

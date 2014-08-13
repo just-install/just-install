@@ -19,6 +19,7 @@
 package main
 
 import (
+	"archive/zip"
 	"encoding/json"
 	"fmt"
 	"hash/crc32"
@@ -67,10 +68,11 @@ type RegistryEntry struct {
 }
 
 type InstallerEntry struct {
-	Kind    string
-	X86     string
-	X86_64  string
-	Options map[string]string
+	Container string // Optional
+	Kind      string
+	X86       string
+	X86_64    string
+	Options   map[string]string // Optional
 }
 
 func (e *RegistryEntry) JustInstall(force bool, arch string) {
@@ -79,7 +81,23 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 
 	log.Println(arch, "-", url)
 
-	e.install(download2(url, force))
+	downloadedFile := download2(url, force)
+
+	if e.Installer.Container != "" {
+		// We first need to unwrap the container, then read the real file name to install
+		// from `Options` and run it.
+		tempDir := e.unwrap(downloadedFile, e.Installer.Container)
+		install, ok := e.Installer.Options["install"]
+
+		if !ok {
+			log.Fatalln("Specified a container but wasn't told where is the real installer.")
+		}
+
+		e.install(filepath.Join(tempDir, install))
+	} else {
+		// Run the installer as-is
+		e.install(downloadedFile)
+	}
 }
 
 func (e *RegistryEntry) pickInstallerUrl(arch string) string {
@@ -95,6 +113,20 @@ func isAmd64() bool {
 	return 1<<32 != 0
 }
 
+// Extracts the given container file to a temporary directory and returns that paths.
+func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
+	if kind == "zip" {
+		extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
+
+		extractZip(containerPath, extractTo)
+
+		return extractTo
+	} else {
+		log.Fatalln("Unknown container type:", kind)
+		return "" // We should never get here.
+	}
+}
+
 func (e *RegistryEntry) install(installer string) {
 	if e.Installer.Kind == "advancedinstaller" {
 		e.exec(installer, "/q", "/i")
@@ -106,6 +138,8 @@ func (e *RegistryEntry) install(installer string) {
 		} else {
 			e.exec(installer, "/p:x86", "/q")
 		}
+	} else if e.Installer.Kind == "custom" {
+		e.exec(installer, e.Installer.Options["arguments"])
 	} else if e.Installer.Kind == "easy_install_26" {
 		e.exec("\\Python26\\Scripts\\easy_install.exe", installer)
 	} else if e.Installer.Kind == "easy_install_27" {
@@ -266,12 +300,12 @@ func copyFile(src string, dst string) error {
 // Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
 // the Internet (downloading it if missing).
 func smartLoadRegistry(force bool) Registry {
-	if fileExists("just-install.json") {
+	if pathExists("just-install.json") {
 		log.Println("Using local registry file")
 
 		return loadRegistry("just-install.json")
 	} else {
-		if !fileExists(registryPath) || force {
+		if !pathExists(registryPath) || force {
 			log.Println("Updating registry from:", REGISTRY)
 
 			downloadRegistry()
@@ -282,7 +316,7 @@ func smartLoadRegistry(force bool) Registry {
 }
 
 // Returns `true` if there is a file at the given `path`. Returns `false` otherwise.
-func fileExists(path string) bool {
+func pathExists(path string) bool {
 	_, err := os.Stat(path)
 
 	return err == nil
@@ -319,7 +353,7 @@ func download2(rawurl string, force bool) string {
 	base := crc32s(rawurl) + filepath.Ext(u.Path)
 	dest := filepath.Join(os.TempDir(), base)
 
-	if !fileExists(dest) || force {
+	if !pathExists(dest) || force {
 		download(rawurl, dest)
 	}
 
@@ -377,4 +411,41 @@ func download(rawurl string, destinationPath string) {
 	progressBar.Finish()
 	destination.Close()
 	response.Body.Close()
+}
+
+func extractZip(path string, extractTo string) {
+	os.MkdirAll(extractTo, 0700)
+
+	// Open the archive for reading
+	zipReader, err := zip.OpenReader(path)
+	if err != nil {
+		log.Fatalln("Unable to open ZIP archive:", path)
+	}
+	defer zipReader.Close()
+
+	// Extract all entries in the archive
+	for _, zipFile := range zipReader.File {
+		destinationPath := filepath.Join(extractTo, zipFile.Name)
+
+		if zipFile.FileInfo().IsDir() {
+			os.MkdirAll(destinationPath, zipFile.Mode())
+		} else {
+			// Create destination file
+			dest, err := os.Create(destinationPath)
+			if err != nil {
+				log.Fatalln("Unable to create destination:", destinationPath)
+			}
+			defer dest.Close()
+
+			// Open input stream
+			source, err := zipFile.Open()
+			if err != nil {
+				log.Fatalln("Unable to open input ZIP file:", zipFile.Name)
+			}
+			defer source.Close()
+
+			// Extract file
+			io.Copy(dest, source)
+		}
+	}
 }

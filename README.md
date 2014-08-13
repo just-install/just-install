@@ -1,5 +1,4 @@
-Just Install
-============
+# Just Install
 
 <img align="right" src="misc/cube.png" width="200" height="200"/>
 
@@ -23,10 +22,7 @@ means that it's trivial to add support for new software, seriously,
 [check out the registry](https://github.com/lvillani/just-install/blob/master/just-install.json)!
 
 
-
-
-Installation
-------------
+## Installation
 
 Download [just-install.exe](http://lvillani.github.io/just-install/just-install.exe) and double
 click it. Boom! `just-install` is now in your `%PATH%`. How easy is that?
@@ -48,9 +44,7 @@ powershell -Command "(New-Object System.Net.WebClient).DownloadFile(\"http://go.
 ```
 
 
-
-Removal
--------
+## Removal
 
 Remember when you double clicked on `just-install.exe` and magically found it in your `%PATH%`?
 That's because it copied itself to `%WINDIR%`.
@@ -66,10 +60,7 @@ del /Q %TEMP%\just-install.json
 ```
 
 
-
-
-Usage
------
+## Usage
 
     NAME:
        just-install - The stupid package installer for Windows
@@ -93,9 +84,6 @@ Usage
        --version, -v    print the version
 
 
-
-
-Credits
--------
+## Credits
 
 Cube icon derived from the one available from [Ionicons](http://ionicons.com/).

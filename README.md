@@ -87,3 +87,11 @@ del /Q %TEMP%\just-install.json
 ## Credits
 
 Cube icon derived from the one available from [Ionicons](http://ionicons.com/).
+
+
+## Donating
+
+Support this project and [others by Lorenzo Villani](https://github.com/lvillani/) via
+[gittip](https://www.gittip.com/lvillani/).
+
+[![Support via Gittip](https://cdn.rawgit.com/lvillani/gittip-badge/v1.0.0/dist/gittip.svg)](https://www.gittip.com/lvillani/)

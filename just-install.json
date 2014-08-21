@@ -61,6 +61,17 @@
                 }
             }
         },
+        "depends": {
+            "version": "2.2",
+            "installer": {
+                "kind": "zip",
+                "x86": "http://www.dependencywalker.com/depends22_x86.zip",
+                "x86_64": "http://www.dependencywalker.com/depends22_x64.zip",
+                "options": {
+                    "destination": "${ProgramFiles}\\DependencyWalker"
+                }
+            }
+        },
         "firefox": {
             "version": "31.0",
             "installer": {

@@ -120,7 +120,7 @@
             }
         },
         "notepad++": {
-            "version": "6.5.5",
+            "version": "6.6.8",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe"

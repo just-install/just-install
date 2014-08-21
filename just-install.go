@@ -343,12 +343,14 @@ func downloadRegistry() {
 func loadRegistry(path string) Registry {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatalf("Unable to parse the registry file.")
+		log.Fatalf("Unable to read the registry file.")
 	}
 
 	var ret Registry
 
-	json.Unmarshal(data, &ret)
+	if err := json.Unmarshal(data, &ret); err != nil {
+		log.Fatalln("Unable to parse the registry file.")
+	}
 
 	return ret
 }

@@ -56,7 +56,7 @@
                         "-s",
                         "http://ftp.gwdg.de/pub/cygwin",
                         "-C", "Base",
-                        "-P", "binutils", "-P", "binutils", "-P", "make"
+                        "-P", "binutils", "-P", "make"
                     ]
                 }
             }

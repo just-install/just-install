@@ -150,6 +150,12 @@ func (e *RegistryEntry) install(installer string) {
 		e.exec("msiexec.exe", "/q", "/i", installer, "REBOOT=ReallySuppress")
 	} else if e.Installer.Kind == "nsis" {
 		e.exec(installer, "/S", "/NCRC")
+	} else if (e.Installer.Kind == "zip") {
+		destination := os.ExpandEnv(e.Installer.Options["destination"])
+
+		log.Println("Extracting to", destination)
+
+		extractZip(installer, os.ExpandEnv(e.Installer.Options["destination"]))
 	} else {
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}

@@ -72,7 +72,7 @@ type InstallerEntry struct {
 	Kind      string
 	X86       string
 	X86_64    string
-	Options   map[string]string // Optional
+	Options   map[string]interface{} // Optional
 }
 
 func (e *RegistryEntry) JustInstall(force bool, arch string) {
@@ -87,7 +87,7 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 		// We first need to unwrap the container, then read the real file name to install
 		// from `Options` and run it.
 		tempDir := e.unwrap(downloadedFile, e.Installer.Container)
-		install, ok := e.Installer.Options["install"]
+		install, ok := e.Installer.Options["install"].(string)
 
 		if !ok {
 			log.Fatalln("Specified a container but wasn't told where is the real installer.")
@@ -139,7 +139,13 @@ func (e *RegistryEntry) install(installer string) {
 			e.exec(installer, "/p:x86", "/q")
 		}
 	} else if e.Installer.Kind == "custom" {
-		e.exec(installer, e.Installer.Options["arguments"])
+		args := make([]string, 0)
+
+		for _, v := range e.Installer.Options["arguments"].([]interface{}) {
+			args = append(args, v.(string))
+		}
+
+		e.exec(installer, args...)
 	} else if e.Installer.Kind == "easy_install_26" {
 		e.exec("\\Python26\\Scripts\\easy_install.exe", installer)
 	} else if e.Installer.Kind == "easy_install_27" {
@@ -150,12 +156,12 @@ func (e *RegistryEntry) install(installer string) {
 		e.exec("msiexec.exe", "/q", "/i", installer, "REBOOT=ReallySuppress")
 	} else if e.Installer.Kind == "nsis" {
 		e.exec(installer, "/S", "/NCRC")
-	} else if (e.Installer.Kind == "zip") {
-		destination := os.ExpandEnv(e.Installer.Options["destination"])
+	} else if e.Installer.Kind == "zip" {
+		destination := os.ExpandEnv(e.Installer.Options["destination"].(string))
 
 		log.Println("Extracting to", destination)
 
-		extractZip(installer, os.ExpandEnv(e.Installer.Options["destination"]))
+		extractZip(installer, os.ExpandEnv(e.Installer.Options["destination"].(string)))
 	} else {
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}

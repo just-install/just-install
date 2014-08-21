@@ -72,6 +72,16 @@
                 }
             }
         },
+        "exeproxy": {
+            "version": "0.1",
+            "installer": {
+                "kind": "zip",
+                "x86": "http://heanet.dl.sourceforge.net/project/npackd/exeproxy/exeproxy-${version}.zip",
+                "options": {
+                    "destination": "${ProgramFiles}\\exeproxy"
+                }
+            }
+        },
         "firefox": {
             "version": "31.0",
             "installer": {

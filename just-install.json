@@ -46,7 +46,7 @@
         "cygwin": {
             "version": "latest",
             "installer": {
-                "kind": "as-is",
+                "kind": "custom",
                 "x86": "http://cygwin.com/setup-x86.exe",
                 "x86_64": "http://cygwin.com/setup-x86_64.exe",
                 "options": {

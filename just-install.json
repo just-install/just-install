@@ -340,6 +340,16 @@
                 "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi"
             }
         },
+        "sysinternals": {
+            "version": "latest",
+            "installer": {
+                "kind": "zip",
+                "x86": "http://download.sysinternals.com/files/SysinternalsSuite.zip",
+                "options": {
+                    "destination": "${ProgramFiles}\\SysInternals"
+                }
+            }
+        },
         "thunderbird": {
             "version": "31.0",
             "installer": {

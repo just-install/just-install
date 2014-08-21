@@ -50,12 +50,7 @@
                 "x86": "http://cygwin.com/setup-x86.exe",
                 "x86_64": "http://cygwin.com/setup-x86_64.exe",
                 "options": {
-                    "arguments": [
-                        "${installer}",
-                        "-q",
-                        "-s",
-                        "http://ftp.gwdg.de/pub/cygwin"
-                    ]
+                    "arguments": "${installer} -q -s http://ftp.gwdg.de/pub/cygwin -C Base -P binutils -P make"
                 }
             }
         },

@@ -164,7 +164,7 @@
             }
         },
         "pyqt": {
-            "version": "4.10.4",
+            "version": "4.11.1",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe",

@@ -45,7 +45,7 @@ import (
 const (
 	REGISTRY        = "https://raw.github.com/lvillani/just-install/master/just-install.json"
 	SELF_UPDATE_URL = "https://github.com/lvillani/just-install/raw/gh-pages/just-install.exe"
-	VERSION         = "2.0.1"
+	VERSION         = "2.1.0"
 )
 
 var (

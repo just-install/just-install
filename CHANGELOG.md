@@ -3,7 +3,7 @@
 All notable changes to this project are documented in this file.
 
 
-## 2.1.0 - Work In Progress
+## 2.1.0 - 2014-08-22
 
 ### Added
 

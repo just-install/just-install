@@ -152,7 +152,10 @@
             "version": "1.9.4-preview20140611",
             "installer": {
                 "kind": "innosetup",
-                "x86": "https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe"
+                "x86": "https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe",
+                "options": {
+                    "shims": ["${ProgramFiles(x86)}\\Git\\bin\\git.exe"]
+                }
             }
         },
         "go": {
@@ -210,7 +213,10 @@
             "installer": {
                 "kind": "msi",
                 "x86": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x86.msi",
-                "x86_64": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x64.msi"
+                "x86_64": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x64.msi",
+                "options": {
+                    "shims": ["${ProgramFiles}\\Mercurial\\hg.exe"]
+                }
             }
         },
         "notepad++": {
@@ -252,7 +258,12 @@
             "installer": {
                 "kind": "msi",
                 "x86": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi",
-                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi"
+                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi",
+                "options": {
+                    "shims": [
+                        "${SystemDrive}\\Perl64\\bin\\perl.exe"
+                    ]
+                }
             }
         },
         "putty": {
@@ -308,7 +319,13 @@
             "version": "2.7.8",
             "installer": {
                 "kind": "msi",
-                "x86": "http://python.org/ftp/python/${version}/python-${version}.msi"
+                "x86": "http://python.org/ftp/python/${version}/python-${version}.msi",
+                "options": {
+                    "shims": [
+                        "${SystemDrive}\\Python27\\python.exe",
+                        "${SystemDrive}\\Python27\\pythonw.exe"
+                    ]
+                }
             }
         },
         "python27-pil": {
@@ -327,6 +344,10 @@
                     "arguments": [
                         "\\Python27\\python.exe",
                         "${installer}"
+                    ],
+                    "shims": [
+                        "${SystemDrive}\\Python27\\Scripts\\easy_install.exe",
+                        "${SystemDrive}\\Python27\\Scripts\\pip.exe"
                     ]
                 }
             }
@@ -370,7 +391,13 @@
             "version": "1.9.3-p545",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct"
+                "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct",
+                "options": {
+                    "shims": [
+                        "${SystemDrive}\\Ruby193\\bin\\ruby.exe",
+                        "${SystemDrive}\\Ruby193\\bin\\rubyw.exe"
+                    ]
+                }
             }
         },
         "skype": {
@@ -437,7 +464,10 @@
             "installer": {
                 "kind": "msi",
                 "x86": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi",
-                "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi"
+                "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi",
+                "options": {
+                    "shims": ["${ProgramFiles}\\SlikSvn\\bin\\svn.exe"]
+                }
             }
         },
         "sysinternals": {

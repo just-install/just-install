@@ -46,7 +46,8 @@ const (
 )
 
 var (
-	registryPath    = filepath.Join(os.TempDir(), "just-install.json")
+ 	registryPath  = filepath.Join(os.TempDir(), "just-install.json")
+	shimsPath     = os.ExpandEnv("${SystemDrive}\\just-install")
 )
 
 //
@@ -100,6 +101,8 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 		// Run the installer as-is
 		e.install(downloadedFile)
 	}
+
+	e.createShims()
 }
 
 func (e *RegistryEntry) pickInstallerUrl(arch string) string {
@@ -172,6 +175,39 @@ func (e *RegistryEntry) exec(installer string, args ...string) {
 	log.Println("Running", installer, args)
 
 	cmd := exec.Command(installer, args...)
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+}
+
+func (e *RegistryEntry) createShims() {
+	exeproxy := os.ExpandEnv("${ProgramFiles}\\exeproxy\\exeproxy.exe")
+
+	if !pathExists(exeproxy) {
+		return
+	}
+
+	if !pathExists(shimsPath) {
+		os.MkdirAll(shimsPath, 0)
+	}
+
+	if shims, ok := e.Installer.Options["shims"]; ok {
+		for _, v := range shims.([]interface{}) {
+			shimTarget := os.ExpandEnv(v.(string))
+			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
+
+			log.Printf("Creating shim for %s (%s)\n", shimTarget, shim)
+
+			system(exeproxy, "exeproxy-copy", shim, shimTarget)
+		}
+	}
+}
+
+func system(command string, args ...string) {
+	log.Println("Running", command, args)
+
+	cmd := exec.Command(command, args...)
 	err := cmd.Run()
 	if err != nil {
 		log.Fatalf(err.Error())

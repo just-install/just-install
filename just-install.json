@@ -441,10 +441,10 @@
             }
         },
         "winscp": {
-            "version": "5.5.3",
+            "version": "5.5.5",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://winscp.net/download/files/201405031411c9de1a51d9b2cdea0b1e5c2c4d4ad6d3/winscp553setup.exe"
+                "x86": "http://winscp.net/download/files/20140824171920ba7509cae10d49137b6e14eba55d33/winscp555setup.exe"
             }
         },
         "wix": {

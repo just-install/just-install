@@ -72,6 +72,16 @@
                 }
             }
         },
+        "emacs": {
+            "version": "24.3",
+            "installer": {
+                "kind": "zip",
+                "x86": "http://ftp.igh.cnrs.fr/pub/gnu/emacs/windows/emacs-${version}-bin-i386.zip",
+                "options": {
+                    "destination": "${ProgramFiles}\\Emacs"
+                }
+            }
+        },
         "exeproxy": {
             "version": "0.1",
             "installer": {

@@ -444,7 +444,7 @@
             "version": "5.5.5",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://winscp.net/download/files/20140824171920ba7509cae10d49137b6e14eba55d33/winscp555setup.exe"
+                "x86": "http://skylink.dl.sourceforge.net/project/winscp/WinSCP/5.5.5/winscp555setup.exe"
             }
         },
         "wix": {

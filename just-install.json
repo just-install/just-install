@@ -427,11 +427,11 @@
                 "x86": "http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe"
             }
         },
-        "windows7-usb-dvd-tool": {
+        "windows-usb-dvd-tool": {
             "version": "1.0",
             "installer": {
                 "kind": "as-is",
-                "x86": "http://images2.store.microsoft.com/prod/clustera/framework/w7udt/1.0/en-us/Windows7-USB-DVD-tool.exe",
+                "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wudt&DownloadId=96313&FileTime=129048694816630000&Build=20928",
                 "options": {
                     "arguments": [
                         "${installer}",

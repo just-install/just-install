@@ -427,6 +427,13 @@
                 "x86": "http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe"
             }
         },
+        "vlc": {
+            "version": "2.5.1",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://get.videolan.org/vlc/${version}/win32/vlc-${version}-win32.exe"
+            }
+        },
         "windows-usb-dvd-tool": {
             "version": "1.0",
             "installer": {

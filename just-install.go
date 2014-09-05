@@ -172,7 +172,7 @@ func (e *RegistryEntry) exec(installer string, args ...string) {
 
 	log.Println("Running", installer, args)
 
-	cmd := exec.Command(os.Getenv("COMSPEC"), append([]string{"/C", installer}, args...)...)
+	cmd := exec.Command(installer, args...)
 	err := cmd.Run()
 	if err != nil {
 		log.Fatalf(err.Error())

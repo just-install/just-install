@@ -174,7 +174,7 @@
             "version": "0.48.5",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://kent.dl.sourceforge.net/project/inkscape/inkscape/0.48.5/Inkscape-${version}-1-win32.exe"
+                "x86": "http://kent.dl.sourceforge.net/project/inkscape/inkscape/${version}/Inkscape-${version}-1-win32.exe"
             }
         },
         "innosetup": {

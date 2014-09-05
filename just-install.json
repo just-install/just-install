@@ -17,6 +17,13 @@
                 "x86_64": "http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe"
             }
         },
+        "ccleaner": {
+            "version": "4.17",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://download.piriform.com/ccsetup417.exe"
+            }
+        },
         "cmake": {
             "version": "3.0.0",
             "installer": {
@@ -41,6 +48,13 @@
             "installer": {
                 "kind": "conemu",
                 "x86": "http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe"
+            }
+        },
+        "crystaldisk-info": {
+            "version": "6.2.1",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://jaist.dl.sourceforge.jp/crystaldiskinfo/61888/CrystalDiskInfo6_2_1-en.exe"
             }
         },
         "cygwin": {
@@ -82,6 +96,13 @@
                 }
             }
         },
+        "everything-search": {
+            "version": "1.3.4.686",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://www.voidtools.com/Everything-${version}.x86-Setup.exe"
+            }
+        },
         "exeproxy": {
             "version": "0.1",
             "installer": {
@@ -97,6 +118,13 @@
             "installer": {
                 "kind": "nsis",
                 "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
+            }
+        },
+        "filezilla-server": {
+            "version": "0_9_46",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://kent.dl.sourceforge.net/project/filezilla/FileZilla%20Server/0.9.46/FileZilla_Server-${version}.exe"
             }
         },
         "flash-player": {
@@ -133,6 +161,20 @@
             "installer": {
                 "kind": "msi",
                 "x86": "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi"
+            }
+        },
+        "greenshot": {
+            "version": "1.1.9.13",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://cznic.dl.sourceforge.net/project/greenshot/Greenshot/Greenshot%201.1/Greenshot-INSTALLER-${version}.exe"
+            }
+        },
+        "inkscape": {
+            "version": "0.48.5",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://kent.dl.sourceforge.net/project/inkscape/inkscape/0.48.5/Inkscape-${version}-1-win32.exe"
             }
         },
         "innosetup": {
@@ -177,6 +219,18 @@
             "installer": {
                 "kind": "msi",
                 "x86": "https://windows-package-manager.googlecode.com/files/NpackdCL-${version}.msi"
+            }
+        },
+        "origin": {
+            "version": "latest",
+            "installer": {
+                "kind": "custom",
+                "x86": "https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe",
+                "options": {
+                    "arguments": [
+                        "-s"
+                    ]
+                }
             }
         },
         "perl": {
@@ -303,6 +357,18 @@
             "installer": {
                 "kind": "innosetup",
                 "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-${version}.exe?direct"
+            }
+        },
+        "skype": {
+            "version": "latest",
+            "installer": {
+                "kind": "custom",
+                "x86": "http://www.skype.com/go/getskype-full",
+                "options": {
+                    "arguments": [
+                        "/quiet"
+                    ]
+                }
             }
         },
         "smartkey": {

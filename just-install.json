@@ -9,6 +9,13 @@
                 "x86_64": "http://dl.7-zip.org/7z932-x64.msi"
             }
         },
+        "advancedinstaller": {
+            "version": "latest",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://www.advancedinstaller.com/downloads/advinst.msi"
+            }
+        },
         "catalyst": {
             "version": "14.4",
             "installer": {

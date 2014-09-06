@@ -23,7 +23,7 @@ means that it's trivial to add support for new software, seriously,
 
 ## Installation
 
-Run this command in a command prompt:
+Run this command in a command prompt, as Administrator:
 
 ```batch
 msiexec.exe /i http://go.just-install.it

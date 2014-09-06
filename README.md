@@ -24,40 +24,19 @@ means that it's trivial to add support for new software, seriously,
 
 ## Installation
 
-Download [just-install.exe](http://lvillani.github.io/just-install/just-install.exe) and double
-click it. Boom! `just-install` is now in your `%PATH%`. How easy is that?
-
-In a hurry? Here's a mnemonic link you can use to bootstrap a new machine:
-<http://go.just-install.it>
-
-Feeling geeky? Copy and paste this line in a PowerShell console, then double click
-`just-install.exe` on your Desktop.
-
-```posh
-(New-Object System.Net.WebClient).DownloadFile("http://go.just-install.it", "${env:UserProfile}\\Desktop\\just-install.exe")
-```
-
-If you are using cmd.exe but have PowerShell available you can run:
+Run this command in a command prompt:
 
 ```batch
-powershell -Command "(New-Object System.Net.WebClient).DownloadFile(\"http://go.just-install.it\", \"${env:WinDir}\\\\just-install.exe\")"
+msiexec.exe /i http://go.just-install.it
 ```
+
+If you like more traditionals means of installation then download
+[just-install.msi](http://go.just-install.it), then double click it to install it yourself.
 
 
 ## Removal
 
-Remember when you double clicked on `just-install.exe` and magically found it in your `%PATH%`?
-That's because it copied itself to `%WINDIR%`.
-
-So, to completely remove `just-install` from your system, simply delete
-`%WINDIR%\just-install.exe` and `%TEMP%\just-install.json`. You might also have
-`just-install.old.exe` lying around (if you used the self-update function) so better delete it
-too. Run these commands from within `cmd.exe`:
-
-```bat
-del /Q %WINDIR%\just-install.exe
-del /Q %TEMP%\just-install.json
-```
+You can uninstall `just-install` from Windows' Control Panel.
 
 
 ## Usage
@@ -69,7 +48,7 @@ del /Q %TEMP%\just-install.json
        just-install [global options] command [command options] [arguments...]
 
     VERSION:
-       2.0.0
+       2.1.0
 
     COMMANDS:
        list     List all known packages

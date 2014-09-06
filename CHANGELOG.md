@@ -3,6 +3,15 @@
 All notable changes to this project are documented in this file.
 
 
+## 2.2.0 - Work in progress
+
+### Changed
+
+* just-install now comes as an MSI package.
+* just-install will no longer try to copy itself to `%WinDir%`.
+* `just-install self-update` is now an alias for `just-install -f just-install`.
+
+
 ## 2.1.0 - 2014-08-22
 
 ### Added

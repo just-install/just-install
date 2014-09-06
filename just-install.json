@@ -537,10 +537,13 @@
             }
         },
         "wix": {
-            "version": "3.7",
+            "version": "3.8",
             "installer": {
-                "kind": "microsoft",
-                "x86": "http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=582218&FileTime=130008656354370000&Build=20393"
+                "kind": "as-is",
+                "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=762937&FileTime=130301249344430000&Build=20928",
+                "options": {
+                    "extension": ".exe"
+                }
             }
         },
         "wixedit": {

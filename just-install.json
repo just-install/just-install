@@ -522,8 +522,10 @@
                 "options": {
                     "arguments": [
                         "${installer}",
-                        "/Q"
-                    ]
+                        "/Q",
+                        "/C:\"msiexec /q /i Wudt.msi\""
+                    ],
+                    "extension": ".exe"
                 }
             }
         },

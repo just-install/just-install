@@ -79,7 +79,13 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 
 	log.Println(arch, "-", url)
 
-	downloadedFile := download2(url, force)
+	var downloadedFile string
+
+	if ext, ok := e.Installer.Options["extension"]; ok {
+		downloadedFile = download3(url, ext.(string), force)
+	} else {
+		downloadedFile = download2(url, force)
+	}
 
 	if e.Installer.Container != "" {
 		// We first need to unwrap the container, then read the real file name to install
@@ -333,16 +339,29 @@ func loadRegistry(path string) Registry {
 	return ret
 }
 
-// Downloads a file over HTTP(S) to a temporary location. The temporary file has a name derived
-// from the CRC32 of the URL string with the original file extension attached (if any). The file
-// is re-downloaded only if the temporary file is missing or `force` is true.
+// Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
 func download2(rawurl string, force bool) string {
+	return download3(rawurl, "", force)
+}
+
+// Downloads a file over HTTP(S) to a temporary location. The temporary file has a name derived
+// from the CRC32 of the URL string with the original file extension attached (if any). If `ext`
+// is not the empty string, it will be appended to the destination file. The file is re-downloaded
+// only if the temporary file is missing or `force` is true.
+func download3(rawurl string, ext string, force bool) string {
 	u, err := url.Parse(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to parse the URL: %s", rawurl)
 	}
 
-	base := crc32s(rawurl) + filepath.Ext(u.Path)
+	var base string
+
+	if ext != "" {
+		base = crc32s(rawurl) + ext
+	} else {
+		base = crc32s(rawurl) + filepath.Ext(u.Path)
+	}
+
 	dest := filepath.Join(os.TempDir(), base)
 
 	if !pathExists(dest) || force {

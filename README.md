@@ -7,7 +7,6 @@ _The stupid package installer for Windows_
 [![Semver](http://img.shields.io/badge/semver-v2.0.1-blue.svg?style=flat)](https://github.com/lvillani/just-install/releases)
 [![Gittip](http://img.shields.io/gittip/lvillani.svg?style=flat)](https://www.gittip.com/lvillani/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
-[![Stories in Ready](https://badge.waffle.io/lvillani/just-install.png?label=ready&title=Ready)](https://waffle.io/lvillani/just-install)
 
 --------------------------------------------------------------------------------
 
@@ -31,12 +30,7 @@ msiexec.exe /i http://go.just-install.it
 ```
 
 If you like more traditionals means of installation then download
-[just-install.msi](http://go.just-install.it), then double click it to install it yourself.
-
-
-## Removal
-
-You can uninstall `just-install` from Windows' Control Panel.
+[just-install.msi](http://go.just-install.it), then double click the file to install it yourself.
 
 
 ## Usage

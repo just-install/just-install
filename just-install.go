@@ -112,11 +112,6 @@ func (e *RegistryEntry) pickInstallerUrl(arch string) string {
 	}
 }
 
-// Returns `true` if the host system is 64-bit capable, `false` otherwise.
-func isAmd64() bool {
-	return 1<<32 != 0
-}
-
 // Extracts the given container file to a temporary directory and returns that paths.
 func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
 	if kind == "zip" {
@@ -459,4 +454,9 @@ func extractZip(path string, extractTo string) {
 			io.Copy(dest, source)
 		}
 	}
+}
+
+// Returns `true` if the host system is 64-bit capable, `false` otherwise.
+func isAmd64() bool {
+	return 1<<32 != 0
 }

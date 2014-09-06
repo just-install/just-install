@@ -198,6 +198,13 @@
                 "x86": "http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip"
             }
         },
+        "just-install": {
+            "version": "latest",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://www.just-install.it/just-install.msi"
+            }
+        },
         "mercurial": {
             "version": "3.0.0",
             "installer": {

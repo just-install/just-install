@@ -36,9 +36,7 @@ import (
 	"strings"
 	"time"
 
-	"bitbucket.org/kardianos/osext"
 	"github.com/codegangsta/cli"
-	"github.com/inconshreveable/go-update"
 	"gopkg.in/cheggaaa/pb.v0"
 )
 
@@ -203,8 +201,6 @@ func main() {
 		},
 	}
 	app.Action = func(c *cli.Context) {
-		selfInstall()
-
 		force := c.Bool("force")
 		registry := smartLoadRegistry(false)
 
@@ -252,12 +248,10 @@ func main() {
 			Action: func(c *cli.Context) {
 				log.Println("Self-updating...")
 
-				update := update.New()
+				registry := smartLoadRegistry(false)
 
-				err, _ := update.FromUrl(SELF_UPDATE_URL)
-				if err != nil {
-					log.Fatalln(err.Error())
-				}
+				justInstall := registry.Packages["just-install"]
+				justInstall.JustInstall(true, "x86")
 			},
 		},
 		{
@@ -282,22 +276,6 @@ func sortedKeys(m map[string]RegistryEntry) []string {
 	sort.Strings(keys)
 
 	return keys
-}
-
-// Copy ourselves to %WINDIR%\just-install.exe in case we are not being executed from there.
-func selfInstall() {
-	executable, err := osext.Executable()
-	if err != nil {
-		log.Println("Unable to determine where I'm running from. Cannot self-install.")
-
-		return
-	}
-
-	if executable != selfInstallPath {
-		log.Println("Self installing to:", selfInstallPath)
-
-		copyFile(os.Args[0], selfInstallPath)
-	}
 }
 
 func copyFile(src string, dst string) error {

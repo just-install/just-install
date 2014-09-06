@@ -3,6 +3,9 @@
 build/
 dist/
 
+deploy/just-install-cache/
+deploy/just-install-SetupFiles/
+
 *.pyc
 just-install
 just-install.exe

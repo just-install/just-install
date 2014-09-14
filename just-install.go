@@ -170,10 +170,16 @@ func (e *RegistryEntry) install(installer string) {
 func (e *RegistryEntry) exec(installer string, args ...string) {
 	for i, a := range args {
 		args[i] = strings.Replace(a, "${installer}", installer, -1)
+		args[i] = os.ExpandEnv(args[i])
 	}
 
-	system(installer, args...)
+	if len(args) < 2 {
+		system(args[0])
+	} else {
+		system(args[0], args[1:]...)
+	}
 }
+
 
 func (e *RegistryEntry) createShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")

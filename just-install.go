@@ -236,9 +236,14 @@ func main() {
 			Name:  "force, f",
 			Usage: "Force package re-download",
 		},
+		cli.BoolFlag{
+			Name:  "shim, s",
+			Usage: "Create shims only (if exeproxy is installed)",
+		},
 	}
 	app.Action = func(c *cli.Context) {
 		force := c.Bool("force")
+		onlyShims := c.Bool("shim")
 		registry := smartLoadRegistry(false)
 
 		// Architecture selection
@@ -261,7 +266,11 @@ func main() {
 			entry, ok := registry.Packages[pkg]
 
 			if ok {
-				entry.JustInstall(force, arch)
+				if onlyShims {
+					entry.createShims();
+				} else {
+					entry.JustInstall(force, arch)
+				}
 			} else {
 				log.Println("WARNING: Unknown package", pkg)
 			}

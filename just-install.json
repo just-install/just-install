@@ -116,7 +116,7 @@
                 "kind": "zip",
                 "x86": "http://heanet.dl.sourceforge.net/project/npackd/exeproxy/exeproxy-${version}.zip",
                 "options": {
-                    "destination": "${ProgramFiles}\\exeproxy"
+                    "destination": "${ProgramFiles(x86)}\\exeproxy"
                 }
             }
         },

@@ -176,7 +176,7 @@ func (e *RegistryEntry) exec(installer string, args ...string) {
 }
 
 func (e *RegistryEntry) createShims() {
-	exeproxy := os.ExpandEnv("${ProgramFiles}\\exeproxy\\exeproxy.exe")
+	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 
 	if !pathExists(exeproxy) {
 		return

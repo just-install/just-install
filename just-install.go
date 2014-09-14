@@ -47,7 +47,6 @@ const (
 
 var (
 	registryPath    = filepath.Join(os.TempDir(), "just-install.json")
-	selfInstallPath = filepath.Join(os.Getenv("WINDIR"), "just-install.exe")
 )
 
 //

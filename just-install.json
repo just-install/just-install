@@ -338,11 +338,11 @@
         "python27-pip": {
             "version": "latest",
             "installer": {
-                "kind": "as-is",
+                "kind": "custom",
                 "x86": "https://raw.github.com/pypa/pip/master/contrib/get-pip.py",
                 "options": {
                     "arguments": [
-                        "\\Python27\\python.exe",
+                        "${SystemDrive}\\Python27\\python.exe",
                         "${installer}"
                     ],
                     "shims": [

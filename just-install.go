@@ -184,6 +184,8 @@ func (e *RegistryEntry) exec(installer string, args ...string) {
 //
 
 func main() {
+	normalizeProgramFiles();
+
 	app := cli.NewApp()
 	app.Author = "Lorenzo Villani"
 	app.Email = "lorenzo@villani.me"
@@ -262,6 +264,26 @@ func main() {
 			},
 		}}
 	app.Run(os.Args)
+}
+
+// Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to
+// the same directory on 32-bit systems and %ProgramFiles% points to the 64-bit directory even if
+// we are a 32-bit binary.
+func normalizeProgramFiles() {
+	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless. Time to get dirty.
+	var programFiles string
+	var programFilesX86 string;
+
+	if (isAmd64()) {
+		programFilesX86 = os.Getenv("ProgramFiles(x86)");
+		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")];
+	} else {
+		programFiles = os.Getenv("ProgramFiles");
+		programFilesX86 = programFiles;
+	}
+
+	os.Setenv("ProgramFiles", programFiles);
+	os.Setenv("ProgramFiles(x86)", programFilesX86);
 }
 
 func sortedKeys(m map[string]RegistryEntry) []string {

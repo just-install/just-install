@@ -99,7 +99,13 @@
                 "kind": "zip",
                 "x86": "http://ftp.igh.cnrs.fr/pub/gnu/emacs/windows/emacs-${version}-bin-i386.zip",
                 "options": {
-                    "destination": "${ProgramFiles}\\Emacs"
+                    "destination": "${ProgramFiles(x86)}\\Emacs",
+                    "shims": [
+                        "${ProgramFiles(x86)}\\Emacs\\bin\\emacs.exe",
+                        "${ProgramFiles(x86)}\\Emacs\\bin\\emacsclient.exe",
+                        "${ProgramFiles(x86)}\\Emacs\\bin\\emacsclientw.exe",
+                        "${ProgramFiles(x86)}\\Emacs\\bin\\runemacs.exe"
+                    ]
                 }
             }
         },
@@ -163,7 +169,14 @@
             "installer": {
                 "kind": "msi",
                 "x86": "https://storage.googleapis.com/golang/go${version}.windows-386.msi",
-                "x86_64": "https://storage.googleapis.com/golang/go${version}.windows-amd64.msi"
+                "x86_64": "https://storage.googleapis.com/golang/go${version}.windows-amd64.msi",
+                "options": {
+                    "shims": [
+                        "${SystemDrive}\\Go\\bin\\go.exe",
+                        "${SystemDrive}\\Go\\bin\\godoc.exe",
+                        "${SystemDrive}\\Go\\bin\\gofmt.exe"
+                    ]
+                }
             }
         },
         "google-chrome": {

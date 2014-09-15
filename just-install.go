@@ -170,13 +170,14 @@ func (e *RegistryEntry) install(installer string) {
 func (e *RegistryEntry) exec(installer string, args ...string) {
 	for i, a := range args {
 		args[i] = strings.Replace(a, "${installer}", installer, -1)
-		args[i] = os.ExpandEnv(args[i])
 	}
 
-	if len(args) < 2 {
-		system(args[0])
-	} else {
-		system(args[0], args[1:]...)
+	log.Println("Running", installer, args)
+
+	cmd := exec.Command(installer, args...)
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalf(err.Error())
 	}
 }
 

@@ -13,7 +13,10 @@
             "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://www.advancedinstaller.com/downloads/advinst.msi"
+                "x86": "http://www.advancedinstaller.com/downloads/advinst.msi",
+                "options": {
+                    "shims": ["${ProgramFiles(x86)}\\Caphyon\\Advanced Installer 11.4.1\\bin\\x86\\AdvancedInstaller.com"]
+                }
             }
         },
         "catalyst": {

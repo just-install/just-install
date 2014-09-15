@@ -129,33 +129,42 @@ func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
 
 func (e *RegistryEntry) install(installer string) {
 	if e.Installer.Kind == "advancedinstaller" {
-		e.exec(installer, "/q", "/i")
+		system(installer, "/q", "/i")
 	} else if e.Installer.Kind == "as-is" {
-		e.exec(installer)
+		system(installer)
 	} else if e.Installer.Kind == "conemu" {
 		if isAmd64() {
-			e.exec(installer, "/p:x64", "/q")
+			system(installer, "/p:x64", "/q")
 		} else {
-			e.exec(installer, "/p:x86", "/q")
+			system(installer, "/p:x86", "/q")
 		}
 	} else if e.Installer.Kind == "custom" {
 		args := make([]string, 0)
 
 		for _, v := range e.Installer.Options["arguments"].([]interface{}) {
-			args = append(args, v.(string))
+			current := strings.Replace(v.(string), "${installer}", installer, -1)
+			current = os.ExpandEnv(current)
+
+			args = append(args, current)
 		}
 
-		e.exec(installer, args...)
+		if len(args) == 0 {
+			return
+		} else if len(args) == 1 {
+			system(args[0])
+		} else {
+			system(args[0], args[1:]...)
+		}
 	} else if e.Installer.Kind == "easy_install_26" {
-		e.exec("\\Python26\\Scripts\\easy_install.exe", installer)
+		system("\\Python26\\Scripts\\easy_install.exe", installer)
 	} else if e.Installer.Kind == "easy_install_27" {
-		e.exec("\\Python27\\Scripts\\easy_install.exe", installer)
+		system("\\Python27\\Scripts\\easy_install.exe", installer)
 	} else if e.Installer.Kind == "innosetup" {
-		e.exec(installer, "/norestart", "/sp-", "/verysilent")
+		system(installer, "/norestart", "/sp-", "/verysilent")
 	} else if e.Installer.Kind == "msi" {
-		e.exec("msiexec.exe", "/q", "/i", installer, "REBOOT=ReallySuppress")
+		system("msiexec.exe", "/q", "/i", installer, "REBOOT=ReallySuppress")
 	} else if e.Installer.Kind == "nsis" {
-		e.exec(installer, "/S", "/NCRC")
+		system(installer, "/S", "/NCRC")
 	} else if e.Installer.Kind == "zip" {
 		destination := os.ExpandEnv(e.Installer.Options["destination"].(string))
 
@@ -166,21 +175,6 @@ func (e *RegistryEntry) install(installer string) {
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}
 }
-
-func (e *RegistryEntry) exec(installer string, args ...string) {
-	for i, a := range args {
-		args[i] = strings.Replace(a, "${installer}", installer, -1)
-	}
-
-	log.Println("Running", installer, args)
-
-	cmd := exec.Command(installer, args...)
-	err := cmd.Run()
-	if err != nil {
-		log.Fatalf(err.Error())
-	}
-}
-
 
 func (e *RegistryEntry) createShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")

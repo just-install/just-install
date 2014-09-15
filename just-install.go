@@ -192,6 +192,10 @@ func (e *RegistryEntry) createShims() {
 			shimTarget := os.ExpandEnv(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
+			if (pathExists(shim)) {
+				os.Remove(shim)
+			}
+
 			log.Printf("Creating shim for %s (%s)\n", shimTarget, shim)
 
 			system(exeproxy, "exeproxy-copy", shim, shimTarget)

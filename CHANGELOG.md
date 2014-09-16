@@ -5,11 +5,31 @@ All notable changes to this project are documented in this file.
 
 ## 2.2.0 - Work in progress
 
+### Added
+
+* Added a new `extension` registry option to specify a custom extension to be appendend to
+  downloaded files.
+* The `%ProgramFiles%` and `%ProgramFiles(x86)%` environment variables get normalized at startup
+  according to the scheme described in
+  [bug #47](https://github.com/lvillani/just-install/issues/47)
+* Shim executables are created in `%SystemDrive%\just-install` if exeproxy is installed.
+* Added a new command-line `-s` switch to force regeneration of shim executables without having to
+  re-install the program again. E.g.: `just-install -s mercurial`.
+
+
 ### Changed
 
 * just-install now comes as an MSI package.
-* just-install will no longer try to copy itself to `%WinDir%`.
 * `just-install self-update` is now an alias for `just-install -f just-install`.
+* Installers and executables in general are now launched directly instead of going through the
+  shell.
+* just-install now honors registry entries not having the installer as first argument for entries
+  of "custom" type.
+
+
+### Removed
+
+* just-install will no longer try to copy itself to `%WinDir%`.
 
 
 ## 2.1.0 - 2014-08-22

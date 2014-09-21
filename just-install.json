@@ -80,7 +80,15 @@
                         "-s",
                         "http://ftp.gwdg.de/pub/cygwin",
                         "-C", "Base",
-                        "-P", "binutils", "-P", "make"
+                        "-P", "binutils",
+                        "-P", "curl",
+                        "-P", "fish",
+                        "-P", "git",
+                        "-P", "make",
+                        "-P", "python",
+                        "-P", "ssh",
+                        "-P", "subversion",
+                        "-P", "wget"
                     ]
                 }
             }
@@ -236,7 +244,7 @@
             }
         },
         "notepad++": {
-            "version": "6.6.8",
+            "version": "6.6.9",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe"
@@ -456,18 +464,22 @@
             }
         },
         "sublimetext": {
-            "version": "2.0.1",
+            "version": "2.0.2",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64%20Setup.exe"
+                "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text ${version} Setup.exe",
+                "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text ${version} x64 Setup.exe"
             }
         },
         "sublimetext3": {
-            "version": "3059",
+            "version": "3065",
             "installer": {
                 "kind": "innosetup",
                 "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe",
-                "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe"
+                "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe",
+                "options": {
+                    "shims": ["${ProgramFiles}\\Sublime Text 3\\subl.exe"]
+                }
             }
         },
         "subversion": {

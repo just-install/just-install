@@ -570,6 +570,16 @@
                 "x86": "https://get.videolan.org/vlc/${version}/win32/vlc-${version}-win32.exe"
             }
         },
+        "visualstudio-express-desktop": {
+            "version": "2013",
+            "installer": {
+                "kind": "custom",
+                "x86": "http://download.microsoft.com/download/2/5/5/255DCCB6-F364-4ED8-9758-EF0734CA86B8/wdexpress_full.exe",
+                "options": {
+                    "arguments": ["${installer}", "/Passive", "/NoRestart"]
+                }
+            }
+        },
         "windows-usb-dvd-tool": {
             "version": "1.0",
             "installer": {

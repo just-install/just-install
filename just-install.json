@@ -419,13 +419,8 @@
         "skype": {
             "version": "latest",
             "installer": {
-                "kind": "custom",
-                "x86": "http://www.skype.com/go/getskype-full",
-                "options": {
-                    "arguments": [
-                        "/quiet"
-                    ]
-                }
+                "kind": "msi",
+                "x86": "http://www.skype.com/go/getskype-msi"
             }
         },
         "smartkey": {

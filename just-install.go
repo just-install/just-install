@@ -42,7 +42,7 @@ import (
 
 const (
 	REGISTRY = "https://raw.github.com/lvillani/just-install/master/just-install.json"
-	VERSION  = "2.1.0"
+	VERSION  = "2.2.0"
 )
 
 var (

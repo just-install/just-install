@@ -177,12 +177,6 @@ func (e *RegistryEntry) install(installer string) {
 }
 
 func (e *RegistryEntry) createShims() {
-	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
-
-	if !pathExists(exeproxy) {
-		return
-	}
-
 	if !pathExists(shimsPath) {
 		os.MkdirAll(shimsPath, 0)
 	}
@@ -198,7 +192,7 @@ func (e *RegistryEntry) createShims() {
 
 			log.Printf("Creating shim for %s (%s)\n", shimTarget, shim)
 
-			system(exeproxy, "exeproxy-copy", shim, shimTarget)
+			system("cmd.exe", "/C", "mklink", shim, shimTarget);
 		}
 	}
 }

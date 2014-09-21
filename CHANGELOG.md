@@ -3,7 +3,7 @@
 All notable changes to this project are documented in this file.
 
 
-## 2.2.0 - Work in progress
+## 2.2.0 - 2014-09-21
 
 ### Added
 
@@ -12,7 +12,7 @@ All notable changes to this project are documented in this file.
 * The `%ProgramFiles%` and `%ProgramFiles(x86)%` environment variables get normalized at startup
   according to the scheme described in
   [bug #47](https://github.com/lvillani/just-install/issues/47)
-* Shim executables are created in `%SystemDrive%\just-install` if exeproxy is installed.
+* Some executables are symlinked to `%SystemDrive%\just-install` (only on Windows Vista and later).
 * Added a new command-line `-s` switch to force regeneration of shim executables without having to
   re-install the program again. E.g.: `just-install -s mercurial`.
 

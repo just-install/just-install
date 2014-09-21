@@ -1,6 +1,10 @@
 AI = AdvancedInstaller.com
 MT = "/cygdrive/c/Program Files (x86)/Microsoft SDKs/Windows/v7.1A/Bin/mt.exe"
 
+TIMESTAMP = $(shell date +%Y%m%d%H%S)
+VERSION = 2.2.0
+BUILD = $(VERSION).$(TIMESTAMP)
+
 
 .PHONY: all clean
 
@@ -15,6 +19,7 @@ clean:
 
 
 just-install.msi: just-install.exe
+	cd deploy && $(AI) /edit just-install.aip /SetVersion "$(BUILD)"
 	cd deploy && $(AI) /rebuild just-install.aip
 
 

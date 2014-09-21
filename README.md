@@ -4,7 +4,7 @@
 
 _The stupid package installer for Windows_
 
-[![Semver](http://img.shields.io/badge/semver-v2.1.0-blue.svg?style=flat)](https://github.com/lvillani/just-install/releases)
+[![Semver](http://img.shields.io/badge/version-v2.2.0-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
 [![Gittip](http://img.shields.io/gittip/lvillani.svg?style=flat)](https://www.gittip.com/lvillani/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
 

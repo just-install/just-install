@@ -35,6 +35,29 @@ If you like more traditionals means of installation then download
 
 ## Usage
 
+To install a package:
+
+    just-install firefox
+
+To view a list of available packages:
+
+    just-install list
+
+To update the list of available packages:
+
+    just-install update
+
+To forcibly re-download an installer and re-run it:
+
+    just-install -f firefox
+
+To force installation of a package for a specific architecture (use "x86" or "x86_64"):
+
+    just-install -a x86 go
+
+
+### Detailed
+
     NAME:
        just-install - The stupid package installer for Windows
 

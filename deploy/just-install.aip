@@ -8,10 +8,10 @@
     <ROW Property="ARPURLINFOABOUT" Value="http://www.just-install.it"/>
     <ROW Property="LIMITUI" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Lorenzo Villani"/>
-    <ROW Property="ProductCode" Value="1033:{F59995EF-164A-4DBB-B97C-8AB51ED1A0FB} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{E34D7593-6CB2-4FDA-8EF6-B4550E5C7ADB} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="just-install"/>
-    <ROW Property="ProductVersion" Value="2.1.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.2.0.201409211532" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{6824DCF9-2C10-4C65-BF05-74A12E333931}"/>

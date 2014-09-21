@@ -4,11 +4,11 @@ build/
 dist/
 
 deploy/just-install-cache/
-deploy/just-install-SetupFiles/
 
 *.pyc
 just-install
 just-install.exe
+just-install.msi
 just-install.spec
 misc/tools/ResHacker.ini
 misc/tools/ResHacker.log

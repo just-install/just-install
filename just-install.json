@@ -235,6 +235,13 @@
                 "x86": "http://www.just-install.it/just-install.msi"
             }
         },
+        "libreoffice": {
+            "version": "4.3.1",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://download.documentfoundation.org/libreoffice/stable/${version}/win/x86/LibreOffice_${version}_Win_x86.msi"
+            }
+        },
         "mercurial": {
             "version": "3.0.0",
             "installer": {

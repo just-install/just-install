@@ -19,6 +19,13 @@
                 }
             }
         },
+        "brackets": {
+            "version": "0.43",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://github.com/adobe/brackets/releases/download/release-${version}/Brackets.Release.${version}.msi"
+            }
+        },
         "catalyst": {
             "version": "14.4",
             "installer": {

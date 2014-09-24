@@ -510,6 +510,13 @@
                 }
             }
         },
+        "sumatrapdf": {
+            "version": "2.5.2",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-${version}-install.exe"
+            }
+        },
         "sysinternals": {
             "version": "latest",
             "installer": {

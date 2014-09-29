@@ -1,0 +1,5 @@
+install:
+    - make bootstrap
+
+test:
+    - make check

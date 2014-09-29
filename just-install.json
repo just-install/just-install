@@ -329,11 +329,11 @@
             }
         },
         "pyqt": {
-            "version": "4.11.1",
+            "version": "4.11.2",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.5-x32.exe",
-                "x86_64": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe"
+                "x86": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.6-x32.exe",
+                "x86_64": "http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-${version}/PyQt4-${version}-gpl-Py2.7-Qt4.8.6-x64.exe"
             }
         },
         "python26": {

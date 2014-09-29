@@ -162,17 +162,17 @@
             }
         },
         "flash-player": {
-            "version": "14.0.0.125",
+            "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_plugin.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_plugin.msi"
             }
         },
         "flash-player-ie": {
-            "version": "14.0.0.125",
+            "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_14_active_x.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_active_x.msi"
             }
         },
         "git": {

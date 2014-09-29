@@ -1,5 +1,5 @@
-install:
-    - make bootstrap
-
-test_script:
-    - make check
+branches:
+  only:
+    - master
+build_script:
+    - script\ci-build.bat

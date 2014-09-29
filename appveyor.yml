@@ -1,5 +1,5 @@
 install:
     - make bootstrap
 
-test:
+test_script:
     - make check

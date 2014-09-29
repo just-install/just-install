@@ -277,6 +277,13 @@ func main() {
 	}
 	app.Commands = []cli.Command{
 		{
+			Name:  "checklinks",
+			Usage: "Check for bad installer links",
+			Action: func(c *cli.Context) {
+				checkLinks(smartLoadRegistry(false))
+			},
+		},
+		{
 			Name:  "list",
 			Usage: "List all known packages",
 			Action: func(c *cli.Context) {
@@ -518,6 +525,44 @@ func extractZip(path string, extractTo string) {
 			io.Copy(dest, source)
 		}
 	}
+}
+
+// Checks that all installer URLs are still reachable. Exits with an error on first failure.
+func checkLinks(registry Registry) {
+	for _, v := range sortedKeys(registry.Packages) {
+		e := registry.Packages[v]
+
+		if e.Installer.X86 != "" {
+			url := strings.Replace(registry.Packages[v].Installer.X86, "${version}", e.Version, -1)
+
+			log.Println(v, "x86", url)
+
+			if (!checkLink(url)) {
+				log.Fatalln("Did not return HTTP status code 200 for:", url)
+			}
+		}
+
+		if e.Installer.X86_64 != "" {
+			url := strings.Replace(registry.Packages[v].Installer.X86_64, "${version}", e.Version, -1)
+
+			log.Println(v, "x86_64", url)
+
+			if (!checkLink(url)) {
+				log.Fatalln("Did not return HTTP status code 200 for:", url)
+			}
+		}
+	}
+}
+
+// Ensure
+func checkLink(rawurl string) bool {
+	response, err := http.Get(rawurl)
+	if err != nil {
+		log.Fatalf("Unable to open a connection to %s", rawurl)
+	}
+	defer response.Body.Close()
+
+	return response.StatusCode == http.StatusOK
 }
 
 // Returns `true` if the host system is 64-bit capable, `false` otherwise.

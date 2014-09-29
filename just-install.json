@@ -592,7 +592,7 @@
             }
         },
         "vlc": {
-            "version": "2.5.1",
+            "version": "2.1.5",
             "installer": {
                 "kind": "nsis",
                 "x86": "https://get.videolan.org/vlc/${version}/win32/vlc-${version}-win32.exe"

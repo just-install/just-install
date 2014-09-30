@@ -50,6 +50,187 @@ var (
 	shimsPath     = os.ExpandEnv("${SystemDrive}\\just-install")
 )
 
+func main() {
+	normalizeProgramFiles()
+	handleCommandLine()
+}
+
+// Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to
+// the same directory on 32-bit systems and %ProgramFiles% points to the 64-bit directory even if
+// we are a 32-bit binary.
+func normalizeProgramFiles() {
+	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless.
+	// Time to get dirty.
+	var programFiles string
+	var programFilesX86 string;
+
+	if (isAmd64()) {
+		programFilesX86 = os.Getenv("ProgramFiles(x86)");
+		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")];
+	} else {
+		programFiles = os.Getenv("ProgramFiles");
+		programFilesX86 = programFiles;
+	}
+
+	os.Setenv("ProgramFiles", programFiles);
+	os.Setenv("ProgramFiles(x86)", programFilesX86);
+}
+
+// Returns `true` if the host system is 64-bit capable, `false` otherwise (regardless of whether
+// the executable is compiled in 32-bit or 64-bit mode).
+func isAmd64() bool {
+	return 1<<32 != 0
+}
+
+// As the name says, handles command line arguments. All of them.
+func handleCommandLine() {
+	app := cli.NewApp()
+	app.Author = "Lorenzo Villani"
+	app.Email = "lorenzo@villani.me"
+	app.Name = "just-install"
+	app.Usage = "The stupid package installer for Windows"
+	app.Version = VERSION
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "arch, a",
+			Usage: "Force installation for a specific architecture (if supported by the host).",
+		},
+		cli.BoolFlag{
+			Name:  "force, f",
+			Usage: "Force package re-download",
+		},
+		cli.BoolFlag{
+			Name:  "shim, s",
+			Usage: "Create shims only (if exeproxy is installed)",
+		},
+	}
+	app.Action = handleArguments
+	app.Commands = []cli.Command{
+		{
+			Name:  "checklinks",
+			Usage: "Check for bad installer links",
+			Action: handleChecklinksAction,
+		},
+		{
+			Name:  "list",
+			Usage: "List all known packages",
+			Action: handleListAction,
+		},
+		{
+			Name:  "self-update",
+			Usage: "Update just-install itself",
+			Action: handleSelfUpdateAction,
+		},
+		{
+			Name:  "update",
+			Usage: "Update the registry",
+			Action: handleUpdateAction,
+		}}
+	app.Run(os.Args)
+}
+
+// Handle all arguments that are neither
+func handleArguments(c *cli.Context) {
+	force := c.Bool("force")
+	onlyShims := c.Bool("shim")
+	registry := smartLoadRegistry(false)
+
+	// Architecture selection
+	arch := c.String("arch")
+
+	if arch == "" {
+		// No architecture specified, pick one automatically.
+		if isAmd64() {
+			arch = "x86_64"
+		} else {
+			arch = "x86"
+		}
+	} else if arch == "x86_64" && !isAmd64() {
+		log.Fatalln("Your machine is not 64-bit capable.")
+	} else if arch != "x86" && arch != "x86_64" {
+		log.Fatalln("Please specify a valid architecture between x86 and x86_64")
+	}
+
+	// Install packages
+	for _, pkg := range c.Args() {
+		entry, ok := registry.Packages[pkg]
+
+		if ok {
+			if onlyShims {
+				entry.createShims();
+			} else {
+				entry.JustInstall(force, arch)
+			}
+		} else {
+			log.Println("WARNING: Unknown package", pkg)
+		}
+	}
+}
+
+func handleChecklinksAction(c *cli.Context) {
+	checkLinks(smartLoadRegistry(false))
+}
+
+func handleListAction(c *cli.Context) {
+	registry := smartLoadRegistry(false)
+
+	for _, v := range sortedKeys(registry.Packages) {
+		fmt.Printf("%s: %s\n", v, registry.Packages[v].Version)
+	}
+}
+
+func handleSelfUpdateAction(c *cli.Context) {
+	log.Println("Self-updating...")
+
+	registry := smartLoadRegistry(false)
+
+	justInstall := registry.Packages["just-install"]
+	justInstall.JustInstall(true, "x86")
+}
+
+func handleUpdateAction(c *cli.Context) {
+	smartLoadRegistry(true)
+}
+
+// Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
+// the Internet. If neither is available, try to download it from the known location first.
+func smartLoadRegistry(force bool) Registry {
+	if pathExists("just-install.json") {
+		log.Println("Using local registry file")
+
+		return loadRegistry("just-install.json")
+	} else {
+		if !pathExists(registryPath) || force {
+			log.Println("Updating registry from:", REGISTRY)
+
+			downloadRegistry()
+		}
+
+		return loadRegistry(registryPath)
+	}
+}
+
+// Unmarshals the registry from a local file path.
+func loadRegistry(path string) Registry {
+	data, err := ioutil.ReadFile(path)
+	if err != nil {
+		log.Fatalf("Unable to read the registry file.")
+	}
+
+	var ret Registry
+
+	if err := json.Unmarshal(data, &ret); err != nil {
+		log.Fatalln("Unable to parse the registry file.")
+	}
+
+	return ret
+}
+
+// Downloads the registry from the canonical URL.
+func downloadRegistry() {
+	download(REGISTRY, registryPath)
+}
+
 //
 // Registry Schema
 //
@@ -203,6 +384,10 @@ func (e *RegistryEntry) createShims() {
 	}
 }
 
+//
+// Utilities
+//
+
 func system(command string, args ...string) {
 	log.Println("Running", command, args)
 
@@ -211,129 +396,6 @@ func system(command string, args ...string) {
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
-}
-
-//
-// Funcs
-//
-
-func main() {
-	normalizeProgramFiles();
-
-	app := cli.NewApp()
-	app.Author = "Lorenzo Villani"
-	app.Email = "lorenzo@villani.me"
-	app.Name = "just-install"
-	app.Usage = "The stupid package installer for Windows"
-	app.Version = VERSION
-	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "arch, a",
-			Usage: "Force installation for a specific architecture (if supported by the host).",
-		},
-		cli.BoolFlag{
-			Name:  "force, f",
-			Usage: "Force package re-download",
-		},
-		cli.BoolFlag{
-			Name:  "shim, s",
-			Usage: "Create shims only (if exeproxy is installed)",
-		},
-	}
-	app.Action = func(c *cli.Context) {
-		force := c.Bool("force")
-		onlyShims := c.Bool("shim")
-		registry := smartLoadRegistry(false)
-
-		// Architecture selection
-		arch := c.String("arch")
-
-		if arch == "" {
-			if isAmd64() {
-				arch = "x86_64"
-			} else {
-				arch = "x86"
-			}
-		} else if arch == "x86_64" && !isAmd64() {
-			log.Fatalln("Your machine is not 64-bit capable.")
-		} else if arch != "x86" && arch != "x86_64" {
-			log.Fatalln("Please specify a valid architecture between x86 and x86_64")
-		}
-
-		// Install packages
-		for _, pkg := range c.Args() {
-			entry, ok := registry.Packages[pkg]
-
-			if ok {
-				if onlyShims {
-					entry.createShims();
-				} else {
-					entry.JustInstall(force, arch)
-				}
-			} else {
-				log.Println("WARNING: Unknown package", pkg)
-			}
-		}
-	}
-	app.Commands = []cli.Command{
-		{
-			Name:  "checklinks",
-			Usage: "Check for bad installer links",
-			Action: func(c *cli.Context) {
-				checkLinks(smartLoadRegistry(false))
-			},
-		},
-		{
-			Name:  "list",
-			Usage: "List all known packages",
-			Action: func(c *cli.Context) {
-				registry := smartLoadRegistry(false)
-
-				for _, v := range sortedKeys(registry.Packages) {
-					fmt.Printf("%s: %s\n", v, registry.Packages[v].Version)
-				}
-			},
-		},
-		{
-			Name:  "self-update",
-			Usage: "Update just-install itself",
-			Action: func(c *cli.Context) {
-				log.Println("Self-updating...")
-
-				registry := smartLoadRegistry(false)
-
-				justInstall := registry.Packages["just-install"]
-				justInstall.JustInstall(true, "x86")
-			},
-		},
-		{
-			Name:  "update",
-			Usage: "Update the registry",
-			Action: func(c *cli.Context) {
-				smartLoadRegistry(true)
-			},
-		}}
-	app.Run(os.Args)
-}
-
-// Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to
-// the same directory on 32-bit systems and %ProgramFiles% points to the 64-bit directory even if
-// we are a 32-bit binary.
-func normalizeProgramFiles() {
-	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless. Time to get dirty.
-	var programFiles string
-	var programFilesX86 string;
-
-	if (isAmd64()) {
-		programFilesX86 = os.Getenv("ProgramFiles(x86)");
-		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")];
-	} else {
-		programFiles = os.Getenv("ProgramFiles");
-		programFilesX86 = programFiles;
-	}
-
-	os.Setenv("ProgramFiles", programFiles);
-	os.Setenv("ProgramFiles(x86)", programFilesX86);
 }
 
 func sortedKeys(m map[string]RegistryEntry) []string {
@@ -359,24 +421,6 @@ func copyFile(src string, dst string) error {
 	return ioutil.WriteFile(dst, buf, 0)
 }
 
-// Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
-// the Internet (downloading it if missing).
-func smartLoadRegistry(force bool) Registry {
-	if pathExists("just-install.json") {
-		log.Println("Using local registry file")
-
-		return loadRegistry("just-install.json")
-	} else {
-		if !pathExists(registryPath) || force {
-			log.Println("Updating registry from:", REGISTRY)
-
-			downloadRegistry()
-		}
-
-		return loadRegistry(registryPath)
-	}
-}
-
 // Returns `true` if there is a file at the given `path`. Returns `false` otherwise.
 func pathExists(path string) bool {
 	_, err := os.Stat(path)
@@ -384,26 +428,7 @@ func pathExists(path string) bool {
 	return err == nil
 }
 
-// Downloads the registry from the canonical URL.
-func downloadRegistry() {
-	download(REGISTRY, registryPath)
-}
 
-// Unmarshals the registry from a local file path.
-func loadRegistry(path string) Registry {
-	data, err := ioutil.ReadFile(path)
-	if err != nil {
-		log.Fatalf("Unable to read the registry file.")
-	}
-
-	var ret Registry
-
-	if err := json.Unmarshal(data, &ret); err != nil {
-		log.Fatalln("Unable to parse the registry file.")
-	}
-
-	return ret
-}
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
 func download2(rawurl string, force bool) string {
@@ -565,7 +590,3 @@ func checkLink(rawurl string) bool {
 	return response.StatusCode == http.StatusOK
 }
 
-// Returns `true` if the host system is 64-bit capable, `false` otherwise.
-func isAmd64() bool {
-	return 1<<32 != 0
-}

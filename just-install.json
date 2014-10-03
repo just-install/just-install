@@ -185,7 +185,7 @@
                 }
             }
         },
-		"github": {
+        "github": {
             "version": "latest",
             "installer": {
                 "kind": "nsis",

@@ -55,7 +55,6 @@ The JSON object associated to a package name MUST contain the following mappings
     - "easy_install_26"
     - "easy_install_27"
     - "innosetup"
-    - "microsoft"
     - "msi"
     - "nsis"
     - "zip"

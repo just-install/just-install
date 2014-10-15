@@ -19,6 +19,13 @@
                 }
             }
         },
+        "brackets": {
+            "version": "0.43",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://github.com/adobe/brackets/releases/download/release-${version}/Brackets.Release.${version}.msi"
+            }
+        },
         "catalyst": {
             "version": "14.4",
             "installer": {
@@ -178,6 +185,13 @@
                 }
             }
         },
+        "github": {
+            "version": "latest",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://github-windows.s3.amazonaws.com/GitHubSetup.exe"
+            }
+        },
         "go": {
             "version": "1.3.1",
             "installer": {
@@ -233,6 +247,13 @@
             "installer": {
                 "kind": "msi",
                 "x86": "http://www.just-install.it/just-install.msi"
+            }
+        },
+        "libreoffice": {
+            "version": "4.3.1",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://download.documentfoundation.org/libreoffice/stable/${version}/win/x86/LibreOffice_${version}_Win_x86.msi"
             }
         },
         "mercurial": {
@@ -494,6 +515,13 @@
                 "options": {
                     "shims": ["${ProgramFiles}\\SlikSvn\\bin\\svn.exe"]
                 }
+            }
+        },
+        "sumatrapdf": {
+            "version": "2.5.2",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-${version}-install.exe"
             }
         },
         "sysinternals": {

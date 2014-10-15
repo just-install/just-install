@@ -250,10 +250,10 @@
             }
         },
         "libreoffice": {
-            "version": "4.3.1",
+            "version": "4.2.6",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.documentfoundation.org/libreoffice/stable/${version}/win/x86/LibreOffice_${version}_Win_x86.msi"
+                "x86": "http://download.documentfoundation.org/libreoffice/stable/${version}/win/x86/LibreOffice_${version}-secfix_Win_x86.msi"
             }
         },
         "mercurial": {

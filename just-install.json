@@ -103,6 +103,13 @@
                 }
             }
         },
+        "deluge": {
+            "version": "1.3.10",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://download.deluge-torrent.org/windows/deluge-${version}-win32-setup.exe"
+            }
+        },
         "depends": {
             "version": "2.2",
             "installer": {

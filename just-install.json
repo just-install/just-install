@@ -20,7 +20,7 @@
             }
         },
         "brackets": {
-            "version": "0.43",
+            "version": "0.44",
             "installer": {
                 "kind": "msi",
                 "x86": "http://github.com/adobe/brackets/releases/download/release-${version}/Brackets.Release.${version}.msi"
@@ -35,10 +35,10 @@
             }
         },
         "ccleaner": {
-            "version": "4.17",
+            "version": "4.18",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://download.piriform.com/ccsetup417.exe"
+                "x86": "http://download.piriform.com/ccsetup418.exe"
             }
         },
         "cmake": {
@@ -101,6 +101,13 @@
                         "-P", "wget"
                     ]
                 }
+            }
+        },
+        "deluge": {
+            "version": "1.3.10",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://download.deluge-torrent.org/windows/deluge-${version}-win32-setup.exe"
             }
         },
         "depends": {
@@ -193,7 +200,7 @@
             }
         },
         "go": {
-            "version": "1.3.1",
+            "version": "1.3.3",
             "installer": {
                 "kind": "msi",
                 "x86": "https://storage.googleapis.com/golang/go${version}.windows-386.msi",

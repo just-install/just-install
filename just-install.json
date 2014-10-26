@@ -35,10 +35,10 @@
             }
         },
         "ccleaner": {
-            "version": "4.18",
+            "version": "4.19",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://download.piriform.com/ccsetup418.exe"
+                "x86": "http://download.piriform.com/ccsetup419.exe"
             }
         },
         "cmake": {
@@ -525,7 +525,7 @@
             }
         },
         "sumatrapdf": {
-            "version": "2.5.2",
+            "version": "3.0",
             "installer": {
                 "kind": "nsis",
                 "x86": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-${version}-install.exe"

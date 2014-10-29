@@ -228,6 +228,13 @@
                 "x86": "http://cznic.dl.sourceforge.net/project/greenshot/Greenshot/Greenshot%201.1/Greenshot-INSTALLER-${version}.exe"
             }
         },
+        "gvim": {
+            "version": "7.4",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://ftp.vim.org/pub/vim/pc/gvim74.exe"
+            }
+        },
         "inkscape": {
             "version": "0.48.5",
             "installer": {

@@ -182,6 +182,13 @@
                 "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_active_x.msi"
             }
         },
+        "gimp": {
+            "version": "2.8.14",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://download.gimp.org/pub/gimp/stable/windows/gimp-${version}-setup-1.exe"
+            }
+        },
         "git": {
             "version": "1.9.4-preview20140611",
             "installer": {

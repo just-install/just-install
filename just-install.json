@@ -182,6 +182,20 @@
                 "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_active_x.msi"
             }
         },
+        "foobar2000": {
+            "version": "1.3.5",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://www.foobar2000.org/getfile/a2875e27bdb45143d435de30721d0583/foobar2000_v1.3.5.exe"
+            }
+        },
+        "gimp": {
+            "version": "2.8.14",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://download.gimp.org/pub/gimp/stable/windows/gimp-${version}-setup-1.exe"
+            }
+        },
         "git": {
             "version": "1.9.4-preview20140611",
             "installer": {
@@ -226,6 +240,13 @@
             "installer": {
                 "kind": "innosetup",
                 "x86": "http://cznic.dl.sourceforge.net/project/greenshot/Greenshot/Greenshot%201.1/Greenshot-INSTALLER-${version}.exe"
+            }
+        },
+        "gvim": {
+            "version": "7.4",
+            "installer": {
+                "kind": "nsis",
+                "x86": "http://ftp.vim.org/pub/vim/pc/gvim74.exe"
             }
         },
         "inkscape": {

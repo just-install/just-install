@@ -476,6 +476,13 @@
                 }
             }
         },
+        "sdm": {
+            "version": "latest",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://e5.onthehub.com/Static/Installers/SDM_EN.msi"
+            }
+        },
         "skype": {
             "version": "latest",
             "installer": {

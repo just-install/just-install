@@ -295,6 +295,13 @@
                 }
             }
         },
+        "mingw-get": {
+            "version": "latest",
+            "installer": {
+                "kind": "as-is",
+                "x86": "http://sourceforge.net/projects/mingw/files/latest/download"
+            }
+        },
         "notepad++": {
             "version": "6.6.9",
             "installer": {

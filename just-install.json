@@ -155,7 +155,7 @@
             }
         },
         "firefox": {
-            "version": "33.0",
+            "version": "34.0",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"

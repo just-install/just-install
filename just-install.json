@@ -35,10 +35,10 @@
             }
         },
         "ccleaner": {
-            "version": "4.19",
+            "version": "5.00",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://download.piriform.com/ccsetup419.exe"
+                "x86": "http://download.piriform.com/ccsetup500.exe"
             }
         },
         "cmake": {

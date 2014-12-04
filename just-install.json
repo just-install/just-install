@@ -337,11 +337,11 @@
             }
         },
         "perl": {
-            "version": "5.18.2.1801",
+            "version": "5.18.4.1803",
             "installer": {
                 "kind": "msi",
-                "x86": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x86-64int-297964.msi",
-                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/5.18.2.1801/ActivePerl-5.18.2.1801-MSWin32-x64-297964.msi",
+                "x86": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x86-64int-298573.msi",
+                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x64-298573.msi",
                 "options": {
                     "shims": [
                         "${SystemDrive}\\Perl64\\bin\\perl.exe"

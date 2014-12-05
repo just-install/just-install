@@ -68,10 +68,10 @@
             }
         },
         "crystaldisk-info": {
-            "version": "6.2.1",
+            "version": "6.2.2",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://jaist.dl.sourceforge.jp/crystaldiskinfo/61888/CrystalDiskInfo6_2_1-en.exe"
+                "x86": "http://jaist.dl.sourceforge.jp/crystaldiskinfo/61888/CrystalDiskInfo6_2_2-en.exe"
             }
         },
         "cygwin": {

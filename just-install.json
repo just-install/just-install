@@ -35,10 +35,10 @@
             }
         },
         "ccleaner": {
-            "version": "4.19",
+            "version": "5.00",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://download.piriform.com/ccsetup419.exe"
+                "x86": "http://download.piriform.com/ccsetup500.exe"
             }
         },
         "cmake": {
@@ -104,7 +104,7 @@
             }
         },
         "deluge": {
-            "version": "1.3.10",
+            "version": "1.3.11",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://download.deluge-torrent.org/windows/deluge-${version}-win32-setup.exe"
@@ -155,7 +155,7 @@
             }
         },
         "firefox": {
-            "version": "33.0",
+            "version": "34.0",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"

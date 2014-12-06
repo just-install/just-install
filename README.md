@@ -73,7 +73,7 @@ To force installation of a package for a specific architecture (use "x86" or "x8
        just-install [global options] command [command options] [arguments...]
 
     VERSION:
-       2.1.0
+       2.2.0
 
     COMMANDS:
        list     List all known packages

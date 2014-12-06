@@ -21,6 +21,14 @@ thing it is capable of is downloading a setup program and silently execute it. T
 means that it's trivial to add support for new software, seriously,
 [check out the registry](https://github.com/lvillani/just-install/blob/master/just-install.json)!
 
+Oh, by the way, it looks like Microsoft is adding a package manager called
+[OneGet](https://github.com/OneGet/oneget) to Windows 10! Since the ultimate purpose of just-install
+is to be replaced by an official solution from Microsoft (or by something as pleasant to use as
+Homebrew or apt-get), we __won't__ support Windows 10, and we invite you to use and contribute to
+the development of OneGet (it's even open source, from Microsoft! Go figure...), so that the next
+release of Windows gets a decent package manager. Of course we will continue to support just-install
+on Windows XP, 7, 8 unless an easy way to get OneGet running there becomes available.
+
 
 ## Installation
 

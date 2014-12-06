@@ -41,8 +41,9 @@ import (
 )
 
 const (
-	REGISTRY = "https://raw.github.com/lvillani/just-install/master/just-install.json"
-	VERSION  = "2.2.0"
+	REGISTRY                   = "https://raw.github.com/lvillani/just-install/master/just-install.json"
+	REGISTRY_SUPPORTED_VERSION = 2
+	VERSION                    = "2.2.0"
 )
 
 var (
@@ -221,6 +222,10 @@ func loadRegistry(path string) Registry {
 
 	if err := json.Unmarshal(data, &ret); err != nil {
 		log.Fatalln("Unable to parse the registry file.")
+	}
+
+	if ret.Version != REGISTRY_SUPPORTED_VERSION {
+		log.Fatalln("Please update to a new version of just-install by running: msiexec.exe /i http://go.just-install.it")
 	}
 
 	return ret

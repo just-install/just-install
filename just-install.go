@@ -577,7 +577,6 @@ func checkLinks(registry Registry) {
 	}
 }
 
-// Ensure
 func checkLink(rawurl string) bool {
 	response, err := http.Get(rawurl)
 	if err != nil {

@@ -5,7 +5,6 @@
 _The stupid package installer for Windows_
 
 [![Build Status](http://img.shields.io/appveyor/ci/lvillani/just-install.svg?style=flat)](https://ci.appveyor.com/project/lvillani/just-install/)
-[![Gittip](http://img.shields.io/gittip/lvillani.svg?style=flat)](https://www.gittip.com/lvillani/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Semver](http://img.shields.io/badge/version-v2.2.0-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
 
@@ -92,11 +91,3 @@ To force installation of a package for a specific architecture (use "x86" or "x8
 ## Credits
 
 Cube icon derived from the one available from [Ionicons](http://ionicons.com/).
-
-
-## Donating
-
-Support this project and [others by Lorenzo Villani](https://github.com/lvillani/) via
-[gittip](https://www.gittip.com/lvillani/).
-
-[![Support via Gittip](https://cdn.rawgit.com/lvillani/gittip-badge/v1.0.0/dist/gittip.svg)](https://www.gittip.com/lvillani/)

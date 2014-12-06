@@ -46,8 +46,8 @@ const (
 )
 
 var (
- 	registryPath  = filepath.Join(os.TempDir(), "just-install.json")
-	shimsPath     = os.ExpandEnv("${SystemDrive}\\just-install")
+	registryPath = filepath.Join(os.TempDir(), "just-install.json")
+	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
 )
 
 func main() {
@@ -62,18 +62,18 @@ func normalizeProgramFiles() {
 	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless.
 	// Time to get dirty.
 	var programFiles string
-	var programFilesX86 string;
+	var programFilesX86 string
 
-	if (isAmd64()) {
-		programFilesX86 = os.Getenv("ProgramFiles(x86)");
-		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")];
+	if isAmd64() {
+		programFilesX86 = os.Getenv("ProgramFiles(x86)")
+		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")]
 	} else {
-		programFiles = os.Getenv("ProgramFiles");
-		programFilesX86 = programFiles;
+		programFiles = os.Getenv("ProgramFiles")
+		programFilesX86 = programFiles
 	}
 
-	os.Setenv("ProgramFiles", programFiles);
-	os.Setenv("ProgramFiles(x86)", programFilesX86);
+	os.Setenv("ProgramFiles", programFiles)
+	os.Setenv("ProgramFiles(x86)", programFilesX86)
 }
 
 // Returns `true` if the host system is 64-bit capable, `false` otherwise (regardless of whether
@@ -107,23 +107,23 @@ func handleCommandLine() {
 	app.Action = handleArguments
 	app.Commands = []cli.Command{
 		{
-			Name:  "checklinks",
-			Usage: "Check for bad installer links",
+			Name:   "checklinks",
+			Usage:  "Check for bad installer links",
 			Action: handleChecklinksAction,
 		},
 		{
-			Name:  "list",
-			Usage: "List all known packages",
+			Name:   "list",
+			Usage:  "List all known packages",
 			Action: handleListAction,
 		},
 		{
-			Name:  "self-update",
-			Usage: "Update just-install itself",
+			Name:   "self-update",
+			Usage:  "Update just-install itself",
 			Action: handleSelfUpdateAction,
 		},
 		{
-			Name:  "update",
-			Usage: "Update the registry",
+			Name:   "update",
+			Usage:  "Update the registry",
 			Action: handleUpdateAction,
 		}}
 	app.Run(os.Args)
@@ -157,7 +157,7 @@ func handleArguments(c *cli.Context) {
 
 		if ok {
 			if onlyShims {
-				entry.createShims();
+				entry.createShims()
 			} else {
 				entry.JustInstall(force, arch)
 			}
@@ -373,7 +373,7 @@ func (e *RegistryEntry) createShims() {
 			shimTarget := os.ExpandEnv(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
-			if (pathExists(shim)) {
+			if pathExists(shim) {
 				os.Remove(shim)
 			}
 
@@ -427,8 +427,6 @@ func pathExists(path string) bool {
 
 	return err == nil
 }
-
-
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
 func download2(rawurl string, force bool) string {
@@ -562,7 +560,7 @@ func checkLinks(registry Registry) {
 
 			log.Println(v, "x86", url)
 
-			if (!checkLink(url)) {
+			if !checkLink(url) {
 				log.Fatalln("Did not return HTTP status code 200 for:", url)
 			}
 		}
@@ -572,7 +570,7 @@ func checkLinks(registry Registry) {
 
 			log.Println(v, "x86_64", url)
 
-			if (!checkLink(url)) {
+			if !checkLink(url) {
 				log.Fatalln("Did not return HTTP status code 200 for:", url)
 			}
 		}
@@ -589,4 +587,3 @@ func checkLink(rawurl string) bool {
 
 	return response.StatusCode == http.StatusOK
 }
-

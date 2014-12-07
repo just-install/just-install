@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="11.4.1" version="11.4.1" Modules="simple" RootPath="." Language="en" Id="{38F01737-02C0-445B-8B8D-96CD7496D34A}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.4.1" version="11.6.3" Modules="simple" RootPath="." Language="en" Id="{38F01737-02C0-445B-8B8D-96CD7496D34A}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
@@ -8,10 +8,10 @@
     <ROW Property="ARPURLINFOABOUT" Value="http://www.just-install.it"/>
     <ROW Property="LIMITUI" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Lorenzo Villani"/>
-    <ROW Property="ProductCode" Value="1033:{E34D7593-6CB2-4FDA-8EF6-B4550E5C7ADB} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{1D9E6246-CEB6-4FF4-8465-75CBEC5734BA} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="just-install"/>
-    <ROW Property="ProductVersion" Value="2.2.0.201409211532" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.3.0.20141271352" Type="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{6824DCF9-2C10-4C65-BF05-74A12E333931}"/>

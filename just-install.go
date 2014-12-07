@@ -557,37 +557,44 @@ func extractZip(path string, extractTo string) {
 
 // Checks that all installer URLs are still reachable. Exits with an error on first failure.
 func checkLinks(registry Registry) {
-	for _, v := range sortedKeys(registry.Packages) {
-		e := registry.Packages[v]
+	var errors []string
 
-		if e.Installer.X86 != "" {
-			url := strings.Replace(registry.Packages[v].Installer.X86, "${version}", e.Version, -1)
+	checkLink := func(rawurl string) bool {
+		response, err := http.Get(rawurl)
+		if err != nil {
+			return false
+		}
+		defer response.Body.Close()
 
-			log.Println(v, "x86", url)
+		return response.StatusCode == http.StatusOK
+	}
 
-			if !checkLink(url) {
-				log.Fatalln("Did not return HTTP status code 200 for:", url)
-			}
+	checkArch := func(name string, version string, architecture string, rawUrl string) {
+		if rawUrl == "" {
+			return
 		}
 
-		if e.Installer.X86_64 != "" {
-			url := strings.Replace(registry.Packages[v].Installer.X86_64, "${version}", e.Version, -1)
+		url := strings.Replace(rawUrl, "${version}", version, -1)
 
-			log.Println(v, "x86_64", url)
-
-			if !checkLink(url) {
-				log.Fatalln("Did not return HTTP status code 200 for:", url)
-			}
+		if !checkLink(url) {
+			errors = append(errors, fmt.Sprintf("%v (%v): %v", name, architecture, url))
 		}
 	}
-}
 
-func checkLink(rawurl string) bool {
-	response, err := http.Get(rawurl)
-	if err != nil {
-		log.Fatalf("Unable to open a connection to %s", rawurl)
+	for _, name := range sortedKeys(registry.Packages) {
+		entry := registry.Packages[name]
+
+		checkArch(name, entry.Version, "x86", entry.Installer.X86)
+		checkArch(name, entry.Version, "x86_64", entry.Installer.X86_64)
 	}
-	defer response.Body.Close()
 
-	return response.StatusCode == http.StatusOK
+	if len(errors) > 0 {
+		fmt.Println("\n\nThese installers were unreachable:")
+
+		for _, e := range errors {
+			fmt.Println(e)
+		}
+
+		os.Exit(1)
+	}
 }

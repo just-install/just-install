@@ -548,6 +548,17 @@
                 }
             }
         },
+        "sublime-text-dev": {
+            "version": "3066",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} Setup.exe",
+                "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build ${version} x64 Setup.exe",
+                "options": {
+                    "shims": ["${ProgramFiles}\\Sublime Text 3\\subl.exe"]
+                }
+            }
+        },
         "subversion": {
             "version": "1.8.8",
             "installer": {

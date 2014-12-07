@@ -285,7 +285,7 @@
             }
         },
         "mercurial": {
-            "version": "3.0.0",
+            "version": "3.2.1",
             "installer": {
                 "kind": "msi",
                 "x86": "http://mercurial.selenic.com/release/windows/mercurial-${version}-x86.msi",

@@ -197,7 +197,7 @@
             }
         },
         "git": {
-            "version": "1.9.4-preview20140611",
+            "version": "1.9.4-preview20140929",
             "installer": {
                 "kind": "innosetup",
                 "x86": "https://github.com/msysgit/msysgit/releases/download/Git-${version}/Git-${version}.exe",

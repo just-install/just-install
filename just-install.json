@@ -162,10 +162,10 @@
             }
         },
         "filezilla-server": {
-            "version": "0.9.46",
+            "version": "0.9.48",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://kent.dl.sourceforge.net/project/filezilla/FileZilla%20Server/${version}/FileZilla_Server-0_9_46.exe"
+                "x86": "http://kent.dl.sourceforge.net/project/filezilla/FileZilla%20Server/${version}/FileZilla_Server-0_9_48.exe"
             }
         },
         "flash-player": {

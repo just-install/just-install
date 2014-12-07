@@ -529,7 +529,7 @@
                 "x86": "http://cdn.steampowered.com/download/SteamInstall.msi"
             }
         },
-        "sublimetext": {
+        "sublime-text": {
             "version": "2.0.2",
             "installer": {
                 "kind": "innosetup",
@@ -537,7 +537,7 @@
                 "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text ${version} x64 Setup.exe"
             }
         },
-        "sublimetext3": {
+        "sublime-text-3": {
             "version": "3065",
             "installer": {
                 "kind": "innosetup",

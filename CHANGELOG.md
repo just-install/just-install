@@ -3,6 +3,21 @@
 All notable changes to this project are documented in this file.
 
 
+## 2.3.0 - 2014-12-07
+
+### Added
+
+* A new testing infrastructure now ensures that all installers are still reachable after
+  each commit.
+
+### Changed
+
+* Prompt users to upgrade in case the registry file format has changed in a non-backward-compatible
+  way.
+* Shim executables are now created using exeproxy, which replaces the old "mklink" way. You may want
+  to refresh the shims by calling "just-install -s [pkg...]"
+
+
 ## 2.2.0 - 2014-09-21
 
 ### Added

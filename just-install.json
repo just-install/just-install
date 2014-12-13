@@ -172,14 +172,14 @@
             "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_plugin.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_16_plugin.msi"
             }
         },
         "flash-player-ie": {
             "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_15_active_x.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_16_active_x.msi"
             }
         },
         "foobar2000": {

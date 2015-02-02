@@ -49,11 +49,23 @@ const (
 var (
 	registryPath = filepath.Join(os.TempDir(), "just-install.json")
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
+	isAmd64      = false
 )
 
 func main() {
+	determineArch()
 	normalizeProgramFiles()
 	handleCommandLine()
+}
+
+func determineArch() {
+	sentinel := os.Getenv("ProgramFiles(x86)")
+
+	if sentinel == "" {
+		isAmd64 = false
+	} else {
+		isAmd64 = pathExists(sentinel)
+	}
 }
 
 // Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to
@@ -65,7 +77,7 @@ func normalizeProgramFiles() {
 	var programFiles string
 	var programFilesX86 string
 
-	if isAmd64() {
+	if isAmd64 {
 		programFilesX86 = os.Getenv("ProgramFiles(x86)")
 		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")]
 	} else {
@@ -75,12 +87,6 @@ func normalizeProgramFiles() {
 
 	os.Setenv("ProgramFiles", programFiles)
 	os.Setenv("ProgramFiles(x86)", programFilesX86)
-}
-
-// Returns `true` if the host system is 64-bit capable, `false` otherwise (regardless of whether
-// the executable is compiled in 32-bit or 64-bit mode).
-func isAmd64() bool {
-	return 1<<32 != 0
 }
 
 // As the name says, handles command line arguments. All of them.
@@ -141,12 +147,12 @@ func handleArguments(c *cli.Context) {
 
 	if arch == "" {
 		// No architecture specified, pick one automatically.
-		if isAmd64() {
+		if isAmd64 {
 			arch = "x86_64"
 		} else {
 			arch = "x86"
 		}
-	} else if arch == "x86_64" && !isAmd64() {
+	} else if arch == "x86_64" && !isAmd64 {
 		log.Fatalln("Your machine is not 64-bit capable.")
 	} else if arch != "x86" && arch != "x86_64" {
 		log.Fatalln("Please specify a valid architecture between x86 and x86_64")
@@ -292,7 +298,7 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 }
 
 func (e *RegistryEntry) pickInstallerUrl(arch string) string {
-	if arch == "x86_64" && isAmd64() && e.Installer.X86_64 != "" {
+	if arch == "x86_64" && isAmd64 && e.Installer.X86_64 != "" {
 		return e.Installer.X86_64
 	} else {
 		return e.Installer.X86
@@ -319,7 +325,7 @@ func (e *RegistryEntry) install(installer string) {
 	} else if e.Installer.Kind == "as-is" {
 		system(installer)
 	} else if e.Installer.Kind == "conemu" {
-		if isAmd64() {
+		if isAmd64 {
 			system(installer, "/p:x64", "/q")
 		} else {
 			system(installer, "/p:x86", "/q")

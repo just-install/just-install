@@ -206,15 +206,15 @@ func smartLoadRegistry(force bool) Registry {
 		log.Println("Using local registry file")
 
 		return loadRegistry("just-install.json")
-	} else {
-		if !pathExists(registryPath) || force {
-			log.Println("Updating registry from:", REGISTRY)
-
-			downloadRegistry()
-		}
-
-		return loadRegistry(registryPath)
 	}
+
+	if !pathExists(registryPath) || force {
+		log.Println("Updating registry from:", REGISTRY)
+
+		downloadRegistry()
+	}
+
+	return loadRegistry(registryPath)
 }
 
 // Unmarshals the registry from a local file path.
@@ -300,9 +300,9 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 func (e *RegistryEntry) pickInstallerUrl(arch string) string {
 	if arch == "x86_64" && isAmd64 && e.Installer.X86_64 != "" {
 		return e.Installer.X86_64
-	} else {
-		return e.Installer.X86
 	}
+
+	return e.Installer.X86
 }
 
 // Extracts the given container file to a temporary directory and returns that paths.
@@ -313,10 +313,11 @@ func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
 		extractZip(containerPath, extractTo)
 
 		return extractTo
-	} else {
-		log.Fatalln("Unknown container type:", kind)
-		return "" // We should never get here.
 	}
+
+	log.Fatalln("Unknown container type:", kind)
+
+	return "" // We should never get here.
 }
 
 func (e *RegistryEntry) install(installer string) {
@@ -413,7 +414,7 @@ func sortedKeys(m map[string]RegistryEntry) []string {
 	keys := make([]string, len(m))
 	i := 0
 
-	for k, _ := range m {
+	for k := range m {
 		keys[i] = k
 		i++
 	}

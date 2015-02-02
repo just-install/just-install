@@ -332,7 +332,7 @@ func (e *RegistryEntry) install(installer string) {
 			system(installer, "/p:x86", "/q")
 		}
 	} else if e.Installer.Kind == "custom" {
-		args := make([]string, 0)
+		var args []string
 
 		for _, v := range e.Installer.Options["arguments"].([]interface{}) {
 			current := strings.Replace(v.(string), "${installer}", installer, -1)

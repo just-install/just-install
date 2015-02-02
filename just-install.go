@@ -265,7 +265,7 @@ type InstallerEntry struct {
 }
 
 func (e *RegistryEntry) JustInstall(force bool, arch string) {
-	url := e.pickInstallerUrl(arch)
+	url := e.pickInstallerURL(arch)
 	url = strings.Replace(url, "${version}", e.Version, -1)
 
 	log.Println(arch, "-", url)
@@ -297,7 +297,7 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 	e.createShims()
 }
 
-func (e *RegistryEntry) pickInstallerUrl(arch string) string {
+func (e *RegistryEntry) pickInstallerURL(arch string) string {
 	if arch == "x86_64" && isAmd64 && e.Installer.X86_64 != "" {
 		return e.Installer.X86_64
 	}

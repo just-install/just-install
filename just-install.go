@@ -41,9 +41,9 @@ import (
 )
 
 const (
-	REGISTRY                   = "https://raw.github.com/lvillani/just-install/master/just-install.json"
-	REGISTRY_SUPPORTED_VERSION = 2
-	VERSION                    = "2.3.0"
+	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
+	registrySupportedVersion = 2
+	version                  = "2.3.0"
 )
 
 var (
@@ -96,7 +96,7 @@ func handleCommandLine() {
 	app.Email = "lorenzo@villani.me"
 	app.Name = "just-install"
 	app.Usage = "The stupid package installer for Windows"
-	app.Version = VERSION
+	app.Version = version
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "arch, a",
@@ -209,7 +209,7 @@ func smartLoadRegistry(force bool) Registry {
 	}
 
 	if !pathExists(registryPath) || force {
-		log.Println("Updating registry from:", REGISTRY)
+		log.Println("Updating registry from:", registryURL)
 
 		downloadRegistry()
 	}
@@ -230,7 +230,7 @@ func loadRegistry(path string) Registry {
 		log.Fatalln("Unable to parse the registry file.")
 	}
 
-	if ret.Version != REGISTRY_SUPPORTED_VERSION {
+	if ret.Version != registrySupportedVersion {
 		log.Fatalln("Please update to a new version of just-install by running: msiexec.exe /i http://go.just-install.it")
 	}
 
@@ -239,7 +239,7 @@ func loadRegistry(path string) Registry {
 
 // Downloads the registry from the canonical URL.
 func downloadRegistry() {
-	download(REGISTRY, registryPath)
+	download(registryURL, registryPath)
 }
 
 //

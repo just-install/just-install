@@ -201,7 +201,7 @@ func handleUpdateAction(c *cli.Context) {
 
 // Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
 // the Internet. If neither is available, try to download it from the known location first.
-func smartLoadRegistry(force bool) Registry {
+func smartLoadRegistry(force bool) registry {
 	if pathExists("just-install.json") {
 		log.Println("Using local registry file")
 
@@ -218,13 +218,13 @@ func smartLoadRegistry(force bool) Registry {
 }
 
 // Unmarshals the registry from a local file path.
-func loadRegistry(path string) Registry {
+func loadRegistry(path string) registry {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Unable to read the registry file.")
 	}
 
-	var ret Registry
+	var ret registry
 
 	if err := json.Unmarshal(data, &ret); err != nil {
 		log.Fatalln("Unable to parse the registry file.")
@@ -246,17 +246,17 @@ func downloadRegistry() {
 // Registry Schema
 //
 
-type Registry struct {
+type registry struct {
 	Version  int
-	Packages map[string]RegistryEntry
+	Packages map[string]registryEntry
 }
 
-type RegistryEntry struct {
+type registryEntry struct {
 	Version   string
-	Installer InstallerEntry
+	Installer installerEntry
 }
 
-type InstallerEntry struct {
+type installerEntry struct {
 	Container string // Optional
 	Kind      string
 	X86       string
@@ -264,7 +264,7 @@ type InstallerEntry struct {
 	Options   map[string]interface{} // Optional
 }
 
-func (e *RegistryEntry) JustInstall(force bool, arch string) {
+func (e *registryEntry) JustInstall(force bool, arch string) {
 	url := e.pickInstallerURL(arch)
 	url = strings.Replace(url, "${version}", e.Version, -1)
 
@@ -297,7 +297,7 @@ func (e *RegistryEntry) JustInstall(force bool, arch string) {
 	e.createShims()
 }
 
-func (e *RegistryEntry) pickInstallerURL(arch string) string {
+func (e *registryEntry) pickInstallerURL(arch string) string {
 	if arch == "x86_64" && isAmd64 && e.Installer.X86_64 != "" {
 		return e.Installer.X86_64
 	}
@@ -306,7 +306,7 @@ func (e *RegistryEntry) pickInstallerURL(arch string) string {
 }
 
 // Extracts the given container file to a temporary directory and returns that paths.
-func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
+func (e *registryEntry) unwrap(containerPath string, kind string) string {
 	if kind == "zip" {
 		extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
 
@@ -320,7 +320,7 @@ func (e *RegistryEntry) unwrap(containerPath string, kind string) string {
 	return "" // We should never get here.
 }
 
-func (e *RegistryEntry) install(installer string) {
+func (e *registryEntry) install(installer string) {
 	if e.Installer.Kind == "advancedinstaller" {
 		system(installer, "/q", "/i")
 	} else if e.Installer.Kind == "as-is" {
@@ -369,7 +369,7 @@ func (e *RegistryEntry) install(installer string) {
 	}
 }
 
-func (e *RegistryEntry) createShims() {
+func (e *registryEntry) createShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 
 	if !pathExists(exeproxy) {
@@ -410,7 +410,7 @@ func system(command string, args ...string) {
 	}
 }
 
-func sortedKeys(m map[string]RegistryEntry) []string {
+func sortedKeys(m map[string]registryEntry) []string {
 	keys := make([]string, len(m))
 	i := 0
 
@@ -563,7 +563,7 @@ func extractZip(path string, extractTo string) {
 }
 
 // Checks that all installer URLs are still reachable. Exits with an error on first failure.
-func checkLinks(registry Registry) {
+func checkLinks(registry registry) {
 	var errors []string
 
 	checkLink := func(rawurl string) bool {

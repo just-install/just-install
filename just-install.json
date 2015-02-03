@@ -432,10 +432,10 @@
             }
         },
         "rapidee": {
-            "version": "8.0.923",
+            "version": "8.0.924",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://www.rapidee.com/download/archive/923/RapidEE_setup.exe"
+                "x86": "http://www.rapidee.com/download/archive/924/RapidEE_setup.exe"
             }
         },
         "reshack": {

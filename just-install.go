@@ -43,7 +43,7 @@ import (
 const (
 	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
 	registrySupportedVersion = 2
-	version                  = "2.3.0"
+	version                  = "2.3.1"
 )
 
 var (

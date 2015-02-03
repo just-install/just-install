@@ -10,6 +10,7 @@ All notable changes to this project are documented in this file.
 * Architecture detection now uses the `%ProgramFiles(x86)%` environment variable to determine
   whether Windows is 32-bit or 64-bit capable. This should also fix a problem where just-install
   failed to start on 32-bit platforms.
+* The `${version}` variable is now expanded also during shim creation.
 
 
 ## 2.3.0 - 2014-12-07

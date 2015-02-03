@@ -612,7 +612,10 @@
             "version": "3.91",
             "installer": {
                 "kind": "zip",
-                "x86": "http://upx.sourceforge.net/download/upx391w.zip"
+                "x86": "http://upx.sourceforge.net/download/upx391w.zip",
+                "options": {
+                    "destination": "${ProgramFiles(x86)}\\UPX"
+                }
             }
         },
         "vc2008express": {

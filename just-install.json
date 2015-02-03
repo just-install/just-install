@@ -410,23 +410,6 @@
                 "x86": "http://effbot.org/downloads/PIL-${version}.win32-py2.7.exe"
             }
         },
-        "python27-pip": {
-            "version": "latest",
-            "installer": {
-                "kind": "custom",
-                "x86": "https://raw.github.com/pypa/pip/master/contrib/get-pip.py",
-                "options": {
-                    "arguments": [
-                        "${SystemDrive}\\Python27\\python.exe",
-                        "${installer}"
-                    ],
-                    "shims": [
-                        "${SystemDrive}\\Python27\\Scripts\\easy_install.exe",
-                        "${SystemDrive}\\Python27\\Scripts\\pip.exe"
-                    ]
-                }
-            }
-        },
         "python27-win32": {
             "version": "218",
             "installer": {

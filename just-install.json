@@ -206,7 +206,7 @@
             }
         },
         "go": {
-            "version": "1.3.3",
+            "version": "1.4.1",
             "installer": {
                 "kind": "msi",
                 "x86": "https://storage.googleapis.com/golang/go${version}.windows-386.msi",

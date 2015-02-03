@@ -19,6 +19,16 @@
                 }
             }
         },
+        "atom": {
+            "version": "0.177.0",
+            "installer": {
+                "kind": "as-is",
+                "x86": "https://github.com/atom/atom/releases/download/v${version}/AtomSetup.exe",
+                "options": {
+                    "shims": ["${LocalAppData}\\atom\\app-${version}\\atom.exe"]
+                }
+            }
+        },
         "brackets": {
             "version": "1.0",
             "installer": {

@@ -242,10 +242,11 @@
             }
         },
         "inkscape": {
-            "version": "0.48.5",
+            "version": "0.91",
             "installer": {
-                "kind": "nsis",
-                "x86": "http://kent.dl.sourceforge.net/project/inkscape/inkscape/${version}/Inkscape-${version}-1-win32.exe"
+                "kind": "msi",
+                "x86": "https://inkscape.org/en/gallery/item/3950/download/",
+                "x86_64": "https://inkscape.org/en/gallery/item/3956/download/"
             }
         },
         "innosetup": {

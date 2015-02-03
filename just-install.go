@@ -382,7 +382,8 @@ func (e *registryEntry) createShims() {
 
 	if shims, ok := e.Installer.Options["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
-			shimTarget := os.ExpandEnv(v.(string))
+			shimTarget := strings.Replace(v.(string), "${version}", e.Version, -1)
+			shimTarget = os.ExpandEnv(shimTarget)
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
 			if pathExists(shim) {

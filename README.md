@@ -66,26 +66,33 @@ To force installation of a package for a specific architecture (use "x86" or "x8
 
 ### Detailed
 
-    NAME:
-       just-install - The stupid package installer for Windows
+```
+NAME:
+   just-install - The stupid package installer for Windows
 
-    USAGE:
-       just-install [global options] command [command options] [arguments...]
+USAGE:
+   just-install [global options] command [command options] [arguments...]
 
-    VERSION:
-       2.2.0
+VERSION:
+   2.3.1
 
-    COMMANDS:
-       list     List all known packages
-       self-update  Update just-install itself
-       update   Update the registry
-       help, h  Shows a list of commands or help for one command
+AUTHOR:
+  Lorenzo Villani - <lorenzo@villani.me>
 
-    GLOBAL OPTIONS:
-       --arch, -a       Force installation for a specific architecture (if supported by the host).
-       --force, -f      Force package re-download
-       --help, -h       show help
-       --version, -v    print the version
+COMMANDS:
+   checklinks   Check for bad installer links
+   list         List all known packages
+   self-update  Update just-install itself
+   update       Update the registry
+   help, h      Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --arch, -a     Force installation for a specific architecture (if supported by the host).
+   --force, -f    Force package re-download
+   --shim, -s   Create shims only (if exeproxy is installed)
+   --help, -h   show help
+   --version, -v  print the version
+```
 
 
 ## Credits

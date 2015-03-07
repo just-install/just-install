@@ -1,0 +1,5 @@
+sudo: false
+language: go
+script:
+    - go build just-install.go
+    - ./just-install checklinks

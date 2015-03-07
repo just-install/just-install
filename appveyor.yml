@@ -1,5 +1,0 @@
-branches:
-  only:
-    - master
-build_script:
-    - script\ci-build.bat

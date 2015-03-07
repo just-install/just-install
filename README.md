@@ -4,7 +4,7 @@
 
 _The stupid package installer for Windows_
 
-[![Build Status](http://img.shields.io/appveyor/ci/lvillani/just-install.svg?style=flat)](https://ci.appveyor.com/project/lvillani/just-install/)
+[![Build Status](http://img.shields.io/travis/lvillani/just-install.svg?style=flat)](https://travis-ci.org/lvillani/just-install/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Semver](http://img.shields.io/badge/version-v2.3.1-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
 

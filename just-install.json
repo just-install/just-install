@@ -676,10 +676,10 @@
             }
         },
         "winscp": {
-            "version": "5.5.5",
+            "version": "5.7",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://skylink.dl.sourceforge.net/project/winscp/WinSCP/5.5.5/winscp555setup.exe"
+                "x86": "http://winscp.net/download/files/201503071325fc838e5ec2d0835bdf94712df526b246/winscp570setup.exe"
             }
         },
         "wix": {

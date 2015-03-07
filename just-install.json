@@ -686,7 +686,7 @@
             "version": "5.7",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://winscp.net/download/files/201503071325fc838e5ec2d0835bdf94712df526b246/winscp570setup.exe"
+                "x86": "http://downloads.sourceforge.net/project/winscp/WinSCP/${version}/winscp570setup.exe"
             }
         },
         "wix": {

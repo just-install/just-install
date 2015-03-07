@@ -29,6 +29,13 @@
                 }
             }
         },
+        "autohotkey": {
+            "version": "1.0.48.05",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://github.com/AutoHotkey/AutoHotkey/releases/download/v${version}/AutoHotkey104805_Install.exe"
+            }
+        },
         "brackets": {
             "version": "1.0",
             "installer": {

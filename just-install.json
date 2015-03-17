@@ -244,6 +244,13 @@
                 "x86": "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi"
             }
         },
+        "gow": {
+            "version": "0.8.0",
+            "installer": {
+                "kind": "nsis",
+                "x86": "https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe"
+           }
+        },
         "greenshot": {
             "version": "1.1.9.13",
             "installer": {

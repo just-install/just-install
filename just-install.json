@@ -319,6 +319,13 @@
                 "x86": "http://sourceforge.net/projects/mingw/files/latest/download"
             }
         },
+        "mono": {
+            "version": "3.12.1",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://download.mono-project.com/archive/3.12.1/windows-installer/mono-3.12.1-gtksharp-2.12.26-win32-0.msi"
+            }
+        },
         "mse": {
             "version": "latest",
             "installer": {

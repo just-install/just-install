@@ -164,7 +164,7 @@
             }
         },
         "firefox": {
-            "version": "36.0",
+            "version": "37.0.1",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
@@ -181,21 +181,21 @@
             "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_16_plugin.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_17_plugin.msi"
             }
         },
         "flash-player-ie": {
             "version": "latest",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_16_active_x.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_17_active_x.msi"
             }
         },
         "foobar2000": {
-            "version": "1.3.5",
+            "version": "1.3.8",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://www.foobar2000.org/getfile/a2875e27bdb45143d435de30721d0583/foobar2000_v1.3.5.exe"
+                "x86": "http://www.foobar2000.org/files/684ea94105e431cad65db3aacb066144/foobar2000_v${version}.exe"
             }
         },
         "gimp": {
@@ -223,7 +223,7 @@
             }
         },
         "go": {
-            "version": "1.4.1",
+            "version": "1.4.2",
             "installer": {
                 "kind": "msi",
                 "x86": "https://storage.googleapis.com/golang/go${version}.windows-386.msi",

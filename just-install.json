@@ -626,11 +626,11 @@
             }
         },
         "tortoisesvn": {
-            "version": "1.8.6",
+            "version": "1.8.11",
             "installer": {
                 "kind": "msi",
-                "x86": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-win32-svn-1.8.8.msi",
-                "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.25419-x64-svn-1.8.8.msi"
+                "x86": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.26392-win32-svn-1.8.13.msi",
+                "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/${version}/Application/TortoiseSVN-${version}.26392-x64-svn-1.8.13.msi"
             }
         },
         "upx": {

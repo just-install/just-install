@@ -284,7 +284,11 @@
             "version": "latest",
             "installer": {
                 "kind": "zip",
-                "x86": "http://download.qt.io/official_releases/jom/jom.zip"
+                "x86": "http://download.qt.io/official_releases/jom/jom.zip",
+                "options": {
+                    "destination": "${ProgramFiles(x86)}\\jom",
+                    "shims": ["${ProgramFiles(x86)}\\jom\\jom.exe"]
+                }
             }
         },
         "just-install": {

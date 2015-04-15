@@ -41,15 +41,15 @@ import (
 )
 
 const (
-	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
 	registrySupportedVersion = 2
+	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
 	version                  = "2.3.1"
 )
 
 var (
+	isAmd64      = false
 	registryPath = filepath.Join(os.TempDir(), "just-install.json")
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
-	isAmd64      = false
 )
 
 func main() {

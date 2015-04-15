@@ -284,7 +284,7 @@
             "version": "1.0.14",
             "installer": {
                 "kind": "zip",
-                "x86": "http://download.qt-project.org/official_releases/jom/jom_1_0_14.zip"
+                "x86": "http://download.qt.io/official_releases/jom/jom_1_0_14.zip"
             }
         },
         "just-install": {

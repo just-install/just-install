@@ -1,15 +1,8 @@
-.idea/
 .vagrant/
 build/
 dist/
-
-deploy/just-install-cache/
-
-*.pyc
 just-install
 just-install.exe
 just-install.msi
-just-install.spec
-just-install.upx
-misc/tools/ResHacker.ini
-misc/tools/ResHacker.log
+just-install.wixobj
+just-install.wixpdb

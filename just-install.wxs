@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="*" Name="just-install" Language="1033" Version="$(env.JustInstallVersion)" Manufacturer="Lorenzo Villani" UpgradeCode="6824DCF9-2C10-4C65-BF05-74A12E333931">
+        <Package Description="just-install" Comments="just-install" InstallerVersion="200" Compressed="yes" />
+        <Media Id="1" Cabinet="data.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="WindowsFolder" Name="WinDir">
+                <Component Id="justinstall.exe" Guid="116A0E2E-8C07-42BD-BEE1-10CEC16E8E5E" Feature="DefaultFeature">
+                    <File Source="just-install.exe" Id="justinstall.exe">
+                    </File>
+                </Component>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1" />
+        <UI />
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." AllowSameVersionUpgrades="yes" />
+    </Product>
+</Wix>

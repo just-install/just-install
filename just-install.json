@@ -381,9 +381,10 @@
                 "x86": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x86-64int-298573.msi",
                 "x86_64": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x64-298573.msi",
                 "options": {
-                    "shims": [
-                        "${SystemDrive}\\Perl64\\bin\\perl.exe"
-                    ]
+                    "shims": ["${SystemDrive}\\Perl\\bin\\perl.exe"],
+                    "x86_64": {
+                        "shims": ["${SystemDrive}\\Perl64\\bin\\perl.exe"]
+                    }
                 }
             }
         },

@@ -58,7 +58,11 @@ func main() {
 	handleCommandLine()
 }
 
+// determineArch determines the Windows architecture of the current Windows installation.
 func determineArch() {
+	// Since our output is a 32-bit executable (for maximum compatibility) and all other options
+	// proved fruitless, let's just test for something that is usually available only on x86_64
+	// editions of Windows.
 	sentinel := os.Getenv("ProgramFiles(x86)")
 
 	if sentinel == "" {

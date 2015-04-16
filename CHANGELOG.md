@@ -19,6 +19,8 @@ All notable changes to this project are documented in this file.
 * The `${version}` variable is now expanded also during shim creation.
 
 
+
+
 ## 2.3.0 - 2014-12-07
 
 ### Added
@@ -32,6 +34,8 @@ All notable changes to this project are documented in this file.
   way.
 * Shim executables are now created using exeproxy, which replaces the old "mklink" way. You may want
   to refresh the shims by calling "just-install -s [pkg...]"
+
+
 
 
 ## 2.2.0 - 2014-09-21
@@ -63,6 +67,8 @@ All notable changes to this project are documented in this file.
 * just-install will no longer try to copy itself to `%WinDir%`.
 
 
+
+
 ## 2.1.0 - 2014-08-22
 
 ### Added
@@ -78,10 +84,14 @@ All notable changes to this project are documented in this file.
 * Just-Install exits with an error if it fails to parse the registry.
 
 
+
+
 ## 2.0.1 - 2014-08-12
 
 * Embedded manifest to require elevation.
 * Embedded the icon in the executable again.
+
+
 
 
 ## 2.0.0 - 2014-08-5

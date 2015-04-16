@@ -76,9 +76,9 @@ func determineArch() {
 	arch = registryArch()
 }
 
-// Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to
-// the same directory on 32-bit systems and %ProgramFiles% points to the 64-bit directory even if
-// we are a 32-bit binary.
+// normalizeProgramFiles re-exports environment variables so that %ProgramFiles% and
+// %ProgramFiles(x86)% always point to the same directory on 32-bit systems and %ProgramFiles%
+// points to the 64-bit directory even if we are a 32-bit binary.
 func normalizeProgramFiles() {
 	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless.
 	// Time to get dirty.
@@ -97,7 +97,6 @@ func normalizeProgramFiles() {
 	os.Setenv("ProgramFiles(x86)", programFilesX86)
 }
 
-// As the name says, handles command line arguments. All of them.
 func handleCommandLine() {
 	app := cli.NewApp()
 	app.Author = "Lorenzo Villani"

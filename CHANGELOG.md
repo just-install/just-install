@@ -6,7 +6,18 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-* It is now possible to specify per-architecture install options.
+* It is now possible to specify per-architecture install options. See the
+  [perl](https://github.com/lvillani/just-install/blob/3ec45b3f03c01df68aa713269a3f0722019f81d5/just-install.json#L383-L388)
+  entry as an example.
+
+
+### Changed
+
+* Switched from AdvancedInstaller back to WiX as the tool used to generate just-install's MSI
+  package. This will probably cause just-install to appear twice in "Add/Remove programs" for some
+  users.
+
+
 
 
 ## 2.3.1 - 2015-02-03

@@ -20,14 +20,6 @@ thing it is capable of is downloading a setup program and silently execute it. T
 means that it's trivial to add support for new software, seriously,
 [check out the registry](https://github.com/lvillani/just-install/blob/master/just-install.json)!
 
-Oh, by the way, it looks like Microsoft is adding a package manager called
-[OneGet](https://github.com/OneGet/oneget) to Windows 10! Since the ultimate purpose of just-install
-is to be replaced by an official solution from Microsoft (or by something as pleasant to use as
-Homebrew or apt-get), we __won't__ support Windows 10, and we invite you to use and contribute to
-the development of OneGet (it's even open source, from Microsoft! Go figure...), so that the next
-release of Windows gets a decent package manager. Of course we will continue to support just-install
-on Windows XP, 7, 8 unless an easy way to get OneGet running there becomes available.
-
 
 ## Installation
 
@@ -63,36 +55,25 @@ To force installation of a package for a specific architecture (use "x86" or "x8
 
     just-install -a x86 go
 
+In case you are lost, help is always few keystrokes away:
 
-### Detailed
+    just-install --help
 
-```
-NAME:
-   just-install - The stupid package installer for Windows
 
-USAGE:
-   just-install [global options] command [command options] [arguments...]
+## Contributing Packages
 
-VERSION:
-   2.3.1
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
-AUTHOR:
-  Lorenzo Villani - <lorenzo@villani.me>
 
-COMMANDS:
-   checklinks   Check for bad installer links
-   list         List all known packages
-   self-update  Update just-install itself
-   update       Update the registry
-   help, h      Shows a list of commands or help for one command
+## Windows 10 and Beyond
 
-GLOBAL OPTIONS:
-   --arch, -a     Force installation for a specific architecture (if supported by the host).
-   --force, -f    Force package re-download
-   --shim, -s   Create shims only (if exeproxy is installed)
-   --help, -h   show help
-   --version, -v  print the version
-```
+It looks like Microsoft is adding a package manager called
+[OneGet](https://github.com/OneGet/oneget) to Windows 10. Since the ultimate purpose of just-install
+is to be replaced by an official solution from Microsoft, we __won't__ officially support Windows
+10, and we invite you to use and contribute to the development of OneGet so that the next release of
+Windows gets a decent package manager.
+
+We will continue to support just-install on Windows XP, 7, 8 and 8.1.
 
 
 ## Credits

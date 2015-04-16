@@ -140,7 +140,6 @@ func handleCommandLine() {
 	app.Run(os.Args)
 }
 
-// Handle all arguments that are neither
 func handleArguments(c *cli.Context) {
 	force := c.Bool("force")
 	onlyShims := c.Bool("shim")

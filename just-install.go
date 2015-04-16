@@ -146,20 +146,7 @@ func handleArguments(c *cli.Context) {
 	registry := smartLoadRegistry(false)
 
 	// Architecture selection
-	arch := c.String("arch")
-
-	if arch == "" {
-		// No architecture specified, pick one automatically.
-		if isAmd64 {
-			arch = "x86_64"
-		} else {
-			arch = "x86"
-		}
-	} else if arch == "x86_64" && !isAmd64 {
-		log.Fatalln("Your machine is not 64-bit capable.")
-	} else if arch != "x86" && arch != "x86_64" {
-		log.Fatalln("Please specify a valid architecture between x86 and x86_64")
-	}
+	arch := preferredArch(c.String("arch"))
 
 	// Install packages
 	for _, pkg := range c.Args() {
@@ -403,6 +390,31 @@ func (e *registryEntry) createShims() {
 //
 // Utilities
 //
+
+// preferredArch returns the given architecture if it is valid and supported by the system.
+// Otherwise it returns the name for the current architecture (see `registryArch`). Please note that
+// this function terminates the application if the preferred architecture is either invalid or not
+// supported.
+func preferredArch(arch string) string {
+	if arch == "x86_64" && !isAmd64 {
+		log.Fatalln("Your machine is not 64-bit capable")
+	} else if arch != "x86" && arch != "x86_64" {
+		log.Fatalln("Please specify a valid architecture between x86 and x86_64")
+	} else if arch == "" {
+		return registryArch()
+	}
+
+	return arch
+}
+
+// registryArch returns a string which represents the current architecture in the registry file.
+func registryArch() string {
+	if isAmd64 {
+		return "x86_64"
+	}
+
+	return "x86"
+}
 
 func system(command string, args ...string) {
 	log.Println("Running", command, args)

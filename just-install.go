@@ -47,6 +47,7 @@ const (
 )
 
 var (
+	arch         = registryArch()
 	isAmd64      = false
 	registryPath = filepath.Join(os.TempDir(), "just-install.json")
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
@@ -145,8 +146,9 @@ func handleArguments(c *cli.Context) {
 	onlyShims := c.Bool("shim")
 	registry := smartLoadRegistry(false)
 
-	// Architecture selection
-	arch := preferredArch(c.String("arch"))
+	if c.String("arch") != "" {
+		arch = preferredArch(c.String("arch"))
+	}
 
 	// Install packages
 	for _, pkg := range c.Args() {
@@ -233,7 +235,30 @@ func downloadRegistry() {
 }
 
 //
-// Registry Schema
+// Installer Entry
+//
+
+type installerEntry struct {
+	Container string // Optional
+	Kind      string
+	X86       string
+	X86_64    string
+	Options   map[string]interface{} // Optional
+}
+
+// options returns the architecture-specific options (if available), otherwise returns the whole
+// options map.
+func (s *installerEntry) options() map[string]interface{} {
+	archSpecificOptions, ok := s.Options[arch].(map[string]interface{})
+	if !ok {
+		return s.Options
+	}
+
+	return archSpecificOptions
+}
+
+//
+// Registry
 //
 
 type registry struct {
@@ -246,14 +271,6 @@ type registryEntry struct {
 	Installer installerEntry
 }
 
-type installerEntry struct {
-	Container string // Optional
-	Kind      string
-	X86       string
-	X86_64    string
-	Options   map[string]interface{} // Optional
-}
-
 func (e *registryEntry) JustInstall(force bool, arch string) {
 	url := e.pickInstallerURL(arch)
 	url = strings.Replace(url, "${version}", e.Version, -1)
@@ -262,7 +279,7 @@ func (e *registryEntry) JustInstall(force bool, arch string) {
 
 	var downloadedFile string
 
-	if ext, ok := e.Installer.Options["extension"]; ok {
+	if ext, ok := e.Installer.options()["extension"]; ok {
 		downloadedFile = download3(url, ext.(string), force)
 	} else {
 		downloadedFile = download2(url, force)
@@ -272,7 +289,7 @@ func (e *registryEntry) JustInstall(force bool, arch string) {
 		// We first need to unwrap the container, then read the real file name to install
 		// from `Options` and run it.
 		tempDir := e.unwrap(downloadedFile, e.Installer.Container)
-		install, ok := e.Installer.Options["install"].(string)
+		install, ok := e.Installer.options()["install"].(string)
 
 		if !ok {
 			log.Fatalln("Specified a container but wasn't told where is the real installer.")
@@ -324,7 +341,7 @@ func (e *registryEntry) install(installer string) {
 	} else if e.Installer.Kind == "custom" {
 		var args []string
 
-		for _, v := range e.Installer.Options["arguments"].([]interface{}) {
+		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
 			current := strings.Replace(v.(string), "${installer}", installer, -1)
 			current = os.ExpandEnv(current)
 
@@ -349,11 +366,11 @@ func (e *registryEntry) install(installer string) {
 	} else if e.Installer.Kind == "nsis" {
 		system(installer, "/S", "/NCRC")
 	} else if e.Installer.Kind == "zip" {
-		destination := os.ExpandEnv(e.Installer.Options["destination"].(string))
+		destination := os.ExpandEnv(e.Installer.options()["destination"].(string))
 
 		log.Println("Extracting to", destination)
 
-		extractZip(installer, os.ExpandEnv(e.Installer.Options["destination"].(string)))
+		extractZip(installer, os.ExpandEnv(e.Installer.options()["destination"].(string)))
 	} else {
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}
@@ -370,7 +387,7 @@ func (e *registryEntry) createShims() {
 		os.MkdirAll(shimsPath, 0)
 	}
 
-	if shims, ok := e.Installer.Options["shims"]; ok {
+	if shims, ok := e.Installer.options()["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
 			shimTarget := strings.Replace(v.(string), "${version}", e.Version, -1)
 			shimTarget = os.ExpandEnv(shimTarget)

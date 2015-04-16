@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## 2.4.0 - Work in progress
+
+### Added
+
+* It is now possible to specify per-architecture install options.
+
 
 ## 2.3.1 - 2015-02-03
 

@@ -47,7 +47,7 @@ const (
 )
 
 var (
-	arch         = registryArch()
+	arch         = "x86"
 	isAmd64      = false
 	registryPath = filepath.Join(os.TempDir(), "just-install.json")
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
@@ -59,7 +59,8 @@ func main() {
 	handleCommandLine()
 }
 
-// determineArch determines the Windows architecture of the current Windows installation.
+// determineArch determines the Windows architecture of the current Windows installation. It changes
+// both the "isAmd64" and "arch" globals.
 func determineArch() {
 	// Since our output is a 32-bit executable (for maximum compatibility) and all other options
 	// proved fruitless, let's just test for something that is usually available only on x86_64
@@ -71,6 +72,8 @@ func determineArch() {
 	} else {
 		isAmd64 = pathExists(sentinel)
 	}
+
+	arch = registryArch()
 }
 
 // Re-exports environment variables so that %ProgramFiles% and %ProgramFiles(x86)% always point to

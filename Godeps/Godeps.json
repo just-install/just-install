@@ -1,0 +1,23 @@
+{
+	"ImportPath": "github.com/lvillani/just-install",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/cheggaaa/pb",
+			"Rev": "467c52dcaefb4913d1feb16f6a771777c9613a64"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/cli",
+			"Comment": "1.2.0-95-g9b2bd2b",
+			"Rev": "9b2bd2b3489748d4d0a204fa4eb2ee9e89e0ebc6"
+		},
+		{
+			"ImportPath": "github.com/olekukonko/ts",
+			"Rev": "ecf753e7c962639ab5a1fb46f7da627d4c0a04b8"
+		},
+		{
+			"ImportPath": "github.com/ungerik/go-dry",
+			"Rev": "82f64989aa835f66dabc1384bef63b8a69d5b324"
+		}
+	]
+}

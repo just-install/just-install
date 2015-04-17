@@ -36,9 +36,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cheggaaa/pb"
 	"github.com/codegangsta/cli"
 	"github.com/ungerik/go-dry"
-	"gopkg.in/cheggaaa/pb.v0"
 )
 
 const (

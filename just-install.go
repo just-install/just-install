@@ -104,37 +104,33 @@ func handleCommandLine() {
 	app.Name = "just-install"
 	app.Usage = "The stupid package installer for Windows"
 	app.Version = version
-	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "arch, a",
-			Usage: "Force installation for a specific architecture (if supported by the host).",
-		},
-		cli.BoolFlag{
-			Name:  "force, f",
-			Usage: "Force package re-download",
-		},
-		cli.BoolFlag{
-			Name:  "shim, s",
-			Usage: "Create shims only (if exeproxy is installed)",
-		},
-	}
 	app.Action = handleArguments
-	app.Commands = []cli.Command{
-		{
-			Name:   "checklinks",
-			Usage:  "Check for bad installer links",
-			Action: handleChecklinksAction,
-		},
-		{
-			Name:   "list",
-			Usage:  "List all known packages",
-			Action: handleListAction,
-		},
-		{
-			Name:   "update",
-			Usage:  "Update the registry",
-			Action: handleUpdateAction,
-		}}
+
+	app.Commands = []cli.Command{{
+		Name:   "checklinks",
+		Usage:  "Check for bad installer links",
+		Action: handleChecklinksAction,
+	}, {
+		Name:   "list",
+		Usage:  "List all known packages",
+		Action: handleListAction,
+	}, {
+		Name:   "update",
+		Usage:  "Update the registry",
+		Action: handleUpdateAction,
+	}}
+
+	app.Flags = []cli.Flag{cli.StringFlag{
+		Name:  "arch, a",
+		Usage: "Force installation for a specific architecture (if supported by the host).",
+	}, cli.BoolFlag{
+		Name:  "force, f",
+		Usage: "Force package re-download",
+	}, cli.BoolFlag{
+		Name:  "shim, s",
+		Usage: "Create shims only (if exeproxy is installed)",
+	}}
+
 	app.Run(os.Args)
 }
 

@@ -73,7 +73,7 @@
                 "x86": "http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip",
                 "options": {
                     "install": "setup.exe",
-                    "arguments": "/a"
+                    "arguments": ["${installer}"]
                 }
             }
         },

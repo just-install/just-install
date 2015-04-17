@@ -78,10 +78,18 @@
             }
         },
         "conemu": {
-            "version": "131026",
+            "version": "150327",
             "installer": {
-                "kind": "conemu",
-                "x86": "http://conemu-maximus5.googlecode.com/files/ConEmuSetup.${version}.exe"
+                "kind": "custom",
+                "x86": "http://downloads.sourceforge.net/project/conemu/Preview/ConEmuSetup.${version}.exe",
+                "options": {
+                    "x86": {
+                        "arguments": ["${installer}", "/p:x86", "/q"]
+                    },
+                    "x86_64": {
+                        "arguments": ["${installer}", "/p:x64", "/q"]
+                    }
+                }
             }
         },
         "crystaldisk-info": {

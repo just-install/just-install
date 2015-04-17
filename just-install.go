@@ -358,7 +358,7 @@ func (e *registryEntry) install(installer string) {
 	} else if e.Installer.Kind == "innosetup" {
 		system(installer, "/norestart", "/sp-", "/verysilent")
 	} else if e.Installer.Kind == "msi" {
-		system("msiexec.exe", "/q", "/i", installer, "REBOOT=ReallySuppress")
+		system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
 	} else if e.Installer.Kind == "nsis" {
 		system(installer, "/S", "/NCRC")
 	} else if e.Installer.Kind == "zip" {

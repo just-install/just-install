@@ -669,6 +669,13 @@
                 "x86": "http://download.microsoft.com/download/d/d/9/dd9a82d0-52ef-40db-8dab-795376989c03/vcredist_x86.exe"
             }
         },
+        "vc-python": {
+            "version": "latest",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi"
+            }
+        },
         "vlc": {
             "version": "2.2.0",
             "installer": {

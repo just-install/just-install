@@ -1,6 +1,8 @@
 sudo: false
 language: go
-script:
+install:
   - go get github.com/tools/godep
-  - godep go build just-install.go
+script:
+  - godep go build -o just-install ./bin
+  - godep go test
   - ./just-install checklinks

@@ -1,0 +1,111 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "definitions": {
+        "options": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "arguments": {
+                    "type": "array"
+                },
+                "container": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["kind", "installer"],
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": ["zip"]
+                        },
+                        "installer": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "extension": {
+                    "type": "string"
+                },
+                "shims": {
+                    "type": "array"
+                }
+            }
+        }
+    },
+    "required": ["version", "packages"],
+    "additionalProperties": false,
+    "properties": {
+        "version": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 3
+        },
+        "packages": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^[a-zA-Z0-9\\-\\+]+$": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["version", "installer"],
+                    "properties": {
+                        "version": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                        },
+                        "installer": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": ["kind", "x86"],
+                            "properties": {
+                                "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                        "advancedinstaller",
+                                        "as-is",
+                                        "custom",
+                                        "easy_install_26",
+                                        "easy_install_27",
+                                        "innosetup",
+                                        "msi",
+                                        "nsis",
+                                        "zip"
+                                    ]
+                                },
+                                "options": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/definitions/options"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "x86": {
+                                                    "$ref": "#/definitions/options"
+                                                },
+                                                "x86_64": {
+                                                    "$ref": "#/definitions/options"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "x86": {
+                                    "type": "string"
+                                },
+                                "x86_64": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

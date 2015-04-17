@@ -1,5 +1,5 @@
 {
-    "version": 2,
+    "version": 3,
     "packages": {
         "7zip": {
             "version": "9.38",
@@ -68,12 +68,13 @@
         "colemak": {
             "version": "1.1",
             "installer": {
-                "container": "zip",
-                "kind": "custom",
+                "kind": "as-is",
                 "x86": "http://colemak.com/pub/windows/Colemak-${version}-Caps-Lock-Unchanged.zip",
                 "options": {
-                    "install": "setup.exe",
-                    "arguments": ["${installer}"]
+                    "container": {
+                        "kind": "zip",
+                        "installer": "setup.exe"
+                    }
                 }
             }
         },
@@ -376,9 +377,7 @@
                 "kind": "custom",
                 "x86": "https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe",
                 "options": {
-                    "arguments": [
-                        "-s"
-                    ]
+                    "arguments": ["-s"]
                 }
             }
         },
@@ -389,7 +388,9 @@
                 "x86": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x86-64int-298573.msi",
                 "x86_64": "http://downloads.activestate.com/ActivePerl/releases/${version}/ActivePerl-${version}-MSWin32-x64-298573.msi",
                 "options": {
-                    "shims": ["${SystemDrive}\\Perl\\bin\\perl.exe"],
+                    "x86": {
+                        "shims": ["${SystemDrive}\\Perl\\bin\\perl.exe"]
+                    },
                     "x86_64": {
                         "shims": ["${SystemDrive}\\Perl64\\bin\\perl.exe"]
                     }
@@ -537,11 +538,13 @@
         "smartkey": {
             "version": "12.1.0.0",
             "installer": {
-                "container": "zip",
                 "kind": "msi",
                 "x86": "http://c3.safenet-inc.com/downloads/D/E/DEC51CE3-A053-446A-8047-2C7D9BAFDFD2/Driver_Installation_SDI.zip",
                 "options": {
-                    "install": "SmartKeyDriversInstaller.msi"
+                    "container": {
+                        "kind": "zip",
+                        "installer": "SmartKeyDriversInstaller.msi"
+                    }
                 }
             }
         },

@@ -131,11 +131,6 @@ func handleCommandLine() {
 			Action: handleListAction,
 		},
 		{
-			Name:   "self-update",
-			Usage:  "Update just-install itself",
-			Action: handleSelfUpdateAction,
-		},
-		{
 			Name:   "update",
 			Usage:  "Update the registry",
 			Action: handleUpdateAction,
@@ -178,15 +173,6 @@ func handleListAction(c *cli.Context) {
 	for _, v := range sortedKeys(registry.Packages) {
 		fmt.Printf("%s: %s\n", v, registry.Packages[v].Version)
 	}
-}
-
-func handleSelfUpdateAction(c *cli.Context) {
-	log.Println("Self-updating...")
-
-	registry := smartLoadRegistry(false)
-
-	justInstall := registry.Packages["just-install"]
-	justInstall.JustInstall(true, "x86")
 }
 
 func handleUpdateAction(c *cli.Context) {

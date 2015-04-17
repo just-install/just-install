@@ -18,6 +18,18 @@
 		{
 			"ImportPath": "github.com/ungerik/go-dry",
 			"Rev": "82f64989aa835f66dabc1384bef63b8a69d5b324"
+		},
+		{
+			"ImportPath": "github.com/xeipuuv/gojsonpointer",
+			"Rev": "636edb2500d21f2ed09ea96a00deb36bbd07cf70"
+		},
+		{
+			"ImportPath": "github.com/xeipuuv/gojsonreference",
+			"Rev": "2df3c0c802434c5cb984dbc21425f5960bda4d16"
+		},
+		{
+			"ImportPath": "github.com/xeipuuv/gojsonschema",
+			"Rev": "71b85f61a135e79143f3d3238d5175a4f29b6689"
 		}
 	]
 }

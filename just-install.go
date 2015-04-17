@@ -43,7 +43,7 @@ import (
 const (
 	registrySupportedVersion = 2
 	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
-	version                  = "2.4.0"
+	version                  = "3.0.0"
 )
 
 var (
@@ -334,12 +334,6 @@ func (e *registryEntry) install(installer string) {
 		system(installer, "/q", "/i")
 	} else if e.Installer.Kind == "as-is" {
 		system(installer)
-	} else if e.Installer.Kind == "conemu" {
-		if isAmd64 {
-			system(installer, "/p:x64", "/q")
-		} else {
-			system(installer, "/p:x86", "/q")
-		}
 	} else if e.Installer.Kind == "custom" {
 		var args []string
 

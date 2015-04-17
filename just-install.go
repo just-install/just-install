@@ -37,6 +37,7 @@ import (
 	"time"
 
 	"github.com/codegangsta/cli"
+	"github.com/ungerik/go-dry"
 	"gopkg.in/cheggaaa/pb.v0"
 )
 
@@ -70,7 +71,7 @@ func determineArch() {
 	if sentinel == "" {
 		isAmd64 = false
 	} else {
-		isAmd64 = pathExists(sentinel)
+		isAmd64 = dry.FileIsDir(sentinel)
 	}
 
 	arch = registryArch()
@@ -178,13 +179,13 @@ func handleUpdateAction(c *cli.Context) {
 // Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
 // the Internet. If neither is available, try to download it from the known location first.
 func smartLoadRegistry(force bool) registry {
-	if pathExists("just-install.json") {
+	if dry.FileExists("just-install.json") {
 		log.Println("Using local registry file")
 
 		return loadRegistry("just-install.json")
 	}
 
-	if !pathExists(registryPath) || force {
+	if !dry.FileExists(registryPath) || force {
 		log.Println("Updating registry from:", registryURL)
 
 		downloadRegistry()
@@ -357,11 +358,11 @@ func (e *registryEntry) install(installer string) {
 func (e *registryEntry) createShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 
-	if !pathExists(exeproxy) {
+	if !dry.FileExists(exeproxy) {
 		return
 	}
 
-	if !pathExists(shimsPath) {
+	if !dry.FileIsDir(shimsPath) {
 		os.MkdirAll(shimsPath, 0)
 	}
 
@@ -371,7 +372,7 @@ func (e *registryEntry) createShims() {
 			shimTarget = os.ExpandEnv(shimTarget)
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
-			if pathExists(shim) {
+			if dry.FileExists(shim) {
 				os.Remove(shim)
 			}
 
@@ -444,13 +445,6 @@ func copyFile(src string, dst string) error {
 	return ioutil.WriteFile(dst, buf, 0)
 }
 
-// Returns `true` if there is a file at the given `path`. Returns `false` otherwise.
-func pathExists(path string) bool {
-	_, err := os.Stat(path)
-
-	return err == nil
-}
-
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
 func download2(rawurl string, force bool) string {
 	return download3(rawurl, "", force)
@@ -476,7 +470,7 @@ func download3(rawurl string, ext string, force bool) string {
 
 	dest := filepath.Join(os.TempDir(), base)
 
-	if !pathExists(dest) || force {
+	if !dry.FileExists(dest) || force {
 		download(rawurl, dest)
 	}
 

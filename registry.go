@@ -251,11 +251,22 @@ func (e *registryEntry) unwrap(containerPath string, kind string) string {
 }
 
 func (e *registryEntry) install(installer string) {
-	if e.Installer.Kind == "advancedinstaller" {
+	switch e.Installer.Kind {
+	case "advancedinstaller":
 		system(installer, "/q", "/i")
-	} else if e.Installer.Kind == "as-is" {
+	case "as-is":
 		system(installer)
-	} else if e.Installer.Kind == "custom" {
+	case "easy_install_26":
+		system("\\Python26\\Scripts\\easy_install.exe", installer)
+	case "easy_install_27":
+		system("\\Python27\\Scripts\\easy_install.exe", installer)
+	case "innosetup":
+		system(installer, "/norestart", "/sp-", "/verysilent")
+	case "msi":
+		system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
+	case "nsis":
+		system(installer, "/S", "/NCRC")
+	case "custom":
 		var args []string
 
 		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
@@ -272,23 +283,13 @@ func (e *registryEntry) install(installer string) {
 		} else {
 			system(args[0], args[1:]...)
 		}
-	} else if e.Installer.Kind == "easy_install_26" {
-		system("\\Python26\\Scripts\\easy_install.exe", installer)
-	} else if e.Installer.Kind == "easy_install_27" {
-		system("\\Python27\\Scripts\\easy_install.exe", installer)
-	} else if e.Installer.Kind == "innosetup" {
-		system(installer, "/norestart", "/sp-", "/verysilent")
-	} else if e.Installer.Kind == "msi" {
-		system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
-	} else if e.Installer.Kind == "nsis" {
-		system(installer, "/S", "/NCRC")
-	} else if e.Installer.Kind == "zip" {
+	case "zip":
 		destination := os.ExpandEnv(e.Installer.options()["destination"].(string))
 
 		log.Println("Extracting to", destination)
 
 		extractZip(installer, os.ExpandEnv(e.Installer.options()["destination"].(string)))
-	} else {
+	default:
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}
 }

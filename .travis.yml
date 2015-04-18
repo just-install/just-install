@@ -5,4 +5,3 @@ install:
 script:
   - godep go build -o just-install ./bin
   - godep go test
-  - ./just-install checklinks

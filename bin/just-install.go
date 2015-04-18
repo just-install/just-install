@@ -19,9 +19,13 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"os"
+	"strings"
 
 	"github.com/codegangsta/cli"
+	"github.com/lvillani/just-install"
 )
 
 const (
@@ -62,38 +66,38 @@ func main() {
 }
 
 func handleArguments(c *cli.Context) {
-	// force := c.Bool("force")
-	// onlyShims := c.Bool("shim")
-	// registry := justinstall.smartLoadRegistry(false)
+	force := c.Bool("force")
+	onlyShims := c.Bool("shim")
+	registry := justinstall.SmartLoadRegistry(false)
 
-	// if c.String("arch") != "" {
-	// 	arch = preferredArch(c.String("arch"))
-	// }
+	if c.String("arch") != "" {
+		if err := justinstall.SetArchitecture(c.String("arch")); err != nil {
+			log.Fatalln(err.Error())
+		}
+	}
 
-	// // Install packages
-	// for _, pkg := range c.Args() {
-	// 	entry, ok := registry.Packages[pkg]
+	// Install packages
+	for _, pkg := range c.Args() {
+		entry, ok := registry.Packages[pkg]
 
-	// 	if ok {
-	// 		if onlyShims {
-	// 			entry.createShims()
-	// 		} else {
-	// 			entry.JustInstall(force, arch)
-	// 		}
-	// 	} else {
-	// 		log.Println("WARNING: Unknown package", pkg)
-	// 	}
-	// }
+		if ok {
+			if onlyShims {
+				entry.CreateShims()
+			} else {
+				entry.JustInstall(force)
+			}
+		} else {
+			log.Println("WARNING: Unknown package", pkg)
+		}
+	}
 }
 
 func handleListAction(c *cli.Context) {
-	// registry := smartLoadRegistry(false)
+	registry := justinstall.SmartLoadRegistry(false)
 
-	// for _, v := range sortedKeys(registry.Packages) {
-	// 	fmt.Printf("%s: %s\n", v, registry.Packages[v].Version)
-	// }
+	fmt.Println(strings.Join(registry.SortedPackageNames(), "\n"))
 }
 
 func handleUpdateAction(c *cli.Context) {
-	// smartLoadRegistry(true)
+	justinstall.SmartLoadRegistry(true)
 }

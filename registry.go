@@ -3,6 +3,7 @@ package justinstall
 import (
 	"archive/zip"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"hash/crc32"
 	"io"
@@ -34,6 +35,10 @@ var (
 	registryPath = filepath.Join(os.TempDir(), "just-install.json")
 )
 
+//
+// Package Initialization
+//
+
 func init() {
 	determineArch()
 	normalizeProgramFiles()
@@ -47,13 +52,13 @@ func determineArch() {
 	// editions of Windows.
 	sentinel := os.Getenv("ProgramFiles(x86)")
 
-	if sentinel == "" {
+	if sentinel == "" && !dry.FileIsDir(sentinel) {
+		arch = "x86"
 		isAmd64 = false
 	} else {
-		isAmd64 = dry.FileIsDir(sentinel)
+		arch = "x86_64"
+		isAmd64 = true
 	}
-
-	arch = registryArch()
 }
 
 // normalizeProgramFiles re-exports environment variables so that %ProgramFiles% and
@@ -77,9 +82,27 @@ func normalizeProgramFiles() {
 	os.Setenv("ProgramFiles(x86)", programFilesX86)
 }
 
-// Loads the development registry, if there. Otherwise tries to load a cached copy downloaded from
-// the Internet. If neither is available, try to download it from the known location first.
-func smartLoadRegistry(force bool) registry {
+//
+// Public
+//
+
+// SetArchitecture changes the architecture of future package installations.
+func SetArchitecture(a string) error {
+	if a == "x86_64" && !isAmd64 {
+		return errors.New("This machine is not 64-bit capable")
+	} else if a != "x86" && a != "x86_64" {
+		return fmt.Errorf("Unknown architecture: %v", a)
+	}
+
+	arch = a
+
+	return nil
+}
+
+// SmartLoadRegistry loads the development Registry, if there. Otherwise tries to load a cached copy
+// downloaded from the Internet. If neither is available, try to download it from the known location
+// first.
+func SmartLoadRegistry(force bool) Registry {
 	if dry.FileExists("just-install.json") {
 		log.Println("Using local registry file")
 
@@ -96,13 +119,13 @@ func smartLoadRegistry(force bool) registry {
 }
 
 // Unmarshals the registry from a local file path.
-func loadRegistry(path string) registry {
+func loadRegistry(path string) Registry {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Unable to read the registry file.")
 	}
 
-	var ret registry
+	var ret Registry
 
 	if err := json.Unmarshal(data, &ret); err != nil {
 		log.Fatalln("Unable to parse the registry file.")
@@ -147,12 +170,14 @@ func (s *installerEntry) options() map[string]interface{} {
 // Registry
 //
 
-type registry struct {
+// Registry is a list of packages that just-install knows how to install.
+type Registry struct {
 	Version  int
 	Packages map[string]registryEntry
 }
 
-func (r *registry) SortedPackageNames() []string {
+// SortedPackageNames returns the list of packages present in the registry, sorted alphabetically.
+func (r *Registry) SortedPackageNames() []string {
 	var keys []string
 
 	for k := range r.Packages {
@@ -169,7 +194,7 @@ type registryEntry struct {
 	Installer installerEntry
 }
 
-func (e *registryEntry) JustInstall(force bool, arch string) {
+func (e *registryEntry) JustInstall(force bool) {
 	url := e.pickInstallerURL(arch)
 	url = strings.Replace(url, "${version}", e.Version, -1)
 
@@ -199,7 +224,7 @@ func (e *registryEntry) JustInstall(force bool, arch string) {
 		e.install(downloadedFile)
 	}
 
-	e.createShims()
+	e.CreateShims()
 }
 
 func (e *registryEntry) pickInstallerURL(arch string) string {
@@ -268,7 +293,7 @@ func (e *registryEntry) install(installer string) {
 	}
 }
 
-func (e *registryEntry) createShims() {
+func (e *registryEntry) CreateShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 
 	if !dry.FileExists(exeproxy) {
@@ -299,31 +324,6 @@ func (e *registryEntry) createShims() {
 //
 // Utilities
 //
-
-// preferredArch returns the given architecture if it is valid and supported by the system.
-// Otherwise it returns the name for the current architecture (see `registryArch`). Please note that
-// this function terminates the application if the preferred architecture is either invalid or not
-// supported.
-func preferredArch(arch string) string {
-	if arch == "x86_64" && !isAmd64 {
-		log.Fatalln("Your machine is not 64-bit capable")
-	} else if arch != "x86" && arch != "x86_64" {
-		log.Fatalln("Please specify a valid architecture between x86 and x86_64")
-	} else if arch == "" {
-		return registryArch()
-	}
-
-	return arch
-}
-
-// registryArch returns a string which represents the current architecture in the registry file.
-func registryArch() string {
-	if isAmd64 {
-		return "x86_64"
-	}
-
-	return "x86"
-}
 
 func system(command string, args ...string) {
 	log.Println("Running", command, args)

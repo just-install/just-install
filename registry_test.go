@@ -28,7 +28,7 @@ func TestRegistryReachableLinks(t *testing.T) {
 
 	var errors []string
 
-	registry := smartLoadRegistry(false)
+	registry := SmartLoadRegistry(false)
 
 	checkLink := func(rawurl string) bool {
 		t.Logf("Checking %v", rawurl)

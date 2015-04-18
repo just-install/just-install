@@ -46,6 +46,14 @@ func environMap() map[string]string {
 
 	for _, v := range env {
 		split := strings.SplitN(v, "=", 2)
+
+		if split[0] == "" && split[1] == "" {
+			continue
+		}
+
+		split[0] = strings.Replace(split[0], "(", "", -1)
+		split[0] = strings.Replace(split[0], ")", "", -1)
+
 		ret[split[0]] = split[1]
 	}
 

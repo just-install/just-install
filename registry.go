@@ -139,11 +139,10 @@ func downloadRegistry() {
 //
 
 type installerEntry struct {
-	Container string // Optional
-	Kind      string
-	X86       string
-	X86_64    string
-	Options   map[string]interface{} // Optional
+	Kind    string
+	X86     string
+	X86_64  string
+	Options map[string]interface{} // Optional
 }
 
 // options returns the architecture-specific options (if available), otherwise returns the whole
@@ -186,32 +185,26 @@ type registryEntry struct {
 }
 
 func (e *registryEntry) JustInstall(force bool) {
+	options := e.Installer.options()
 	url := e.pickInstallerURL(arch)
-	url = strings.Replace(url, "${version}", e.Version, -1)
+	url = expandString(url, map[string]string{"version": e.Version})
 
 	log.Println(arch, "-", url)
 
 	var downloadedFile string
 
-	if ext, ok := e.Installer.options()["extension"]; ok {
+	if ext, ok := options["extension"]; ok {
 		downloadedFile = download3(url, ext.(string), force)
 	} else {
 		downloadedFile = download2(url, force)
 	}
 
-	if e.Installer.Container != "" {
-		// We first need to unwrap the container, then read the real file name to install
-		// from `Options` and run it.
-		tempDir := e.unwrap(downloadedFile, e.Installer.Container)
-		install, ok := e.Installer.options()["install"].(string)
+	if container, ok := options["container"]; ok {
+		tempDir := e.unwrapZip(downloadedFile) // Assuming it is a zip due to JSON schema
+		installer := container.(map[string]interface{})["installer"].(string)
 
-		if !ok {
-			log.Fatalln("Specified a container but wasn't told where is the real installer.")
-		}
-
-		e.install(filepath.Join(tempDir, install))
+		e.install(filepath.Join(tempDir, installer))
 	} else {
-		// Run the installer as-is
 		e.install(downloadedFile)
 	}
 
@@ -226,19 +219,12 @@ func (e *registryEntry) pickInstallerURL(arch string) string {
 	return e.Installer.X86
 }
 
-// Extracts the given container file to a temporary directory and returns that paths.
-func (e *registryEntry) unwrap(containerPath string, kind string) string {
-	if kind == "zip" {
-		extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
+func (e *registryEntry) unwrapZip(containerPath string) string {
+	extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
 
-		extractZip(containerPath, extractTo)
+	extractZip(containerPath, extractTo)
 
-		return extractTo
-	}
-
-	log.Fatalln("Unknown container type:", kind)
-
-	return "" // We should never get here.
+	return extractTo
 }
 
 func (e *registryEntry) install(installer string) {
@@ -267,10 +253,11 @@ func (e *registryEntry) install(installer string) {
 		system(args...)
 	case "zip":
 		destination := os.ExpandEnv(e.Installer.options()["destination"].(string))
+		destination = expandString(destination, nil)
 
 		log.Println("Extracting to", destination)
 
-		extractZip(installer, os.ExpandEnv(e.Installer.options()["destination"].(string)))
+		extractZip(installer, destination)
 	default:
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}
@@ -289,8 +276,7 @@ func (e *registryEntry) CreateShims() {
 
 	if shims, ok := e.Installer.options()["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
-			shimTarget := strings.Replace(v.(string), "${version}", e.Version, -1)
-			shimTarget = os.ExpandEnv(shimTarget)
+			shimTarget := expandString(v.(string), map[string]string{"version": e.Version})
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
 			if dry.FileExists(shim) {

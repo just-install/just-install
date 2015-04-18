@@ -335,18 +335,6 @@ func system(command string, args ...string) {
 	}
 }
 
-func sortedKeys(m map[string]registryEntry) []string {
-	keys := make([]string, len(m))
-
-	for k := range m {
-		keys = append(keys, k)
-	}
-
-	sort.Strings(keys)
-
-	return keys
-}
-
 func copyFile(src string, dst string) error {
 	buf, err := ioutil.ReadFile(src)
 	if err != nil {

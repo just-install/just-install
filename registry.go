@@ -270,19 +270,10 @@ func (e *registryEntry) install(installer string) {
 		var args []string
 
 		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
-			current := strings.Replace(v.(string), "${installer}", installer, -1)
-			current = os.ExpandEnv(current)
-
-			args = append(args, current)
+			args = append(args, expandString(v.(string), map[string]string{"installer": installer}))
 		}
 
-		if len(args) == 0 {
-			return
-		} else if len(args) == 1 {
-			system(args[0])
-		} else {
-			system(args[0], args[1:]...)
-		}
+		system(args...)
 	case "zip":
 		destination := os.ExpandEnv(e.Installer.options()["destination"].(string))
 
@@ -326,10 +317,19 @@ func (e *registryEntry) CreateShims() {
 // Utilities
 //
 
-func system(command string, args ...string) {
-	log.Println("Running", command, args)
+func system(args ...string) {
+	var cmd *exec.Cmd
 
-	cmd := exec.Command(command, args...)
+	if len(args) == 0 {
+		return
+	} else if len(args) == 1 {
+		cmd = exec.Command(args[0])
+	} else {
+		cmd = exec.Command(args[0], args[1:]...)
+	}
+
+	log.Println("Running", strings.Join(args, " "))
+
 	err := cmd.Run()
 	if err != nil {
 		log.Fatalf(err.Error())

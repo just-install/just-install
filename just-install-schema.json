@@ -6,9 +6,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "arguments": {
-                    "type": "array"
-                },
                 "container": {
                     "type": "object",
                     "additionalProperties": false,
@@ -25,6 +22,10 @@
                 },
                 "destination": {
                     "type": "string"
+                },
+                "exec": {
+                    "type": "array",
+                    "minItems": 1
                 },
                 "extension": {
                     "type": "string"

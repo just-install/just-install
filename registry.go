@@ -186,8 +186,7 @@ type registryEntry struct {
 
 func (e *registryEntry) JustInstall(force bool) {
 	options := e.Installer.options()
-	url := e.pickInstallerURL(arch)
-	url = expandString(url, map[string]string{"version": e.Version})
+	url := e.installerURL(arch)
 
 	log.Println(arch, "-", url)
 
@@ -211,12 +210,20 @@ func (e *registryEntry) JustInstall(force bool) {
 	e.CreateShims()
 }
 
-func (e *registryEntry) pickInstallerURL(arch string) string {
-	if arch == "x86_64" && isAmd64 && e.Installer.X86_64 != "" {
-		return e.Installer.X86_64
+func (e *registryEntry) installerURL(arch string) string {
+	var url string
+
+	if arch == "x86_64" && e.Installer.X86_64 != "" {
+		url = e.Installer.X86_64
+	} else {
+		url = e.Installer.X86
 	}
 
-	return e.Installer.X86
+	return e.expandString(url)
+}
+
+func (e *registryEntry) expandString(s string) string {
+	return expandString(s, map[string]string{"version": e.Version})
 }
 
 func (e *registryEntry) unwrapZip(containerPath string) string {
@@ -276,7 +283,7 @@ func (e *registryEntry) CreateShims() {
 
 	if shims, ok := e.Installer.options()["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
-			shimTarget := expandString(v.(string), map[string]string{"version": e.Version})
+			shimTarget := e.expandString(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
 			if dry.FileExists(shim) {

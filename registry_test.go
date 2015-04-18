@@ -3,7 +3,6 @@ package justinstall
 import (
 	"fmt"
 	"net/http"
-	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -31,8 +30,6 @@ func TestRegistryReachableLinks(t *testing.T) {
 	registry := SmartLoadRegistry(false)
 
 	checkLink := func(rawurl string) bool {
-		t.Logf("Checking %v", rawurl)
-
 		response, err := http.Get(rawurl)
 		if err != nil {
 			return false
@@ -42,12 +39,12 @@ func TestRegistryReachableLinks(t *testing.T) {
 		return response.StatusCode == http.StatusOK
 	}
 
-	checkArch := func(name string, version string, architecture string, rawUrl string) {
+	checkArch := func(name string, entry *registryEntry, architecture string, rawUrl string) {
 		if rawUrl == "" {
 			return
 		}
 
-		url := strings.Replace(rawUrl, "${version}", version, -1)
+		url := entry.expandString(rawUrl)
 
 		if !checkLink(url) {
 			errors = append(errors, fmt.Sprintf("%v (%v): %v", name, architecture, url))
@@ -57,8 +54,8 @@ func TestRegistryReachableLinks(t *testing.T) {
 	for _, name := range registry.SortedPackageNames() {
 		entry := registry.Packages[name]
 
-		checkArch(name, entry.Version, "x86", entry.Installer.X86)
-		checkArch(name, entry.Version, "x86_64", entry.Installer.X86_64)
+		checkArch(name, &entry, "x86", entry.Installer.X86)
+		checkArch(name, &entry, "x86_64", entry.Installer.X86_64)
 	}
 
 	assert.Empty(t, errors)

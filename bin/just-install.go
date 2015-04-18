@@ -492,14 +492,12 @@ func download(rawurl string, destinationPath string) {
 	if err != nil {
 		log.Fatalf("Unable to open the destination file: %s", destinationPath)
 	}
-
 	defer destination.Close()
 
 	response, err := http.Get(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to open a connection to %s", rawurl)
 	}
-
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
@@ -514,6 +512,7 @@ func download(rawurl string, destinationPath string) {
 	} else {
 		progressBar = pb.New(0)
 	}
+	defer progressBar.Finish()
 
 	progressBar.ShowSpeed = true
 	progressBar.SetRefreshRate(time.Millisecond * 1000)
@@ -523,11 +522,6 @@ func download(rawurl string, destinationPath string) {
 	writer := io.MultiWriter(destination, progressBar)
 
 	io.Copy(writer, response.Body)
-
-	// Cleanup
-	progressBar.Finish()
-	destination.Close()
-	response.Body.Close()
 }
 
 func extractZip(path string, extractTo string) {

@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -77,15 +76,6 @@ func system(args ...string) {
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
-}
-
-func copyFile(src string, dst string) error {
-	buf, err := ioutil.ReadFile(src)
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-
-	return ioutil.WriteFile(dst, buf, 0)
 }
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.

@@ -164,7 +164,7 @@
             }
         },
         "firefox": {
-            "version": "37.0.1",
+            "version": "37.0.2",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
@@ -299,7 +299,7 @@
             }
         },
         "libreoffice": {
-            "version": "4.3.6",
+            "version": "4.3.7",
             "installer": {
                 "kind": "msi",
                 "x86": "http://download.documentfoundation.org/libreoffice/stable/${version}/win/x86/LibreOffice_${version}_Win_x86.msi"
@@ -341,7 +341,7 @@
             }
         },
         "notepad++": {
-            "version": "6.6.9",
+            "version": "6.7.7",
             "installer": {
                 "kind": "nsis",
                 "x86": "http://download.tuxfamily.org/notepadplus/${version}/npp.${version}.Installer.exe"
@@ -677,7 +677,7 @@
             }
         },
         "vlc": {
-            "version": "2.2.0",
+            "version": "2.2.1",
             "installer": {
                 "kind": "nsis",
                 "x86": "https://get.videolan.org/vlc/${version}/win32/vlc-${version}-win32.exe"

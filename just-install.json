@@ -729,7 +729,7 @@
             "version": "0.7.5",
             "installer": {
                 "kind": "msi",
-                "x86": "http://switch.dl.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi"
+                "x86": "http://downloads.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi"
             }
         }
     }

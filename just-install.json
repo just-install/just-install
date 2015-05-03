@@ -309,10 +309,10 @@
             }
         },
         "libreoffice": {
-            "version": "4.3.7",
+            "version": "4.4.2",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi"
+                "x86": "http://download.documentfoundation.org/libreoffice/stable/4.4.2/win/x86/LibreOffice_4.4.2_Win_x86.msi"
             }
         },
         "mercurial": {
@@ -354,7 +354,7 @@
             "version": "6.7.7",
             "installer": {
                 "kind": "nsis",
-                "x86": "https://notepad-plus-plus.org/repository/6.x/${version}/npp.{{.version}}.Installer.exe"
+                "x86": "https://notepad-plus-plus.org/repository/6.x/{{.version}}/npp.{{.version}}.Installer.exe"
             }
         },
         "npackd": {

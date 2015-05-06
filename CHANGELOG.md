@@ -2,7 +2,18 @@
 
 All notable changes to this project are documented in this file.
 
-## 2.4.0 - Work in progress
+## 3.0.0 - Work in progress
+
+### Breaking Changes
+
+* Due to changes in the MSI authoring tool, uninstall the old version of just-install before
+  upgrading.
+* Changed the format of the registry file which is now documented and validated through the use of
+  JSON schema. The way variable expansion is done was also changed with this release and we invite
+  you to give a look at the new [just-install.json](just-install.json) file for an example of the
+  new syntax.
+* The `checklinks` and `self-update` actions have been removed.
+
 
 ### Added
 

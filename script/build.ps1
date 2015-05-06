@@ -19,7 +19,7 @@ Remove-Item -ErrorAction SilentlyContinue -Force just-install.wixpdb
 # Build
 #
 
-go build -o just-install.exe just-install.go
+godep go build -o just-install.exe bin\just-install.go
 
 #
 # Build MSI

@@ -588,7 +588,10 @@
                 "x86": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-win32.msi",
                 "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-${version}-x64.msi",
                 "options": {
-                    "shims": ["${ProgramFiles}\\SlikSvn\\bin\\svn.exe"]
+                    "shims": [
+                        "${ProgramFiles}\\SlikSvn\\bin\\svn.exe",
+                        "${ProgramFiles}\\SlikSvn\\bin\\svnversion.exe"
+                    ]
                 }
             }
         },

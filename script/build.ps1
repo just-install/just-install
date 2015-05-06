@@ -1,7 +1,7 @@
 $HERE = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $TOP_LEVEL = Split-Path -Parent $HERE
 
-$env:JustInstallVersion = "2.4.0"
+$env:JustInstallVersion = "3.0.0"
 
 cd $TOP_LEVEL
 

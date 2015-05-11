@@ -344,7 +344,7 @@
             "version": "6.7.7",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://notepad-plus-plus.org/repository/6.x/${version}/npp.${version}.Installer.exe"
+                "x86": "https://notepad-plus-plus.org/repository/6.x/${version}/npp.${version}.Installer.exe"
             }
         },
         "npackd": {

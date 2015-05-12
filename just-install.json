@@ -164,10 +164,10 @@
             }
         },
         "firefox": {
-            "version": "37.0.2",
+            "version": "38.0",
             "installer": {
                 "kind": "nsis",
-                "x86": "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
+                "x86": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
             }
         },
         "filezilla-server": {

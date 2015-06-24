@@ -164,7 +164,7 @@
             }
         },
         "firefox": {
-            "version": "38.0",
+            "version": "38.0.5",
             "installer": {
                 "kind": "nsis",
                 "x86": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/win32/en-US/Firefox Setup ${version}.exe"
@@ -178,17 +178,17 @@
             }
         },
         "flash-player": {
-            "version": "latest",
+            "version": "18",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_17_plugin.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_plugin.msi"
             }
         },
         "flash-player-ie": {
-            "version": "latest",
+            "version": "18",
             "installer": {
                 "kind": "msi",
-                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_17_active_x.msi"
+                "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_active_x.msi"
             }
         },
         "foobar2000": {
@@ -472,7 +472,7 @@
             }
         },
         "qt": {
-            "version": "4.8.6",
+            "version": "4.8.7",
             "installer": {
                 "kind": "as-is",
                 "x86": "http://download.qt-project.org/official_releases/qt/4.8/${version}/qt-opensource-windows-x86-vs2008-${version}.exe"

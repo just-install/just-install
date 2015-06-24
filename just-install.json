@@ -2,11 +2,11 @@
     "version": 2,
     "packages": {
         "7zip": {
-            "version": "9.32",
+            "version": "9.38",
             "installer": {
                 "kind": "msi",
-                "x86": "http://dl.7-zip.org/7z932.msi",
-                "x86_64": "http://dl.7-zip.org/7z932-x64.msi"
+                "x86": "http://dl.7-zip.org/7z938.msi",
+                "x86_64": "http://dl.7-zip.org/7z938-x64.msi"
             }
         },
         "advancedinstaller": {

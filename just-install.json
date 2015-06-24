@@ -486,10 +486,10 @@
             }
         },
         "reshack": {
-            "version": "3.6.0",
+            "version": "latest",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://www.angusj.com/resourcehacker/reshack_setup.exe"
+                "x86": "http://angusj.com/resourcehacker/reshacker_setup.exe"
             }
         },
         "ruby": {

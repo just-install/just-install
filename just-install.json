@@ -703,12 +703,34 @@
             }
         },
         "wix": {
-            "version": "3.8",
+            "version": "3.9 R2",
             "installer": {
-                "kind": "as-is",
-                "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=762937&FileTime=130301249344430000&Build=20928",
+                "kind": "custom",
+                "x86": "http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=wix&DownloadId=1421696&FileTime=130661188674870000&Build=21018",
                 "options": {
-                    "extension": ".exe"
+                    "arguments": [
+                        "{{.installer}}",
+                        "-norestart",
+                        "-quiet"
+                    ],
+                    "extension": ".exe",
+                    "shims": [
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\candle.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\dark.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\heat.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\insignia.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\light.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\lit.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\lux.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\melt.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\nit.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\pyro.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\shine.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\smoke.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\ThmViewer.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\torch.exe",
+                        "{{.ProgramFilesx86}}\\WiX Toolset v3.9\\bin\\WixCop.exe"
+                    ]
                 }
             }
         },

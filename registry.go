@@ -24,7 +24,7 @@ var (
 	arch         = "x86"
 	isAmd64      = false
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\just-install")
-	registryPath = filepath.Join(os.TempDir(), "just-install.json")
+	registryPath = filepath.Join(os.TempDir(), fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
 )
 
 //

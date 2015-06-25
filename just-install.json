@@ -108,7 +108,7 @@
                 "x86": "http://download.deluge-torrent.org/windows/deluge-{{.version}}-win32-setup.exe"
             }
         },
-        "depends": {
+        "dependency-walker": {
             "version": "2.2",
             "installer": {
                 "kind": "zip",
@@ -319,7 +319,7 @@
                 "x86": "http://download.mono-project.com/archive/4.0.1/windows-installer/mono-4.0.1-gtksharp-2.12.26-win32-0.msi"
             }
         },
-        "mse": {
+        "microsoft-security-essentials": {
             "version": "latest",
             "installer": {
                 "kind": "custom",
@@ -453,6 +453,13 @@
                 "x86": "http://effbot.org/downloads/PIL-{{.version}}.win32-py2.7.exe"
             }
         },
+        "python27-vc": {
+            "version": "latest",
+            "installer": {
+                "kind": "msi",
+                "x86": "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi"
+            }
+        },
         "python27-win32": {
             "version": "218",
             "installer": {
@@ -467,7 +474,7 @@
                 "x86": "http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe"
             }
         },
-        "qt": {
+        "qt-vs2008": {
             "version": "4.8.7",
             "installer": {
                 "kind": "as-is",
@@ -481,7 +488,7 @@
                 "x86": "http://www.rapidee.com/download/archive/924/RapidEE_setup.exe"
             }
         },
-        "reshack": {
+        "resource-hacker": {
             "version": "latest",
             "installer": {
                 "kind": "innosetup",
@@ -535,8 +542,8 @@
                 "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
             }
         },
-        "sqlserverexpress": {
-            "version": "2008",
+        "sqlserver-express-2008": {
+            "version": "latest",
             "installer": {
                 "kind": "as-is",
                 "x86": "http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe"
@@ -649,18 +656,11 @@
                 }
             }
         },
-        "vc2008express": {
+        "visualcpp-express-2008": {
             "version": "2008",
             "installer": {
                 "kind": "as-is",
                 "x86": "http://download.microsoft.com/download/A/5/4/A54BADB6-9C3F-478D-8657-93B3FC9FE62D/vcsetup.exe"
-            }
-        },
-        "vc-python": {
-            "version": "latest",
-            "installer": {
-                "kind": "msi",
-                "x86": "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi"
             }
         },
         "vlc": {

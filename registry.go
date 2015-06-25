@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/ungerik/go-dry"
 )
@@ -100,7 +101,11 @@ func SmartLoadRegistry(force bool) Registry {
 		return loadRegistry("just-install.json")
 	}
 
-	if !dry.FileExists(registryPath) || force {
+	download := !dry.FileExists(registryPath)
+	download = download || dry.FileTimeModified(registryPath).Before(time.Now().Add(-24*time.Hour))
+	download = download || force
+
+	if download {
 		log.Println("Updating registry from:", registryURL)
 
 		downloadRegistry()

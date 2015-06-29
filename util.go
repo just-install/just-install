@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/http/cookiejar"
 	"net/url"
 	"os"
 	"os/exec"
@@ -127,7 +128,8 @@ func download(rawurl string, destinationPath string) {
 	}
 	defer destination.Close()
 
-	response, err := http.Get(rawurl)
+	client := newCookieJarClient()
+	response, err := client.Get(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to open a connection to %s", rawurl)
 	}
@@ -155,6 +157,20 @@ func download(rawurl string, destinationPath string) {
 	writer := io.MultiWriter(destination, progressBar)
 
 	io.Copy(writer, response.Body)
+}
+
+func newCookieJarClient() *http.Client {
+	oracleURL, _ := url.Parse("http://download.oracle.com")
+	oracleEdeliveryURL, _ := url.Parse("https://edelivery.oracle.com")
+	oracleCookies := []*http.Cookie{{Name: "oraclelicense", Value: "accept-securebackup-cookie"}}
+
+	jar, _ := cookiejar.New(nil)
+	jar.SetCookies(oracleURL, oracleCookies)
+	jar.SetCookies(oracleEdeliveryURL, oracleCookies)
+
+	return &http.Client{
+		Jar: jar,
+	}
 }
 
 func extractZip(path string, extractTo string) {

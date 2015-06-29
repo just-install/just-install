@@ -269,6 +269,17 @@
                 "x86": "http://files.jrsoftware.org/is/5/isetup-{{.version}}-unicode.exe"
             }
         },
+        "jdk": {
+            "version": "8u45",
+            "installer": {
+                "kind": "custom",
+                "x86": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jdk-8u45-windows-i586.exe",
+                "x86_64": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jdk-8u45-windows-x64.exe",
+                "options": {
+                    "arguments": ["{{.installer}}", "/s"]
+                }
+            }
+        },
         "jom": {
             "version": "latest",
             "installer": {
@@ -277,6 +288,17 @@
                 "options": {
                     "destination": "{{.ProgramFilesx86}}\\jom",
                     "shims": ["{{.ProgramFilesx86}}\\jom\\jom.exe"]
+                }
+            }
+        },
+        "jre": {
+            "version": "8u45",
+            "installer": {
+                "kind": "custom",
+                "x86": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jre-8u45-windows-i586.exe",
+                "x86_64": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jre-8u45-windows-x64.exe",
+                "options": {
+                    "arguments": ["{{.installer}}", "/s"]
                 }
             }
         },

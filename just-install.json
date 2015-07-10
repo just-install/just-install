@@ -388,6 +388,13 @@
                 }
             }
         },
+        "processhacker": {
+            "version": "2.36",
+            "installer": {
+                "kind": "innosetup",
+                "x86": "http://wj32.org/processhacker/rel/processhacker-${version}-setup.exe"
+            }
+        },
         "putty": {
             "version": "0.63",
             "installer": {

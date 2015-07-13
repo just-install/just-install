@@ -206,13 +206,6 @@
                 "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_active_x.msi"
             }
         },
-        "foobar2000": {
-            "version": "1.3.8",
-            "installer": {
-                "kind": "nsis",
-                "x86": "http://www.foobar2000.org/files/684ea94105e431cad65db3aacb066144/foobar2000_v{{.version}}.exe"
-            }
-        },
         "gimp": {
             "version": "2.8.14",
             "installer": {

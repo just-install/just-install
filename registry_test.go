@@ -12,12 +12,14 @@ import (
 
 var expectedContentTypes = []string{
 	"application/octet-stream",
+	"application/unknown", // Bintray
 	"application/x-msdos-program",
 	"application/x-msdownload",
 	"application/x-msi",
 	"application/x-zip-compressed",
 	"application/zip",
-	"Composite Document File V2 Document, corrupt: Can't read SAT; charset=binary",
+	"Composite Document File V2 Document, corrupt: Can't read SAT; charset=binary", // Google Code
+	"text/x-python", // PIP
 	"Zip Files",
 }
 

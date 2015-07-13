@@ -91,10 +91,10 @@
                 "x86": "http://downloads.sourceforge.net/project/conemu/Preview/ConEmuSetup.{{.version}}.exe",
                 "options": {
                     "x86": {
-                        "exec": ["{{.installer}}", "/p:x86", "/q"]
+                        "arguments": ["{{.installer}}", "/p:x86", "/q"]
                     },
                     "x86_64": {
-                        "exec": ["{{.installer}}", "/p:x64", "/q"]
+                        "arguments": ["{{.installer}}", "/p:x64", "/q"]
                     }
                 }
             }
@@ -113,7 +113,7 @@
                 "x86": "http://cygwin.com/setup-x86.exe",
                 "x86_64": "http://cygwin.com/setup-x86_64.exe",
                 "options": {
-                    "exec": [
+                    "arguments": [
                         "{{.installer}}",
                         "-q",
                         "-s",
@@ -366,7 +366,7 @@
                 "kind": "custom",
                 "x86": "http://mse.dlservice.microsoft.com/download/A/3/8/A38FFBF2-1122-48B4-AF60-E44F6DC28BD8/enus/amd64/mseinstall.exe",
                 "options": {
-                    "exec": ["{{.installer}}", "/s", "/runwgacheck"]
+                    "arguments": ["{{.installer}}", "/s", "/runwgacheck"]
                 }
             }
         },
@@ -398,7 +398,7 @@
                 "kind": "custom",
                 "x86": "https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe",
                 "options": {
-                    "exec": ["-s"]
+                    "arguments": ["-s"]
                 }
             }
         },
@@ -460,7 +460,7 @@
                 "kind": "custom",
                 "x86": "https://bootstrap.pypa.io/get-pip.py",
                 "options": {
-                    "exec": ["\\Python26\\python.exe", "{{.installer}}"]
+                    "arguments": ["\\Python26\\python.exe", "{{.installer}}"]
                 }
             }
         },
@@ -714,7 +714,7 @@
                 "kind": "custom",
                 "x86": "http://download.microsoft.com/download/2/5/5/255DCCB6-F364-4ED8-9758-EF0734CA86B8/wdexpress_full.exe",
                 "options": {
-                    "exec": ["{{.installer}}", "/Passive", "/NoRestart"]
+                    "arguments": ["{{.installer}}", "/Passive", "/NoRestart"]
                 }
             }
         },

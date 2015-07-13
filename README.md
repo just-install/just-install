@@ -7,8 +7,11 @@ _The stupid package installer for Windows_
 [![Build Status](http://img.shields.io/travis/lvillani/just-install.svg?style=flat)](https://travis-ci.org/lvillani/just-install/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Semver](http://img.shields.io/badge/version-v2.3.1-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
+[![ML](https://img.shields.io/badge/ML-justinstall@librelist.com-orange.svg)](http://librelist.com/browser/justinstall)
 
 --------------------------------------------------------------------------------
+
+**NEW**: Subscribe to the mailing list by sending an email to <justinstall@librelist.com>
 
 Chocolatey, Ninite and Npackd are way too complicated. I
 [needed something simple](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/) to install

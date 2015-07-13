@@ -4,4 +4,4 @@ install:
   - go get github.com/tools/godep
 script:
   - godep go build -o just-install ./bin
-  - travis_wait godep go test
+  - travis_wait godep go test -v

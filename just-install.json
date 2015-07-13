@@ -320,7 +320,7 @@
             }
         },
         "libreoffice": {
-            "version": "4.4.3",
+            "version": "4.4.4",
             "installer": {
                 "kind": "msi",
                 "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi"

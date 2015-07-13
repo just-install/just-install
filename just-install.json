@@ -457,13 +457,10 @@
         "python26-pip": {
             "version": "latest",
             "installer": {
-                "kind": "as-is",
-                "x86": "https://raw.github.com/pypa/pip/master/contrib/get-pip.py",
+                "kind": "custom",
+                "x86": "https://bootstrap.pypa.io/get-pip.py",
                 "options": {
-                    "exec": [
-                        "\\Python26\\python.exe",
-                        "{{.installer}}"
-                    ]
+                    "exec": ["\\Python26\\python.exe", "{{.installer}}"]
                 }
             }
         },

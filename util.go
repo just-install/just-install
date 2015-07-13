@@ -159,17 +159,22 @@ func download(rawurl string, destinationPath string) {
 }
 
 func customGet(urlStr string) (*http.Response, error) {
-	// The following allows us to download stuff from Codeplex.
 	request, err := http.NewRequest("GET", urlStr, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	if strings.Contains(urlStr, "codeplex") {
+	// Codeplex
+	if strings.Contains(urlStr, "download-codeplex.sec.s-msft.com") {
 		request.Header.Set("User-Agent", "chocolatey command line")
 	}
 
-	// The following allows us to download Jaava from Oracle's website.
+	// AMD Catalyst
+	if strings.Contains(urlStr, "ati.com") {
+		request.Header.Set("Referer", "http://support.amd.com/")
+	}
+
+	// JRE/JDK from java.oracle.com
 	oracleURL, _ := url.Parse("http://download.oracle.com")
 	oracleEdeliveryURL, _ := url.Parse("https://edelivery.oracle.com")
 	oracleCookies := []*http.Cookie{{Name: "oraclelicense", Value: "accept-securebackup-cookie"}}

@@ -33,12 +33,28 @@
                 "x86": "http://github.com/adobe/brackets/releases/download/release-{{.version}}/Brackets.Release.{{.version}}.msi"
             }
         },
-        "catalyst": {
-            "version": "14.4",
+        "catalyst-win7": {
+            "version": "15.7",
             "installer": {
                 "kind": "as-is",
-                "x86": "http://www2.ati.com/drivers/14-4-win7-win8-win8.1-32-dd-ccc-whql.exe",
-                "x86_64": "http://www2.ati.com/drivers/14-4-win7-win8-win8.1-64-dd-ccc-whql.exe"
+                "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win7-32bit.exe",
+                "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win7-64bit.exe"
+            }
+        },
+        "catalyst-win8": {
+            "version": "15.7",
+            "installer": {
+                "kind": "as-is",
+                "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win8.1-32bit.exe",
+                "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win8.1-64bit.exe"
+            }
+        },
+        "catalyst-win10": {
+            "version": "15.7",
+            "installer": {
+                "kind": "as-is",
+                "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-win10-32bit.exe",
+                "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-win10-64bit.exe"
             }
         },
         "ccleaner": {

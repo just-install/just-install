@@ -128,8 +128,7 @@ func download(rawurl string, destinationPath string) {
 	}
 	defer destination.Close()
 
-	client := newCookieJarClient()
-	response, err := client.Get(rawurl)
+	response, err := customGet(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to open a connection to %s", rawurl)
 	}
@@ -159,7 +158,18 @@ func download(rawurl string, destinationPath string) {
 	io.Copy(writer, response.Body)
 }
 
-func newCookieJarClient() *http.Client {
+func customGet(urlStr string) (*http.Response, error) {
+	// The following allows us to download stuff from Codeplex.
+	request, err := http.NewRequest("GET", urlStr, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if strings.Contains(urlStr, "codeplex") {
+		request.Header.Set("User-Agent", "chocolatey command line")
+	}
+
+	// The following allows us to download Jaava from Oracle's website.
 	oracleURL, _ := url.Parse("http://download.oracle.com")
 	oracleEdeliveryURL, _ := url.Parse("https://edelivery.oracle.com")
 	oracleCookies := []*http.Cookie{{Name: "oraclelicense", Value: "accept-securebackup-cookie"}}
@@ -168,9 +178,9 @@ func newCookieJarClient() *http.Client {
 	jar.SetCookies(oracleURL, oracleCookies)
 	jar.SetCookies(oracleEdeliveryURL, oracleCookies)
 
-	return &http.Client{
-		Jar: jar,
-	}
+	client := http.Client{Jar: jar}
+
+	return client.Do(request)
 }
 
 func extractZip(path string, extractTo string) {

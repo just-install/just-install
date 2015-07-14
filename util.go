@@ -51,8 +51,8 @@ func environMap() map[string]string {
 			continue
 		}
 
-		split[0] = strings.Replace(split[0], "(", "", -1)
-		split[0] = strings.Replace(split[0], ")", "", -1)
+		split[0] = strings.ToUpper(split[0]) // Normalize variable names to upper case
+		split[0] = strings.Replace(split[0], "(X86)", "_X86", -1)
 
 		ret[split[0]] = split[1]
 	}

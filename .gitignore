@@ -1,8 +1,8 @@
 .vagrant/
+*.exe
+*.msi
+*.wixobj
+*.wixpdb
 build/
 dist/
 just-install
-just-install.exe
-just-install.msi
-just-install.wixobj
-just-install.wixpdb

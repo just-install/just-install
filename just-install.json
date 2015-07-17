@@ -20,12 +20,12 @@
             }
         },
         "atom": {
-            "version": "0.177.0",
+            "version": "latest",
             "installer": {
                 "kind": "as-is",
-                "x86": "https://github.com/atom/atom/releases/download/v${version}/AtomSetup.exe",
+                "x86": "http://atom.io/download/windows",
                 "options": {
-                    "shims": ["${LocalAppData}\\atom\\app-${version}\\atom.exe"]
+                    "extension": ".exe"
                 }
             }
         },

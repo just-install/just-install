@@ -445,7 +445,7 @@
             }
         },
         "python27": {
-            "version": "2.7.9",
+            "version": "2.7.10",
             "installer": {
                 "kind": "msi",
                 "x86": "http://python.org/ftp/python/${version}/python-${version}.msi",

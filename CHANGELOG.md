@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## 3.0.0 - Work in progress
+## 3.0.0 - 2015-07-25
 
 ### Breaking Changes
 

@@ -614,7 +614,7 @@
             }
         },
         "sublime-text-dev": {
-            "version": "3084",
+            "version": "3095",
             "installer": {
                 "kind": "innosetup",
                 "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build {{.version}} Setup.exe",

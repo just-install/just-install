@@ -1,6 +1,7 @@
-$BETA = $TRUE
+$BETA = $FALSE
 $HERE = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $TOP_LEVEL = Split-Path -Parent $HERE
+$UPLOAD = $FALSE
 
 $env:JustInstallVersion = "3.0.0"
 
@@ -36,17 +37,19 @@ if ($BETA) {
 # Upload MSI
 #
 
-if (-Not (Test-Path "..\just-install-web")) {
-	pushd ..
-		git clone -b gh-pages ssh://git@github.com/lvillani/just-install.git just-install-web
-	popd
+if ($UPLOAD) {
+    if (-Not (Test-Path "..\just-install-web")) {
+    	pushd ..
+    		git clone -b gh-pages ssh://git@github.com/lvillani/just-install.git just-install-web
+    	popd
+    }
+
+    mv -Force *.msi ..\just-install-web
+
+    pushd ..\just-install-web
+    	git status
+    	git add *.msi
+    	git commit -a --amend --no-edit
+    	git push -f origin gh-pages
+    popd
 }
-
-mv -Force *.msi ..\just-install-web
-
-pushd ..\just-install-web
-	git status
-	git add *.msi
-	git commit -a --amend --no-edit
-	git push -f origin gh-pages
-popd

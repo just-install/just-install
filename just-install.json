@@ -403,11 +403,11 @@
             }
         },
         "perl": {
-            "version": "5.18.4.1803",
+            "version": "5.18.4.1805",
             "installer": {
                 "kind": "msi",
-                "x86": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x86-64int-298573.msi",
-                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x64-298573.msi",
+                "x86": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x86-64int-299195.msi",
+                "x86_64": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x64-299195.msi",
                 "options": {
                     "x86": {
                         "shims": ["{{.SYSTEMDRIVE}}\\Perl\\bin\\perl.exe"]
@@ -422,7 +422,7 @@
             "version": "2.36",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://wj32.org/processhacker/rel/processhacker-${version}-setup.exe"
+                "x86": "http://wj32.org/processhacker/rel/processhacker-{{.version}}-setup.exe"
             }
         },
         "putty": {
@@ -574,7 +574,7 @@
             }
         },
         "sourcetree": {
-            "version": "1.5.2",
+            "version": "1.6.17",
             "installer": {
                 "kind": "advancedinstaller",
                 "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"

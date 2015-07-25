@@ -520,10 +520,10 @@
             }
         },
         "rapidee": {
-            "version": "8.0.924",
+            "version": "8.0.929",
             "installer": {
                 "kind": "innosetup",
-                "x86": "http://www.rapidee.com/download/archive/924/RapidEE_setup.exe"
+                "x86": "http://www.rapidee.com/download/archive/929/RapidEE_setup.exe"
             }
         },
         "resource-hacker": {

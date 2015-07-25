@@ -7,7 +7,7 @@ All notable changes to this project are documented in this file.
 ### Breaking Changes
 
 * Due to changes in the MSI authoring tool, uninstall the old version of just-install before
-  upgrading.
+  upgrading by running `msiexec /x {CEB24764-4726-4E3D-A66B-BE75ABAC4CD8} /qn`
 * Changed the format of the registry file which is now documented and validated through the use of
   JSON schema. The way variable expansion is done was also changed with this release and we invite
   you to give a look at the new [just-install.json](just-install.json) file for an example of the
@@ -27,6 +27,15 @@ All notable changes to this project are documented in this file.
 * Switched from AdvancedInstaller back to WiX as the tool used to generate just-install's MSI
   package. This will probably cause just-install to appear twice in "Add/Remove programs" for some
   users.
+* The registry is automatically updated if the locally cached copy is more than 24 hours old, which
+  means that, in most cases, you don't have to manually run `just-install update` anymore.
+
+
+### Fixed
+
+* The devious owners of `amd.com`, `codeplex.com` and `java.oracle.com` put some lame safeguards
+  against hot-linking, which broke downloads from said websites. We have implemented some work
+  arounds to get downloads working again.
 
 
 

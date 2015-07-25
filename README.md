@@ -33,7 +33,7 @@ msiexec.exe /i http://go.just-install.it
 ```
 
 If you like more traditional means of installation then download
-[just-install.msi](http://go.just-install.it), then double click the file to install it yourself.
+[just-install.msi](http://go.just-install.it) and double click the file to install it yourself.
 
 
 ## Usage

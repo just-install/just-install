@@ -12,6 +12,10 @@ All notable changes to this project are documented in this file.
   JSON schema. The way variable expansion is done was also changed with this release and we invite
   you to give a look at the new [just-install.json](just-install.json) file for an example of the
   new syntax.
+* We now create shims under `%SystemDrive%\Shims`. The old path (`%SystemDrive%\just-install`) won't
+  be migrated automatically so that your old shims will still work with your actual setup. We
+  display a prominent warning until you remove the old `%SystemDrive%\just-install` directory. You
+  can safely copy your old shims to their new place without having to regenerate them.
 * The `checklinks` and `self-update` actions have been removed.
 
 

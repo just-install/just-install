@@ -55,6 +55,9 @@ func main() {
 		Name:  "arch, a",
 		Usage: "Force installation for a specific architecture (if supported by the host).",
 	}, cli.BoolFlag{
+		Name:  "download-only, d",
+		Usage: "Only download packages, do not install them",
+	}, cli.BoolFlag{
 		Name:  "force, f",
 		Usage: "Force package re-download",
 	}, cli.BoolFlag{
@@ -67,6 +70,7 @@ func main() {
 
 func handleArguments(c *cli.Context) {
 	force := c.Bool("force")
+	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
 	registry := justinstall.SmartLoadRegistry(false)
 
@@ -83,6 +87,8 @@ func handleArguments(c *cli.Context) {
 		if ok {
 			if onlyShims {
 				entry.CreateShims()
+			} else if onlyDownload {
+				entry.DownloadInstaller(force)
 			} else {
 				entry.JustInstall(force)
 			}

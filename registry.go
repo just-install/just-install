@@ -198,17 +198,7 @@ type registryEntry struct {
 
 func (e *registryEntry) JustInstall(force bool) {
 	options := e.Installer.options()
-	url := e.installerURL(arch)
-
-	log.Println(arch, "-", url)
-
-	var downloadedFile string
-
-	if ext, ok := options["extension"]; ok {
-		downloadedFile = download3(url, ext.(string), force)
-	} else {
-		downloadedFile = download2(url, force)
-	}
+	downloadedFile := e.DownloadInstaller(force)
 
 	if container, ok := options["container"]; ok {
 		tempDir := e.unwrapZip(downloadedFile) // Assuming it is a zip due to JSON schema
@@ -220,6 +210,19 @@ func (e *registryEntry) JustInstall(force bool) {
 	}
 
 	e.CreateShims()
+}
+
+func (e *registryEntry) DownloadInstaller(force bool) string {
+	options := e.Installer.options()
+	url := e.installerURL(arch)
+
+	log.Println(arch, "-", url)
+
+	if ext, ok := options["extension"]; ok {
+		return download3(url, ext.(string), force)
+	}
+
+	return download2(url, force)
 }
 
 func (e *registryEntry) installerURL(arch string) string {

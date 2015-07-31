@@ -28,9 +28,7 @@ import (
 	"github.com/lvillani/just-install"
 )
 
-const (
-	version = "3.0.0"
-)
+var version = "## filled by go build ##"
 
 func main() {
 	app := cli.NewApp()

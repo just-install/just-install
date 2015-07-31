@@ -102,7 +102,7 @@ func download3(rawurl string, ext string, force bool) string {
 		base = crc32s(rawurl) + filepath.Ext(u.Path)
 	}
 
-	dest := filepath.Join(os.TempDir(), base)
+	dest := filepath.Join(tempPath, base)
 
 	if !dry.FileExists(dest) || force {
 		download(rawurl, dest)

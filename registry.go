@@ -25,7 +25,8 @@ var (
 	isAmd64      = false
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\Shims")
 	shimsPathOld = os.ExpandEnv("${SystemDrive}\\just-install")
-	registryPath = filepath.Join(os.TempDir(), fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
+	tempPath     = filepath.Join(os.TempDir(), "just-install")
+	registryPath = filepath.Join(tempPath, fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
 )
 
 //
@@ -33,8 +34,13 @@ var (
 //
 
 func init() {
+	createTempDir()
 	determineArch()
 	normalizeProgramFiles()
+}
+
+func createTempDir() {
+	os.MkdirAll(tempPath, 0700)
 }
 
 // determineArch determines the Windows architecture of the current Windows installation. It changes

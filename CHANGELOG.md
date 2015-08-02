@@ -2,6 +2,20 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.1.0 - Work in progress
+
+### Addded
+
+* Add a `--download-only` command line switch to download installers without installing them.
+
+
+### Changed
+
+* We now download the registry and all installers under `%TEMP%\just-install`.
+
+
+
+
 ## 3.0.0 - 2015-07-25
 
 ### Breaking Changes

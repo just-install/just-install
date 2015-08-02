@@ -19,11 +19,14 @@
 
 import glob
 import os
+import shutil
 import sys
 
 from subprocess import check_call as call
 from subprocess import check_output as get_output
 
+HERE = os.path.dirname(__file__)
+BUILD_DIR = os.path.join(HERE, "build")
 
 if sys.platform == "win32":
     EXE = "just-install.exe"
@@ -32,11 +35,25 @@ else:
 
 
 def main():
+    if sys.platform == "win32":
+        switch_root()
+
     clean()
     build()
 
     if sys.platform == "win32":
         build_msi()
+
+
+def switch_root():
+    # Git on Windows can't work with NTFS symlinks: we won't be able to use "git describe --tags"
+    # later in the build. We work around the issue by copying the whole source tree in a real
+    # directory, where Git can work.
+    if os.path.isdir(BUILD_DIR):
+        shutil.rmtree(BUILD_DIR)
+
+    shutil.copytree(".", BUILD_DIR)
+    os.chdir(BUILD_DIR)
 
 
 def clean():
@@ -57,6 +74,7 @@ def clean():
 def build():
     version = get_output(["git", "describe", "--tags"])
 
+    os.environ["JustInstallVersion"] = version[1:6]
     call(["godep", "go", "build", "-o", EXE, "-ldflags", "-X main.version " + version, "./bin"])
 
 

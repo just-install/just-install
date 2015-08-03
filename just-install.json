@@ -146,10 +146,10 @@
             }
         },
         "emacs": {
-            "version": "24.3",
+            "version": "24.5",
             "installer": {
                 "kind": "zip",
-                "x86": "http://ftp.igh.cnrs.fr/pub/gnu/emacs/windows/emacs-{{.version}}-bin-i386.zip",
+                "x86": "https://ftp.gnu.org/gnu/emacs/windows/emacs-{{.version}}-bin-i686-mingw32.zip",
                 "options": {
                     "destination": "{{.PROGRAMFILES_X86}}\\Emacs",
                     "shims": [

@@ -219,13 +219,6 @@
         "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_active_x.msi"
       }
     },
-    "gimp": {
-      "version": "2.8.14",
-      "installer": {
-        "kind": "innosetup",
-        "x86": "http://download.gimp.org/pub/gimp/stable/windows/gimp-{{.version}}-setup-1.exe"
-      }
-    },
     "git": {
       "version": "1.9.5-preview20150319",
       "installer": {
@@ -304,11 +297,11 @@
       }
     },
     "jdk": {
-      "version": "8u45",
+      "version": "8u51",
       "installer": {
         "kind": "custom",
-        "x86": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jdk-8u45-windows-i586.exe",
-        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jdk-8u45-windows-x64.exe",
+        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jdk-{{.version}}-windows-i586.exe",
+        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jdk-{{.version}}-windows-x64.exe",
         "options": {
           "arguments": [
             "{{.installer}}",
@@ -331,11 +324,11 @@
       }
     },
     "jre": {
-      "version": "8u45",
+      "version": "8u51",
       "installer": {
         "kind": "custom",
-        "x86": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jre-8u45-windows-i586.exe",
-        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/8u45-b15/jre-8u45-windows-x64.exe",
+        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jre-{{.version}}-windows-i586.exe",
+        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jre-{{.version}}-windows-x64.exe",
         "options": {
           "arguments": [
             "{{.installer}}",
@@ -352,10 +345,11 @@
       }
     },
     "libreoffice": {
-      "version": "4.4.4",
+      "version": "5.0.0",
       "installer": {
         "kind": "msi",
-        "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi"
+        "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
+        "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       }
     },
     "mercurial": {
@@ -379,10 +373,10 @@
       }
     },
     "mono": {
-      "version": "4.0.1",
+      "version": "4.0.2",
       "installer": {
         "kind": "msi",
-        "x86": "http://download.mono-project.com/archive/4.0.1/windows-installer/mono-4.0.1-gtksharp-2.12.26-win32-0.msi"
+        "x86": "http://download.mono-project.com/archive/{{.version}}/windows-installer/mono-{{.version}}-gtksharp-2.12.26-win32-0.msi"
       }
     },
     "microsoft-security-essentials": {

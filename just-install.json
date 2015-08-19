@@ -268,10 +268,10 @@
       }
     },
     "greenshot": {
-      "version": "1.1.9.13",
+      "version": "1.2.4.9",
       "installer": {
         "kind": "innosetup",
-        "x86": "http://cznic.dl.sourceforge.net/project/greenshot/Greenshot/Greenshot%201.1/Greenshot-INSTALLER-{{.version}}.exe"
+        "x86": "https://bitbucket.org/greenshot/greenshot/downloads/Greenshot-INSTALLER-{{.version}}-RELEASE.exe"
       }
     },
     "gvim": {
@@ -297,11 +297,11 @@
       }
     },
     "jdk": {
-      "version": "8u51",
+      "version": "8u60",
       "installer": {
         "kind": "custom",
-        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jdk-{{.version}}-windows-i586.exe",
-        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jdk-{{.version}}-windows-x64.exe",
+        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b27/jdk-{{.version}}-windows-i586.exe",
+        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b27/jdk-{{.version}}-windows-x64.exe",
         "options": {
           "arguments": [
             "{{.installer}}",
@@ -324,11 +324,11 @@
       }
     },
     "jre": {
-      "version": "8u51",
+      "version": "8u60",
       "installer": {
         "kind": "custom",
-        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jre-{{.version}}-windows-i586.exe",
-        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b16/jre-{{.version}}-windows-x64.exe",
+        "x86": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b27/jre-{{.version}}-windows-i586.exe",
+        "x86_64": "http://download.oracle.com/otn-pub/java/jdk/{{.version}}-b27/jre-{{.version}}-windows-x64.exe",
         "options": {
           "arguments": [
             "{{.installer}}",

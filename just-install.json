@@ -782,6 +782,13 @@
         }
       }
     },
+    "windirstat": {
+      "version": "1.1.2",
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://downloads.sourceforge.net/project/windirstat/windirstat/1.1.2%20installer%20re-release%20%28more%20languages%21%29/windirstat1_1_2_setup.exe?r=&ts=1441302161&use_mirror=heanet",
+      }
+    },
     "winscp": {
       "version": "5.7",
       "installer": {

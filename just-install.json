@@ -26,6 +26,16 @@
         "x86": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v{{.version}}/AutoHotkey112202_Install.exe"
       }
     },
+    "battlenet": {
+      "version": "latest",
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup-enGB.exe",
+        "options": {
+          "extension": ".exe"
+        }
+      }
+    },
     "brackets": {
       "version": "1.0",
       "installer": {
@@ -34,27 +44,27 @@
       }
     },
     "catalyst-win7": {
-      "version": "15.7",
+      "version": "15.7.1",
       "installer": {
         "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win7-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win7-64bit.exe"
+        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win7-32bit.exe",
+        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win7-64bit.exe"
       }
     },
     "catalyst-win8": {
-      "version": "15.7",
+      "version": "15.7.1",
       "installer": {
         "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win8.1-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-with-dotnet45-win8.1-64bit.exe"
+        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win8.1-32bit.exe",
+        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win8.1-64bit.exe"
       }
     },
     "catalyst-win10": {
-      "version": "15.7",
+      "version": "15.7.1",
       "installer": {
         "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7-win10-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7-win10-64bit.exe"
+        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-win10-32bit.exe",
+        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-win10-64bit.exe"
       }
     },
     "ccleaner": {
@@ -199,7 +209,7 @@
       }
     },
     "firefox": {
-      "version": "39.0",
+      "version": "40.0.3",
       "installer": {
         "kind": "nsis",
         "x86": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{.version}}/win32/en-US/Firefox Setup {{.version}}.exe"
@@ -246,7 +256,7 @@
       }
     },
     "go": {
-      "version": "1.4.2",
+      "version": "1.5",
       "installer": {
         "kind": "msi",
         "x86": "https://storage.googleapis.com/golang/go{{.version}}.windows-386.msi",
@@ -401,7 +411,7 @@
       }
     },
     "notepad++": {
-      "version": "6.8",
+      "version": "6.8.3",
       "installer": {
         "kind": "nsis",
         "x86": "https://notepad-plus-plus.org/repository/6.x/{{.version}}/npp.{{.version}}.Installer.exe"
@@ -420,6 +430,22 @@
       "installer": {
         "kind": "msi",
         "x86": "https://windows-package-manager.googlecode.com/files/NpackdCL-{{.version}}.msi"
+      }
+    },
+    "nvidia": {
+      "version": "355.82",
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win8-win7-winvista-32bit-international-whql.exe",
+        "x86_64": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win8-win7-winvista-64bit-international-whql.exe"
+      }
+    },
+    "nvidia-win10": {
+      "version": "355.82",
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win10-32bit-international-whql.exe",
+        "x86_64": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win10-64bit-international-whql.exe"
       }
     },
     "origin": {
@@ -699,7 +725,7 @@
       }
     },
     "thunderbird": {
-      "version": "38.0.1",
+      "version": "38.2.0",
       "installer": {
         "kind": "nsis",
         "x86": "http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/{{.version}}/win32/en-US/Thunderbird Setup {{.version}}.exe"
@@ -720,11 +746,11 @@
       }
     },
     "tortoisesvn": {
-      "version": "1.8.11",
+      "version": "1.9.1",
       "installer": {
         "kind": "msi",
-        "x86": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26392-win32-svn-1.8.13.msi",
-        "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26392-x64-svn-1.8.13.msi"
+        "x86": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26747-win32-svn-1.9.1.msi",
+        "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26747-x64-svn-1.9.1.msi"
       }
     },
     "upx": {

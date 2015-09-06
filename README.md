@@ -6,7 +6,7 @@ _The simple package installer for Windows_
 
 [![Build Status](http://img.shields.io/travis/lvillani/just-install.svg?style=flat)](https://travis-ci.org/lvillani/just-install/)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
-[![Semver](http://img.shields.io/badge/version-v3.0.0-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
+[![Semver](http://img.shields.io/badge/version-v3.1.0-blue.svg?style=flat)](https://github.com/lvillani/just-install/blob/master/CHANGELOG.md)
 [![ML](https://img.shields.io/badge/ML-justinstall@librelist.com-orange.svg)](http://librelist.com/browser/justinstall)
 
 --------------------------------------------------------------------------------

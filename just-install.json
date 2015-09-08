@@ -229,7 +229,7 @@
     "gimp": {
       "version": "2.8.14",
       "installer": {
-        "kind": "nsis",
+        "kind": "custom",
         "x86": "http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe"
       }
     }

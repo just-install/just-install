@@ -226,6 +226,13 @@
         "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_active_x.msi"
       }
     },
+    "gimp": {
+      "version": "2.8.14",
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe"
+      }
+    }
     "git": {
       "version": "1.9.5-preview20150319",
       "installer": {

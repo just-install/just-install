@@ -484,7 +484,7 @@
       "version": "2.36",
       "installer": {
         "kind": "innosetup",
-        "x86": "http://wj32.org/processhacker/rel/processhacker-{{.version}}-setup.exe"
+        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-2.36-setup.exe"
       }
     },
     "putty": {

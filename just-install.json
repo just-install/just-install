@@ -209,10 +209,13 @@
       }
     },
     "firefox": {
-      "version": "40.0.3",
+      "version": "latest",
       "installer": {
         "kind": "nsis",
-        "x86": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{.version}}/win32/en-US/Firefox Setup {{.version}}.exe"
+        "x86": "https://download.mozilla.org/?product=firefox-latest&os=win&lang=en-US",
+        "options": {
+          "extension": ".exe"
+        }
       }
     },
     "filezilla-server": {
@@ -725,10 +728,13 @@
       }
     },
     "thunderbird": {
-      "version": "38.2.0",
+      "version": "latest",
       "installer": {
         "kind": "nsis",
-        "x86": "http://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/{{.version}}/win32/en-US/Thunderbird Setup {{.version}}.exe"
+        "x86": "https://download.mozilla.org/?product=thunderbird-latest&os=win&lang=en-US",
+        "options": {
+          "extension": ".exe"
+        }
       }
     },
     "teamviewer": {

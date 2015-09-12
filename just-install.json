@@ -183,10 +183,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES_X86}}\\Emacs",
           "shims": [
-            "{{.PROGRAMFILES_X86}}\\Emacs\bin\\emacs.exe",
-            "{{.PROGRAMFILES_X86}}\\Emacs\bin\\emacsclient.exe",
-            "{{.PROGRAMFILES_X86}}\\Emacs\bin\\emacsclientw.exe",
-            "{{.PROGRAMFILES_X86}}\\Emacs\bin\runemacs.exe"
+            "{{.PROGRAMFILES_X86}}\\Emacs\\bin\\emacs.exe",
+            "{{.PROGRAMFILES_X86}}\\Emacs\\bin\\emacsclient.exe",
+            "{{.PROGRAMFILES_X86}}\\Emacs\\bin\\emacsclientw.exe",
+            "{{.PROGRAMFILES_X86}}\\Emacs\\bin\\runemacs.exe"
           ]
         }
       }
@@ -243,7 +243,7 @@
         "x86": "https://github.com/msysgit/msysgit/releases/download/Git-{{.version}}/Git-{{.version}}.exe",
         "options": {
           "shims": [
-            "{{.PROGRAMFILES_X86}}\\Git\bin\\git.exe"
+            "{{.PROGRAMFILES_X86}}\\Git\\bin\\git.exe"
           ]
         }
       }
@@ -263,9 +263,9 @@
         "x86_64": "https://storage.googleapis.com/golang/go{{.version}}.windows-amd64.msi",
         "options": {
           "shims": [
-            "{{.SYSTEMDRIVE}}\\Go\bin\\go.exe",
-            "{{.SYSTEMDRIVE}}\\Go\bin\\godoc.exe",
-            "{{.SYSTEMDRIVE}}\\Go\bin\\gofmt.exe"
+            "{{.SYSTEMDRIVE}}\\Go\\bin\\go.exe",
+            "{{.SYSTEMDRIVE}}\\Go\\bin\\godoc.exe",
+            "{{.SYSTEMDRIVE}}\\Go\\bin\\gofmt.exe"
           ]
         }
       }
@@ -469,12 +469,12 @@
         "options": {
           "x86": {
             "shims": [
-              "{{.SYSTEMDRIVE}}\\Perl\bin\\perl.exe"
+              "{{.SYSTEMDRIVE}}\\Perl\\bin\\perl.exe"
             ]
           },
           "x86_64": {
             "shims": [
-              "{{.SYSTEMDRIVE}}\\Perl64\bin\\perl.exe"
+              "{{.SYSTEMDRIVE}}\\Perl64\\bin\\perl.exe"
             ]
           }
         }
@@ -605,8 +605,8 @@
         "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}.exe?direct",
         "options": {
           "shims": [
-            "{{.SYSTEMDRIVE}}\\Ruby193\bin\ruby.exe",
-            "{{.SYSTEMDRIVE}}\\Ruby193\bin\rubyw.exe"
+            "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\ruby.exe",
+            "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\rubyw.exe"
           ]
         }
       }
@@ -701,8 +701,8 @@
         "x86_64": "http://www.sliksvn.com/pub/Slik-Subversion-{{.version}}-x64.msi",
         "options": {
           "shims": [
-            "{{.PROGRAMFILES}}\\SlikSvn\bin\\svn.exe",
-            "{{.PROGRAMFILES}}\\SlikSvn\bin\\svnversion.exe"
+            "{{.PROGRAMFILES}}\\SlikSvn\\bin\\svn.exe",
+            "{{.PROGRAMFILES}}\\SlikSvn\\bin\\svnversion.exe"
           ]
         }
       }
@@ -833,21 +833,21 @@
           ],
           "extension": ".exe",
           "shims": [
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\candle.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\dark.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\heat.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\insignia.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\light.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\lit.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\lux.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\melt.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\nit.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\pyro.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\shine.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\smoke.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\ThmViewer.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\torch.exe",
-            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\bin\\WixCop.exe"
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\candle.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\dark.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\heat.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\insignia.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\light.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\lit.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\lux.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\melt.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\nit.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\pyro.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\shine.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\smoke.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\ThmViewer.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\torch.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.9\\bin\\WixCop.exe"
           ]
         }
       }

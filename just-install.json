@@ -626,6 +626,13 @@
         "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
       }
     },
+	"speccy": {
+		"version": "1.2.8",
+		"installer": {
+			"kind": "custom",
+			"x86": "http://download.piriform.com/spsetup128.exe"
+		}
+	},
     "sqlserver-express-2008": {
       "version": "latest",
       "installer": {

@@ -744,6 +744,13 @@
         }
       }
     },
+	"virtualbox": {
+		"version": "5.0.4",
+		"installer": {
+			"kind": "custom",
+			"x86": "http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-Win.exe"
+		}
+	},
     "visualcpp-express-2008": {
       "version": "2008",
       "installer": {

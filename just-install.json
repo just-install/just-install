@@ -626,13 +626,13 @@
         "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
       }
     },
-	"speccy": {
-		"version": "1.2.8",
-		"installer": {
-			"kind": "custom",
-			"x86": "http://download.piriform.com/spsetup128.exe"
-		}
-	},
+    "speccy": {
+      "version": "1.2.8",
+        "installer": {
+        "kind": "custom",
+        "x86": "http://download.piriform.com/spsetup128.exe"
+      }
+    },
     "sqlserver-express-2008": {
       "version": "latest",
       "installer": {
@@ -751,13 +751,13 @@
         }
       }
     },
-	"virtualbox": {
-		"version": "5.0.4",
-		"installer": {
-			"kind": "custom",
-			"x86": "http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-Win.exe"
-		}
-	},
+    "virtualbox": {
+      "version": "5.0.4",
+      "installer": {
+        "kind": "custom",
+        "x86": "http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-Win.exe"
+      }
+    },
     "visualcpp-express-2008": {
       "version": "2008",
       "installer": {

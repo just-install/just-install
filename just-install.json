@@ -365,7 +365,7 @@
       }
     },
     "libreoffice": {
-      "version": "5.0.0",
+      "version": "5.0.2",
       "installer": {
         "kind": "msi",
         "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",

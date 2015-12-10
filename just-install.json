@@ -226,17 +226,17 @@
       }
     },
     "flash-player": {
-      "version": "18",
+      "version": "20",
       "installer": {
         "kind": "msi",
-        "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_plugin.msi"
+        "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_{{.version}}_plugin.msi"
       }
     },
     "flash-player-ie": {
-      "version": "18",
+      "version": "20",
       "installer": {
         "kind": "msi",
-        "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_18_active_x.msi"
+        "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_{{.version}}_active_x.msi"
       }
     },
     "git": {

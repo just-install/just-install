@@ -83,10 +83,11 @@ memorable command, was self-contained, and could be launched from an unattended 
   on Windows XP, which means that we have some VMs that we need automate.
 * Ninite is great but it's closed source and there's no obvious way to add a custom package.
 * Npackd is probably the most promising of the bunch, but the last time I tried it, it wanted to do
-  some funny stuff such as handling un-installations and it had a tendency to shuffles files around.
+  some funny stuff such as handling un-installations and it had a tendency to shuffle files around.
 
 I wanted something simple, something that would download an installer and run it silently. That's
-why I wrote just-install.
+why I wrote just-install. You can find a complete rationale
+[on my blog post](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/)
 
 
 

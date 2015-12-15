@@ -213,6 +213,7 @@
       "installer": {
         "kind": "nsis",
         "x86": "https://download.mozilla.org/?product=firefox-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
         "options": {
           "extension": ".exe"
         }

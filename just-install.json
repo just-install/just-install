@@ -240,6 +240,13 @@
         "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_{{.version}}_active_x.msi"
       }
     },
+    "gimp": {
+      "version": "2.8.14",
+      "installer": {
+        "kind": "custom",
+        "x86": "http://download.gimp.org/pub/gimp/v2.8/windows/gimp-2.8.14-setup-1.exe"
+      }
+    },
     "git": {
       "version": "1.9.5-preview20150319",
       "installer": {
@@ -412,6 +419,14 @@
             "/runwgacheck"
           ]
         }
+      }
+    },
+    "nodejs": {
+      "version": "4.1.0",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/latest/node-v4.1.0-x86.msi",
+        "x86_64": "https://nodejs.org/dist/latest/node-v4.1.0-x64.msi"
       }
     },
     "notepad++": {
@@ -649,6 +664,13 @@
         "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
       }
     },
+    "speccy": {
+      "version": "1.2.8",
+        "installer": {
+        "kind": "custom",
+        "x86": "http://download.piriform.com/spsetup128.exe"
+      }
+    },
     "sqlserver-express-2008": {
       "version": "latest",
       "installer": {
@@ -779,6 +801,13 @@
         "options": {
           "destination": "{{.PROGRAMFILES_X86}}\\UPX"
         }
+      }
+    },
+    "virtualbox": {
+      "version": "5.0.4",
+      "installer": {
+        "kind": "custom",
+        "x86": "http://download.virtualbox.org/virtualbox/5.0.4/VirtualBox-5.0.4-102546-Win.exe"
       }
     },
     "visualcpp-express-2008": {

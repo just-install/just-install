@@ -452,6 +452,13 @@
         "x86_64": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win10-64bit-international-whql.exe"
       }
     },
+    "openssh": {
+      "version": "7.1p1-1",
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe"
+      }
+    },
     "origin": {
       "version": "latest",
       "installer": {

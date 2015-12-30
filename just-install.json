@@ -499,7 +499,7 @@
       }
     },
     "putty": {
-      "version": "0.63",
+      "version": "0.66",
       "installer": {
         "kind": "innosetup",
         "x86": "http://the.earth.li/~sgtatham/putty/{{.version}}/x86/putty-{{.version}}-installer.exe"

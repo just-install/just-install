@@ -455,8 +455,16 @@
     "openssh": {
       "version": "7.1p1-1",
       "installer": {
-        "kind": "nsis",
-        "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe"
+        "kind": "custom",
+        "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/password=7Qf2kbZPK14CiSDoDGpelGOgZGKLlvLs",
+            "/NCRC",
+            "/S"
+          ]
+        }
       }
     },
     "origin": {

@@ -155,7 +155,7 @@
         "kind": "as-is",
         "x86": "http://www.eithermouse.com/EitherMouse Setup.exe"
       },
-      "version": "latest",
+      "version": "latest"
     },
     "emacs": {
       "installer": {

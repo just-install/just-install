@@ -3,10 +3,10 @@
     "7zip": {
       "installer": {
         "kind": "msi",
-        "x86": "http://dl.7-zip.org/7z1512.msi",
-        "x86_64": "http://dl.7-zip.org/7z1512-x64.msi"
+        "x86": "http://dl.7-zip.org/7z1514.msi",
+        "x86_64": "http://dl.7-zip.org/7z1514-x64.msi"
       },
-      "version": "15.12"
+      "version": "15.14"
     },
     "atom": {
       "installer": {

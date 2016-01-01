@@ -42,30 +42,6 @@
       },
       "version": "1.0"
     },
-    "catalyst-win10": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-win10-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-win10-64bit.exe"
-      },
-      "version": "15.7.1"
-    },
-    "catalyst-win7": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win7-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win7-64bit.exe"
-      },
-      "version": "15.7.1"
-    },
-    "catalyst-win8": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win8.1-32bit.exe",
-        "x86_64": "http://www2.ati.com/drivers/amd-catalyst-15.7.1-with-dotnet45-win8.1-64bit.exe"
-      },
-      "version": "15.7.1"
-    },
     "ccleaner": {
       "installer": {
         "kind": "nsis",
@@ -434,22 +410,6 @@
         "x86": "https://windows-package-manager.googlecode.com/files/NpackdCL-{{.version}}.msi"
       },
       "version": "1.18.7"
-    },
-    "nvidia": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win8-win7-winvista-32bit-international-whql.exe",
-        "x86_64": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win8-win7-winvista-64bit-international-whql.exe"
-      },
-      "version": "355.82"
-    },
-    "nvidia-win10": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win10-32bit-international-whql.exe",
-        "x86_64": "http://us.download.nvidia.com/Windows/{{.version}}/{{.version}}-desktop-win10-64bit-international-whql.exe"
-      },
-      "version": "355.82"
     },
     "openssh": {
       "installer": {

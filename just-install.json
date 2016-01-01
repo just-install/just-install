@@ -40,14 +40,14 @@
         "kind": "msi",
         "x86": "http://github.com/adobe/brackets/releases/download/release-{{.version}}/Brackets.Release.{{.version}}.msi"
       },
-      "version": "1.0"
+      "version": "1.5"
     },
     "ccleaner": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://download.piriform.com/ccsetup509.exe"
+        "x86": "http://download.piriform.com/ccsetup513.exe"
       },
-      "version": "5.09"
+      "version": "5.13"
     },
     "cmake": {
       "installer": {
@@ -401,7 +401,7 @@
         "kind": "nsis",
         "x86": "https://notepad-plus-plus.org/repository/6.x/{{.version}}/npp.{{.version}}.Installer.exe"
       },
-      "version": "6.8.3"
+      "version": "6.8.8"
     },
     "npackd": {
       "installer": {

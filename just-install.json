@@ -150,6 +150,13 @@
       },
       "version": "2.2"
     },
+    "eithermouse": {
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://www.eithermouse.com/EitherMouse Setup.exe"
+      },
+      "version": "latest",
+    },
     "emacs": {
       "installer": {
         "kind": "zip",

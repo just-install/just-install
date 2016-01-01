@@ -21,9 +21,9 @@
     "autohotkey": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v{{.version}}/AutoHotkey112202_Install.exe"
+        "x86": "http://ahkscript.org/download/ahk-install.exe"
       },
-      "version": "1.1.22.02"
+      "version": "latest"
     },
     "battlenet": {
       "installer": {

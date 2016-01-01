@@ -764,6 +764,13 @@
       },
       "version": "3.91"
     },
+    "virtualbox": {
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-104815-Win.exe"
+      },
+      "version": "5.0.12"
+    },
     "visualcpp-express-2008": {
       "installer": {
         "kind": "as-is",

@@ -396,6 +396,13 @@
       },
       "version": "4.0.2"
     },
+    "mumble": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/mumble-voip/mumble/releases/download/{{.version}}/mumble-{{.version}}.msi"
+      },
+      "version": "1.2.12"
+    },
     "notepad++": {
       "installer": {
         "kind": "nsis",

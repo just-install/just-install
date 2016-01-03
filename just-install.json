@@ -88,9 +88,9 @@
             ]
           }
         },
-        "x86": "http://downloads.sourceforge.net/project/conemu/Alpha/ConEmuSetup.{{.version}}.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v15.12.24/ConEmuSetup.{{.version}}.exe"
       },
-      "version": "150707"
+      "version": "151224"
     },
     "crystaldisk-info": {
       "installer": {

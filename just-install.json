@@ -729,6 +729,14 @@
       },
       "version": "latest"
     },
+    "teamspeak": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win32-{{.version}}.exe",
+        "x86_64": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win64-{{.version}}.exe"
+      },
+      "version": "3.0.18.2"
+    },
     "teamviewer": {
       "installer": {
         "kind": "nsis",

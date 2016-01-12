@@ -219,6 +219,17 @@
       },
       "version": "latest"
     },
+    "firefox-developer-edition": {
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=firefox-aurora-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-aurora-latest&os=win64&lang=en-US"
+      },
+      "version": "latest"
+    },
     "flash-player": {
       "installer": {
         "kind": "msi",

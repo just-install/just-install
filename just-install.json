@@ -490,10 +490,10 @@
             ]
           }
         },
-        "x86": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x86-64int-299195.msi",
-        "x86_64": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x64-299195.msi"
+        "x86": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x86-64int-299574.msi",
+        "x86_64": "http://downloads.activestate.com/ActivePerl/releases/{{.version}}/ActivePerl-{{.version}}-MSWin32-x64-299574.msi"
       },
-      "version": "5.18.4.1805"
+      "version": "5.22.1.2201"
     },
     "processhacker": {
       "installer": {

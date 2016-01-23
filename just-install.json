@@ -190,6 +190,13 @@
       },
       "version": "0.2"
     },
+    "f.lux": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://justgetflux.com/flux-setup.exe"
+      },
+      "version": "latest"
+    },
     "filezilla-server": {
       "installer": {
         "kind": "nsis",

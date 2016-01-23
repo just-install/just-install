@@ -754,7 +754,7 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\SysInternals"
         },
-        "x86": "http://download.sysinternals.com/files/SysinternalsSuite.zip"
+        "x86": "https://download.sysinternals.com/files/sysinternalssuite.zip"
       },
       "version": "latest"
     },
@@ -782,6 +782,13 @@
         "x86": "https://download.mozilla.org/?product=thunderbird-latest&os=win&lang=en-US"
       },
       "version": "latest"
+    },
+    "tomahawk": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://download.tomahawk-player.org/tomahawk-{{.version}}.exe"
+      },
+      "version": "0.8.4"
     },
     "tortoisegit": {
       "installer": {

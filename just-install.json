@@ -1,5 +1,12 @@
 {
   "packages": {
+    "1password": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://d13itkw33a7sus.cloudfront.net/dist/1P/win4/1Password-4.6.0.598.exe"
+      },
+      "version": "4.6.0.598"
+    },
     "7zip": {
       "installer": {
         "kind": "msi",

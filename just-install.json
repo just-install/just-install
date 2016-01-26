@@ -391,14 +391,6 @@
       },
       "version": "5.0.4"
     },
-    "media-player-classic-home-cinema": {
-      "installer": {
-        "kind": "innosetup",
-        "x86": "https://binaries.mpc-hc.org/MPC%20HomeCinema%20-%20Win32/MPC-HC_v1.7.10_x86/MPC-HC.1.7.10.x86.exe",
-        "x86_64": "https://binaries.mpc-hc.org/MPC%20HomeCinema%20-%20x64/MPC-HC_v1.7.10_x64/MPC-HC.1.7.10.x64.exe"
-      },
-      "version": "1.7.10"
-    },
     "mercurial": {
       "installer": {
         "kind": "msi",
@@ -439,6 +431,14 @@
         "x86": "http://download.mono-project.com/archive/{{.version}}/windows-installer/mono-{{.version}}-gtksharp-2.12.26-win32-0.msi"
       },
       "version": "4.0.2"
+    },
+    "mpc-hc": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://binaries.mpc-hc.org/MPC%20HomeCinema%20-%20Win32/MPC-HC_v1.7.10_x86/MPC-HC.1.7.10.x86.exe",
+        "x86_64": "https://binaries.mpc-hc.org/MPC%20HomeCinema%20-%20x64/MPC-HC_v1.7.10_x64/MPC-HC.1.7.10.x64.exe"
+      },
+      "version": "1.7.10"
     },
     "mumble": {
       "installer": {

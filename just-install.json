@@ -190,7 +190,7 @@
       },
       "version": "0.2"
     },
-    "f.lux": {
+    "flux": {
       "installer": {
         "kind": "nsis",
         "x86": "https://justgetflux.com/flux-setup.exe"

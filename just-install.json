@@ -691,6 +691,16 @@
       },
       "version": "latest"
     },
+    "slack": {
+      "installer": {
+        "kind": "as-is",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://slack.com/ssb/download-win"
+      },
+      "version": "latest"
+    },
     "smartkey": {
       "installer": {
         "kind": "msi",

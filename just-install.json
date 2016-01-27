@@ -837,6 +837,14 @@
       },
       "version": "3.91"
     },
+    "vagrant": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://releases.hashicorp.com/vagrant/1.8.1/vagrant_{{.version}}.msi",
+        "x86_64": "https://releases.hashicorp.com/vagrant/1.8.1/vagrant_{{.version}}.msi"
+      },
+      "version": "1.8.1"
+    },
     "virtualbox": {
       "installer": {
         "kind": "as-is",

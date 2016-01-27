@@ -5,6 +5,8 @@ Fork this repository, make your edit to `just-install.json` then submit a pull r
 Guidelines to follow:
 
 - Catalog entries are listed in alphabetical order, make sure yours fit with this scheme.
+- Prefer unversioned entries: if a software provides a way to always get the latest installer
+  try to use it so that users always get the latest version.
 - Prefer the x86_64 edition of the software:
   + Unless there are several compatibility or support issues (e.g.: Python)
 - For development libraries: prefer ones compiled with Visual Studio since it's the native

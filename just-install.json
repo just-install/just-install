@@ -398,6 +398,13 @@
       },
       "version": "5.0.4"
     },
+    "lockhunter": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://lockhunter.com/exe/lockhuntersetup_{{.version}}.exe"
+      },
+      "version": "3-1-1"
+    },
     "mercurial": {
       "installer": {
         "kind": "msi",

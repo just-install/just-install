@@ -157,6 +157,20 @@
       },
       "version": "2.2"
     },
+    "dropbox": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/S"
+          ],
+          "extension": ".exe"
+        },
+        "x86": "https://www.dropbox.com/download?type=full&plat=win"
+      },
+      "version": "latest"
+    },
     "eithermouse": {
       "installer": {
         "kind": "as-is",

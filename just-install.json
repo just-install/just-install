@@ -99,6 +99,21 @@
       },
       "version": "151224"
     },
+    "crashplan": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/qn",
+            "CP_SILENT=true"
+          ]
+        },
+        "x86": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win.exe",
+        "x86_64": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan-x64_{{.version}}_Win.exe"
+      },
+      "version": "4.5.2"
+    },
     "crystaldisk-info": {
       "installer": {
         "kind": "innosetup",

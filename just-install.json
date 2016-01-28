@@ -568,6 +568,13 @@
       },
       "version": "5.22.1.2201"
     },
+    "plex-home-theater": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://downloads.plex.tv/plex-home-theater/{{.version}}/PlexHomeTheater-{{.version}}-windows-x86.exe"
+      },
+      "version": "1.4.1.469-47a90f01"
+    },
     "processhacker": {
       "installer": {
         "kind": "innosetup",

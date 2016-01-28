@@ -5,15 +5,15 @@
 VAGRANTFILE_API_VERSION = "2"
 
 # The smallest VM based on Windows 7
-box = "modernIE/w7-ie8"
+@box = "mwrock/Windows2012R2"
 
-if ENV["USER"] == "lvillani"
-  # Recycle the VM I actually use for other projects.
-  box = "modernIE/w7-ie11"
+if File.exist?('./Vagrantfile.overrides.rb')
+  puts "Importing overrides"
+  require_relative './Vagrantfile.overrides'
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = box
+    config.vm.box = @box
     config.vm.provision "shell", path: "bootstrap.cmd"
     config.vm.synced_folder ".", "/gopath/src/github.com/lvillani/just-install"
     config.vm.synced_folder "~/.ssh", "/Users/vagrant/Desktop/ssh"

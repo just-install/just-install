@@ -575,6 +575,20 @@
       },
       "version": "1.4.1.469-47a90f01"
     },
+    "plex-media-server": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/quiet",
+            "/norestart"
+          ]
+        },
+        "x86": "https://downloads.plex.tv/plex-media-server/0.9.15.2.1663-7efd046/Plex-Media-Server-0.9.1502.1663-7efd046-en-US.exe"
+      },
+      "version": "0.9.15.2.1663-7efd046"
+    },
     "processhacker": {
       "installer": {
         "kind": "innosetup",

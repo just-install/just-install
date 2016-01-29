@@ -1001,6 +1001,13 @@
         "x86": "http://downloads.sourceforge.net/project/wixedit/wixedit/0.7.5.0/wixedit-0.7.5.msi"
       },
       "version": "0.7.5"
+    },
+    "ynab": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://s3.amazonaws.com/cf.download/ynab4/YNAB+{{.version}}_Setup.exe"
+      },
+      "version": "4_4.3.820"
     }
   },
   "version": 3

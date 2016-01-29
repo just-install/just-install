@@ -665,6 +665,13 @@
       },
       "version": "3.10"
     },
+    "qbittorrent": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://download.oldfoss.com:81/qBittorrent/qbittorrent_3_3_3_setup-1453331941.exe"
+      },
+      "version": "3.3.3"
+    },
     "qt-vs2008": {
       "installer": {
         "kind": "as-is",

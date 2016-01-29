@@ -881,6 +881,16 @@
       },
       "version": "1.9.1"
     },
+    "uplay": {
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "http://ubi.li/4vxt9"
+      },
+      "version": "stable"
+    },
     "upx": {
       "installer": {
         "kind": "zip",

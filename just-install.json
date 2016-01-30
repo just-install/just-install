@@ -706,6 +706,13 @@
       },
       "version": "latest"
     },
+    "sharpkeys": {
+      "installer": {
+        "kind": "msi",
+        "x86": "http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=sharpkeys&DownloadId=319724&FileTime=129737577110830000&Build=21031"
+      },
+      "version": "3.5"
+    },
     "skype": {
       "installer": {
         "kind": "msi",

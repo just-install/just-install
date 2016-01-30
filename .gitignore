@@ -6,3 +6,4 @@
 build/
 dist/
 just-install
+Vagrantfile.overrides.rb

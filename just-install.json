@@ -186,6 +186,13 @@
       },
       "version": "latest"
     },
+    "eac": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://www.exactaudiocopy.de/eac-{{.version}}.exe"
+      },
+      "version": "1.1"
+    },
     "eithermouse": {
       "installer": {
         "kind": "as-is",

@@ -59,9 +59,29 @@ In case you are lost, help is always few keystrokes away:
     just-install --help
 
 
-## Contributing Packages
+## Development
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+To contribute a new package see: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+To work on just-install itself you will need to install and set-up:
+
+* The [Go](https://golang.org/) compiler;
+* [godep](https://github.com/tools/godep).
+
+Once you have done so run:
+
+    go get https://github.com/lvillani/just-install
+
+This will place just-install's source code to its appropriate place below the `$GOPATH`. Once you
+have done that, go to `$GOPATH/src/github.com/lvillani/just-install` and run:
+
+    godep go build bin/just-install.go
+
+This will produce `just-install.exe` in the current working directory.
+
+**NOTE**: `build.py` is used to publish a new release, you can safely ignore that. Also note that
+this project is being developed on Linux/OS X machine and cross-compiled to Windows only if/when
+necessary.
 
 
 ## Frequently Asked Questions

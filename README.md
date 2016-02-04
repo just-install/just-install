@@ -97,7 +97,7 @@ memorable command, was self-contained, and could be launched from an unattended 
 ### What's wrong with the alternatives?
 
 * Chocolatey's biggest sin is that it requires PowerShell on the target system. This makes it
-  ridiculously difficult to install on some operating system: on Windows XP it is a multi-stage
+  ridiculously difficult to install on some operating systems: on Windows XP it is a multi-stage
   ordeal where you first have to install .NET 2.0, then install PowerShell, then .NET 4 and after
   that you can finally install Chocolatey itself. Yes, we still have some software that has to work
   on Windows XP, which means that we have some VMs that we need automate.

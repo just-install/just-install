@@ -99,8 +99,7 @@ memorable command, was self-contained, and could be launched from an unattended 
 * Chocolatey's biggest sin is that it requires PowerShell on the target system. This makes it
   ridiculously difficult to install on some operating systems: on Windows XP it is a multi-stage
   ordeal where you first have to install .NET 2.0, then install PowerShell, then .NET 4 and after
-  that you can finally install Chocolatey itself. Yes, we still have some software that has to work
-  on Windows XP, which means that we have some VMs that we need automate.
+  that you can finally install Chocolatey itself.
 * Ninite is great but it's closed source and there's no obvious way to add a custom package.
 * Npackd is probably the most promising of the bunch, but the last time I tried it, it wanted to do
   some funny stuff such as handling un-installations and it had a tendency to shuffle files around.

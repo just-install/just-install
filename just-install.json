@@ -987,7 +987,7 @@
         "kind": "nsis",
         "x86": "https://get.videolan.org/vlc/{{.version}}/win32/vlc-{{.version}}-win32.exe"
       },
-      "version": "2.2.1"
+      "version": "2.2.2"
     },
     "windirstat": {
       "installer": {

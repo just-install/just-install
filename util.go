@@ -122,9 +122,11 @@ func crc32s(s string) string {
 // Downloads a file with the HTTP/HTTPS protocol showing a progress bar. The destination file is
 // always overwritten.
 func download(rawurl string, destinationPath string) {
-	destination, err := os.Create(destinationPath)
+	tempDestinationPath := destinationPath + ".tmp"
+
+	destination, err := os.Create(tempDestinationPath)
 	if err != nil {
-		log.Fatalf("Unable to open the destination file: %s", destinationPath)
+		log.Fatalf("Unable to open the destination file: %s", tempDestinationPath)
 	}
 	defer destination.Close()
 
@@ -156,6 +158,8 @@ func download(rawurl string, destinationPath string) {
 	writer := io.MultiWriter(destination, progressBar)
 
 	io.Copy(writer, response.Body)
+	destination.Close()
+	os.Rename(tempDestinationPath, destinationPath)
 }
 
 func customGet(urlStr string) (*http.Response, error) {

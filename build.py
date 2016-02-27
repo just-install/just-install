@@ -17,12 +17,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+from __future__ import print_function
+
 import glob
 import os
 import shutil
 import sys
-from subprocess import check_call as call
 from subprocess import check_output as get_output
+from subprocess import check_call
 
 HERE = os.path.dirname(__file__)
 BUILD_DIR = os.path.join(HERE, "build")
@@ -87,6 +89,11 @@ def build():
 def build_msi():
     call(["candle", "just-install.wxs"])
     call(["light", "just-install.wixobj"])
+
+
+def call(args):
+    print("+", " ".join(args))
+    check_call(args)
 
 
 if __name__ == "__main__":

@@ -21,7 +21,6 @@ import glob
 import os
 import shutil
 import sys
-
 from subprocess import check_call as call
 from subprocess import check_output as get_output
 

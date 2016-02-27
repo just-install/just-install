@@ -120,9 +120,9 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\CrystalDiskInfo"
         },
-        "x86": "http://sourceforge.jp/frs/redir.php?m=jaist&f=/crystaldiskinfo/64337/CrystalDiskInfo6_7_3.zip"
+        "x86": "http://sourceforge.jp/frs/redir.php?m=jaist&f=/crystaldiskinfo/64337/CrystalDiskInfo6_7_5.zip"
       },
-      "version": "6.7.3"
+      "version": "6.7.5"
     },
     "cygwin": {
       "installer": {

@@ -34,6 +34,9 @@ else:
 
 
 def main():
+    if "APPVEYOR" in os.environ:
+        appveyor_setup()
+
     if sys.platform == "win32":
         switch_root()
 
@@ -42,6 +45,10 @@ def main():
 
     if sys.platform == "win32":
         build_msi()
+
+
+def appveyor_setup():
+    call(["go", "get", "github.com/tools/godep"])
 
 
 def switch_root():

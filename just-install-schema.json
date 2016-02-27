@@ -1,112 +1,126 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "definitions": {
-        "options": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "arguments": {
-                    "type": "array",
-                    "minItems": 1
-                },
-                "container": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "required": ["kind", "installer"],
-                    "properties": {
-                        "kind": {
-                            "type": "string",
-                            "enum": ["zip"]
-                        },
-                        "installer": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "destination": {
-                    "type": "string"
-                },
-                "extension": {
-                    "type": "string"
-                },
-                "shims": {
-                    "type": "array"
-                }
-            }
-        }
-    },
-    "required": ["version", "packages"],
-    "additionalProperties": false,
-    "properties": {
-        "version": {
-            "type": "integer",
-            "minimum": 3,
-            "maximum": 3
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "options": {
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "minItems": 1,
+          "type": "array"
         },
-        "packages": {
-            "type": "object",
-            "additionalProperties": false,
-            "patternProperties": {
-                "^[a-zA-Z0-9\\-\\+]+$": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "required": ["version", "installer"],
-                    "properties": {
-                        "version": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 64
-                        },
-                        "installer": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "required": ["kind", "x86"],
-                            "properties": {
-                                "kind": {
-                                    "type": "string",
-                                    "enum": [
-                                        "advancedinstaller",
-                                        "as-is",
-                                        "custom",
-                                        "easy_install_26",
-                                        "easy_install_27",
-                                        "innosetup",
-                                        "msi",
-                                        "nsis",
-                                        "zip"
-                                    ]
-                                },
-                                "options": {
-                                    "oneOf": [
-                                        {
-                                            "$ref": "#/definitions/options"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "x86": {
-                                                    "$ref": "#/definitions/options"
-                                                },
-                                                "x86_64": {
-                                                    "$ref": "#/definitions/options"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                },
-                                "x86": {
-                                    "type": "string"
-                                },
-                                "x86_64": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
+        "container": {
+          "additionalProperties": false,
+          "properties": {
+            "installer": {
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "zip"
+              ],
+              "type": "string"
             }
+          },
+          "required": [
+            "kind",
+            "installer"
+          ],
+          "type": "object"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "extension": {
+          "type": "string"
+        },
+        "shims": {
+          "type": "array"
         }
+      },
+      "type": "object"
     }
+  },
+  "properties": {
+    "packages": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-zA-Z0-9\\-\\+]+$": {
+          "additionalProperties": false,
+          "properties": {
+            "installer": {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "advancedinstaller",
+                    "as-is",
+                    "custom",
+                    "easy_install_26",
+                    "easy_install_27",
+                    "innosetup",
+                    "msi",
+                    "nsis",
+                    "zip"
+                  ],
+                  "type": "string"
+                },
+                "options": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/options"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "x86": {
+                          "$ref": "#/definitions/options"
+                        },
+                        "x86_64": {
+                          "$ref": "#/definitions/options"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                },
+                "x86": {
+                  "type": "string"
+                },
+                "x86_64": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "x86"
+              ],
+              "type": "object"
+            },
+            "version": {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "version",
+            "installer"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "version": {
+      "maximum": 3,
+      "minimum": 3,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "packages"
+  ],
+  "type": "object"
 }

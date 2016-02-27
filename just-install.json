@@ -120,7 +120,7 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\CrystalDiskInfo"
         },
-        "x86": "http://sourceforge.jp/frs/redir.php?m=jaist&f=/crystaldiskinfo/64337/CrystalDiskInfo6_7_5.zip"
+        "x86": "http://rwthaachen.dl.osdn.jp/crystaldiskinfo/64532/CrystalDiskInfo6_7_5-en.exe"
       },
       "version": "6.7.5"
     },

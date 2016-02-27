@@ -55,6 +55,7 @@
                   "enum": [
                     "advancedinstaller",
                     "as-is",
+                    "copy",
                     "custom",
                     "easy_install_26",
                     "easy_install_27",

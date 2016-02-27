@@ -273,9 +273,17 @@ func (e *registryEntry) install(installer string) {
 		}
 
 		system(args...)
+	case "copy":
+		destination := e.destination()
+
+		parentDir := filepath.Dir(destination)
+		log.Println("Creating", parentDir)
+		os.MkdirAll(parentDir, os.ModePerm)
+
+		log.Println("Copying to", destination)
+		dry.FileCopy(installer, destination)
 	case "zip":
-		destination := os.ExpandEnv(e.Installer.options()["destination"].(string))
-		destination = expandString(destination, nil)
+		destination := e.destination()
 
 		log.Println("Extracting to", destination)
 
@@ -283,6 +291,10 @@ func (e *registryEntry) install(installer string) {
 	default:
 		log.Fatalln("Unknown installer type:", e.Installer.Kind)
 	}
+}
+
+func (e *registryEntry) destination() string {
+	return expandString(os.ExpandEnv(e.Installer.options()["destination"].(string)), nil)
 }
 
 func (e *registryEntry) CreateShims() {

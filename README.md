@@ -86,7 +86,7 @@ necessary.
 
 ## Frequently Asked Questions
 
-### Why did you write this?
+### Why did you make this?
 
 I needed something to automate software installation on Windows VMs at my workplace. The
 alternatives at that time required either too much work to bootstrap themselves, were too slow,

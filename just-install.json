@@ -479,13 +479,6 @@
       },
       "version": "latest"
     },
-    "mingw-get": {
-      "installer": {
-        "kind": "as-is",
-        "x86": "http://sourceforge.net/projects/mingw/files/latest/download"
-      },
-      "version": "latest"
-    },
     "mono": {
       "installer": {
         "kind": "msi",

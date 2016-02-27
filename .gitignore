@@ -1,8 +1,9 @@
-.vagrant/
 *.exe
 *.msi
+*.sublime-workspace
 *.wixobj
 *.wixpdb
+.vagrant/
 build/
 dist/
 just-install

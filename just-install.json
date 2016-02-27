@@ -875,7 +875,7 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\SysInternals"
         },
-        "x86": "https://download.sysinternals.com/files/sysinternalssuite.zip"
+        "x86": "https://download.sysinternals.com/files/SysinternalsSuite.zip"
       },
       "version": "latest"
     },

@@ -175,6 +175,16 @@
       },
       "version": "2.2"
     },
+    "discord": {
+      "installer": {
+        "kind": "as-is",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://discordapp.com/api/download?platform=win"
+      },
+      "version": "latest"
+    },
     "dropbox": {
       "installer": {
         "kind": "custom",

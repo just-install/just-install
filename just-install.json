@@ -453,7 +453,7 @@
         "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
         "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
-      "version": "5.1.0"
+      "version": "5.1.1"
     },
     "lockhunter": {
       "installer": {
@@ -917,9 +917,10 @@
     "tortoisegit": {
       "installer": {
         "kind": "msi",
-        "x86": "http://tortoisegit.googlecode.com/files/TortoiseGit-{{.version}}-64bit.msi"
+        "x86": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-32bit.msi",
+        "x86_64": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-64bit.msi"
       },
-      "version": "1.8.3.0"
+      "version": "2.1.0.0"
     },
     "tortoisesvn": {
       "installer": {
@@ -960,9 +961,9 @@
     "virtualbox": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-104815-Win.exe"
+        "x86": "http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Win.exe"
       },
-      "version": "5.0.12"
+      "version": "5.0.16"
     },
     "visualcpp-express-2008": {
       "installer": {
@@ -988,7 +989,8 @@
     "vlc": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://get.videolan.org/vlc/{{.version}}/win32/vlc-{{.version}}-win32.exe"
+        "x86": "https://get.videolan.org/vlc/{{.version}}/win32/vlc-{{.version}}-win32.exe",
+        "x86_64": "https://get.videolan.org/vlc/{{.version}}/win64/vlc-{{.version}}-win64.exe"
       },
       "version": "2.2.2"
     },

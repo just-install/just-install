@@ -917,9 +917,10 @@
     "tortoisegit": {
       "installer": {
         "kind": "msi",
-        "x86": "http://tortoisegit.googlecode.com/files/TortoiseGit-{{.version}}-64bit.msi"
+        "x86": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-32bit.msi",
+        "x86_64": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-64bit.msi"
       },
-      "version": "1.8.3.0"
+      "version": "2.1.0.0"
     },
     "tortoisesvn": {
       "installer": {

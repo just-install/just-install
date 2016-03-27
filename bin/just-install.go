@@ -40,6 +40,10 @@ func main() {
 	app.Action = handleArguments
 
 	app.Commands = []cli.Command{{
+		Name:   "clean",
+		Usage:  "Remove caches and temporary files",
+		Action: handleCleanAction,
+	}, {
 		Name:   "list",
 		Usage:  "List all known packages",
 		Action: handleListAction,
@@ -93,6 +97,12 @@ func handleArguments(c *cli.Context) {
 		} else {
 			log.Println("WARNING: Unknown package", pkg)
 		}
+	}
+}
+
+func handleCleanAction(c *cli.Context) {
+	if err := justinstall.CleanTempDir(); err != nil {
+		log.Fatalln(err)
 	}
 }
 

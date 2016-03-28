@@ -540,13 +540,15 @@
           "arguments": [
             "{{.installer}}",
             "/password=QBfLKlvUg3KTPr",
+            "/privsep=1",
+            "/serveronly=1",
             "/NCRC",
             "/S"
           ]
         },
         "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe"
       },
-      "version": "7.1p1-1"
+      "version": "7.2p2-1-v1"
     },
     "origin": {
       "installer": {

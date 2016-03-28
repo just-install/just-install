@@ -18,6 +18,7 @@ var expectedContentTypes = []string{
 	"application/x-msi",
 	"application/x-zip-compressed",
 	"application/zip",
+	"binary/octet-stream",
 	"Composite Document File V2 Document, corrupt: Can't read SAT; charset=binary", // Google Code
 	"text/x-python", // PIP
 	"Zip Files",

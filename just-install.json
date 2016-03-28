@@ -619,9 +619,9 @@
     "pycharm-community": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://download.jetbrains.com/python/pycharm-community-{{.version}}.exe"
+        "x86": "https://download.jetbrains.com/python/pycharm-community-{{.version}}.exe"
       },
-      "version": "3.4.1"
+      "version": "2016.1"
     },
     "pyqt": {
       "installer": {

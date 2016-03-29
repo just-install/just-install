@@ -511,6 +511,22 @@
       },
       "version": "1.2.12"
     },
+    "nodejs": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
+        "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
+      },
+      "version": "5.9.1"
+    },
+    "nodejs-LTS": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
+        "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
+      },
+      "version": "4.4.1"
+    },
     "notepad++": {
       "installer": {
         "kind": "nsis",
@@ -540,13 +556,15 @@
           "arguments": [
             "{{.installer}}",
             "/password=QBfLKlvUg3KTPr",
+            "/privsep=1",
+            "/serveronly=1",
             "/NCRC",
             "/S"
           ]
         },
         "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe"
       },
-      "version": "7.1p1-1"
+      "version": "7.2p2-1-v1"
     },
     "origin": {
       "installer": {

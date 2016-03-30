@@ -511,6 +511,22 @@
       },
       "version": "1.2.12"
     },
+    "nodejs": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
+        "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
+      },
+      "version": "5.9.1"
+    },
+    "nodejs-LTS": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
+        "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
+      },
+      "version": "4.4.1"
+    },
     "notepad++": {
       "installer": {
         "kind": "nsis",

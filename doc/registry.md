@@ -51,7 +51,10 @@ This JSON object must contain at least the following two keys:
   - `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
     an installer within a .zip file or [extracts](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
     it to a destination directory.
-
+* `options`: A JSON object whose contents depend on the value of the `kind`, but other options are
+  applicable to all installer types:
+  - `extension`: Specify a custom extension for a file, in case `just-install` isn't able to
+    determine it by itself ([example](https://github.com/lvillani/just-install/blob/0a90135b8aaa4bdae65c63949673e57eed049294/just-install.json#L195-L208)).
 
 ## Shims
 

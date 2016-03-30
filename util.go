@@ -119,7 +119,24 @@ func crc32s(s string) string {
 	return fmt.Sprintf("%X", crc32.Sum32())
 }
 
-// Downloads a file with the HTTP/HTTPS protocol showing a progress bar. The destination file is
+// downloadTemp downloads a file to the machine's temporary directory.
+func downloadTemp(rawurl string, filename string, force bool) string {
+	ret := filepath.Join(tempPath, filename)
+
+	maybeDownload(rawurl, ret, force)
+	
+	return ret
+}
+
+// maybeDownload is a wrapper for download that doesn't re-download an existing file unless
+// forced.
+func maybeDownload(rawurl string, destinationPath string, force bool) {
+	if !dry.FileExists(destinationPath) || force {
+		download(rawurl, destinationPath)
+	}
+}
+
+// download a file with the HTTP/HTTPS protocol showing a progress bar. The destination file is
 // always overwritten.
 func download(rawurl string, destinationPath string) {
 	tempDestinationPath := destinationPath + ".tmp"

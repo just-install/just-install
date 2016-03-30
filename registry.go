@@ -229,7 +229,9 @@ func (e *registryEntry) DownloadInstaller(force bool) string {
 
 	log.Println(arch, "-", url)
 
-	if ext, ok := options["extension"]; ok {
+	if filename, ok := options["filename"]; ok {
+		return downloadTemp(url, filename.(string), force)
+	} else if ext, ok := options["extension"]; ok {
 		return download3(url, ext.(string), force)
 	}
 

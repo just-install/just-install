@@ -681,8 +681,7 @@
     "python26": {
       "installer": {
         "kind": "msi",
-        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi",
-        "x86_64": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.amd64.msi"
+        "x86": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
       },
       "version": "2.6.6"
     },
@@ -715,8 +714,7 @@
             "{{.SYSTEMDRIVE}}\\Python27\\pythonw.exe"
           ]
         },
-        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi",
-        "x86_64": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.amd64.msi"
+        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
       },
       "version": "2.7.11"
     },
@@ -1044,6 +1042,20 @@
       },
       "version": "5.0.16"
     },
+    "virtualbox-extpack": {
+      "installer": {
+        "kind": "custom",
+        "x86": "http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack",
+        "options": {
+          "arguments": [
+            "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe",
+            "extpack",
+            "install",
+            "--replace",
+            "{{.installer}}"
+          ],
+          "filename": "Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack"
+        }
       },
       "version": "5.0.16"
     },

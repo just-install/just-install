@@ -57,6 +57,8 @@ This JSON object must contain at least the following two keys:
   applicable to all installer types:
   - `extension`: Specify a custom extension for a file, in case `just-install` isn't able to
     determine it by itself ([example](https://github.com/lvillani/just-install/blob/0a90135b8aaa4bdae65c63949673e57eed049294/just-install.json#L195-L208)).
+  - `filename`: The complete name of the file that should be downloaded in the temporary
+    directory. When specified, this value takes precedence over `extension`.
 
 ## Shims
 

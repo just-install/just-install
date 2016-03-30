@@ -516,7 +516,7 @@
         "kind": "nsis",
         "x86": "https://notepad-plus-plus.org/repository/6.x/{{.version}}/npp.{{.version}}.Installer.exe"
       },
-      "version": "6.8.8"
+      "version": "6.9.1"
     },
     "npackd": {
       "installer": {

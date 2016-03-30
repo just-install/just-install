@@ -525,7 +525,7 @@
       },
       "version": "1.2.12"
     },
-    "nodejs": {
+    "node": {
       "installer": {
         "kind": "msi",
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
@@ -533,7 +533,7 @@
       },
       "version": "5.9.1"
     },
-    "nodejs-LTS": {
+    "node-lts": {
       "installer": {
         "kind": "msi",
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",

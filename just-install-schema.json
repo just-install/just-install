@@ -51,6 +51,9 @@
             "installer": {
               "additionalProperties": false,
               "properties": {
+                "interactive": {
+                  "type": "boolean"
+                },
                 "kind": {
                   "enum": [
                     "advancedinstaller",

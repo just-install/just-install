@@ -82,6 +82,30 @@ func handleArguments(c *cli.Context) {
 		}
 	}
 
+	// Check which packages might require an interactive installation
+	var interactive []string
+
+	for _, pkg := range c.Args() {
+		entry, ok := registry.Packages[pkg]
+		if !ok {
+			continue
+		}
+
+		if entry.Installer.Interactive {
+			interactive = append(interactive, pkg)
+		}
+	}
+
+	if len(interactive) > 0 {
+		log.Println("These packages might require user interaction to complete their installation")
+
+		for _, pkg := range interactive {
+			log.Println("    " + pkg)
+		}
+
+		log.Println("")
+	}
+
 	// Install packages
 	for _, pkg := range c.Args() {
 		entry, ok := registry.Packages[pkg]

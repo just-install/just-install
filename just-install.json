@@ -215,6 +215,7 @@
     },
     "eithermouse": {
       "installer": {
+        "interactive": true,
         "kind": "as-is",
         "x86": "http://www.eithermouse.com/EitherMouse Setup.exe"
       },

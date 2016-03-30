@@ -161,10 +161,11 @@ func downloadRegistry() {
 //
 
 type installerEntry struct {
-	Kind    string
-	X86     string
-	X86_64  string
-	Options map[string]interface{} // Optional
+	Interactive bool
+	Kind        string
+	Options     map[string]interface{} // Optional
+	X86         string
+	X86_64      string
 }
 
 // options returns the architecture-specific options (if available), otherwise returns the whole

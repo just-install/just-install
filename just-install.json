@@ -347,7 +347,7 @@
         "kind": "innosetup",
         "options": {
           "shims": [
-            "{{.PROGRAMFILES_X86}}\\Git\bin\\git.exe"
+            "{{.PROGRAMFILES_X86}}\\Git\\bin\\git.exe"
           ]
         },
         "x86": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-32-bit.exe",

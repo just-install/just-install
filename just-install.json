@@ -307,6 +307,13 @@
       },
       "version": "latest"
     },
+    "freefilesync": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://www.freefilesync.org/download/470az1ltd9rcjbb/FreeFileSync_{{.version}}_Windows_Setup.exe"
+      },
+      "version": "8.0"
+    },
     "gimp": {
       "installer": {
         "kind": "innosetup",

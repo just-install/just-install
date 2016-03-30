@@ -68,7 +68,7 @@
         "kind": "nsis",
         "x86": "http://www.cmake.org/files/v3.4/cmake-{{.version}}-win32-x86.exe"
       },
-      "version": "3.4.1"
+      "version": "3.5.1"
     },
     "colemak": {
       "installer": {

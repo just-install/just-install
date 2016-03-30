@@ -897,10 +897,10 @@
             "{{.PROGRAMFILES}}\\Sublime Text 3\\subl.exe"
           ]
         },
-        "x86": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build {{.version}} Setup.exe",
-        "x86_64": "http://c758482.r82.cf2.rackcdn.com/Sublime Text Build {{.version}} x64 Setup.exe"
+        "x86": "https://download.sublimetext.com/Sublime Text Build {{.version}} Setup.exe",
+        "x86_64": "https://download.sublimetext.com/Sublime Text Build {{.version}} x64 Setup.exe"
       },
-      "version": "3095"
+      "version": "3109"
     },
     "subversion": {
       "installer": {

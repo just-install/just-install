@@ -41,18 +41,16 @@ This JSON object must contain at least the following two keys:
   - `advancedinstaller`: Silently installs Advanced Installer packages;
   - `as-is`: Will just run the executable, as-is;
   - `copy`: Copy the file according to the `destination` parameter;
-  - `custom`: Allows you to specify how to call the installer ([example](https://github.com/lvillani
-    /just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L79-L101));
+  - `custom`: Allows you to specify how to call the installer
+    ([example](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L79-L101));
   - `easy_install26` and `easy_install_27`: used to install Python packages (the user must have
     installed Python 2.6 or Python 2.7 first);
   - `innosetup`: Silently installs InnoSetup packages;
   - `msi`: Silently installs Windows Installer packages;
   - `nsis`: Silently installs NSIS packages;
-  - `zip`: [Runs](https://github.com/lvillani/just-
-    install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78) an installer
-    within a .zip file or [extracts](https://github.com/lvillani/just-
-    install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231) it to a
-    destination directory.
+  - `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
+    an installer within a .zip file or [extracts](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
+    it to a destination directory.
 
 
 ## Shims
@@ -61,10 +59,10 @@ Shims are a way to easily add executables to the `%PATH%`. They are created only
 installed `exeproxy` (either through `just-install` itself or manually) and only if the package
 entry specifies some shims to create.
 
-Take, for example, the [Go entry](https://github.com/lvillani/just-
-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L336-L350): this will create
-three executables called `go.exe`, `godoc.exe` and `gofmt.exe` under `%SystemDrive%\Shims` that will
-forward any argument to the original file.
+Take, for example, the
+[Go entry](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L336-L350):
+this will create three executables called `go.exe`, `godoc.exe` and `gofmt.exe`
+under `%SystemDrive%\Shims` that will forward any argument to the original file.
 
 This way users don't have to add a directory for each installed software to their `%PATH%` since
 they can just add `%SystemDrive%\Shims`.

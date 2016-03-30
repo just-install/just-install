@@ -13,6 +13,7 @@ import (
 var expectedContentTypes = []string{
 	"application/octet-stream",
 	"application/unknown", // Bintray
+	"application/x-dosexec",
 	"application/x-msdos-program",
 	"application/x-msdownload",
 	"application/x-msi",

@@ -1034,7 +1034,16 @@
     "virtualbox": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-Win.exe"
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-105871-Win.exe",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
+            "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe"
+          ]
+        }
+      },
+      "version": "5.0.16"
+    },
       },
       "version": "5.0.16"
     },

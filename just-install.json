@@ -56,6 +56,13 @@
       },
       "version": "5.13"
     },
+    "clementine-player": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/clementine-player/Clementine/releases/download/{{.version}}/ClementineSetup-{{.version}}.exe"
+      },
+      "version": "1.2.3"
+    },
     "cmake": {
       "installer": {
         "kind": "nsis",

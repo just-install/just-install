@@ -669,7 +669,7 @@
             "{{.SYSTEMDRIVE}}\\Python27\\pythonw.exe"
           ]
         },
-        "x86": "http://python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
+        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
       },
       "version": "2.7.11"
     },
@@ -700,6 +700,19 @@
         "x86": "http://pyyaml.org/download/pyyaml/PyYAML-3.10.win32-py2.7.exe"
       },
       "version": "3.10"
+    },
+    "python3": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "-s"
+          ]
+        },
+        "x86": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}-amd64.exe"
+      },
+      "version": "3.5.1"
     },
     "qbittorrent": {
       "installer": {

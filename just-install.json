@@ -740,7 +740,8 @@
             "-s"
           ]
         },
-        "x86": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}-amd64.exe"
+        "x86": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}.exe"
+        "x86_64": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}-amd64.exe"
       },
       "version": "3.5.1"
     },
@@ -1006,10 +1007,10 @@
     "veracrypt": {
       "installer": {
         "kind": "as-is",
-        "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1537178&FileTime=130999181356070000&Build=21031",
         "options": {
           "extension": ".exe"
-        }
+        },
+        "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1537178&FileTime=130999181356070000&Build=21031"
       },
       "version": "1.17"
     },

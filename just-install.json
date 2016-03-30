@@ -990,6 +990,16 @@
       },
       "version": "1.8.1"
     },
+    "veracrypt": {
+      "installer": {
+        "kind": "as-is",
+        "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1537178&FileTime=130999181356070000&Build=21031",
+        "options": {
+          "extension": ".exe"
+        }
+      },
+      "version": "1.17"
+    },
     "virtualbox": {
       "installer": {
         "kind": "as-is",

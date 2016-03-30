@@ -322,6 +322,19 @@
       },
       "version": "8.0"
     },
+    "geforce-experience": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "-s"
+          ]
+        },
+        "x86": "http://us.download.nvidia.com/GFE/GFEClient/{{.version}}/GeForce_Experience_v{{.version}}.exe"
+      },
+      "version": "2.11.2.55"
+    },
     "gimp": {
       "installer": {
         "kind": "innosetup",

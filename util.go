@@ -80,15 +80,15 @@ func system(args ...string) {
 }
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
-func download2(rawurl string, force bool) string {
-	return download3(rawurl, "", force)
+func downloadAutoExt(rawurl string, force bool) string {
+	return downloadExt(rawurl, "", force)
 }
 
 // Downloads a file over HTTP(S) to a temporary location. The temporary file has a name derived
 // from the CRC32 of the URL string with the original file extension attached (if any). If `ext`
 // is not the empty string, it will be appended to the destination file. The file is re-downloaded
 // only if the temporary file is missing or `force` is true.
-func download3(rawurl string, ext string, force bool) string {
+func downloadExt(rawurl string, ext string, force bool) string {
 	u, err := url.Parse(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to parse the URL: %s", rawurl)

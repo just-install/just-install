@@ -232,10 +232,10 @@ func (e *registryEntry) DownloadInstaller(force bool) string {
 	if filename, ok := options["filename"]; ok {
 		return downloadTemp(url, filename.(string), force)
 	} else if ext, ok := options["extension"]; ok {
-		return download3(url, ext.(string), force)
+		return downloadExt(url, ext.(string), force)
 	}
 
-	return download2(url, force)
+	return downloadAutoExt(url, force)
 }
 
 func (e *registryEntry) installerURL(arch string) string {

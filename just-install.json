@@ -681,7 +681,8 @@
     "python26": {
       "installer": {
         "kind": "msi",
-        "x86": "https://www.python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
+        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi",
+        "x86_64": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.amd64.msi"
       },
       "version": "2.6.6"
     },
@@ -714,7 +715,8 @@
             "{{.SYSTEMDRIVE}}\\Python27\\pythonw.exe"
           ]
         },
-        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi"
+        "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi",
+        "x86_64": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.amd64.msi"
       },
       "version": "2.7.11"
     },

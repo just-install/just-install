@@ -3,6 +3,7 @@ package justinstall
 import (
 	"errors"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -55,8 +56,12 @@ func TestRegistryReachableLinks(t *testing.T) {
 			return errors.New("Status code wasn't 200 OK")
 		}
 
-		if !dry.StringInSlice(response.Header.Get("Content-Type"), expectedContentTypes) {
-			return errors.New("The content type was " + response.Header.Get("Content-Type"))
+		contentType := response.Header.Get("Content-Type")
+
+		success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"
+		success = success || dry.StringInSlice(contentType, expectedContentTypes)
+		if !success {
+			return errors.New("The content type was " + contentType)
 		}
 
 		return nil

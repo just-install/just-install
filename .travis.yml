@@ -1,7 +1,7 @@
 sudo: false
 language: go
 go:
-  - 1.5.2
+  - 1.6
 install:
   - go get github.com/tools/godep
 script:

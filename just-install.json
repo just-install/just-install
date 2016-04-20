@@ -659,9 +659,9 @@
     "processhacker": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-2.36-setup.exe"
+        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-{{.version}}-setup.exe"
       },
-      "version": "2.36"
+      "version": "2.39"
     },
     "putty": {
       "installer": {

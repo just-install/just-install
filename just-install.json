@@ -476,6 +476,13 @@
       },
       "version": "latest"
     },
+    "keepass": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://downloads.sourceforge.net/project/keepass/KeePass%202.x/{{.version}}/KeePass-{{.version}}-Setup.exe.exe"
+      },
+      "version": "2.32"
+    },
     "libreoffice": {
       "installer": {
         "kind": "msi",
@@ -652,9 +659,9 @@
     "processhacker": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-2.36-setup.exe"
+        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-{{.version}}-setup.exe"
       },
-      "version": "2.36"
+      "version": "2.39"
     },
     "putty": {
       "installer": {

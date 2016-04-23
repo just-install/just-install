@@ -318,9 +318,9 @@
     "freefilesync": {
       "installer": {
         "kind": "innosetup",
-        "x86": "https://www.freefilesync.org/download/470az1ltd9rcjbb/FreeFileSync_{{.version}}_Windows_Setup.exe"
+        "x86": "http://www.freefilesync.org/download/w2wvxxvauqfik7d/FreeFileSync_{{.version}}_Windows_Setup.exe"
       },
-      "version": "8.0"
+      "version": "8.1"
     },
     "geforce-experience": {
       "installer": {
@@ -546,7 +546,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "5.10.1"
+      "version": "5.11.0"
     },
     "node-lts": {
       "installer": {

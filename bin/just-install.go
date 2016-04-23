@@ -22,7 +22,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/codegangsta/cli"
 	"github.com/lvillani/just-install"
@@ -132,8 +131,11 @@ func handleCleanAction(c *cli.Context) {
 
 func handleListAction(c *cli.Context) {
 	registry := justinstall.SmartLoadRegistry(false)
+	packageNames := registry.SortedPackageNames()
 
-	fmt.Println(strings.Join(registry.SortedPackageNames(), "\n"))
+	for _, name := range packageNames {
+		fmt.Printf("%35v - %v\n", name, registry.Packages[name].Version)
+	}
 }
 
 func handleUpdateAction(c *cli.Context) {

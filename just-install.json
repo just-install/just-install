@@ -479,7 +479,7 @@
     "keepass": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://downloads.sourceforge.net/project/keepass/KeePass%202.x/{{.version}}/KeePass-{{.version}}-Setup.exe.exe"
+        "x86": "http://downloads.sourceforge.net/project/keepass/KeePass%202.x/{{.version}}/KeePass-{{.version}}-Setup.exe"
       },
       "version": "2.32"
     },

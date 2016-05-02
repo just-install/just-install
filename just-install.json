@@ -119,7 +119,7 @@
         "x86": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win.exe",
         "x86_64": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan-x64_{{.version}}_Win.exe"
       },
-      "version": "4.5.2"
+      "version": "4.6.0"
     },
     "crystaldisk-info": {
       "installer": {
@@ -127,9 +127,9 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\CrystalDiskInfo"
         },
-        "x86": "http://rwthaachen.dl.osdn.jp/crystaldiskinfo/64532/CrystalDiskInfo6_7_5-en.exe"
+        "x86": "http://tcpdiag.dl.osdn.jp/crystaldiskinfo/65634/CrystalDiskInfo6_8_2-en.exe"
       },
-      "version": "6.7.5"
+      "version": "6.8.2"
     },
     "cygwin": {
       "installer": {
@@ -424,9 +424,9 @@
     "innosetup": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://files.jrsoftware.org/is/5/isetup-{{.version}}-unicode.exe"
+        "x86": "http://files.jrsoftware.org/is/5/innosetup-{{.version}}-unicode.exe"
       },
-      "version": "5.5.5"
+      "version": "5.5.9"
     },
     "jdk": {
       "installer": {
@@ -553,7 +553,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "5.11.0"
+      "version": "6.0.0"
     },
     "node-lts": {
       "installer": {

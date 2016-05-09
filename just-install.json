@@ -102,9 +102,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160503.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160504.exe"
       },
-      "version": "16.05.03"
+      "version": "16.05.04"
     },
     "crashplan": {
       "installer": {
@@ -545,7 +545,7 @@
         "kind": "msi",
         "x86": "https://github.com/mumble-voip/mumble/releases/download/{{.version}}/mumble-{{.version}}.msi"
       },
-      "version": "1.2.15"
+      "version": "1.2.16"
     },
     "node": {
       "installer": {
@@ -553,7 +553,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.0.0"
+      "version": "6.1.0"
     },
     "node-lts": {
       "installer": {
@@ -561,7 +561,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "4.4.3"
+      "version": "4.4.4"
     },
     "notepad++": {
       "installer": {

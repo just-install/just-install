@@ -108,16 +108,9 @@
     },
     "crashplan": {
       "installer": {
-        "kind": "custom",
-        "options": {
-          "arguments": [
-            "{{.installer}}",
-            "/qn",
-            "CP_SILENT=true"
-          ]
-        },
-        "x86": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win.exe",
-        "x86_64": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan-x64_{{.version}}_Win.exe"
+        "kind": "msi",
+        "x86": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win.msi",
+        "x86_64": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win64.msi"
       },
       "version": "4.7.0"
     },

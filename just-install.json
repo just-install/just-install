@@ -499,8 +499,8 @@
             "{{.PROGRAMFILES}}\\Mercurial\\hg.exe"
           ]
         },
-        "x86": "https://mercurial.selenic.com/release/windows/mercurial-{{.version}}-x86.msi",
-        "x86_64": "https://mercurial.selenic.com/release/windows/mercurial-{{.version}}-x64.msi"
+        "x86": "http://mercurial.selenic.com/release/windows/mercurial-{{.version}}-x86.msi",
+        "x86_64": "http://mercurial.selenic.com/release/windows/mercurial-{{.version}}-x64.msi"
       },
       "version": "3.8.1"
     },

@@ -765,7 +765,7 @@
     "qbittorrent": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://iweb.dl.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-{{.version}}/qbittorrent_{{.version}}_setup.exe"
+        "x86": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-{{.version}}/qbittorrent_{{.version}}_setup.exe"
       },
       "version": "3.3.4"
     },

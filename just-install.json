@@ -21,7 +21,7 @@
         "options": {
           "extension": ".exe"
         },
-        "x86": "http://atom.io/download/windows"
+        "x86": "https://atom.io/download/windows"
       },
       "version": "latest"
     },
@@ -38,7 +38,7 @@
         "options": {
           "extension": ".exe"
         },
-        "x86": "http://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup-enGB.exe"
+        "x86": "https://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup-enGB.exe"
       },
       "version": "latest"
     },
@@ -145,8 +145,8 @@
             "wget"
           ]
         },
-        "x86": "http://cygwin.com/setup-x86.exe",
-        "x86_64": "http://cygwin.com/setup-x86_64.exe"
+        "x86": "https://cygwin.com/setup-x86.exe",
+        "x86_64": "https://cygwin.com/setup-x86_64.exe"
       },
       "version": "latest"
     },
@@ -375,7 +375,7 @@
         "kind": "msi",
         "x86": "https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={00000000-0000-0000-0000-000000000000}&lang=en&browser=3&usagestats=0&appname=Google%2520Chrome&needsadmin=prefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi"
       },
-      "version": "stable"
+      "version": "latest"
     },
     "gow": {
       "installer": {
@@ -730,7 +730,7 @@
     "python27-vc": {
       "installer": {
         "kind": "msi",
-        "x86": "http://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi"
+        "x86": "https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi"
       },
       "version": "latest"
     },
@@ -806,7 +806,7 @@
     "sdm": {
       "installer": {
         "kind": "msi",
-        "x86": "http://e5.onthehub.com/Static/Installers/SDM_EN.msi"
+        "x86": "https://e5.onthehub.com/Static/Installers/SDM_EN.msi"
       },
       "version": "latest"
     },
@@ -820,7 +820,7 @@
     "skype": {
       "installer": {
         "kind": "msi",
-        "x86": "http://www.skype.com/go/getskype-msi"
+        "x86": "https://www.skype.com/go/getskype-msi"
       },
       "version": "latest"
     },
@@ -857,7 +857,7 @@
     "sqlserver-express-2008": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe"
+        "x86": "https://download.microsoft.com/download/e/9/b/e9bcf5d7-2421-464f-94dc-0c694ba1b5a4/SQLEXPRADV_x86_ENU.exe"
       },
       "version": "latest"
     },
@@ -866,7 +866,7 @@
         "kind": "msi",
         "x86": "http://cdn.steampowered.com/download/SteamInstall.msi"
       },
-      "version": "stable"
+      "version": "latest"
     },
     "sublime-text": {
       "installer": {
@@ -956,7 +956,7 @@
     "teamviewer": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://download.teamviewer.com/download/TeamViewer_Setup.exe"
+        "x86": "https://download.teamviewer.com/download/TeamViewer_Setup.exe"
       },
       "version": "latest"
     },
@@ -999,9 +999,9 @@
         "options": {
           "extension": ".exe"
         },
-        "x86": "http://ubi.li/4vxt9"
+        "x86": "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UplayInstaller.exe"
       },
-      "version": "stable"
+      "version": "latest"
     },
     "upx": {
       "installer": {

@@ -779,9 +779,9 @@
     "rapidee": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://www.rapidee.com/download/archive/929/RapidEE_setup.exe"
+        "x86": "http://www.rapidee.com/download/RapidEE_setup.exe"
       },
-      "version": "8.0.929"
+      "version": "latest"
     },
     "resource-hacker": {
       "installer": {

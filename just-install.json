@@ -102,9 +102,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160609.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160612.exe"
       },
-      "version": "16.06.09"
+      "version": "16.06.12"
     },
     "crashplan": {
       "installer": {
@@ -153,7 +153,7 @@
     "defraggler": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://download.piriform.com/dfsetup221.exe"
+        "x86": "https://download.piriform.com/dfsetup221.exe"
       },
       "version": "2.21"
     },
@@ -331,7 +331,7 @@
     "gimp": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://download.gimp.org/mirror/pub/gimp/v2.8/windows/gimp-{{.version}}-setup.exe"
+        "x86": "https://download.gimp.org/mirror/pub/gimp/v2.8/windows/gimp-{{.version}}-setup-6.exe"
       },
       "version": "2.8.16"
     },
@@ -346,7 +346,7 @@
         "x86": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-32-bit.exe",
         "x86_64": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-64-bit.exe"
       },
-      "version": "2.8.4"
+      "version": "2.9.0"
     },
     "github": {
       "installer": {
@@ -409,8 +409,8 @@
     "inkscape": {
       "installer": {
         "kind": "msi",
-        "x86": "https://inkscape.org/en/gallery/item/3950/download/",
-        "x86_64": "https://inkscape.org/en/gallery/item/3956/download/"
+        "x86": "https://inkscape.org/en/gallery/item/3950/inkscape-{{.version}}.msi",
+        "x86_64": "https://inkscape.org/en/gallery/item/3956/inkscape-{{.version}}-x64.msi"
       },
       "version": "0.91"
     },
@@ -799,9 +799,10 @@
             "{{.SYSTEMDRIVE}}\\Ruby193\bin\rubyw.exe"
           ]
         },
-        "x86": "http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}.exe?direct"
+        "x86": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}.exe",
+        "x86_64": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}-x64.exe"
       },
-      "version": "1.9.3-p545"
+      "version": "2.3.0"
     },
     "sdm": {
       "installer": {
@@ -1034,7 +1035,7 @@
     "virtualbox": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-106931-Win.exe",
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-108108-Win.exe",
         "options": {
           "shims": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
@@ -1042,12 +1043,12 @@
           ]
         }
       },
-      "version": "5.0.20"
+      "version": "5.0.22"
     },
     "virtualbox-extpack": {
       "installer": {
         "kind": "custom",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-106931.vbox-extpack",
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-108108.vbox-extpack",
         "options": {
           "arguments": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe",
@@ -1059,7 +1060,7 @@
           "filename": "Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack"
         }
       },
-      "version": "5.0.20"
+      "version": "5.0.22"
     },
     "visualcpp-express-2008": {
       "installer": {

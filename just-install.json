@@ -546,7 +546,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.2.1"
+      "version": "6.2.2"
     },
     "node-lts": {
       "installer": {
@@ -952,7 +952,7 @@
         "x86": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win32-{{.version}}.exe",
         "x86_64": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win64-{{.version}}.exe"
       },
-      "version": "3.0.18.2"
+      "version": "3.0.19.1"
     },
     "teamviewer": {
       "installer": {

@@ -52,8 +52,8 @@ All notable changes to this project are documented in this file.
 ### Fixed
 
 * The devious owners of `amd.com`, `codeplex.com` and `java.oracle.com` put some lame safeguards
-  against hot-linking, which broke downloads from said websites. We have implemented some work
-  arounds to get downloads working again.
+  against hot-linking, which broke downloads from said websites. We have implemented some
+  workarounds to get downloads working again.
 
 
 
@@ -91,7 +91,7 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-* Added a new `extension` registry option to specify a custom extension to be appendend to
+* Added a new `extension` registry option to specify a custom extension to be appended to
   downloaded files.
 * The `%ProgramFiles%` and `%ProgramFiles(x86)%` environment variables get normalized at startup
   according to the scheme described in

@@ -11,7 +11,7 @@ A brief list of reasons for starting this project are available here:
   on the target system. No installer or complex script needed.
 * No other pre-requisites besides the operating system (no .NET runtime, or other runtime
   necessary)
-* Just download and run the installer (silently if possible). Do not ovverride installation
+* Just download and run the installer (silently if possible). Do not override installation
   paths or handle upgrades. This is the responsibility of the installer itself. If it
   is bugged, file a complaint with the upstream developer.
 * Do not alter the system in any way except for storing a local copy of the catalog and

@@ -13,6 +13,8 @@ Guidelines to follow:
 * For development libraries: prefer ones compiled with Visual Studio since it's the native
   toolchain on Windows.
 
+Please also consider adding an update rule for your new entry in the [just-install updater](https://github.com/guiweber/just-install-updater). That way, your entry will be updated whenever a new version of your application is released.
+
 # How To Test Changes Locally
 
 * To test the latest features, you can install the Beta version that gets automatically rebuilt after each commit on the master branch by running `msiexec /i http://beta.just-install.it`

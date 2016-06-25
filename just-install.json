@@ -482,7 +482,7 @@
         "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
         "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
-      "version": "5.1.3"
+      "version": "5.1.4"
     },
     "lockhunter": {
       "installer": {
@@ -554,7 +554,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "4.4.5"
+      "version": "4.4.6"
     },
     "notepad++": {
       "installer": {
@@ -952,7 +952,7 @@
         "x86": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win32-{{.version}}.exe",
         "x86_64": "http://dl.4players.de/ts/releases/{{.version}}/TeamSpeak3-Client-win64-{{.version}}.exe"
       },
-      "version": "3.0.19.1"
+      "version": "3.0.19.3"
     },
     "teamviewer": {
       "installer": {
@@ -989,10 +989,10 @@
     "tortoisesvn": {
       "installer": {
         "kind": "msi",
-        "x86": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26747-win32-svn-1.9.1.msi",
-        "x86_64": "http://downloads.sourceforge.net/project/tortoisesvn/{{.version}}/Application/TortoiseSVN-{{.version}}.26747-x64-svn-1.9.1.msi"
+        "x86": "https://sourceforge.net/projects/tortoisesvn/files/{{.version}}/Application/TortoiseSVN-{{.version}}.27285-win32-svn-{{.version}}.msi/download",
+        "x86_64": "https://sourceforge.net/projects/tortoisesvn/files/{{.version}}/Application/TortoiseSVN-{{.version}}.27285-x64-svn-{{.version}}.msi/download"
       },
-      "version": "1.9.1"
+      "version": "1.9.4"
     },
     "uplay": {
       "installer": {

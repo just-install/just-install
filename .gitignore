@@ -8,3 +8,4 @@ build/
 dist/
 just-install
 Vagrantfile.overrides.rb
+.DS_Store

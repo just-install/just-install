@@ -377,6 +377,13 @@
       },
       "version": "latest"
     },
+    "google-drive": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/drive/gsync_enterprise.msi"
+      },
+      "version": "latest"
+    },
     "gow": {
       "installer": {
         "kind": "nsis",

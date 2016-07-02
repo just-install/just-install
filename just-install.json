@@ -318,7 +318,7 @@
     "foobar2000": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://www.foobar2000.org/getfile/6e8eeb73b7b0f9373e99624b7da9e5d1/foobar2000_v{{.version}}.exe"
+        "x86": "http://www.foobar2000.org/files/ca94ac3f7c2009999f510347022d2378/foobar2000_v{{.version}}.exe"
       },
       "version": "1.3.10"
     },

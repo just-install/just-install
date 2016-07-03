@@ -580,17 +580,17 @@
     "npackd": {
       "installer": {
         "kind": "msi",
-        "x86": "https://windows-package-manager.googlecode.com/files/Npackd32-{{.version}}.msi",
-        "x86_64": "https://windows-package-manager.googlecode.com/files/Npackd64-{{.version}}.msi"
+        "x86": "https://github.com/tim-lebedkov/npackd-cpp/releases/download/version_{{.version}}/Npackd32-{{.version}}.msi",
+        "x86_64": "https://github.com/tim-lebedkov/npackd-cpp/releases/download/version_{{.version}}/Npackd64-{{.version}}.msi"
       },
-      "version": "1.18.7"
+      "version": "1.21.6"
     },
     "npackdcl": {
       "installer": {
         "kind": "msi",
-        "x86": "https://windows-package-manager.googlecode.com/files/NpackdCL-{{.version}}.msi"
+        "x86": "https://github.com/tim-lebedkov/npackd-cpp/releases/download/version_{{.version}}/NpackdCL-{{.version}}.msi"
       },
-      "version": "1.18.7"
+      "version": "1.21.6"
     },
     "openssh": {
       "installer": {
@@ -948,7 +948,7 @@
         "x86": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-386-v{{.version}}.zip",
         "x86_64": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-amd64-v{{.version}}.zip"
       },
-      "version": "0.13.9"
+      "version": "0.13.10"
     },
     "sysinternals": {
       "installer": {
@@ -998,7 +998,7 @@
         "x86": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-32bit.msi",
         "x86_64": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-64bit.msi"
       },
-      "version": "2.1.0.0"
+      "version": "2.2.0.0"
     },
     "tortoisesvn": {
       "installer": {

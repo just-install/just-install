@@ -483,6 +483,14 @@
       },
       "version": "0.10.5"
     },
+    "hipchat": {
+      "installer": {
+	    "interactive": true,
+        "kind": "innosetup",
+        "x86": "https://www.hipchat.com/downloads/latest/newqtwindows"
+      },
+      "version": "4.0.1645"
+    },
     "inkscape": {
       "installer": {
         "kind": "msi",
@@ -560,6 +568,14 @@
         "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
       "version": "5.1.4"
+    },
+    "lifesizecloud": {
+      "installer": {
+        "interactive": true,
+        "kind": "nsis",
+        "x86": "http://cdn.lifesizecloud.com/LifesizeCloud-{{.version}}-withDotNET451.exe"
+      },
+      "version": "10.2.242-0"
     },
     "lockhunter": {
       "installer": {

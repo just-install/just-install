@@ -491,6 +491,13 @@
       },
       "version": "0.10.5"
     },
+    "hashcheck": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/gurnec/HashCheck/releases/download/v{{.version}}/HashCheckSetup.exe"
+      },
+      "version": "2.3.1"
+    },
     "inkscape": {
       "installer": {
         "kind": "msi",

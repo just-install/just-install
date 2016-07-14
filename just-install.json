@@ -1049,6 +1049,14 @@
       },
       "version": "latest"
     },
+    "tightvnc": {
+      "installer": {
+        "kind": "msi",
+        "x86": "http://tightvnc.com/download/{{.version}}/tightvnc-{{.version}}-setup-32bit.msi",
+        "x86_64": "http://tightvnc.com/download/{{.version}}/tightvnc-{{.version}}-setup-64bit.msi"
+      },
+      "version": "2.7.10"
+    },
     "tomahawk": {
       "installer": {
         "kind": "nsis",

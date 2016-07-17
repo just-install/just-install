@@ -73,9 +73,9 @@
     "cmake": {
       "installer": {
         "kind": "msi",
-        "x86": "https://cmake.org/files/v3.5/cmake-{{.version}}-win32-x86.msi"
+        "x86": "https://cmake.org/files/v3.6/cmake-{{.version}}-win32-x86.msi"
       },
-      "version": "3.5.2"
+      "version": "3.6.0"
     },
     "colemak": {
       "installer": {
@@ -109,9 +109,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160619.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160710.exe"
       },
-      "version": "16.06.19"
+      "version": "16.07.10"
     },
     "crashplan": {
       "installer": {
@@ -312,7 +312,7 @@
         "kind": "nsis",
         "x86": "https://dl.sinew.in/windows/setup/EnpassSetup-{{.version}}.exe"
       },
-      "version": "5.2.0"
+      "version": "5.2.1"
     },
     "exeproxy": {
       "installer": {
@@ -390,7 +390,7 @@
         "kind": "innosetup",
         "x86": "http://www.freefilesync.org/download/FreeFileSync_{{.version}}_Windows_Setup.exe"
       },
-      "version": "8.2"
+      "version": "8.3"
     },
     "geforce-experience": {
       "installer": {
@@ -408,9 +408,9 @@
     "gimp": {
       "installer": {
         "kind": "innosetup",
-        "x86": "https://download.gimp.org/mirror/pub/gimp/v2.8/windows/gimp-{{.version}}-setup-6.exe"
+        "x86": "https://download.gimp.org/mirror/pub/gimp/v2.8/windows/gimp-{{.version}}-setup.exe"
       },
-      "version": "2.8.16"
+      "version": "2.8.18"
     },
     "git": {
       "installer": {
@@ -423,7 +423,7 @@
         "x86": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-32-bit.exe",
         "x86_64": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-64-bit.exe"
       },
-      "version": "2.9.0"
+      "version": "2.9.2"
     },
     "github": {
       "installer": {
@@ -594,7 +594,7 @@
         "x86": "https://www.mercurial-scm.org/release/windows/mercurial-{{.version}}-x86.msi",
         "x86_64": "https://www.mercurial-scm.org/release/windows/mercurial-{{.version}}-x64.msi"
       },
-      "version": "3.8.3"
+      "version": "3.8.4"
     },
     "microsoft-security-essentials": {
       "installer": {
@@ -638,7 +638,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.2.2"
+      "version": "6.3.0"
     },
     "node-lts": {
       "installer": {
@@ -894,7 +894,7 @@
         "x86": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}.exe",
         "x86_64": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}-x64.exe"
       },
-      "version": "2.3.0"
+      "version": "2.3.1"
     },
     "sdm": {
       "installer": {
@@ -1135,7 +1135,7 @@
     "virtualbox": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-108355-Win.exe",
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-108711-Win.exe",
         "options": {
           "shims": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
@@ -1143,12 +1143,12 @@
           ]
         }
       },
-      "version": "5.0.24"
+      "version": "5.1.0"
     },
     "virtualbox-extpack": {
       "installer": {
         "kind": "custom",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-108355.vbox-extpack",
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-108711.vbox-extpack",
         "options": {
           "arguments": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe",
@@ -1160,7 +1160,7 @@
           "filename": "Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack"
         }
       },
-      "version": "5.0.24"
+      "version": "5.1.0"
     },
     "visualcpp-express-2008": {
       "installer": {

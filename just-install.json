@@ -124,7 +124,7 @@
     "crystaldisk-info": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://tcpdiag.dl.osdn.jp/crystaldiskinfo/65980/CrystalDiskInfo7_0_0-en.exe"
+        "x86": "http://osdn.dl.osdn.jp/crystaldiskinfo/65980/CrystalDiskInfo7_0_0-en.exe"
       },
       "version": "7.0.0"
     },

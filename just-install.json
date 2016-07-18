@@ -73,7 +73,8 @@
     "cmake": {
       "installer": {
         "kind": "msi",
-        "x86": "https://cmake.org/files/v3.6/cmake-{{.version}}-win32-x86.msi"
+        "x86": "https://cmake.org/files/v3.6/cmake-{{.version}}-win32-x86.msi",
+        "x86_64": "https://cmake.org/files/v3.6/cmake-{{.version}}-win64-x64.msi"
       },
       "version": "3.6.0"
     },

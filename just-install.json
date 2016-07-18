@@ -1191,6 +1191,20 @@
       },
       "version": "2.2.4"
     },
+    "voicemeeter": {
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://vbaudio.jcedeveloppement.com/Download_CABLE/VoicemeeterSetup.exe"
+      },
+      "version": "latest"
+    },
+    "voicemeeter-banana": {
+      "installer": {
+        "kind": "as-is",
+        "x86": "http://vbaudio.jcedeveloppement.com/Download_CABLE/VoicemeeterProSetup.exe"
+      },
+      "version": "latest"
+    },
     "windirstat": {
       "installer": {
         "kind": "nsis",

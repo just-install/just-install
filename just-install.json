@@ -670,6 +670,13 @@
       },
       "version": "1.21.6"
     },
+    "obs-studio": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/jp9000/obs-studio/releases/download/{{.version}}/OBS-Studio-{{.version}}-With-Browser-Installer.exe"
+      },
+      "version": "0.15.2"
+    },
     "openssh": {
       "installer": {
         "kind": "custom",

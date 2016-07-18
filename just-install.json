@@ -882,6 +882,13 @@
       },
       "version": "latest"
     },
+    "recuva": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.piriform.com/rcsetup153.exe"
+      },
+      "version": "1.53.1087"
+    },
     "resource-hacker": {
       "installer": {
         "kind": "innosetup",

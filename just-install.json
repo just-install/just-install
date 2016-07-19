@@ -144,6 +144,13 @@
       },
       "version": "7.0.0"
     },
+    "crystaldisk-mark": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://osdn.dl.osdn.jp/crystaldiskmark/65730/CrystalDiskMark5_1_2-en.exe"
+      },
+      "version": "5.1.2"
+    },
     "cygwin": {
       "installer": {
         "kind": "custom",

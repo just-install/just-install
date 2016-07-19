@@ -62,6 +62,10 @@ func TestRegistryReachableLinks(t *testing.T) {
 
 		// Exception: VirtualBox Extension Pack have the wrong MIME type
 		success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"
+
+		// Exception: Some LibreOffice mirror returns the wrong MIME type
+		success = success || strings.Contains(rawurl, "libreoffice") && contentType == "application/x-troff-man"
+
 		success = success || dry.StringInSlice(contentType, expectedContentTypes)
 		if !success {
 			return errors.New("The content type was " + contentType)

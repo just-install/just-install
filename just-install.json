@@ -832,7 +832,7 @@
         "x86": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.msi",
         "x86_64": "https://python.org/ftp/python/{{.version}}/python-{{.version}}.amd64.msi"
       },
-      "version": "2.7.11"
+      "version": "2.7.12"
     },
     "python27-pil": {
       "installer": {

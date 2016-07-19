@@ -918,6 +918,13 @@
       },
       "version": "latest"
     },
+    "sharex": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/ShareX/ShareX/releases/download/v{{.version}}/ShareX-{{.version}}-setup.exe"
+      },
+      "version": "11.1.0"
+    },
     "sharpkeys": {
       "installer": {
         "kind": "msi",

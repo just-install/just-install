@@ -63,6 +63,13 @@
       },
       "version": "5.19"
     },
+    "chrome-remote-desktop-host": {
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/dl/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi"
+      },
+      "version": "latest"
+    },
     "clementine-player": {
       "installer": {
         "kind": "nsis",

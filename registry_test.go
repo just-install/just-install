@@ -60,6 +60,7 @@ func TestRegistryReachableLinks(t *testing.T) {
 
 		contentType := response.Header.Get("Content-Type")
 
+		// Exception: VirtualBox Extension Pack have the wrong MIME type
 		success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"
 		success = success || dry.StringInSlice(contentType, expectedContentTypes)
 		if !success {

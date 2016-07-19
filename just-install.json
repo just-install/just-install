@@ -15,6 +15,13 @@
       },
       "version": "16.02"
     },
+    "android-studio-bundle": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-143.2915827-windows.exe"
+      },
+      "version": "2.1.2.0"
+    },
     "android-studio": {
       "installer": {
         "kind": "nsis",

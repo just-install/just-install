@@ -46,6 +46,8 @@ func TestRegistryReachableLinks(t *testing.T) {
 	registry := SmartLoadRegistry(false)
 
 	checkLink := func(rawurl string) error {
+		t.Log(rawurl)
+
 		response, err := customGet(rawurl)
 		if err != nil {
 			return err

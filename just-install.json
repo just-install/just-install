@@ -576,6 +576,13 @@
       },
       "version": "2.34"
     },
+    "kodi": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://mirrors.kodi.tv/releases/win32/kodi-{{.version}}-Jarvis.exe"
+      },
+      "version": "16.1"
+    },
     "libreoffice": {
       "installer": {
         "kind": "msi",

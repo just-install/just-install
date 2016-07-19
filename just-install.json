@@ -308,13 +308,6 @@
       },
       "version": "24.5"
     },
-    "everything-search": {
-      "installer": {
-        "kind": "nsis",
-        "x86": "http://www.voidtools.com/Everything-{{.version}}.x86-Setup.exe"
-      },
-      "version": "1.3.4.686"
-    },
     "enpass": {
       "installer": {
         "kind": "nsis",
@@ -328,6 +321,13 @@
         "x86": "https://dl.sinew.in/beta/desktop/Enpass_Beta_{{.version}}_Setup.exe"
       },
       "version": "5.2.4"
+    },
+    "everything-search": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://www.voidtools.com/Everything-{{.version}}.x86-Setup.exe"
+      },
+      "version": "1.3.4.686"
     },
     "exeproxy": {
       "installer": {
@@ -1178,20 +1178,19 @@
     "virtualbox": {
       "installer": {
         "kind": "as-is",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-108711-Win.exe",
         "options": {
           "shims": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe"
           ]
-        }
+        },
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-108711-Win.exe"
       },
       "version": "5.1.0"
     },
     "virtualbox-extpack": {
       "installer": {
         "kind": "custom",
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-108711.vbox-extpack",
         "options": {
           "arguments": [
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe",
@@ -1201,7 +1200,8 @@
             "{{.installer}}"
           ],
           "filename": "Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack"
-        }
+        },
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-108711.vbox-extpack"
       },
       "version": "5.1.0"
     },

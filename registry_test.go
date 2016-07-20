@@ -46,7 +46,6 @@ func TestRegistryReachableLinks(t *testing.T) {
 	registry := SmartLoadRegistry(false)
 
 	checkLink := func(rawurl string) error {
-		t.Log(rawurl)
 
 		response, err := customGet(rawurl)
 		if err != nil {
@@ -55,6 +54,8 @@ func TestRegistryReachableLinks(t *testing.T) {
 		defer response.Body.Close()
 
 		if response.StatusCode != http.StatusOK {
+			t.Log(rawurl)
+
 			return errors.New("Status code wasn't 200 OK")
 		}
 
@@ -68,6 +69,8 @@ func TestRegistryReachableLinks(t *testing.T) {
 
 		success = success || dry.StringInSlice(contentType, expectedContentTypes)
 		if !success {
+			t.Log(rawurl)
+
 			return errors.New("The content type was " + contentType)
 		}
 

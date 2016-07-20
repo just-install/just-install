@@ -676,6 +676,15 @@
       },
       "version": "1.2.16"
     },
+    "mysql-workbench": {
+      "installer": {
+        "kind": "msi",
+        "x86": "http://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-{{.version}}-win32.msi",
+        
+        "x86_64": "http://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-{{.version}}-winx64.msi"
+      },
+      "version": "6.3.7"
+    },  
     "node": {
       "installer": {
         "kind": "msi",

@@ -18,6 +18,7 @@ var expectedContentTypes = []string{
 	"application/x-msdos-program",
 	"application/x-msdownload",
 	"application/x-msi",
+	"application/x-sdlc", // Oracle
 	"application/x-zip-compressed",
 	"application/zip",
 	"binary/octet-stream",

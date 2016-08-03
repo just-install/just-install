@@ -333,7 +333,7 @@
     "enpass": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.sinew.in/windows/setup/EnpassSetup-{{.version}}.exe"
+        "x86": "https://dl.sinew.in/windows/setup/5-3-0/Enpass_Setup.exe"
       },
       "version": "5.3.0"
     },

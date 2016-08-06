@@ -685,6 +685,17 @@
       },
       "version": "6.3.7"
     },
+    "nircmd": {
+      "installer": {
+        "kind": "zip",
+        "options": {
+          "destination": "{{.PROGRAMFILES}}\\NirCmd"
+        },
+        "x86": "http://nirsoft.net/utils/nircmd.zip",
+        "x86_64": "http://nirsoft.net/utils/nircmd-x64.zip"
+      },
+      "version": "latest"
+    },
     "node": {
       "installer": {
         "kind": "msi",

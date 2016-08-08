@@ -760,13 +760,7 @@
     },
     "origin": {
       "installer": {
-        "kind": "custom",
-        "options": {
-          "arguments": [
-            "{{.installer}}",
-            "-s"
-          ]
-        },
+        "kind": "innosetup",
         "x86": "https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe"
       },
       "version": "latest"

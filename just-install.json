@@ -1030,7 +1030,7 @@
         "kind": "advancedinstaller",
         "x86": "https://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
       },
-      "version": "1.9.5.0"
+      "version": "1.9.6.1"
     },
     "spotify": {
       "installer": {

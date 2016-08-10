@@ -628,6 +628,13 @@
       },
       "version": "3-1-1"
     },
+    "malwarebytes": {
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://data-cdn.mbamupdates.com/web/mbam-setup-{{.version}}.exe"
+      },
+      "version": "2.2.1.1043"
+    },
     "mercurial": {
       "installer": {
         "kind": "msi",

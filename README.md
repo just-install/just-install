@@ -66,22 +66,18 @@ To contribute a new package see: [CONTRIBUTING.md](CONTRIBUTING.md)
 To work on just-install itself you will need to install and set-up:
 
 * The [Go](https://golang.org/) compiler;
-* [godep](https://github.com/tools/godep).
+* [Python 2.7](https://python.org/)
+* [WiX Toolset](http://wixtoolset.org/)
+
+**TIP**: You can install those with just-install itself by running:
+
+    just-install go python27 wix
 
 Once you have done so run:
 
-    go get https://github.com/lvillani/just-install
-
-This will place just-install's source code to its appropriate place below the `$GOPATH`. Once you
-have done that, go to `$GOPATH/src/github.com/lvillani/just-install` and run:
-
-    godep go build bin/just-install.go
+    python build.py
 
 This will produce `just-install.exe` in the current working directory.
-
-**NOTE**: `build.py` is used to publish a new release, you can safely ignore that. Also note that
-this project is being developed on Linux/OS X machine and cross-compiled to Windows only if/when
-necessary.
 
 
 ## Frequently Asked Questions

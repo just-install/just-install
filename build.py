@@ -36,8 +36,7 @@ else:
 
 
 def main():
-    if "APPVEYOR" in os.environ:
-        appveyor_setup()
+    setup()
 
     if sys.platform == "win32":
         switch_root()
@@ -49,7 +48,7 @@ def main():
         build_msi()
 
 
-def appveyor_setup():
+def setup():
     call("go", "get", "github.com/kardianos/govendor")
     call("govendor", "sync")
 

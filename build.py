@@ -50,8 +50,8 @@ def main():
 
 
 def appveyor_setup():
-    call(["go", "get", "github.com/kardianos/govendor"])
-    call(["govendor", "sync"])
+    call("go", "get", "github.com/kardianos/govendor")
+    call("govendor", "sync")
 
 
 def switch_root():
@@ -84,16 +84,16 @@ def build():
     version = get_output(["git", "describe", "--tags"])
 
     os.environ["JustInstallVersion"] = version[1:6]
-    call(["go", "test", "-v"])
-    call(["go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin"])
+    call("go", "test", "-v")
+    call("go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin")
 
 
 def build_msi():
-    call(["candle", "just-install.wxs"])
-    call(["light", "just-install.wixobj"])
+    call("candle", "just-install.wxs")
+    call("light", "just-install.wixobj")
 
 
-def call(args):
+def call(*args):
     print("+", " ".join(args))
     check_call(args)
 

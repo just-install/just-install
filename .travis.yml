@@ -1,9 +1,0 @@
-sudo: false
-language: go
-go:
-  - 1.6
-install:
-  - go get github.com/tools/godep
-script:
-  - godep go build -o just-install ./bin
-  - travis_wait godep go test -v

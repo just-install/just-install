@@ -3,9 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "9mCBr9M68W1ZM13FrRGqxXLim1E=",
+			"checksumSHA1": "f4UJKXymPS31lDRMfsmPA4PvwVw=",
 			"path": "github.com/cheggaaa/pb",
-			"revision": "467c52dcaefb4913d1feb16f6a771777c9613a64"
+			"revision": "6e9d17711bb763b26b68b3931d47f24c1323abab",
+			"revisionTime": "2016-08-12T10:57:48Z"
 		},
 		{
 			"checksumSHA1": "h9Hif0baLSD2OAv4njZwEmvfDKg=",
@@ -18,40 +19,59 @@
 			"revision": "467c52dcaefb4913d1feb16f6a771777c9613a64"
 		},
 		{
-			"checksumSHA1": "/WGkH6SVDcp01v+Ud2vsWroCZ+M=",
+			"checksumSHA1": "N2pkrPn8BpFTyRfHT2Z1U9xZQ6k=",
 			"comment": "1.2.0-95-g9b2bd2b",
 			"path": "github.com/codegangsta/cli",
-			"revision": "9b2bd2b3489748d4d0a204fa4eb2ee9e89e0ebc6"
+			"revision": "05fe449c81eb7305a34e9253c321c960a1c5e057",
+			"revisionTime": "2016-08-23T15:25:51Z"
+		},
+		{
+			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "6cf5744a041a0022271cefed95ba843f6d87fd51",
+			"revisionTime": "2016-08-16T17:40:47Z"
 		},
 		{
 			"checksumSHA1": "ME/pGEOHOup7qYN4NvW+M6+hUyg=",
 			"path": "github.com/olekukonko/ts",
-			"revision": "ecf753e7c962639ab5a1fb46f7da627d4c0a04b8"
+			"revision": "ecf753e7c962639ab5a1fb46f7da627d4c0a04b8",
+			"revisionTime": "2014-04-12T22:01:45Z"
 		},
 		{
-			"checksumSHA1": "beG6bT1L4nxjfgeduKiK/l7QNYI=",
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
+			"revisionTime": "2016-01-10T10:55:54Z"
+		},
+		{
+			"checksumSHA1": "iydUphwYqZRq3WhstEdGsbvBAKs=",
 			"path": "github.com/stretchr/testify/assert",
-			"revision": "efa3c4c36479edac5af79cbcb4bc8cb525e09b13"
+			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
+			"revisionTime": "2016-06-15T09:26:46Z"
 		},
 		{
-			"checksumSHA1": "0EsrjP+X7w4NzHxvEmMxZ7ZCpaw=",
+			"checksumSHA1": "pcMltlD/XsHn2voMc8opx6+93Lo=",
 			"path": "github.com/ungerik/go-dry",
-			"revision": "82f64989aa835f66dabc1384bef63b8a69d5b324"
+			"revision": "6ce726ec33b799d9d18e82926dbf4eb30642a951",
+			"revisionTime": "2016-04-11T12:12:01Z"
 		},
 		{
-			"checksumSHA1": "Itn3hf2g7yqwqdHixJ+0tfXNCrM=",
+			"checksumSHA1": "drSl/ipSHSsHWWTrp3WZw4LN/No=",
 			"path": "github.com/xeipuuv/gojsonpointer",
-			"revision": "636edb2500d21f2ed09ea96a00deb36bbd07cf70"
+			"revision": "e0fe6f68307607d540ed8eac07a342c33fa1b54a",
+			"revisionTime": "2015-10-27T08:21:46Z"
 		},
 		{
-			"checksumSHA1": "z82Ob+xaueW96zXUmF4R31y4r6E=",
+			"checksumSHA1": "pSoUW+qY6LwIJ5lFwGohPU5HUpg=",
 			"path": "github.com/xeipuuv/gojsonreference",
-			"revision": "2df3c0c802434c5cb984dbc21425f5960bda4d16"
+			"revision": "e02fc20de94c78484cd5ffb007f8af96be030a45",
+			"revisionTime": "2015-08-08T06:50:54Z"
 		},
 		{
-			"checksumSHA1": "CFj+ci4DC2seA51+zFAcUZaO+tE=",
+			"checksumSHA1": "AfFjQ6gxdEIdmAMfLQ1P4049geE=",
 			"path": "github.com/xeipuuv/gojsonschema",
-			"revision": "71b85f61a135e79143f3d3238d5175a4f29b6689"
+			"revision": "4f624f6197547606054e042e7903db103585e151",
+			"revisionTime": "2016-08-11T07:09:01Z"
 		}
 	],
 	"rootPath": "github.com/lvillani/just-install"

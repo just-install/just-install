@@ -21,7 +21,6 @@ from __future__ import print_function
 
 import glob
 import os
-import shutil
 import sys
 from subprocess import check_output as get_output
 from subprocess import check_call
@@ -37,10 +36,6 @@ else:
 
 def main():
     setup()
-
-    if sys.platform == "win32":
-        switch_root()
-
     clean()
     build()
 
@@ -51,17 +46,6 @@ def main():
 def setup():
     call("go", "get", "github.com/kardianos/govendor")
     call("govendor", "sync")
-
-
-def switch_root():
-    # Git on Windows can't work with NTFS symlinks: we won't be able to use "git describe --tags"
-    # later in the build. We work around the issue by copying the whole source tree in a real
-    # directory, where Git can work.
-    if os.path.isdir(BUILD_DIR):
-        shutil.rmtree(BUILD_DIR)
-
-    shutil.copytree(".", BUILD_DIR)
-    os.chdir(BUILD_DIR)
 
 
 def clean():

@@ -50,7 +50,8 @@ def main():
 
 
 def appveyor_setup():
-    call(["go", "get", "github.com/tools/godep"])
+    call(["go", "get", "github.com/kardianos/govendor"])
+    call(["govendor", "sync"])
 
 
 def switch_root():
@@ -83,7 +84,7 @@ def build():
     version = get_output(["git", "describe", "--tags"])
 
     os.environ["JustInstallVersion"] = version[1:6]
-    call(["godep", "go", "build", "-o", EXE, "-ldflags", "-X main.version " + version, "./bin"])
+    call(["go", "build", "-o", EXE, "-ldflags", "-X main.version " + version, "./bin"])
 
 
 def build_msi():

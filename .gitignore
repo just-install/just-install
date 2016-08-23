@@ -1,11 +1,12 @@
+.DS_Store
+.vagrant/
 *.exe
 *.msi
 *.sublime-workspace
 *.wixobj
 *.wixpdb
-.vagrant/
 build/
 dist/
 just-install
 Vagrantfile.overrides.rb
-.DS_Store
+vendor/*/

@@ -98,7 +98,8 @@ memorable command, was self-contained, and could be launched from an unattended 
   that you can finally install Chocolatey itself.
 * Ninite is great but it's closed source and there's no obvious way to add a custom package.
 * Npackd is probably the most promising of the bunch, but the last time I tried it, it wanted to do
-  some funny stuff such as handling un-installations and it had a tendency to shuffle files around.
+  some funny stuff such as handling un-installations and it had a tendency to move files around
+  with subsequent re-installations of the same package.
 
 I wanted something simple, something that would download an installer and run it silently. That's
 why I wrote just-install. You can find a complete rationale

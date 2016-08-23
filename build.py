@@ -85,6 +85,7 @@ def build():
 
     os.environ["JustInstallVersion"] = version[1:6]
     call(["go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin"])
+    call(["go", "test", "-v"])
 
 
 def build_msi():

@@ -84,8 +84,8 @@ def build():
     version = get_output(["git", "describe", "--tags"])
 
     os.environ["JustInstallVersion"] = version[1:6]
-    call(["go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin"])
     call(["go", "test", "-v"])
+    call(["go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin"])
 
 
 def build_msi():

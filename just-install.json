@@ -631,9 +631,12 @@
     "malwarebytes": {
       "installer": {
         "kind": "innosetup",
-        "x86": "https://data-cdn.mbamupdates.com/web/mbam-setup-{{.version}}.exe"
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://downloads.malwarebytes.com/file/mbam_current/"
       },
-      "version": "2.2.1.1043"
+      "version": "latest"
     },
     "mercurial": {
       "installer": {

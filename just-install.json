@@ -479,8 +479,8 @@
             "{{.SYSTEMDRIVE}}\\Go\bin\\gofmt.exe"
           ]
         },
-        "x86": "https://storage.googleapis.com/golang/go{{.version}}.windows-amd64.msi",
-        "x86_64": "https://storage.googleapis.com/golang/go{{.version}}.windows-386.msi"
+        "x86": "https://storage.googleapis.com/golang/go{{.version}}.windows-386.msi",
+        "x86_64": "https://storage.googleapis.com/golang/go{{.version}}.windows-amd64.msi"
       },
       "version": "1.7"
     },

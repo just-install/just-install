@@ -10,10 +10,10 @@
     "7zip": {
       "installer": {
         "kind": "msi",
-        "x86": "http://www.7-zip.org/a/7z1602.msi",
-        "x86_64": "http://www.7-zip.org/a/7z1602-x64.msi"
+        "x86": "http://www.7-zip.org/a/7z1604.msi",
+        "x86_64": "http://www.7-zip.org/a/7z1604-x64.msi"
       },
-      "version": "16.02"
+      "version": "16.04"
     },
     "android-studio-bundle": {
       "installer": {
@@ -69,7 +69,7 @@
         "x86": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-{{.version}}.msi",
         "x86_64": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-64bit-{{.version}}.msi"
       },
-      "version": "2.68.0"
+      "version": "2.69.0"
     },
     "ccleaner": {
       "installer": {
@@ -132,9 +132,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.160914.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161002.exe"
       },
-      "version": "16.09.14"
+      "version": "16.10.02"
     },
     "crashplan": {
       "installer": {
@@ -246,10 +246,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Android"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-android-neon-R-incubation-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-android-neon-R-incubation-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-android-neon-1-incubation-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-android-neon-1-incubation-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eclipse-committers": {
       "installer": {
@@ -257,10 +257,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Committers"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-committers-neon-R-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-committers-neon-R-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-committers-neon-1-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-committers-neon-1-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eclipse-cpp": {
       "installer": {
@@ -268,10 +268,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-CPP"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-cpp-neon-R-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-cpp-neon-R-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-cpp-neon-1-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-cpp-neon-1-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eclipse-java": {
       "installer": {
@@ -279,10 +279,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Java"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-java-neon-R-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-java-neon-R-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-java-neon-1-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-java-neon-1-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eclipse-jee": {
       "installer": {
@@ -290,10 +290,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-JEE"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-jee-neon-R-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-jee-neon-R-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-jee-neon-1-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-jee-neon-1-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eclipse-php": {
       "installer": {
@@ -301,10 +301,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-PHP"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-php-neon-R-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/R/eclipse-php-neon-R-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-php-neon-1-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1/eclipse-php-neon-1-win32-x86_64.zip&r=1"
       },
-      "version": "4.6"
+      "version": "4.6.1"
     },
     "eithermouse": {
       "installer": {
@@ -460,7 +460,7 @@
         "x86": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-32-bit.exe",
         "x86_64": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-64-bit.exe"
       },
-      "version": "2.10.0"
+      "version": "2.10.1"
     },
     "github": {
       "installer": {
@@ -619,7 +619,7 @@
         "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
         "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
-      "version": "5.2.1"
+      "version": "5.2.2"
     },
     "lockhunter": {
       "installer": {
@@ -712,7 +712,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.6.0"
+      "version": "6.7.0"
     },
     "node-lts": {
       "installer": {
@@ -720,7 +720,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "4.5.0"
+      "version": "4.6.0"
     },
     "notepad++": {
       "installer": {
@@ -1122,7 +1122,7 @@
         "x86": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-386-v{{.version}}.zip",
         "x86_64": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-amd64-v{{.version}}.zip"
       },
-      "version": "0.14.7"
+      "version": "0.14.8"
     },
     "sysinternals": {
       "installer": {
@@ -1180,7 +1180,7 @@
         "x86": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-32bit.msi",
         "x86_64": "https://download.tortoisegit.org/tgit/{{.version}}/TortoiseGit-{{.version}}-64bit.msi"
       },
-      "version": "2.2.0.0"
+      "version": "2.3.0.0"
     },
     "tortoisesvn": {
       "installer": {

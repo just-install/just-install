@@ -5,7 +5,7 @@
         "kind": "innosetup",
         "x86": "https://d13itkw33a7sus.cloudfront.net/dist/1P/win4/1Password-{{.version}}.exe"
       },
-      "version": "4.6.0.604"
+      "version": "4.6.1.616"
     },
     "7zip": {
       "installer": {
@@ -18,16 +18,16 @@
     "android-studio-bundle": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3276617-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3330264-windows.exe"
       },
-      "version": "2.2.0.12"
+      "version": "2.2.1.0"
     },
     "android-studio-ide": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3276617-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3330264-windows.exe"
       },
-      "version": "2.2.0.12"
+      "version": "2.2.1.0"
     },
     "atom": {
       "installer": {
@@ -132,9 +132,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161002.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161009a.exe"
       },
-      "version": "16.10.02"
+      "version": "16.10.09a"
     },
     "crashplan": {
       "installer": {
@@ -142,21 +142,21 @@
         "x86": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win.msi",
         "x86_64": "https://download.code42.com/installs/win/install/CrashPlan/jre/CrashPlan_{{.version}}_Win64.msi"
       },
-      "version": "4.7.0"
+      "version": "4.8.0"
     },
     "crystaldisk-info": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://osdn.dl.osdn.jp/crystaldiskinfo/65980/CrystalDiskInfo7_0_3-en.exe"
+        "x86": "http://osdn.dl.osdn.jp/crystaldiskinfo/65980/CrystalDiskInfo7_0_4-en.exe"
       },
-      "version": "7.0.3"
+      "version": "7.0.4"
     },
     "crystaldisk-mark": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://osdn.dl.osdn.jp/crystaldiskmark/65730/CrystalDiskMark5_1_2-en.exe"
+        "x86": "http://osdn.dl.osdn.jp/crystaldiskmark/66553/CrystalDiskMark5_2_0-en.exe"
       },
-      "version": "5.1.2"
+      "version": "5.2.0"
     },
     "cygwin": {
       "installer": {
@@ -440,7 +440,7 @@
         },
         "x86": "http://us.download.nvidia.com/GFE/GFEClient/{{.version}}/GeForce_Experience_v{{.version}}.exe"
       },
-      "version": "3.0.6.48"
+      "version": "3.0.7.34"
     },
     "gimp": {
       "installer": {
@@ -649,7 +649,7 @@
         "x86": "https://www.mercurial-scm.org/release/windows/mercurial-{{.version}}-x86.msi",
         "x86_64": "https://www.mercurial-scm.org/release/windows/mercurial-{{.version}}-x64.msi"
       },
-      "version": "3.9.1"
+      "version": "3.9.2"
     },
     "microsoft-security-essentials": {
       "installer": {

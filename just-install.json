@@ -1016,19 +1016,6 @@
       },
       "version": "latest"
     },
-    "smartkey": {
-      "installer": {
-        "kind": "msi",
-        "options": {
-          "container": {
-            "installer": "SmartKeyDriversInstaller.msi",
-            "kind": "zip"
-          }
-        },
-        "x86": "http://c3.safenet-inc.com/downloads/D/E/DEC51CE3-A053-446A-8047-2C7D9BAFDFD2/Driver_Installation_SDI.zip"
-      },
-      "version": "12.1.0.0"
-    },
     "sourcetree": {
       "installer": {
         "kind": "advancedinstaller",

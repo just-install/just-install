@@ -13,7 +13,7 @@ Guidelines to follow:
 * For development libraries: prefer ones compiled with Visual Studio since it's the native
   toolchain on Windows.
 
-Please also consider adding an update rule for your new entry in the [just-install updater](https://github.com/guiweber/just-install-updater). That way, your entry will be updated whenever a new version of your application is released.
+:warning: Please also consider adding an update rule for your new entry in the [just-install updater](https://github.com/guiweber/just-install-updater) so that your entry can be automatically updated whenever a new version of your application is released.
 
 # How To Test Changes Locally
 

@@ -18,16 +18,16 @@
     "android-studio-bundle": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3330264-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3360264-windows.exe"
       },
-      "version": "2.2.1.0"
+      "version": "2.2.2.0"
     },
     "android-studio-ide": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3330264-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3360264-windows.exe"
       },
-      "version": "2.2.1.0"
+      "version": "2.2.2.0"
     },
     "atom": {
       "installer": {
@@ -74,9 +74,9 @@
     "ccleaner": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://download.piriform.com/ccsetup522.exe"
+        "x86": "https://download.piriform.com/ccsetup523.exe"
       },
-      "version": "5.22"
+      "version": "5.23"
     },
     "chrome-remote-desktop-host": {
       "installer": {
@@ -440,7 +440,7 @@
         },
         "x86": "http://us.download.nvidia.com/GFE/GFEClient/{{.version}}/GeForce_Experience_v{{.version}}.exe"
       },
-      "version": "3.0.7.34"
+      "version": "3.1.0.44"
     },
     "gimp": {
       "installer": {
@@ -482,7 +482,7 @@
         "x86": "https://storage.googleapis.com/golang/go{{.version}}.windows-amd64.msi",
         "x86_64": "https://storage.googleapis.com/golang/go{{.version}}.windows-386.msi"
       },
-      "version": "1.7.1"
+      "version": "1.7.3"
     },
     "google-chrome": {
       "installer": {
@@ -587,10 +587,10 @@
             "/s"
           ]
         },
-        "x86": "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=211997",
-        "x86_64": "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=211999"
+        "x86": "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=216432",
+        "x86_64": "http://javadl.oracle.com/webapps/download/AutoDL?BundleId=216434"
       },
-      "version": "8.101"
+      "version": "8.111"
     },
     "just-install": {
       "installer": {
@@ -712,7 +712,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.8.1"
+      "version": "6.9.1"
     },
     "node-lts": {
       "installer": {
@@ -720,7 +720,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "4.6.0"
+      "version": "4.6.1"
     },
     "notepad++": {
       "installer": {
@@ -1109,7 +1109,7 @@
         "x86": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-386-v{{.version}}.zip",
         "x86_64": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-amd64-v{{.version}}.zip"
       },
-      "version": "0.14.8"
+      "version": "0.14.9"
     },
     "sysinternals": {
       "installer": {
@@ -1224,9 +1224,9 @@
             "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe"
           ]
         },
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-110634-Win.exe"
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/VirtualBox-{{.version}}-111374-Win.exe"
       },
-      "version": "5.1.6"
+      "version": "5.1.8"
     },
     "virtualbox-extpack": {
       "installer": {
@@ -1241,9 +1241,9 @@
           ],
           "filename": "Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack"
         },
-        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-110634.vbox-extpack"
+        "x86": "http://download.virtualbox.org/virtualbox/{{.version}}/Oracle_VM_VirtualBox_Extension_Pack-{{.version}}-111374.vbox-extpack"
       },
-      "version": "5.1.6"
+      "version": "5.1.8"
     },
     "visualcpp-express-2008": {
       "installer": {

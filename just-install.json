@@ -1266,6 +1266,16 @@
       },
       "version": "2013"
     },
+    "visual-studio-code": {
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://go.microsoft.com/fwlink/?LinkID=623230"
+      },
+      "version": "latest"
+    },
     "vlc": {
       "installer": {
         "kind": "nsis",

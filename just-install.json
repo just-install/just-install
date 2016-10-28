@@ -427,7 +427,7 @@
         "kind": "innosetup",
         "x86": "http://www.freefilesync.org/download/FreeFileSync_{{.version}}_Windows_Setup.exe"
       },
-      "version": "8.5"
+      "version": "8.6"
     },
     "geforce-experience": {
       "installer": {
@@ -440,7 +440,7 @@
         },
         "x86": "http://us.download.nvidia.com/GFE/GFEClient/{{.version}}/GeForce_Experience_v{{.version}}.exe"
       },
-      "version": "3.1.0.44"
+      "version": "3.0.7.34"
     },
     "gimp": {
       "installer": {

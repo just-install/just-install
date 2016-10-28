@@ -768,6 +768,23 @@
       },
       "version": "7.2p2-1-v1"
     },
+    "opera": {
+      "installer": {
+        "kind": "custom",
+        "version": "latest",
+        "x86": "http://www.opera.com/download/get/?id=40225&location=410&nothanks=yes&sub=marine",
+        "options": {
+          "extension": ".exe",
+          "arguments": [
+            "{{.installer}}",
+            "/installer",
+            "/silent",
+            "/launchopera 0",
+            "/setdefault 0"
+          ]
+        }
+      }
+    },
     "origin": {
       "installer": {
         "kind": "innosetup",

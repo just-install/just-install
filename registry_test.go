@@ -2,6 +2,7 @@ package justinstall
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 	"testing"
@@ -48,7 +49,6 @@ func TestRegistryReachableLinks(t *testing.T) {
 	registry := SmartLoadRegistry(false)
 
 	checkLink := func(rawurl string) error {
-
 		response, err := customGet(rawurl)
 		if err != nil {
 			return err
@@ -58,12 +58,12 @@ func TestRegistryReachableLinks(t *testing.T) {
 		if response.StatusCode != http.StatusOK {
 			t.Log(rawurl)
 
-			return errors.New("Status code wasn't 200 OK")
+			return errors.New(fmt.Sprintf("Status code: expected 200, got %v", response.StatusCode))
 		}
 
 		contentType := response.Header.Get("Content-Type")
 
-		// Exception: VirtualBox Extension Pack have the wrong MIME type
+		// Exception: VirtualBox Extension Pack has the wrong MIME type
 		success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"
 
 		// Exception: Some LibreOffice mirror returns the wrong MIME type

@@ -1,17 +1,21 @@
 {
-  "folders": [
-    {
-      "file_exclude_patterns": [
-        "just-install"
-      ],
-      "folder_exclude_patterns": [
-        "Godeps",
-        "build"
-      ],
-      "path": "."
-    }
-  ],
-  "settings": {
-    "metafmt_enabled": true
-  }
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"just-install"
+			],
+			"folder_exclude_patterns":
+			[
+				"Godeps",
+				"build"
+			],
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"omnifmt_enabled": true
+	}
 }

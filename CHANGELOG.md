@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.2.0 - 2016-10-28
+
+### Changed
+
+* Reliability improvements.
+
+
+
+
 ## 3.1.0 - 2015-09-06
 
 ### Addded

@@ -3,9 +3,11 @@ package justinstall
 import (
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/ungerik/go-dry"
@@ -79,13 +81,30 @@ func TestRegistryReachableLinks(t *testing.T) {
 		return nil
 	}
 
+	retryCheckLink := func(rawurl string) error {
+		const retryDelay = 60
+		var err error
+
+		for i := 0; i < 3; i++ {
+			err = checkLink(rawurl)
+			if err == nil {
+				return nil
+			}
+
+			log.Printf("Failed check for %v, retrying in %v seconds...\n", rawurl, retryDelay)
+			time.Sleep(retryDelay * time.Second)
+		}
+
+		return err
+	}
+
 	checkArch := func(name string, entry *registryEntry, architecture string, rawUrl string) {
 		if rawUrl == "" {
 			return
 		}
 
 		url := entry.expandString(rawUrl)
-		if err := checkLink(url); err != nil {
+		if err := retryCheckLink(url); err != nil {
 			t.Logf("%v (%v): %v, %v", name, architecture, url, err)
 			hasErrors = true
 		}

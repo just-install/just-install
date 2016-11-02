@@ -469,6 +469,18 @@
       },
       "version": "latest"
     },
+    "git-lfs": {
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Git LFS\\git-lfs.exe"
+          ]
+        },
+        "x86": "https://github.com/github/git-lfs/releases/download/v{{.version}}/git-lfs-windows-{{.version}}.exe"
+      },
+      "version": "1.4.4"
+    },
     "go": {
       "installer": {
         "kind": "msi",

@@ -85,6 +85,20 @@
       },
       "version": "latest"
     },
+    "classic-shell": {
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/qn",
+            "NOSTART=1"
+          ]
+        },
+        "x86": "http://www.mediafire.com/download/dbbil746gavpirr/ClassicShellSetup_4_3_0.exe"
+      },
+      "version": "4.3.0"
+    },
     "clementine-player": {
       "installer": {
         "kind": "nsis",

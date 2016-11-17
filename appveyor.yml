@@ -1,0 +1,27 @@
+version: '{build}'
+pull_requests:
+  do_not_increment_build_number: true
+clone_folder: C:\gopath\src\github.com\lvillani\just-install
+environment:
+  GOPATH: C:\gopath
+  PATH: C:\gopath\bin;%PROGRAMFILES(x86)%\WiX Toolset v3.10\bin;%PATH%
+  PYTHONUNBUFFERED: 1
+build_script:
+- cmd: build.py
+test: off
+artifacts:
+- path: just-install.msi
+deploy:
+- provider: BinTray
+  username: lvillani
+  api_key:
+    secure: nwziHQouDN//XyGb4EFZKuR2En2nJmlo4FDkp6VjlMNldcwI1FOp9pFiS2wxJxB1
+  subject: lvillani
+  repo: just-install
+  package: just-install-beta
+  version: latest
+  artifact: /.*\.msi/
+  publish: true
+  override: true
+  on:
+    branch: master

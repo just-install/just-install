@@ -790,9 +790,9 @@
             "/S"
           ]
         },
-        "x86": "http://www.mls-software.com/files/setupssh-{{.version}}.exe"
+        "x86": "https://www.mls-software.com/files/setupssh-{{.version}}.exe"
       },
-      "version": "7.2p2-1-v1"
+      "version": "7.3p1-2"
     },
     "opera": {
       "installer": {

@@ -1082,8 +1082,8 @@
     },
     "steam": {
       "installer": {
-        "kind": "msi",
-        "x86": "http://cdn.steampowered.com/download/SteamInstall.msi"
+        "kind": "nsis",
+        "x86": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe"
       },
       "version": "latest"
     },

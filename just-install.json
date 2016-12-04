@@ -112,7 +112,7 @@
         "x86": "https://cmake.org/files/v3.7/cmake-{{.version}}-win32-x86.msi",
         "x86_64": "https://cmake.org/files/v3.7/cmake-{{.version}}-win64-x64.msi"
       },
-      "version": "3.7.0"
+      "version": "3.7.1"
     },
     "colemak": {
       "installer": {
@@ -146,9 +146,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161022.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161203.exe"
       },
-      "version": "16.10.22"
+      "version": "16.12.03"
     },
     "crashplan": {
       "installer": {
@@ -474,7 +474,7 @@
         "x86": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-32-bit.exe",
         "x86_64": "https://github.com/git-for-windows/git/releases/download/v{{.version}}.windows.1/Git-{{.version}}-64-bit.exe"
       },
-      "version": "2.10.2"
+      "version": "2.11.0"
     },
     "github": {
       "installer": {
@@ -491,9 +491,9 @@
             "{{.PROGRAMFILES}}\\Git LFS\\git-lfs.exe"
           ]
         },
-        "x86": "https://github.com/github/git-lfs/releases/download/v{{.version}}/git-lfs-windows-{{.version}}.exe"
+        "x86": "https://github.com/git-lfs/git-lfs/releases/download/v{{.version}}/git-lfs-windows-{{.version}}.exe"
       },
-      "version": "1.4.4"
+      "version": "1.5.2"
     },
     "go": {
       "installer": {
@@ -508,7 +508,7 @@
         "x86": "https://storage.googleapis.com/golang/go{{.version}}.windows-amd64.msi",
         "x86_64": "https://storage.googleapis.com/golang/go{{.version}}.windows-386.msi"
       },
-      "version": "1.7.3"
+      "version": "1.7.4"
     },
     "google-chrome": {
       "installer": {
@@ -1236,7 +1236,7 @@
         "options": {
           "destination": "{{.PROGRAMFILES_X86}}\\UPX"
         },
-        "x86": "http://upx.sourceforge.net/download/upx391w.zip"
+        "x86": "https://github.com/upx/upx/releases/download/v{{.version}}/upx391w.zip"
       },
       "version": "3.91"
     },

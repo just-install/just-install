@@ -22,6 +22,12 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
+	"errors"
+	"strings"
+	"io/ioutil"
+	"path/filepath"
+	"debug/pe"
 
 	"github.com/codegangsta/cli"
 	"github.com/lvillani/just-install"
@@ -66,7 +72,25 @@ func main() {
 		Usage: "Create shims only (if exeproxy is installed)",
 	}}
 
-	app.Run(os.Args)
+	pathname, err := ownPath()
+	if err != nil {
+		app.Run(os.Args)
+	} else {
+		rawOverlayData, err := getPeOverlayData(pathname)
+		if err != nil {
+			app.Run(os.Args)
+		} else {
+			stringOverlayData := string(rawOverlayData)
+			trimmedStringOverlayData := strings.Trim(stringOverlayData, "\r\n ")
+			
+			if len(trimmedStringOverlayData) == 0 {
+				app.Run(os.Args)
+			} else {
+				log.Println("Using embedded arguments: " + trimmedStringOverlayData)
+				app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...))
+			}
+		}
+	}
 }
 
 func handleArguments(c *cli.Context) {
@@ -140,4 +164,47 @@ func handleListAction(c *cli.Context) {
 
 func handleUpdateAction(c *cli.Context) {
 	justinstall.SmartLoadRegistry(true)
+}
+
+func ownPath() (name string, err error) {
+		name = os.Args[0]
+
+		if name[0] == '.' {
+			name, err = filepath.Abs(name)
+			if err == nil {
+				name = filepath.Clean(name)
+			}
+		} else {
+			name, err = exec.LookPath(filepath.Clean(name))
+		}
+		return
+	}
+
+func getPeOverlayData(pathname string) ([]byte, error) {
+	pefile, err := pe.Open(pathname)
+	if err != nil {
+		return nil, err
+	}
+	defer pefile.Close()
+	
+	lastSectionEnd := uint32(0);
+	for v := range pefile.Sections {
+		sectionHeader := pefile.Sections[v].SectionHeader
+		sectionEnd := sectionHeader.Size + sectionHeader.Offset
+		if sectionEnd > lastSectionEnd {
+			lastSectionEnd = sectionEnd
+		}
+	}
+
+	rawfile, err := ioutil.ReadFile(pathname)
+	if err != nil {
+		return nil, err
+	}
+	
+	overlayRawData := rawfile[lastSectionEnd:]
+	if len(overlayRawData) == 0 {
+		return nil, errors.New("No overlay data found")
+	}
+
+	return overlayRawData, nil
 }

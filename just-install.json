@@ -18,16 +18,16 @@
     "android-studio-bundle": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3360264-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-bundle-145.3537739-windows.exe"
       },
-      "version": "2.2.2.0"
+      "version": "2.2.3.0"
     },
     "android-studio-ide": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3360264-windows.exe"
+        "x86": "https://dl.google.com/dl/android/studio/install/{{.version}}/android-studio-ide-145.3537739-windows.exe"
       },
-      "version": "2.2.2.0"
+      "version": "2.2.3.0"
     },
     "atom": {
       "installer": {
@@ -146,9 +146,9 @@
             ]
           }
         },
-        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161203.exe"
+        "x86": "https://github.com/Maximus5/ConEmu/releases/download/v{{.version}}/ConEmuSetup.161206.exe"
       },
-      "version": "16.12.03"
+      "version": "16.12.06"
     },
     "crashplan": {
       "installer": {
@@ -441,7 +441,7 @@
         "kind": "innosetup",
         "x86": "http://www.freefilesync.org/download/FreeFileSync_{{.version}}_Windows_Setup.exe"
       },
-      "version": "8.6"
+      "version": "8.7"
     },
     "geforce-experience": {
       "installer": {
@@ -493,7 +493,7 @@
         },
         "x86": "https://github.com/git-lfs/git-lfs/releases/download/v{{.version}}/git-lfs-windows-{{.version}}.exe"
       },
-      "version": "1.5.2"
+      "version": "1.5.3"
     },
     "go": {
       "installer": {
@@ -542,9 +542,9 @@
     "gvim": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://ftp.vim.org/pub/vim/pc/gvim74.exe"
+        "x86": "http://ftp.vim.org/pub/vim/pc/gvim80-069.exe"
       },
-      "version": "7.4"
+      "version": "8.0.069"
     },
     "handbrake": {
       "installer": {
@@ -738,7 +738,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "7.2.0"
+      "version": "7.2.1"
     },
     "node-lts": {
       "installer": {
@@ -746,7 +746,7 @@
         "x86": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x86.msi",
         "x86_64": "https://nodejs.org/dist/v{{.version}}/node-v{{.version}}-x64.msi"
       },
-      "version": "6.9.1"
+      "version": "6.9.2"
     },
     "notepad++": {
       "installer": {
@@ -1019,7 +1019,7 @@
         "x86": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}.exe",
         "x86_64": "https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-{{.version}}-x64.exe"
       },
-      "version": "2.3.1"
+      "version": "2.3.3"
     },
     "sdm": {
       "installer": {
@@ -1062,9 +1062,9 @@
     "sourcetree": {
       "installer": {
         "kind": "advancedinstaller",
-        "x86": "https://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
+        "x86": "http://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_{{.version}}.exe"
       },
-      "version": "1.9.6.2"
+      "version": "1.9.9.20"
     },
     "spotify": {
       "installer": {
@@ -1245,7 +1245,7 @@
         "kind": "msi",
         "x86": "https://releases.hashicorp.com/vagrant/{{.version}}/vagrant_{{.version}}.msi"
       },
-      "version": "1.9.0"
+      "version": "1.9.1"
     },
     "veracrypt": {
       "installer": {

@@ -1253,9 +1253,9 @@
         "options": {
           "extension": ".exe"
         },
-        "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1537178&FileTime=130999181356070000&Build=21031"
+        "x86": "https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1614078&FileTime=131212015489500000&Build=21031"
       },
-      "version": "1.17"
+      "version": "1.19"
     },
     "virtualbox": {
       "installer": {

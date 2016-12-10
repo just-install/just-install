@@ -438,7 +438,7 @@
     },
     "freefilesync": {
       "installer": {
-        "kind": "innosetup",
+        "kind": "as-is",
         "x86": "http://www.freefilesync.org/download/FreeFileSync_{{.version}}_Windows_Setup.exe"
       },
       "version": "8.7"

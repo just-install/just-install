@@ -371,7 +371,7 @@
         "options": {
           "destination": "{{.PROGRAMFILES_X86}}\\exeproxy"
         },
-        "x86": "http://heanet.dl.sourceforge.net/project/npackd/exeproxy/exeproxy-{{.version}}.zip"
+        "x86": "https://github.com/tim-lebedkov/packages/releases/download/2016_Q3/exeproxy-{{.version}}.zip"
       },
       "version": "0.2"
     },

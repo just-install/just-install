@@ -975,9 +975,10 @@
     "qbittorrent": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-{{.version}}/qbittorrent_{{.version}}_setup.exe"
+        "x86": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-{{.version}}/qbittorrent_{{.version}}_setup.exe",
+        "x86_64": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-{{.version}}/qbittorrent_{{.version}}_x64_setup.exe"
       },
-      "version": "3.3.9"
+      "version": "3.3.10"
     },
     "qt-vs2008": {
       "installer": {

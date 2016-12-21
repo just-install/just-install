@@ -66,7 +66,10 @@ def build():
     version = get_output(["git", "describe", "--tags"])
 
     os.environ["JustInstallVersion"] = version[1:6]
-    call("go", "test", "-v")
+
+    if "--skip-tests" not in sys.argv:
+        call("go", "test", "-v")
+
     call("go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin")
 
 

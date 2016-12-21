@@ -420,14 +420,14 @@
         "kind": "msi",
         "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_{{.version}}_plugin.msi"
       },
-      "version": "20"
+      "version": "24"
     },
     "flash-player-ie": {
       "installer": {
         "kind": "msi",
         "x86": "http://download.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_{{.version}}_active_x.msi"
       },
-      "version": "20"
+      "version": "24"
     },
     "flux": {
       "installer": {

@@ -26,7 +26,6 @@ from subprocess import check_output as get_output
 from subprocess import check_call
 
 HERE = os.path.dirname(__file__)
-BUILD_DIR = os.path.join(HERE, "build")
 
 if sys.platform == "win32":
     EXE = "just-install.exe"

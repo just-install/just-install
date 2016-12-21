@@ -347,7 +347,7 @@
     "enpass": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.sinew.in/windows/setup/5-4/Enpass_Setup.exe"
+        "x86": "https://dl.sinew.in/windows/setup/5-4-0-4/Enpass_Setup_{{.version}}.exe"
       },
       "version": "5.4"
     },

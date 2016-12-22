@@ -71,10 +71,11 @@ To work on just-install itself you will need to install and set-up:
 
 **TIP**: You can install those with just-install itself by running:
 
-    just-install go python27 wix
+    just-install exeproxy go python27 wix
 
 Once you have done so run:
-
+    
+    set PATH="%SYSTEMDRIVE%\Shims;%CD%"
     python build.py
 
 This will produce `just-install.exe` in the current working directory.

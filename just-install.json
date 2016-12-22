@@ -797,7 +797,6 @@
     "opera": {
       "installer": {
         "kind": "custom",
-        "version": "latest",
         "x86": "http://www.opera.com/download/get/?id=40225&location=410&nothanks=yes&sub=marine",
         "options": {
           "extension": ".exe",
@@ -809,7 +808,8 @@
             "/setdefault 0"
           ]
         }
-      }
+      },
+      "version": "latest"
     },
     "origin": {
       "installer": {

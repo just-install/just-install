@@ -17,7 +17,7 @@ import (
 
 const (
 	registrySupportedVersion = 3
-	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
+	registryURL              = "http://registry.just-install.it"
 )
 
 var (
@@ -112,11 +112,11 @@ func SetArchitecture(a string) error {
 // downloaded from the Internet. If neither is available, try to download it from the known location
 // first.
 func SmartLoadRegistry(force bool) Registry {
-	if dry.FileExists("just-install.json") {
-		log.Println("Using local registry file")
+	// if dry.FileExists("just-install.json") {
+	// 	log.Println("Using local registry file")
 
-		return loadRegistry("just-install.json")
-	}
+	// 	return loadRegistry("just-install.json")
+	// }
 
 	download := !dry.FileExists(registryPath)
 	download = download || dry.FileTimeModified(registryPath).Before(time.Now().Add(-24*time.Hour))

@@ -36,12 +36,12 @@ var version = "## filled by go build ##"
 
 func main() {
 	app := cli.NewApp()
+	app.Action = handleArguments
 	app.Author = "Lorenzo Villani"
 	app.Email = "lorenzo@villani.me"
 	app.Name = "just-install"
 	app.Usage = "The simple package installer for Windows"
 	app.Version = version
-	app.Action = handleArguments
 
 	app.Commands = []cli.Command{{
 		Name:   "clean",

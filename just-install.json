@@ -436,6 +436,13 @@
       },
       "version": "latest"
     },
+    "foobar2000": {
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://www.foobar2000.org/files/ca94ac3f7c2009999f510347022d2378/foobar2000_v{{.version}}.exe"
+      },
+      "version": "1.3.10"
+    },
     "freefilesync": {
       "installer": {
         "kind": "as-is",

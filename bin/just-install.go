@@ -19,17 +19,16 @@
 package main
 
 import (
+	"debug/pe"
+	"errors"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
-	"os/exec"
-	"errors"
 	"strings"
-	"io/ioutil"
-	"path/filepath"
-	"debug/pe"
 
 	"github.com/codegangsta/cli"
+	"github.com/kardianos/osext"
 	"github.com/lvillani/just-install"
 )
 
@@ -72,7 +71,7 @@ func main() {
 		Usage: "Create shims only (if exeproxy is installed)",
 	}}
 
-	pathname, err := ownPath()
+	pathname, err := osext.Executable()
 	if err != nil {
 		app.Run(os.Args)
 	} else {
@@ -82,7 +81,7 @@ func main() {
 		} else {
 			stringOverlayData := string(rawOverlayData)
 			trimmedStringOverlayData := strings.Trim(stringOverlayData, "\r\n ")
-			
+
 			if len(trimmedStringOverlayData) == 0 {
 				app.Run(os.Args)
 			} else {
@@ -166,28 +165,14 @@ func handleUpdateAction(c *cli.Context) {
 	justinstall.SmartLoadRegistry(true)
 }
 
-func ownPath() (name string, err error) {
-		name = os.Args[0]
-
-		if name[0] == '.' {
-			name, err = filepath.Abs(name)
-			if err == nil {
-				name = filepath.Clean(name)
-			}
-		} else {
-			name, err = exec.LookPath(filepath.Clean(name))
-		}
-		return
-	}
-
 func getPeOverlayData(pathname string) ([]byte, error) {
 	pefile, err := pe.Open(pathname)
 	if err != nil {
 		return nil, err
 	}
 	defer pefile.Close()
-	
-	lastSectionEnd := uint32(0);
+
+	lastSectionEnd := uint32(0)
 	for v := range pefile.Sections {
 		sectionHeader := pefile.Sections[v].SectionHeader
 		sectionEnd := sectionHeader.Size + sectionHeader.Offset
@@ -200,7 +185,7 @@ func getPeOverlayData(pathname string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	overlayRawData := rawfile[lastSectionEnd:]
 	if len(overlayRawData) == 0 {
 		return nil, errors.New("No overlay data found")

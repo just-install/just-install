@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	registrySupportedVersion = 3
+	registrySupportedVersion = 4
 	registryURL              = "http://registry.just-install.it"
 )
 

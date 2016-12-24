@@ -39,7 +39,7 @@ func main() {
 	app.Author = "Lorenzo Villani"
 	app.Email = "lorenzo@villani.me"
 	app.Name = "just-install"
-	app.Usage = "The stupid package installer for Windows"
+	app.Usage = "The simple package installer for Windows"
 	app.Version = version
 	app.Action = handleArguments
 

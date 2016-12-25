@@ -347,7 +347,7 @@
     "enpass": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.sinew.in/windows/setup/5-4-0-4/Enpass_Setup_{{.version}}.exe"
+        "x86": "https://dl.sinew.in/windows/setup/5-4/Enpass_Setup.exe"
       },
       "version": "5.4"
     },
@@ -643,8 +643,8 @@
     "libreoffice": {
       "installer": {
         "kind": "msi",
-        "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
-        "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
+        "x86": "https://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
+        "x86_64": "https://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
       "version": "5.2.4"
     },
@@ -1345,7 +1345,7 @@
     "windirstat": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://downloads.sourceforge.net/project/windirstat/windirstat/1.1.2%20installer%20re-release%20%28more%20languages%21%29/windirstat1_1_2_setup.exe?r=&ts=1441302161&use_mirror=heanet"
+        "x86": "https://www.fosshub.com/WinDirStat.html/windirstat1_1_2_setup.exe"
       },
       "version": "1.1.2"
     },

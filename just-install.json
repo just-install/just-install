@@ -69,7 +69,7 @@
         "x86": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-{{.version}}.msi",
         "x86_64": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-64bit-{{.version}}.msi"
       },
-      "version": "2.75.0"
+      "version": "2.75.1"
     },
     "ccleaner": {
       "installer": {
@@ -550,10 +550,10 @@
     "handbrake": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-i686-Win_GUI-1.exe",
-        "x86_64": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-x86_64-Win_GUI-1.exe"
+        "x86": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-i686-Win_GUI.exe",
+        "x86_64": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-x86_64-Win_GUI.exe"
       },
-      "version": "0.10.5"
+      "version": "1.0.0"
     },
     "hashcheck": {
       "installer": {
@@ -774,9 +774,9 @@
     "obs-studio": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://github.com/jp9000/obs-studio/releases/download/{{.version}}/OBS-Studio-{{.version}}-Full-Installer.exe"
+        "x86": "https://github.com/jp9000/obs-studio/releases/download/{{.version}}/OBS-Studio-17.0-Full-Installer.exe"
       },
-      "version": "0.16.6"
+      "version": "17.0.0"
     },
     "openssh": {
       "installer": {
@@ -1140,10 +1140,10 @@
     "sumatrapdf": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-{{.version}}-install.exe",
-        "x86_64": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-{{.version}}-64-install.exe"
+        "x86": "https://www.sumatrapdfreader.org/dl/SumatraPDF-{{.version}}-install.exe",
+        "x86_64": "https://www.sumatrapdfreader.org/dl/SumatraPDF-{{.version}}-64-install.exe"
       },
-      "version": "3.1.1"
+      "version": "3.1.2"
     },
     "syncthing": {
       "installer": {

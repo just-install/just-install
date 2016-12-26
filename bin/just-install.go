@@ -30,6 +30,7 @@ import (
 	"github.com/codegangsta/cli"
 	"github.com/kardianos/osext"
 	"github.com/lvillani/just-install"
+	dry "github.com/ungerik/go-dry"
 )
 
 var version = "## filled by go build ##"
@@ -66,6 +67,9 @@ func main() {
 	}, cli.BoolFlag{
 		Name:  "force, f",
 		Usage: "Force package re-download",
+	}, cli.StringFlag{
+		Name:  "registry, r",
+		Usage: "Use the specified registry file",
 	}, cli.BoolFlag{
 		Name:  "shim, s",
 		Usage: "Create shims only (if exeproxy is installed)",
@@ -96,7 +100,17 @@ func handleArguments(c *cli.Context) {
 	force := c.Bool("force")
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
-	registry := justinstall.SmartLoadRegistry(false)
+
+	var registry justinstall.Registry
+	if c.IsSet("registry") {
+		if !dry.FileExists(c.String("registry")) {
+			log.Fatalf("%v: no such file.\n", c.String("registry"))
+		}
+
+		registry = justinstall.LoadRegistry(c.String("registry"))
+	} else {
+		registry = justinstall.SmartLoadRegistry(false)
+	}
 
 	if c.String("arch") != "" {
 		if err := justinstall.SetArchitecture(c.String("arch")); err != nil {

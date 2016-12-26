@@ -108,16 +108,9 @@ func SetArchitecture(a string) error {
 	return nil
 }
 
-// SmartLoadRegistry loads the development Registry, if there. Otherwise tries to load a cached copy
-// downloaded from the Internet. If neither is available, try to download it from the known location
-// first.
+// SmartLoadRegistry tries to load a cached copy downloaded from the Internet. If neither is
+// available, it tries to download it from the known location first.
 func SmartLoadRegistry(force bool) Registry {
-	// if dry.FileExists("just-install.json") {
-	// 	log.Println("Using local registry file")
-
-	// 	return loadRegistry("just-install.json")
-	// }
-
 	download := !dry.FileExists(registryPath)
 	download = download || dry.FileTimeModified(registryPath).Before(time.Now().Add(-24*time.Hour))
 	download = download || force
@@ -128,11 +121,11 @@ func SmartLoadRegistry(force bool) Registry {
 		downloadRegistry()
 	}
 
-	return loadRegistry(registryPath)
+	return LoadRegistry(registryPath)
 }
 
-// Unmarshals the registry from a local file path.
-func loadRegistry(path string) Registry {
+// LoadRegistry unmarshals the registry from a local file path.
+func LoadRegistry(path string) Registry {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Unable to read the registry file.")

@@ -5,7 +5,7 @@
         "kind": "innosetup",
         "x86": "https://d13itkw33a7sus.cloudfront.net/dist/1P/win4/1Password-{{.version}}.exe"
       },
-      "version": "4.6.1.616"
+      "version": "4.6.1.617"
     },
     "7zip": {
       "installer": {
@@ -69,7 +69,7 @@
         "x86": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-{{.version}}.msi",
         "x86_64": "https://github.com/kovidgoyal/calibre/releases/download/v{{.version}}/calibre-64bit-{{.version}}.msi"
       },
-      "version": "2.74.0"
+      "version": "2.75.1"
     },
     "ccleaner": {
       "installer": {
@@ -123,7 +123,7 @@
             "kind": "zip"
           }
         },
-        "x86": "http://colemak.com/pub/windows/Colemak-{{.version}}-Caps-Lock-Unchanged.zip"
+        "x86": "https://colemak.com/pub/windows/Colemak-{{.version}}-Caps-Lock-Unchanged.zip"
       },
       "version": "1.1"
     },
@@ -208,9 +208,9 @@
     "deluge": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://download.deluge-torrent.org/windows/deluge-{{.version}}-win32-py2.6-setup.exe"
+        "x86": "http://download.deluge-torrent.org/windows/deluge-{{.version}}-win32-py2.7-0.exe"
       },
-      "version": "1.3.12"
+      "version": "1.3.13"
     },
     "dependency-walker": {
       "installer": {
@@ -260,10 +260,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Android"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-android-neon-1a-incubation-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-android-neon-1a-incubation-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-android-neon-2-incubation-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-android-neon-2-incubation-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eclipse-committers": {
       "installer": {
@@ -271,10 +271,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Committers"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-committers-neon-1a-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-committers-neon-1a-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-committers-neon-2-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-committers-neon-2-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eclipse-cpp": {
       "installer": {
@@ -282,10 +282,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-CPP"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-cpp-neon-1a-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-cpp-neon-1a-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-cpp-neon-2-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eclipse-java": {
       "installer": {
@@ -293,10 +293,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-Java"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-java-neon-1a-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-java-neon-1a-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-java-neon-2-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-java-neon-2-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eclipse-jee": {
       "installer": {
@@ -304,10 +304,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-JEE"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-jee-neon-2-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-jee-neon-2-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eclipse-php": {
       "installer": {
@@ -315,10 +315,10 @@
         "options": {
           "destination": "{{.PROGRAMFILES}}\\Eclipse-PHP"
         },
-        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-php-neon-1a-win32.zip&r=1",
-        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-php-neon-1a-win32-x86_64.zip&r=1"
+        "x86": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-php-neon-2-win32.zip&r=1",
+        "x86_64": "https://eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2/eclipse-php-neon-2-win32-x86_64.zip&r=1"
       },
-      "version": "4.6.1"
+      "version": "4.6.2"
     },
     "eithermouse": {
       "installer": {
@@ -347,7 +347,7 @@
     "enpass": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://dl.sinew.in/windows/setup/5-4-0-4/Enpass_Setup_{{.version}}.exe"
+        "x86": "https://dl.sinew.in/windows/setup/5-4/Enpass_Setup.exe"
       },
       "version": "5.4"
     },
@@ -361,7 +361,8 @@
     "everything-search": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://www.voidtools.com/Everything-{{.version}}.x86-Setup.exe"
+        "x86": "https://www.voidtools.com/Everything-{{.version}}.x86.Multilingual-Setup.exe",
+        "x86_64": "https://www.voidtools.com/Everything-{{.version}}.x64.Multilingual-Setup.exe"
       },
       "version": "1.3.4.686"
     },
@@ -549,10 +550,10 @@
     "handbrake": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-i686-Win_GUI-1.exe",
-        "x86_64": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-x86_64-Win_GUI-1.exe"
+        "x86": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-i686-Win_GUI.exe",
+        "x86_64": "https://handbrake.fr/rotation.php?file=HandBrake-{{.version}}-x86_64-Win_GUI.exe"
       },
-      "version": "0.10.5"
+      "version": "1.0.0"
     },
     "hashcheck": {
       "installer": {
@@ -642,10 +643,10 @@
     "libreoffice": {
       "installer": {
         "kind": "msi",
-        "x86": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
-        "x86_64": "http://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
+        "x86": "https://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86/LibreOffice_{{.version}}_Win_x86.msi",
+        "x86_64": "https://download.documentfoundation.org/libreoffice/stable/{{.version}}/win/x86_64/LibreOffice_{{.version}}_Win_x64.msi"
       },
-      "version": "5.2.3"
+      "version": "5.2.4"
     },
     "lockhunter": {
       "installer": {
@@ -773,9 +774,9 @@
     "obs-studio": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://github.com/jp9000/obs-studio/releases/download/{{.version}}/OBS-Studio-{{.version}}-With-Browser-Installer.exe"
+        "x86": "https://github.com/jp9000/obs-studio/releases/download/{{.version}}/OBS-Studio-17.0-Full-Installer.exe"
       },
-      "version": "0.15.2"
+      "version": "17.0.0"
     },
     "openssh": {
       "installer": {
@@ -862,7 +863,7 @@
     "processhacker": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://downloads.sourceforge.net/project/processhacker/processhacker2/processhacker-{{.version}}-setup.exe"
+        "x86": "https://wj32.org/processhacker/rel/processhacker-{{.version}}-setup.exe"
       },
       "version": "2.39"
     },
@@ -1034,7 +1035,7 @@
         "kind": "innosetup",
         "x86": "https://github.com/ShareX/ShareX/releases/download/v{{.version}}/ShareX-{{.version}}-setup.exe"
       },
-      "version": "11.1.0"
+      "version": "11.4.1"
     },
     "sharpkeys": {
       "installer": {
@@ -1139,10 +1140,10 @@
     "sumatrapdf": {
       "installer": {
         "kind": "nsis",
-        "x86": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-{{.version}}-install.exe",
-        "x86_64": "https://kjkpub.s3.amazonaws.com/sumatrapdf/rel/SumatraPDF-{{.version}}-64-install.exe"
+        "x86": "https://www.sumatrapdfreader.org/dl/SumatraPDF-{{.version}}-install.exe",
+        "x86_64": "https://www.sumatrapdfreader.org/dl/SumatraPDF-{{.version}}-64-install.exe"
       },
-      "version": "3.1.1"
+      "version": "3.1.2"
     },
     "syncthing": {
       "installer": {
@@ -1153,7 +1154,7 @@
         "x86": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-386-v{{.version}}.zip",
         "x86_64": "https://github.com/syncthing/syncthing/releases/download/v{{.version}}/syncthing-windows-amd64-v{{.version}}.zip"
       },
-      "version": "0.14.15"
+      "version": "0.14.16"
     },
     "sysinternals": {
       "installer": {
@@ -1344,7 +1345,7 @@
     "windirstat": {
       "installer": {
         "kind": "nsis",
-        "x86": "http://downloads.sourceforge.net/project/windirstat/windirstat/1.1.2%20installer%20re-release%20%28more%20languages%21%29/windirstat1_1_2_setup.exe?r=&ts=1441302161&use_mirror=heanet"
+        "x86": "https://www.fosshub.com/WinDirStat.html/windirstat1_1_2_setup.exe"
       },
       "version": "1.1.2"
     },
@@ -1366,9 +1367,9 @@
     "winscp": {
       "installer": {
         "kind": "innosetup",
-        "x86": "http://downloads.sourceforge.net/project/winscp/WinSCP/{{.version}}/winscp570setup.exe"
+        "x86": "https://downloads.sourceforge.net/project/winscp/WinSCP/{{.version}}/WinSCP-{{.version}}-Setup.exe"
       },
-      "version": "5.7"
+      "version": "5.9.3"
     },
     "wix": {
       "installer": {

@@ -118,7 +118,7 @@ func downloadTemp(rawurl string, filename string, force bool) string {
 	ret := filepath.Join(tempPath, filename)
 
 	maybeDownload(rawurl, ret, force)
-	
+
 	return ret
 }
 
@@ -141,7 +141,7 @@ func download(rawurl string, destinationPath string) {
 	}
 	defer destination.Close()
 
-	response, err := customGet(rawurl)
+	response, err := CustomGet(rawurl)
 	if err != nil {
 		log.Fatalf("Unable to open a connection to %s", rawurl)
 	}
@@ -173,7 +173,7 @@ func download(rawurl string, destinationPath string) {
 	os.Rename(tempDestinationPath, destinationPath)
 }
 
-func customGet(urlStr string) (*http.Response, error) {
+func CustomGet(urlStr string) (*http.Response, error) {
 	request, err := http.NewRequest("GET", urlStr, nil)
 	if err != nil {
 		return nil, err

@@ -32,6 +32,12 @@
 			"revisionTime": "2016-08-16T17:40:47Z"
 		},
 		{
+			"checksumSHA1": "g+afVQQVopBLiLB5pFZp/8s6aBs=",
+			"path": "github.com/kardianos/osext",
+			"revision": "c2c54e542fb797ad986b31721e1baedf214ca413",
+			"revisionTime": "2016-08-11T00:15:26Z"
+		},
+		{
 			"checksumSHA1": "ME/pGEOHOup7qYN4NvW+M6+hUyg=",
 			"path": "github.com/olekukonko/ts",
 			"revision": "ecf753e7c962639ab5a1fb46f7da627d4c0a04b8",

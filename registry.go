@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	registrySupportedVersion = 3
-	registryURL              = "https://raw.github.com/lvillani/just-install/master/just-install.json"
+	registrySupportedVersion = 4
+	registryURL              = "http://registry.just-install.it"
 )
 
 var (
@@ -108,16 +108,9 @@ func SetArchitecture(a string) error {
 	return nil
 }
 
-// SmartLoadRegistry loads the development Registry, if there. Otherwise tries to load a cached copy
-// downloaded from the Internet. If neither is available, try to download it from the known location
-// first.
+// SmartLoadRegistry tries to load a cached copy downloaded from the Internet. If neither is
+// available, it tries to download it from the known location first.
 func SmartLoadRegistry(force bool) Registry {
-	if dry.FileExists("just-install.json") {
-		log.Println("Using local registry file")
-
-		return loadRegistry("just-install.json")
-	}
-
 	download := !dry.FileExists(registryPath)
 	download = download || dry.FileTimeModified(registryPath).Before(time.Now().Add(-24*time.Hour))
 	download = download || force
@@ -128,11 +121,11 @@ func SmartLoadRegistry(force bool) Registry {
 		downloadRegistry()
 	}
 
-	return loadRegistry(registryPath)
+	return LoadRegistry(registryPath)
 }
 
-// Unmarshals the registry from a local file path.
-func loadRegistry(path string) Registry {
+// LoadRegistry unmarshals the registry from a local file path.
+func LoadRegistry(path string) Registry {
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("Unable to read the registry file.")
@@ -186,7 +179,7 @@ func (s *installerEntry) options() map[string]interface{} {
 // Registry is a list of packages that just-install knows how to install.
 type Registry struct {
 	Version  int
-	Packages map[string]registryEntry
+	Packages map[string]RegistryEntry
 }
 
 // SortedPackageNames returns the list of packages present in the registry, sorted alphabetically.
@@ -202,12 +195,31 @@ func (r *Registry) SortedPackageNames() []string {
 	return keys
 }
 
-type registryEntry struct {
+// RegistryEntry is a single entry in the just-install registry.
+type RegistryEntry struct {
 	Version   string
 	Installer installerEntry
 }
 
-func (e *registryEntry) JustInstall(force bool) {
+// DownloadInstaller downloads the installer for the current entry in the temporary directory.
+func (e *RegistryEntry) DownloadInstaller(force bool) string {
+	options := e.Installer.options()
+	url := e.installerURL(arch)
+
+	log.Println(arch, "-", url)
+
+	if filename, ok := options["filename"]; ok {
+		return downloadTemp(url, filename.(string), force)
+	} else if ext, ok := options["extension"]; ok {
+		return downloadExt(url, ext.(string), force)
+	}
+
+	return downloadAutoExt(url, force)
+}
+
+// JustInstall will download and install the given registry entry. Setting `force` to true will
+// force a re-download and re-installation the package.
+func (e *RegistryEntry) JustInstall(force bool) {
 	options := e.Installer.options()
 	downloadedFile := e.DownloadInstaller(force)
 
@@ -223,22 +235,7 @@ func (e *registryEntry) JustInstall(force bool) {
 	e.CreateShims()
 }
 
-func (e *registryEntry) DownloadInstaller(force bool) string {
-	options := e.Installer.options()
-	url := e.installerURL(arch)
-
-	log.Println(arch, "-", url)
-
-	if filename, ok := options["filename"]; ok {
-		return downloadTemp(url, filename.(string), force)
-	} else if ext, ok := options["extension"]; ok {
-		return downloadExt(url, ext.(string), force)
-	}
-
-	return downloadAutoExt(url, force)
-}
-
-func (e *registryEntry) installerURL(arch string) string {
+func (e *RegistryEntry) installerURL(arch string) string {
 	var url string
 
 	if arch == "x86_64" && e.Installer.X86_64 != "" {
@@ -247,14 +244,14 @@ func (e *registryEntry) installerURL(arch string) string {
 		url = e.Installer.X86
 	}
 
-	return e.expandString(url)
+	return e.ExpandString(url)
 }
 
-func (e *registryEntry) expandString(s string) string {
+func (e *RegistryEntry) ExpandString(s string) string {
 	return expandString(s, map[string]string{"version": e.Version})
 }
 
-func (e *registryEntry) unwrapZip(containerPath string) string {
+func (e *RegistryEntry) unwrapZip(containerPath string) string {
 	extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
 
 	extractZip(containerPath, extractTo)
@@ -262,7 +259,7 @@ func (e *registryEntry) unwrapZip(containerPath string) string {
 	return extractTo
 }
 
-func (e *registryEntry) install(installer string) {
+func (e *RegistryEntry) install(installer string) {
 	switch e.Installer.Kind {
 	case "advancedinstaller":
 		system(installer, "/q", "/i")
@@ -306,11 +303,11 @@ func (e *registryEntry) install(installer string) {
 	}
 }
 
-func (e *registryEntry) destination() string {
+func (e *RegistryEntry) destination() string {
 	return expandString(os.ExpandEnv(e.Installer.options()["destination"].(string)), nil)
 }
 
-func (e *registryEntry) CreateShims() {
+func (e *RegistryEntry) CreateShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 	if !dry.FileExists(exeproxy) {
 		return
@@ -334,7 +331,7 @@ func (e *registryEntry) CreateShims() {
 
 	if shims, ok := e.Installer.options()["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
-			shimTarget := e.expandString(v.(string))
+			shimTarget := e.ExpandString(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
 			if dry.FileExists(shim) {

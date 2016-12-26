@@ -331,7 +331,7 @@ func (e *RegistryEntry) CreateShims() {
 
 	if shims, ok := e.Installer.options()["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
-			shimTarget := e.expandString(v.(string))
+			shimTarget := e.ExpandString(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))
 
 			if dry.FileExists(shim) {

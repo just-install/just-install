@@ -83,7 +83,7 @@ def build_msi():
 
 
 def appveyor():
-    if "APPVEYOR_REPO_TAG" not in os.environ:
+    if "APPVEYOR_REPO_TAG_NAME" not in os.environ:
         return
 
     tag = os.environ["APPVEYOR_REPO_TAG_NAME"]

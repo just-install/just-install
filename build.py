@@ -21,6 +21,7 @@ from __future__ import print_function
 
 import glob
 import os
+import shutil
 import sys
 from subprocess import check_output as get_output
 from subprocess import check_call
@@ -40,6 +41,9 @@ def main():
 
     if sys.platform == "win32":
         build_msi()
+
+    if "CI" in os.environ:
+        appveyor()
 
 
 def setup():
@@ -76,6 +80,16 @@ def build():
 def build_msi():
     call("candle", "just-install.wxs")
     call("light", "just-install.wixobj")
+
+
+def appveyor():
+    if "APPVEYOR_REPO_TAG" not in os.environ:
+        return
+
+    tag = os.environ["APPVEYOR_REPO_TAG_NAME"]
+
+    shutil.move("just-install.exe", "just-install-{}.exe".format(tag))
+    shutil.move("just-install.msi", "just-install-{}.msi".format(tag))
 
 
 def call(*args):

@@ -2,6 +2,22 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.3.0 - 2017-01-04
+
+### Added
+
+* It is now possible to append command line arguments to the executable to create a self-installing
+  binary that automatically installs the given package list.
+
+
+### Changed
+
+* just-install won't automatically load `just-install.json` from the current directory anymore.
+  Use the `-r, --registry` command line flag to specify an alternate path.
+
+
+
+
 ## 3.2.0 - 2016-10-28
 
 ### Changed

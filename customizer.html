@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Just-install customizer allows you to create a unattended and automated installer to install applications. Choose the apps you would like to install, and click Download Installer. The installer will always remain up to date, and it will start installing the programs automatically when you open it.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css" />
+    <title>just-install customizer</title>
+
+    <style>
+        body {
+            background-color: #253E4A;
+        }
+
+        div.ui.action.input {
+            border: 1px solid #c6c8c9;
+            border-radius: 5px;
+        }
+
+        div.ui.apps.dropdown.selection.multiple {
+            border: none;
+        }
+
+        div.ui.attached.center.aligned.segment {
+            padding: 20px 0;
+        }
+
+        .fatalError * {
+            display: none;
+        }
+
+        .fatalError .ui.message,
+        .fatalError .ui.message * {
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 10%;">
+    <div class="ui main container">
+        <h1 class="ui top center aligned attached header">
+            just-install customizer
+        </h1>
+        <div class="ui attached center aligned segment">
+            <p>
+                Just-install customizer allows you to create a unattended and automated installer to install applications. Choose the apps
+                you would like to install, and click Download Installer. The installer will always remain up to date, and
+                it will start installing the programs automatically when you open it.
+            </p>
+
+            <p>
+                This tool works on IE 11+, Firefox 20+, Chrome, and Edge.
+            </p>
+
+            <div class="ui section divider"></div>
+
+            <div class="ui action input">
+                <select multiple="" class="ui apps dropdown">
+                    <option value="">Select Apps</option>
+                </select>
+                <button class="ui download button" onclick="downloadInstaller()">
+                    Download Installer
+                </button>
+            </div>
+        </div>
+        <div class="ui bottom center aligned attached segment">
+            Made by <a href="//github.com/geek1011">geek1011</a>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+        showError = function (title, content, isFatal) {
+            isFatal = isFatal || false;
+            if (isFatal) {
+                $(".ui.action.input").remove();
+                $(".ui.main.container").addClass("fatalError").prepend('<div class="ui negative message"><div class="header">' + title + '</div><p>' + content + '</p></div>');
+            } else {
+                $(".ui.main.container").prepend('<div class="ui negative message"><i class="close icon"></i><div class="header">' + title + '</div><p>' + content + '</p></div>').find(".close").click(function () {
+                    $(this).closest('.message').transition('fade');
+                });
+            }
+        };
+
+        window.onerror = function (messageOrEvent, source, lineno, colno, error) {
+            showError("Uncaught Exception", messageOrEvent + " at " + source + ":" + lineno + ":" + colno + (error ? "<br><pre>" + error.stack + "</pre>" : ""), false)
+        };
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+
+    <script>
+        var justInstallUrl = 'http://static.just-install.it/release/stable/just-install-v3.3.0.exe';
+
+        $(".ui.main.container :nth-child(2)").addClass("loading");
+
+        $.ajax({
+            url: justInstallUrl,
+            type: 'HEAD',
+            error: function() {
+                showError("Fatal Error", "The file just-install.exe does not exist in the same folder as this webpage. For this tool to work, please place just-install.exe in " + window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/ and reload this page.", true)
+            },
+            success: function() {
+                $.ajax("//rawgit.com/just-install/registry/master/just-install.json").done(function (res) {
+                    $.each(res.packages, function (pkgname, pkginfo) {
+                        $(".ui.apps.dropdown").append('<option value="' + pkgname + '">' + pkgname + '</option>');
+                    });
+                }).fail(function (err) {
+                    showError("Error loading package list", err.status.toString() + " " + err.statusText, true);
+                }).always(function () {
+                    $(".ui.apps.dropdown").dropdown();
+                    $(".ui.main.container :nth-child(2)").removeClass("loading");
+                });
+
+                downloadInstaller = function () {
+                    try {
+                        $(".ui.download.button").addClass("loading");
+                        var args = $(".ui.apps.dropdown").dropdown("get value").join(" ");
+
+                        var exeReq = new XMLHttpRequest();
+                        exeReq.open("GET", justInstallUrl, true);
+                        exeReq.responseType = "blob";
+
+                        exeReq.onload = function (e) {
+                            if (exeReq.readyState == 4 && exeReq.status == 200) {
+                                try {
+                                    var blob = exeReq.response;
+                                    var overlay = new Blob([args], { type: "text/plain" })
+                                    var newBlob = new Blob([blob, overlay], { type: "application/x-msdownload" })
+                                    window.saveAs(newBlob, "just-install " + args + ".exe")
+                                } catch (err) {
+                                    showError("Error creating custom installer", err);
+                                }
+                            } else {
+                                showError("Error creating custom installer", exeReq.status.toString());
+                            }
+                            $(".ui.download.button").removeClass("loading");
+                        };
+
+                        exeReq.onerror = function (err) {
+                            showError("Error creating custom installer", JSON.stringify(err));
+                            $(".ui.download.button").removeClass("loading");
+                        }
+
+                        exeReq.send();
+                    } catch (err) {
+                        alert("Error creating the custom build: " + err)
+                    }
+                };
+            }
+        });
+    </script>
+</body>
+
+</html>

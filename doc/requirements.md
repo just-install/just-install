@@ -7,8 +7,9 @@ A brief list of reasons for starting this project are available here:
   + Windows 7
   + Windows 8
   + Windows 8.1
-* Installing `just-install` must require copying its stand-alone executable somewhere
-  on the target system. No installer or complex script needed.
+  + Windows 10
+* Installing `just-install` must only require copying its stand-alone executable somewhere
+  on the target system. There is also an optional MSI, for ease of installation.
 * No other pre-requisites besides the operating system (no .NET runtime, or other runtime
   necessary)
 * Just download and run the installer (silently if possible). Do not override installation

@@ -31,7 +31,14 @@ msiexec.exe /i http://go.just-install.it
 If you like more traditional means of installation then download
 [just-install.msi](http://go.just-install.it) and double click the file to install it yourself.
 
-If you would like to automatically install programs when `just-install.exe` is launched, use the customizer [here](http://just-install.it/customizer.html).
+If you would like to automatically install programs when `just-install.exe` is launched, use the
+customizer [here](http://just-install.it/customizer.html).
+
+Want to try the next upcoming version of just-install? Run the following:
+
+```batch
+msiexec.exe /i http://unstable.just-install.it
+```
 
 ## Usage
 
@@ -75,7 +82,7 @@ To work on just-install itself you will need to install and set-up:
     just-install exeproxy go python27 wix
 
 Once you have done so run:
-    
+
     set PATH="%SYSTEMDRIVE%\Shims;%CD%"
     python build.py
 

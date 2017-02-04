@@ -61,7 +61,7 @@ All notable changes to this project are documented in this file.
 ### Added
 
 * It is now possible to specify per-architecture install options. See the
-  [perl](https://github.com/lvillani/just-install/blob/3ec45b3f03c01df68aa713269a3f0722019f81d5/just-install.json#L383-L388)
+  [perl](https://github.com/just-install/just-install/blob/3ec45b3f03c01df68aa713269a3f0722019f81d5/just-install.json#L383-L388)
   entry as an example.
 
 
@@ -120,7 +120,7 @@ All notable changes to this project are documented in this file.
   downloaded files.
 * The `%ProgramFiles%` and `%ProgramFiles(x86)%` environment variables get normalized at startup
   according to the scheme described in
-  [bug #47](https://github.com/lvillani/just-install/issues/47)
+  [bug #47](https://github.com/just-install/just-install/issues/47)
 * Some executables are symlinked to `%SystemDrive%\just-install` (only on Windows Vista and later).
 * Added a new command-line `-s` switch to force regeneration of shim executables without having to
   re-install the program again. E.g.: `just-install -s mercurial`.

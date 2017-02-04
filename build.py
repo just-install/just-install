@@ -47,7 +47,7 @@ def main():
 
 
 def setup():
-    call("go", "get", "github.com/kardianos/govendor")
+    call("go", "get", "-u", "github.com/kardianos/govendor")
     call("govendor", "sync")
 
 

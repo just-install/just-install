@@ -7,21 +7,29 @@ environment:
   PATH: C:\gopath\bin;%PROGRAMFILES(x86)%\WiX Toolset v3.10\bin;%PATH%
   PYTHONUNBUFFERED: 1
 build_script:
-- cmd: build.py
+- cmd: build.py --skip-tests
 test: off
 artifacts:
-- path: just-install.msi
+- path: just-install*.exe
+- path: just-install*.msi
 deploy:
-- provider: BinTray
-  username: lvillani
-  api_key:
-    secure: nwziHQouDN//XyGb4EFZKuR2En2nJmlo4FDkp6VjlMNldcwI1FOp9pFiS2wxJxB1
-  subject: lvillani
-  repo: just-install
-  package: just-install-beta
-  version: latest
-  artifact: /.*\.msi/
-  publish: true
-  override: true
+- provider: S3
+  access_key_id: AKIAIFNMINBQKNAVYXYQ
+  secret_access_key:
+    secure: RXMqteyopCQHw08DqqbxQk2Jkt4AYhhbboXahuXlLtrQYJ6wpD7SbfVrxLeErSLy
+  region: eu-central-1
+  bucket: static.just-install.it
+  folder: release/unstable
+  set_public: true
   on:
     branch: master
+- provider: S3
+  access_key_id: AKIAIFNMINBQKNAVYXYQ
+  secret_access_key:
+    secure: RXMqteyopCQHw08DqqbxQk2Jkt4AYhhbboXahuXlLtrQYJ6wpD7SbfVrxLeErSLy
+  region: eu-central-1
+  bucket: static.just-install.it
+  folder: release/stable
+  set_public: true
+  on:
+    appveyor_repo_tag: true

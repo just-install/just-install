@@ -51,12 +51,12 @@ This JSON object must contain at least the following two keys:
   - `msi`: Silently installs Windows Installer packages;
   - `nsis`: Silently installs NSIS packages;
   - `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
-    an installer within a .zip file or [extracts](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
+    an installer within a .zip file or [extracts](https://github.com/just-install/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
     it to a destination directory.
 * `options`: A JSON object whose contents depend on the value of the `kind`, but other options are
   applicable to all installer types:
   - `extension`: Specify a custom extension for a file, in case `just-install` isn't able to
-    determine it by itself ([example](https://github.com/lvillani/just-install/blob/0a90135b8aaa4bdae65c63949673e57eed049294/just-install.json#L195-L208)).
+    determine it by itself ([example](https://github.com/just-install/just-install/blob/0a90135b8aaa4bdae65c63949673e57eed049294/just-install.json#L195-L208)).
   - `filename`: The complete name of the file that should be downloaded in the temporary
     directory. When specified, this value takes precedence over `extension`.
 
@@ -67,7 +67,7 @@ installed `exeproxy` (either through `just-install` itself or manually) and only
 entry specifies some shims to create.
 
 Take, for example, the
-[Go entry](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L336-L350):
+[Go entry](https://github.com/just-install/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L336-L350):
 this will create three executables called `go.exe`, `godoc.exe` and `gofmt.exe`
 under `%SystemDrive%\Shims` that will forward any argument to the original file.
 

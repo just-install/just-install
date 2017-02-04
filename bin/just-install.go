@@ -29,7 +29,7 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/kardianos/osext"
-	"github.com/lvillani/just-install"
+	"github.com/just-install/just-install"
 	dry "github.com/ungerik/go-dry"
 )
 

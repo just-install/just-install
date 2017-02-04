@@ -71,6 +71,9 @@ def build():
 
     os.environ["JustInstallVersion"] = version[1:6]
 
+    if "CI" in os.environ:
+        os.environ["GOARCH"] = "386"
+
     if "--skip-tests" not in sys.argv:
         call("go", "test", "-v")
 

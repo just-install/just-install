@@ -1,7 +1,7 @@
 version: '{build}'
 pull_requests:
   do_not_increment_build_number: true
-clone_folder: C:\gopath\src\github.com\lvillani\just-install
+clone_folder: C:\gopath\src\github.com\just-install\just-install
 environment:
   GOPATH: C:\gopath
   PATH: C:\gopath\bin;%PROGRAMFILES(x86)%\WiX Toolset v3.10\bin;%PATH%

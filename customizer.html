@@ -75,7 +75,7 @@
             isFatal = isFatal || false;
             if (isFatal) {
                 $(".ui.action.input").remove();
-                $(".ui.main.container").addClass("fatalError").prepend('<div class="ui negative message"><div class="header">' + title + '</div><p>' + content + '</p></div>');
+                $(".ui.main.container").addClass("fatalError").prepend('<div class="ui negative message"><div class="header">' + title + '</div><p>' + content + '</p><p><a href="https://github.com/just-install/just-install/issues/new?title=Just-install%20customizer%20fatal%20error&body=' + encodeURIComponent("REPLACE THIS TEXT WITH A DESCRIPTION OF THE ERROR\n\n\nError message:\n````\n" + content + "\n````") + '">Report an issue</a></p></div>');
             } else {
                 $(".ui.main.container").prepend('<div class="ui negative message"><i class="close icon"></i><div class="header">' + title + '</div><p>' + content + '</p></div>').find(".close").click(function () {
                     $(this).closest('.message').transition('fade');

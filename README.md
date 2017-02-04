@@ -13,7 +13,7 @@ _The simple package installer for Windows_
 
 **NEW**: Subscribe to the mailing list by sending an email to <justinstall@librelist.com>
 
-just-install is a simple program that automates software installation on Windows. [Unlike the
+just-install is a simple program which automates software installation on Windows. [Unlike the
 alternatives](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
 simple thing and do it well: download a `setup.exe` and install it, without bothering the user.
 
@@ -22,19 +22,19 @@ To see the list of available packages head over to <http://just-install.it>.
 
 ## Installation
 
-Run this command in a command prompt, as Administrator:
+Run this command in a command prompt, as an Administrator:
 
 ```batch
 msiexec.exe /i http://go.just-install.it
 ```
 
-If you like more traditional means of installation then download
+If you would like a more traditional means of installation then download
 [just-install.msi](http://go.just-install.it) and double click the file to install it yourself.
 
 If you would like to automatically install programs when `just-install.exe` is launched, use the
 customizer [here](http://just-install.it/customizer.html).
 
-Want to try the next upcoming version of just-install? Run the following:
+If you want to try the next upcoming version of just-install, then run the following:
 
 ```batch
 msiexec.exe /i http://unstable.just-install.it
@@ -69,19 +69,19 @@ In case you are lost, help is always few keystrokes away:
 
 ## Development
 
-To contribute a new package see: [CONTRIBUTING.md](CONTRIBUTING.md)
+To contribute a new package, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-To work on just-install itself you will need to install and set-up:
+To work on just-install itself, you will need to install and set-up:
 
 * The [Go](https://golang.org/) compiler;
 * [Python 2.7](https://python.org/)
 * [WiX Toolset](http://wixtoolset.org/)
 
-**TIP**: You can install those with just-install itself by running:
+**TIP**: You can install these dependencies with just-install itself by running:
 
     just-install exeproxy go python27 wix
 
-Once you have done so run:
+Once you have done so, run:
 
     set PATH="%SYSTEMDRIVE%\Shims;%CD%"
     python build.py
@@ -101,7 +101,7 @@ memorable command, was self-contained, and could be launched from an unattended 
 
 ### What's wrong with the alternatives?
 
-* Chocolatey's biggest sin is that it requires PowerShell on the target system. This makes it
+* Chocolatey's biggest sin is it requires PowerShell on the target system. This makes it
   ridiculously difficult to install on some operating systems: on Windows XP it is a multi-stage
   ordeal where you first have to install .NET 2.0, then install PowerShell, then .NET 4 and after
   that you can finally install Chocolatey itself.
@@ -119,4 +119,4 @@ why I wrote just-install. You can find a complete rationale
 
 ## Credits
 
-Cube icon derived from the one available from [Ionicons](http://ionicons.com/).
+The cube icon is derived from the one available from [Ionicons](http://ionicons.com/).

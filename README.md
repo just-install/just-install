@@ -73,7 +73,8 @@ To contribute a new package, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 To work on just-install itself, you will need to install and set-up:
 
-* The [Go](https://golang.org/) compiler;
+* exeproxy (this simplifies adding the necessary exes to your path by placing aliases in C:\Shims)
+* The [Go](https://golang.org/) compiler
 * [Python 2.7](https://python.org/)
 * [WiX Toolset](http://wixtoolset.org/)
 

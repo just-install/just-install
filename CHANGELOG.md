@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.3.1 - 2017-02-09
+
+Fixes to the CI system to produce 32-bit executables and installer packages.
+
+
+
+
 ## 3.3.0 - 2017-01-04
 
 ### Added

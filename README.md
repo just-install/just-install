@@ -69,7 +69,7 @@ In case you are lost, help is always few keystrokes away:
 
 ## Development
 
-To contribute a new package, see [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute a new package, see [here](https://github.com/just-install/registry/blob/master/README.md).
 
 To work on just-install itself, you will need to install and set-up:
 

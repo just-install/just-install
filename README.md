@@ -46,6 +46,8 @@ To install a package:
 
     just-install firefox
 
+You can also use the [just-install customizer](http://just-install.it/customizer) to install a package without using the command line or installing just-install.
+
 To view a list of available packages:
 
     just-install list

@@ -69,7 +69,8 @@ def clean():
 def build():
     version = get_output(["git", "describe", "--tags"])
 
-    os.environ["JustInstallVersion"] = version[1:6]
+    # This environment variable is used in just-install.wxs
+    os.environ["JustInstallVersion"] = version[1:]
 
     if "CI" in os.environ:
         os.environ["GOARCH"] = "386"
@@ -77,7 +78,7 @@ def build():
     if "--skip-tests" not in sys.argv:
         call("go", "test", "-v")
 
-    call("go", "build", "-o", EXE, "-ldflags", "-X main.version=" + version, "./bin")
+    call("go", "build", "-o", EXE, "-ldflags", "-X main.version={}".format(version), "./bin")
 
 
 def build_msi():

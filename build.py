@@ -70,7 +70,7 @@ def build():
     version = get_output(["git", "describe", "--tags"])
 
     # This environment variable is used in just-install.wxs
-    os.environ["JustInstallVersion"] = version[1:]
+    os.environ["JustInstallVersion"] = version[1:6]
 
     if "CI" in os.environ:
         os.environ["GOARCH"] = "386"

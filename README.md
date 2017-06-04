@@ -11,8 +11,6 @@ _The simple package installer for Windows_
 
 --------------------------------------------------------------------------------
 
-**NEW**: Subscribe to the mailing list by sending an email to <justinstall@librelist.com>
-
 just-install is a simple program which automates software installation on Windows. [Unlike the
 alternatives](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
 simple thing and do it well: download a `setup.exe` and install it, without bothering the user.

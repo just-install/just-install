@@ -1,0 +1,17 @@
+clone_folder: C:\gopath\src\github.com\just-install\just-install
+shallow_clone: true
+test: off
+environment:
+    GOPATH: C:\gopath
+    PATH: C:\gopath\bin;%PROGRAMFILES(x86)%\WiX Toolset v3.11\bin;%PATH%
+    PYTHONUNBUFFERED: 1
+    NETLIFY_DEPLOY_TOKEN:
+        secure: JeAo8d6hrQCY73ADrmhWL0LL51VgjexXY2hX4ZxSReaPvUaV3cDOw5P+pAB3ZnIeLVKPcRshq7GwuOPBFRjqWKVnWXOvjFIkzp88Gvb6zEA=
+build_script:
+    - cmd: go get -u github.com/kardianos/govendor
+    - cmd: govendor sync
+    - cmd: pip install requests==2.17.3
+    - cmd: .\script\cibuild.py
+artifacts:
+    - path: just-install*.exe
+    - path: just-install*.msi

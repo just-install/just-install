@@ -6,7 +6,7 @@ _The simple package installer for Windows_
 
 [![Build status](https://ci.appveyor.com/api/projects/status/wpof4badsg7y0l3s/branch/master?svg=true)](https://ci.appveyor.com/project/lvillani/just-install/branch/master)
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
-[![Semver](http://img.shields.io/badge/version-v3.3.1-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
+[![Semver](http://img.shields.io/badge/version-v3.4.0-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/just-install/support)
 
 --------------------------------------------------------------------------------

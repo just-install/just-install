@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.4.0 - 2017-06-04
+
+### Changed
+
+* The most user-visible change should be that most stuff should be now served via TLS.
+
+
+
+
 ## 3.3.1 - 2017-02-09
 
 Fixes to the CI system to produce 32-bit executables and installer packages.

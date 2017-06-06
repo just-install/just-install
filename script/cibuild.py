@@ -85,6 +85,10 @@ def deploy():
         zipfileobj.write("just-install.exe")
         zipfileobj.write("just-install.msi")
         zipfileobj.writestr("_redirects", "/    /just-install.msi    302")
+        zipfileobj.writestr("_headers", """
+/*
+    Access-Control-Allow-Origin: https://just-install.it
+        """.strip())
 
     # Push zip archive to Netlify
     deploy_url = "https://api.netlify.com/api/v1/sites/just-install-{}.netlify.com/deploys".format(

@@ -1,7 +1,7 @@
 {
   "releng": {
-    "comment": "Created by releng v0.0.6: https://github.com/lvillani/releng",
+    "comment": "Created by releng v0.0.7: https://github.com/lvillani/releng",
     "version": 1
   },
-  "version": "3.4.0"
+  "version": "3.4.1"
 }

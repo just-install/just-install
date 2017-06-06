@@ -1,5 +1,6 @@
 clone_folder: C:\gopath\src\github.com\just-install\just-install
 shallow_clone: true
+skip_branch_with_pr: true
 test: off
 environment:
     GOPATH: C:\gopath

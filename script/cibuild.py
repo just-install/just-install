@@ -37,7 +37,9 @@ def main():
     clean()
     build()
     build_msi()
-    deploy()
+
+    if "APPVEYOR_PULL_REQUEST_NUMBER" not in os.environ:
+        deploy()
 
 
 def clean():

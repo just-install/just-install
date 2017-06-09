@@ -8,6 +8,7 @@ _The simple package installer for Windows_
 [![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
 [![Semver](http://img.shields.io/badge/version-v3.4.0-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/just-install/support)
+[![Become a Patron](https://img.shields.io/badge/become-a%20patron!-%23e94500.svg)](https://www.patreon.com/lvillani)
 
 --------------------------------------------------------------------------------
 

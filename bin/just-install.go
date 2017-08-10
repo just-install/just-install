@@ -1,7 +1,7 @@
 //
-// just-install - The stupid package installer
+// just-install - The humble package installer for Windows
 //
-// Copyright (C) 2013, 2014, 2015  Lorenzo Villani
+// Copyright (C) 2013, 2014, 2015, 2016, 2017 Lorenzo Villani
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

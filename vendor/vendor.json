@@ -38,12 +38,6 @@
 			"revisionTime": "2016-08-11T00:15:26Z"
 		},
 		{
-			"checksumSHA1": "ME/pGEOHOup7qYN4NvW+M6+hUyg=",
-			"path": "github.com/olekukonko/ts",
-			"revision": "ecf753e7c962639ab5a1fb46f7da627d4c0a04b8",
-			"revisionTime": "2014-04-12T22:01:45Z"
-		},
-		{
 			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
 			"path": "github.com/pmezard/go-difflib/difflib",
 			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
@@ -60,24 +54,6 @@
 			"path": "github.com/ungerik/go-dry",
 			"revision": "6ce726ec33b799d9d18e82926dbf4eb30642a951",
 			"revisionTime": "2016-04-11T12:12:01Z"
-		},
-		{
-			"checksumSHA1": "drSl/ipSHSsHWWTrp3WZw4LN/No=",
-			"path": "github.com/xeipuuv/gojsonpointer",
-			"revision": "e0fe6f68307607d540ed8eac07a342c33fa1b54a",
-			"revisionTime": "2015-10-27T08:21:46Z"
-		},
-		{
-			"checksumSHA1": "pSoUW+qY6LwIJ5lFwGohPU5HUpg=",
-			"path": "github.com/xeipuuv/gojsonreference",
-			"revision": "e02fc20de94c78484cd5ffb007f8af96be030a45",
-			"revisionTime": "2015-08-08T06:50:54Z"
-		},
-		{
-			"checksumSHA1": "AfFjQ6gxdEIdmAMfLQ1P4049geE=",
-			"path": "github.com/xeipuuv/gojsonschema",
-			"revision": "4f624f6197547606054e042e7903db103585e151",
-			"revisionTime": "2016-08-11T07:09:01Z"
 		}
 	],
 	"rootPath": "github.com/just-install/just-install"

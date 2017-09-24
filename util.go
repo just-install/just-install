@@ -22,7 +22,7 @@ import (
 	"github.com/ungerik/go-dry"
 )
 
-// expandString expands any environment variable in the given string, with additonal variables
+// expandString expands any environment variable in the given string, with additional variables
 // coming from the given context.
 func expandString(s string, context map[string]string) string {
 	data := environMap()

@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"syscall"
 	"text/template"
 	"time"
 
@@ -73,9 +74,27 @@ func system(args ...string) {
 
 	log.Println("Running", strings.Join(args, " "))
 
-	err := cmd.Run()
+	err := cmd.Start()
 	if err != nil {
 		log.Fatalf(err.Error())
+	}
+
+	if err := cmd.Wait(); err != nil {
+		if exiterr, ok := err.(*exec.ExitError); ok {
+			// The program has exited with an exit code != 0
+			if status, ok := exiterr.Sys().(syscall.WaitStatus); ok {
+				s := status.ExitStatus()
+				// msiexec returns 3010 if install needs reboot later
+				if s == 3010 {
+					log.Printf("Exit code 3010, needs reboot to complete install.")
+					return
+				}
+				// Return the original error
+				log.Fatalf(err.Error())
+			}
+		} else {
+			log.Fatalf(err.Error())
+		}
 	}
 }
 

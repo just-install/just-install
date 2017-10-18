@@ -26,6 +26,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 
@@ -207,8 +208,6 @@ func handleAuditAction(c *cli.Context) {
 		return err
 	}
 
-	var collectedErrors []error
-
 	// FIXME: this chunk of code is duplicated with handleArguments().
 	var registry justinstall.Registry
 	if c.IsSet("registry") {
@@ -251,23 +250,40 @@ func handleAuditAction(c *cli.Context) {
 		})
 	}
 
-	checkArch := func(name string, entry *justinstall.RegistryEntry, architecture string, rawUrl string) {
-		if rawUrl == "" {
-			return
-		}
+	poolSize := runtime.NumCPU()
+	work := make(chan string, poolSize)
 
-		if err := checkLink(entry.ExpandString(rawUrl)); err != nil {
-			collectedErrors = append(collectedErrors, err)
-		}
+	// Workers
+	var collectedErrors []error
+	for i := 0; i < poolSize; i++ {
+		go func() {
+			for {
+				rawurl, more := <-work
+				if !more {
+					log.Println("worker", i, "done.")
+					return
+				}
+
+				log.Println("checking:", rawurl)
+
+				if err := checkLink(rawurl); err != nil {
+					collectedErrors = append(collectedErrors, err)
+				}
+			}
+		}()
 	}
 
+	// Push jobs to workers
 	for _, name := range registry.SortedPackageNames() {
-		log.Println("checking:", name)
-
 		entry := registry.Packages[name]
 
-		checkArch(name, &entry, "x86", entry.Installer.X86)
-		checkArch(name, &entry, "x86_64", entry.Installer.X86_64)
+		if entry.Installer.X86 != "" {
+			work <- entry.ExpandString(entry.Installer.X86)
+		}
+
+		if entry.Installer.X86_64 != "" {
+			work <- entry.ExpandString(entry.Installer.X86_64)
+		}
 	}
 
 	if collectedErrors != nil {

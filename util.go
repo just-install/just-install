@@ -217,7 +217,10 @@ func CustomGet(urlStr string) (*http.Response, error) {
 	jar.SetCookies(oracleURL, oracleCookies)
 	jar.SetCookies(oracleEdeliveryURL, oracleCookies)
 
-	client := http.Client{Jar: jar}
+	client := http.Client{
+		Jar:     jar,
+		Timeout: 10 * time.Second,
+	}
 
 	return client.Do(request)
 }

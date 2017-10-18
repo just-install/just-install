@@ -28,6 +28,7 @@ import (
 	"os"
 	"runtime"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/codegangsta/cli"
@@ -188,25 +189,23 @@ func handleAuditAction(c *cli.Context) {
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first
 	// return value. Ends up returning the eventual error value after a maximum of three retries.
 	retry := func(f func() (bool, error)) error {
-		var err error
+		var ret error
 
-		delay := 2 * time.Second
+		delay := 2
 
 		for i := 0; i < 3; i++ {
 			shouldRetry, err := f()
 			if !shouldRetry {
 				return err
 			}
+			ret = err
 
-			if err != nil {
-				log.Println(err, "retrying in", int(delay/time.Second), "seconds")
-			}
-
-			time.Sleep(delay)
+			log.Println(err, "retrying in", delay, "seconds")
+			time.Sleep(time.Duration(delay) * time.Second)
 			delay *= delay
 		}
 
-		return err
+		return ret
 	}
 
 	// FIXME: this chunk of code is duplicated with handleArguments().
@@ -251,23 +250,31 @@ func handleAuditAction(c *cli.Context) {
 		})
 	}
 
-	poolSize := runtime.NumCPU()
-	work := make(chan string, poolSize)
-
 	// Workers
+	type workItem struct {
+		description string
+		rawurl      string
+	}
+
+	workerPoolSize := runtime.NumCPU()
+	workerQueue := make(chan workItem, workerPoolSize)
+	var workerWg sync.WaitGroup
+
 	var collectedErrors []error
-	for i := 0; i < poolSize; i++ {
+	for i := 0; i < workerPoolSize; i++ {
+		workerWg.Add(1)
+
 		go func() {
 			for {
-				rawurl, more := <-work
+				item, more := <-workerQueue
 				if !more {
-					log.Println("worker", i, "done.")
+					workerWg.Done()
 					return
 				}
 
-				log.Println("checking:", rawurl)
+				log.Println("checking", item.description)
 
-				if err := checkLink(rawurl); err != nil {
+				if err := checkLink(item.rawurl); err != nil {
 					collectedErrors = append(collectedErrors, err)
 				}
 			}
@@ -279,13 +286,16 @@ func handleAuditAction(c *cli.Context) {
 		entry := registry.Packages[name]
 
 		if entry.Installer.X86 != "" {
-			work <- entry.ExpandString(entry.Installer.X86)
+			workerQueue <- workItem{name + " (x86)", entry.ExpandString(entry.Installer.X86)}
 		}
 
 		if entry.Installer.X86_64 != "" {
-			work <- entry.ExpandString(entry.Installer.X86_64)
+			workerQueue <- workItem{name + " (x86_64)", entry.ExpandString(entry.Installer.X86_64)}
 		}
 	}
+
+	close(workerQueue)
+	workerWg.Wait()
 
 	if collectedErrors != nil {
 		log.Println("Found errors:")

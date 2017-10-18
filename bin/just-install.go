@@ -183,6 +183,30 @@ func handleAuditAction(c *cli.Context) {
 		"Zip Files",
 	}
 
+	// retry executes f, retrying a call with exponential back-off if it returns true as its first
+	// return value. Ends up returning the eventual error value after a maximum of three retries.
+	retry := func(f func() (bool, error)) error {
+		var err error
+
+		delay := 2 * time.Second
+
+		for i := 0; i < 3; i++ {
+			shouldRetry, err := f()
+			if !shouldRetry {
+				return err
+			}
+
+			if err != nil {
+				log.Println(err, "retrying in", int(delay/time.Second), "seconds")
+			}
+
+			time.Sleep(delay)
+			delay *= delay
+		}
+
+		return err
+	}
+
 	var collectedErrors []error
 
 	// FIXME: this chunk of code is duplicated with handleArguments().
@@ -198,47 +222,33 @@ func handleAuditAction(c *cli.Context) {
 	}
 
 	checkLink := func(rawurl string) error {
-		response, err := justinstall.CustomGet(rawurl)
-		if err != nil {
-			return err
-		}
-		defer response.Body.Close()
+		return retry(func() (bool, error) {
+			// Policy: retry on server or transport error, fail immediately otherwise.
+			response, err := justinstall.CustomGet(rawurl)
+			if err != nil {
+				return true, err
+			}
+			defer response.Body.Close()
 
-		if response.StatusCode != http.StatusOK {
-			return fmt.Errorf("Status code: expected 200, got %v", response.StatusCode)
-		}
-
-		contentType := response.Header.Get("Content-Type")
-
-		// Exception: VirtualBox Extension Pack has the wrong MIME type
-		success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"
-
-		// Exception: Some LibreOffice mirror returns the wrong MIME type
-		success = success || strings.Contains(rawurl, "libreoffice") && contentType == "application/x-troff-man"
-
-		success = success || dry.StringInSlice(contentType, expectedContentTypes)
-		if !success {
-			return errors.New("The content type was " + contentType)
-		}
-
-		return nil
-	}
-
-	retryCheckLink := func(rawurl string) error {
-		const retryDelay = 60
-		var err error
-
-		for i := 0; i < 3; i++ {
-			err = checkLink(rawurl)
-			if err == nil {
-				return nil
+			if response.StatusCode >= 500 && response.StatusCode < 600 {
+				return true, fmt.Errorf("%s: returned status code %v", rawurl, response.StatusCode)
 			}
 
-			log.Printf("Failed check for %v, retrying in %v seconds...\n", rawurl, retryDelay)
-			time.Sleep(retryDelay * time.Second)
-		}
+			if response.StatusCode != http.StatusOK {
+				return false, fmt.Errorf("%s: expected status code 200, got %v", rawurl, response.StatusCode)
+			}
 
-		return err
+			contentType := response.Header.Get("Content-Type")
+
+			success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"                     // VirtualBox Extension Pack has the wrong MIME type
+			success = success || strings.Contains(rawurl, "libreoffice") && contentType == "application/x-troff-man" // Some LibreOffice mirrors return the wrong MIME type
+			success = success || dry.StringInSlice(contentType, expectedContentTypes)
+			if !success {
+				return false, fmt.Errorf("%s: unexpected content type %q", rawurl, contentType)
+			}
+
+			return false, nil
+		})
 	}
 
 	checkArch := func(name string, entry *justinstall.RegistryEntry, architecture string, rawUrl string) {
@@ -246,14 +256,13 @@ func handleAuditAction(c *cli.Context) {
 			return
 		}
 
-		url := entry.ExpandString(rawUrl)
-		if err := retryCheckLink(url); err != nil {
+		if err := checkLink(entry.ExpandString(rawUrl)); err != nil {
 			collectedErrors = append(collectedErrors, err)
 		}
 	}
 
 	for _, name := range registry.SortedPackageNames() {
-		log.Println(name)
+		log.Println("checking:", name)
 
 		entry := registry.Packages[name]
 

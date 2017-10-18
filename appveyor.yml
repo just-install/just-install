@@ -13,6 +13,3 @@ build_script:
     - cmd: govendor sync
     - cmd: pip install requests==2.17.3
     - cmd: .\script\cibuild.py
-artifacts:
-    - path: just-install*.exe
-    - path: just-install*.msi

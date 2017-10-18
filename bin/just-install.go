@@ -169,6 +169,7 @@ func handleArguments(c *cli.Context) {
 
 func handleAuditAction(c *cli.Context) {
 	expectedContentTypes := []string{
+		"application/exe",
 		"application/octet-stream",
 		"application/unknown", // Bintray
 		"application/x-dosexec",

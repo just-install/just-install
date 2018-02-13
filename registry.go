@@ -275,6 +275,8 @@ func (e *RegistryEntry) install(installer string) {
 		system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
 	case "nsis":
 		system(installer, "/S", "/NCRC")
+	case "squirrel":
+		system(installer, "--silent")
 	case "custom":
 		var args []string
 

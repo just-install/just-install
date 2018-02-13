@@ -45,8 +45,8 @@ This JSON object must contain at least the following two keys:
   - `copy`: Copy the file according to the `destination` parameter;
   - `custom`: Allows you to specify how to call the installer
     ([example](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L79-L101));
-  - `easy_install26` and `easy_install_27`: used to install Python packages (the user must have
-    installed Python 2.6 or Python 2.7 first);
+  - `easy_install_27`: used to install Python packages (the user must have
+    installed Python 2.7 first);
   - `innosetup`: Silently installs InnoSetup packages;
   - `msi`: Silently installs Windows Installer packages;
   - `nsis`: Silently installs NSIS packages;

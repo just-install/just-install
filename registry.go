@@ -265,8 +265,6 @@ func (e *RegistryEntry) install(installer string) {
 		system(installer, "/q", "/i")
 	case "as-is":
 		system(installer)
-	case "easy_install_26":
-		system("\\Python26\\Scripts\\easy_install.exe", installer)
 	case "easy_install_27":
 		system("\\Python27\\Scripts\\easy_install.exe", installer)
 	case "innosetup":

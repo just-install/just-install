@@ -50,6 +50,7 @@ This JSON object must contain at least the following two keys:
   - `innosetup`: Silently installs InnoSetup packages;
   - `msi`: Silently installs Windows Installer packages;
   - `nsis`: Silently installs NSIS packages;
+  - `squirrel`: Silently installs Squirrel packages;
   - `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
     an installer within a .zip file or [extracts](https://github.com/just-install/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
     it to a destination directory.

@@ -184,6 +184,9 @@ func handleAuditAction(c *cli.Context) {
 		"Composite Document File V2 Document, corrupt: Can't read SAT; charset=binary", // Google Code
 		"text/x-python", // PIP
 		"Zip Files",
+		"application/x-ms-dos-executable", // OpenVPN
+		"exe", // VPN Unlimited
+		"", // PIA
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "modernIE/w7-ie8"
+    config.vm.box = "Microsoft/EdgeOnWindows10"
     config.vm.provision "shell", path: "./script/bootstrap.cmd"
     config.vm.synced_folder ".", "/gopath/src/github.com/just-install/just-install"
 

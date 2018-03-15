@@ -3,11 +3,10 @@ A brief list of reasons for starting this project are available here:
 
 * Support for any x86 and x86_64 version of Windows still being supported by Microsoft,
   excluding "ExtendedSupport" releases.
-  + Windows Vista
-  + Windows 7
-  + Windows 8
-  + Windows 8.1
-  + Windows 10
+  * Windows 7
+  * Windows 8
+  * Windows 8.1
+  * Windows 10
 * Installing `just-install` must only require copying its stand-alone executable somewhere
   on the target system. There is also an optional MSI, for ease of installation.
 * No other pre-requisites besides the operating system (no .NET runtime, or other runtime

@@ -1,5 +1,4 @@
-Registry
-========
+# Registry
 
 The registry file is a JSON document with a single top-level JSON object that follows the schema
 described in [just-install-schema.json](just-install-schema.json). This document roughly describes
@@ -7,7 +6,6 @@ the format of the registry file for humans :smile:
 
 There are no examples in this document, the registry file itself is a living example of what you can
 do.
-
 
 ## Top Level
 
@@ -20,7 +18,6 @@ The top-level JSON object must contain two keys:
   JSON object that contains the software version and instructions to get the installer. See "Package
   Entry" below for a description.
 
-
 ## Package Entry
 
 Each entry is a JSON object that must contain at least the following two keys:
@@ -29,7 +26,6 @@ Each entry is a JSON object that must contain at least the following two keys:
   downloaded. See "Installer Options" below for a description.
 * `version`: The software's version. If you are adding an unversioned link that always points to the
   latest stable version use `latest` here.
-
 
 ## Installer
 
@@ -40,25 +36,25 @@ This JSON object must contain at least the following two keys:
 * `interactive`: Set to `true` to show a warning to users that this package might require user
   interaction to complete its installation.
 * `kind`: It can be one of the following:
-  - `advancedinstaller`: Silently installs Advanced Installer packages;
-  - `as-is`: Will just run the executable, as-is;
-  - `copy`: Copy the file according to the `destination` parameter;
-  - `custom`: Allows you to specify how to call the installer
+  * `advancedinstaller`: Silently installs Advanced Installer packages;
+  * `as-is`: Will just run the executable, as-is;
+  * `copy`: Copy the file according to the `destination` parameter;
+  * `custom`: Allows you to specify how to call the installer
     ([example](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L79-L101));
-  - `easy_install_27`: used to install Python packages (the user must have
+  * `easy_install_27`: used to install Python packages (the user must have
     installed Python 2.7 first);
-  - `innosetup`: Silently installs InnoSetup packages;
-  - `msi`: Silently installs Windows Installer packages;
-  - `nsis`: Silently installs NSIS packages;
-  - `squirrel`: Silently installs Squirrel packages;
-  - `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
+  * `innosetup`: Silently installs InnoSetup packages;
+  * `msi`: Silently installs Windows Installer packages;
+  * `nsis`: Silently installs NSIS packages;
+  * `squirrel`: Silently installs Squirrel packages;
+  * `zip`: [Runs](https://github.com/lvillani/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L66-L78)
     an installer within a .zip file or [extracts](https://github.com/just-install/just-install/blob/18876192c5ed7f24a3acaa34524d3680ec17da3e/just-install.json#L216-L231)
     it to a destination directory.
 * `options`: A JSON object whose contents depend on the value of the `kind`, but other options are
   applicable to all installer types:
-  - `extension`: Specify a custom extension for a file, in case `just-install` isn't able to
+  * `extension`: Specify a custom extension for a file, in case `just-install` isn't able to
     determine it by itself ([example](https://github.com/just-install/just-install/blob/0a90135b8aaa4bdae65c63949673e57eed049294/just-install.json#L195-L208)).
-  - `filename`: The complete name of the file that should be downloaded in the temporary
+  * `filename`: The complete name of the file that should be downloaded in the temporary
     directory. When specified, this value takes precedence over `extension`.
 
 ## Shims
@@ -74,7 +70,6 @@ under `%SystemDrive%\Shims` that will forward any argument to the original file.
 
 This way users don't have to add a directory for each installed software to their `%PATH%` since
 they can just add `%SystemDrive%\Shims`.
-
 
 ## Placeholders
 

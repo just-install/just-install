@@ -187,6 +187,7 @@ func handleAuditAction(c *cli.Context) {
 		"application/x-ms-dos-executable", // OpenVPN
 		"exe", // VPN Unlimited
 		"", // PIA
+		"text/plain; charset=ISO-8859-1", // LibreOffice
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

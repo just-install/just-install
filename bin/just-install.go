@@ -188,6 +188,7 @@ func handleAuditAction(c *cli.Context) {
 		"exe", // VPN Unlimited
 		"", // PIA
 		"text/plain; charset=ISO-8859-1", // LibreOffice
+		"text/html; charset=utf-8", // SourceForge
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

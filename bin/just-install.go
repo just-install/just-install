@@ -186,9 +186,10 @@ func handleAuditAction(c *cli.Context) {
 		"Zip Files",
 		"application/x-ms-dos-executable", // OpenVPN
 		"exe", // VPN Unlimited
-		"", // PIA
+		"",    // PIA
 		"text/plain; charset=ISO-8859-1", // LibreOffice
-		"text/html; charset=utf-8", // SourceForge
+		"text/html; charset=utf-8",       // SourceForge
+		"application/x-ole-storage",      // EpicGames
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first
@@ -239,6 +240,14 @@ func handleAuditAction(c *cli.Context) {
 			}
 
 			if response.StatusCode != http.StatusOK {
+				if strings.Contains(response.Request.URL.Host, "freefilesync") || strings.Contains(response.Request.URL.Host, "mediafire") {
+					// mediafire is unpredictable
+					return true, nil
+				}
+				if strings.Contains(response.Request.URL.Host, "download.gimp.org") {
+					// gimp does funny stuff when trying to download from appveyor, but it works properly when actually using j-i
+					return true, nil
+				}
 				return false, fmt.Errorf("%s: expected status code 200, got %v", rawurl, response.StatusCode)
 			}
 

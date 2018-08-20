@@ -61,8 +61,9 @@ def build():
     os.environ["GOARCH"] = "386"
 
     call(
-        "go", "build", "-o", "just-install.exe",
-        "-ldflags", "-X main.version={}".format(get_version()), "./bin")
+        "go", "build",
+        "-ldflags", "-X main.version={}".format(get_version()),
+        "./cmd/just-install")
 
 
 def build_msi():

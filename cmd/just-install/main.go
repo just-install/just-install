@@ -32,9 +32,10 @@ import (
 	"time"
 
 	"github.com/codegangsta/cli"
-	"github.com/just-install/just-install"
 	"github.com/kardianos/osext"
-	dry "github.com/ungerik/go-dry"
+	"github.com/ungerik/go-dry"
+
+	"github.com/just-install/just-install/pkg/justinstall"
 )
 
 var version = "## filled by go build ##"
@@ -185,11 +186,11 @@ func handleAuditAction(c *cli.Context) {
 		"text/x-python", // PIP
 		"Zip Files",
 		"application/x-ms-dos-executable", // OpenVPN
-		"exe", // VPN Unlimited
-		"",    // PIA
-		"text/plain; charset=ISO-8859-1", // LibreOffice
-		"text/html; charset=utf-8",       // SourceForge
-		"application/x-ole-storage",      // EpicGames
+		"exe",                             // VPN Unlimited
+		"",                                // PIA
+		"text/plain; charset=ISO-8859-1",  // LibreOffice
+		"text/html; charset=utf-8",        // SourceForge
+		"application/x-ole-storage",       // EpicGames
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

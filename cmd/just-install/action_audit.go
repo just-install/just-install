@@ -62,17 +62,7 @@ func handleAuditAction(c *cli.Context) {
 		return ret
 	}
 
-	// FIXME: this chunk of code is duplicated with handleArguments().
-	var registry justinstall.Registry
-	if c.IsSet("registry") {
-		if !dry.FileExists(c.String("registry")) {
-			log.Fatalf("%v: no such file.\n", c.String("registry"))
-		}
-
-		registry = justinstall.LoadRegistry(c.String("registry"))
-	} else {
-		registry = justinstall.SmartLoadRegistry(false)
-	}
+	registry := loadRegistry(c)
 
 	checkLink := func(rawurl string) error {
 		return retry(func() (bool, error) {

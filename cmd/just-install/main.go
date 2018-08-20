@@ -28,7 +28,6 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/kardianos/osext"
-	"github.com/ungerik/go-dry"
 
 	"github.com/just-install/just-install/pkg/justinstall"
 )
@@ -107,16 +106,7 @@ func handleArguments(c *cli.Context) {
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
 
-	var registry justinstall.Registry
-	if c.IsSet("registry") {
-		if !dry.FileExists(c.String("registry")) {
-			log.Fatalf("%v: no such file.\n", c.String("registry"))
-		}
-
-		registry = justinstall.LoadRegistry(c.String("registry"))
-	} else {
-		registry = justinstall.SmartLoadRegistry(false)
-	}
+	registry := loadRegistry(c)
 
 	if c.String("arch") != "" {
 		if err := justinstall.SetArchitecture(c.String("arch")); err != nil {

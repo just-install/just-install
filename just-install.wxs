@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-    <Product Id="*" Name="just-install" Language="1033" Version="$(env.JUST_INSTALL_MSI_VERSION)" Manufacturer="Lorenzo Villani" UpgradeCode="6824DCF9-2C10-4C65-BF05-74A12E333931">
+    <Product Id="*" Name="just-install" Language="1033" Version="$(env.JUST_INSTALL_MSI_VERSION)" Manufacturer="just-install Developers" UpgradeCode="6824DCF9-2C10-4C65-BF05-74A12E333931">
         <Package Description="just-install" Comments="just-install" InstallerVersion="200" Compressed="yes" />
         <Media Id="1" Cabinet="data.cab" EmbedCab="yes" />
         <Directory Id="TARGETDIR" Name="SourceDir">

@@ -43,8 +43,7 @@ var version = "## filled by go build ##"
 func main() {
 	app := cli.NewApp()
 	app.Action = handleArguments
-	app.Author = "Lorenzo Villani"
-	app.Email = "lorenzo@villani.me"
+	app.Author = "just-install Developers"
 	app.Name = "just-install"
 	app.Usage = "The simple package installer for Windows"
 	app.Version = version

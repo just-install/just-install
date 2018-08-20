@@ -78,25 +78,28 @@ func main() {
 		Usage: "Create shims only (if exeproxy is installed)",
 	}}
 
+	// Extract arguments embedded in the executable (if any)
 	pathname, err := osext.Executable()
 	if err != nil {
 		app.Run(os.Args)
-	} else {
-		rawOverlayData, err := getPeOverlayData(pathname)
-		if err != nil {
-			app.Run(os.Args)
-		} else {
-			stringOverlayData := string(rawOverlayData)
-			trimmedStringOverlayData := strings.Trim(stringOverlayData, "\r\n ")
-
-			if len(trimmedStringOverlayData) == 0 {
-				app.Run(os.Args)
-			} else {
-				log.Println("Using embedded arguments: " + trimmedStringOverlayData)
-				app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...))
-			}
-		}
+		return
 	}
+
+	rawOverlayData, err := getPeOverlayData(pathname)
+	if err != nil {
+		app.Run(os.Args)
+		return
+	}
+
+	stringOverlayData := string(rawOverlayData)
+	trimmedStringOverlayData := strings.Trim(stringOverlayData, "\r\n ")
+	if len(trimmedStringOverlayData) == 0 {
+		app.Run(os.Args)
+		return
+	}
+
+	log.Println("Using embedded arguments: " + trimmedStringOverlayData)
+	app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...))
 }
 
 func handleArguments(c *cli.Context) {

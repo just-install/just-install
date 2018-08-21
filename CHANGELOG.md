@@ -2,6 +2,20 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+### Changed
+
+* 64-bit only packages are now supported.
+
+### Fixed
+
+* `just-install --registry foo.json list` now lists packages from custom registries specified on the
+  command line.
+
+
+
+
 ## 3.4.0 - 2017-06-04
 
 ### Changed

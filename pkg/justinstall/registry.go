@@ -204,7 +204,11 @@ type RegistryEntry struct {
 // DownloadInstaller downloads the installer for the current entry in the temporary directory.
 func (e *RegistryEntry) DownloadInstaller(force bool) string {
 	options := e.Installer.options()
-	url := e.installerURL(arch)
+
+	url, err := e.installerURL(arch)
+	if err != nil {
+		log.Fatalln("Cannot download installation package:", err)
+	}
 
 	log.Println(arch, "-", url)
 
@@ -235,16 +239,28 @@ func (e *RegistryEntry) JustInstall(force bool) {
 	e.CreateShims()
 }
 
-func (e *RegistryEntry) installerURL(arch string) string {
+func (e *RegistryEntry) installerURL(arch string) (string, error) {
 	var url string
 
-	if arch == "x86_64" && e.Installer.X86_64 != "" {
-		url = e.Installer.X86_64
+	if arch == "x86_64" {
+		if e.Installer.X86_64 != "" {
+			url = e.Installer.X86_64
+		} else if e.Installer.X86 != "" {
+			url = e.Installer.X86
+		} else {
+			return "", errors.New("No fallback 32-bit download")
+		}
+	} else if arch == "x86" {
+		if e.Installer.X86 != "" {
+			url = e.Installer.X86
+		} else {
+			return "", errors.New("64-bit only package")
+		}
 	} else {
-		url = e.Installer.X86
+		return "", errors.New("Unknown architecture")
 	}
 
-	return e.ExpandString(url)
+	return e.ExpandString(url), nil
 }
 
 func (e *RegistryEntry) ExpandString(s string) string {

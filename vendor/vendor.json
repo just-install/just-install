@@ -3,57 +3,40 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "f4UJKXymPS31lDRMfsmPA4PvwVw=",
-			"path": "github.com/cheggaaa/pb",
-			"revision": "6e9d17711bb763b26b68b3931d47f24c1323abab",
-			"revisionTime": "2016-08-12T10:57:48Z"
-		},
-		{
-			"checksumSHA1": "h9Hif0baLSD2OAv4njZwEmvfDKg=",
-			"path": "github.com/cheggaaa/pb/example",
-			"revision": "467c52dcaefb4913d1feb16f6a771777c9613a64"
-		},
-		{
-			"checksumSHA1": "rq+6yjxQtzLj9uQ6t+XSJz6jXos=",
-			"path": "github.com/cheggaaa/pb/example/copy",
-			"revision": "467c52dcaefb4913d1feb16f6a771777c9613a64"
-		},
-		{
-			"checksumSHA1": "N2pkrPn8BpFTyRfHT2Z1U9xZQ6k=",
-			"comment": "1.2.0-95-g9b2bd2b",
-			"path": "github.com/codegangsta/cli",
-			"revision": "05fe449c81eb7305a34e9253c321c960a1c5e057",
-			"revisionTime": "2016-08-23T15:25:51Z"
-		},
-		{
-			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
-			"path": "github.com/davecgh/go-spew/spew",
-			"revision": "6cf5744a041a0022271cefed95ba843f6d87fd51",
-			"revisionTime": "2016-08-16T17:40:47Z"
-		},
-		{
-			"checksumSHA1": "g+afVQQVopBLiLB5pFZp/8s6aBs=",
+			"checksumSHA1": "gEjGS03N1eysvpQ+FCHTxPcbxXc=",
 			"path": "github.com/kardianos/osext",
-			"revision": "c2c54e542fb797ad986b31721e1baedf214ca413",
-			"revisionTime": "2016-08-11T00:15:26Z"
+			"revision": "ae77be60afb1dcacde03767a8c37337fad28ac14",
+			"revisionTime": "2017-05-10T13:15:34Z"
 		},
 		{
-			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
-			"path": "github.com/pmezard/go-difflib/difflib",
-			"revision": "792786c7400a136282c1664665ae0a8db921c6c2",
-			"revisionTime": "2016-01-10T10:55:54Z"
+			"checksumSHA1": "KGCifxxR5cm2gz94i2iha+RIZlk=",
+			"path": "github.com/mattn/go-runewidth",
+			"revision": "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb",
+			"revisionTime": "2018-04-08T05:53:51Z"
 		},
 		{
-			"checksumSHA1": "iydUphwYqZRq3WhstEdGsbvBAKs=",
-			"path": "github.com/stretchr/testify/assert",
-			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
-			"revisionTime": "2016-06-15T09:26:46Z"
-		},
-		{
-			"checksumSHA1": "pcMltlD/XsHn2voMc8opx6+93Lo=",
+			"checksumSHA1": "Y0UJhkr//N5KQecsdlhbfzKGqDk=",
 			"path": "github.com/ungerik/go-dry",
-			"revision": "6ce726ec33b799d9d18e82926dbf4eb30642a951",
-			"revisionTime": "2016-04-11T12:12:01Z"
+			"revision": "654ae31114c847b9b579eb1f82a6f7f350ef5d5b",
+			"revisionTime": "2018-04-11T13:39:23Z"
+		},
+		{
+			"checksumSHA1": "/IwLAWd+bVRFctg6wj1PEaONdjM=",
+			"path": "github.com/urfave/cli",
+			"revision": "934abfb2f102315b5794e15ebc7949e4ca253920",
+			"revisionTime": "2018-08-21T06:40:27Z"
+		},
+		{
+			"checksumSHA1": "i4Fanh/A0DrHed5xuWhbALbZUYQ=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "3b58ed4ad3395d483fc92d5d14123ce2c3581fec",
+			"revisionTime": "2018-08-21T08:45:23Z"
+		},
+		{
+			"checksumSHA1": "N7ZJBGfwAQEVggCDItJt+E9QyCM=",
+			"path": "gopkg.in/cheggaaa/pb.v1",
+			"revision": "2af8bbdea9e99e83b3ac400d8f6b6d1b8cbbf338",
+			"revisionTime": "2018-05-21T09:56:06Z"
 		}
 	],
 	"rootPath": "github.com/just-install/just-install"

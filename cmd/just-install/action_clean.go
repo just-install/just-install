@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 
 	"github.com/just-install/just-install/pkg/justinstall"
 )

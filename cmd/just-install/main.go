@@ -26,8 +26,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/codegangsta/cli"
 	"github.com/kardianos/osext"
+	"github.com/urfave/cli"
 
 	"github.com/just-install/just-install/pkg/justinstall"
 )

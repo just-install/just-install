@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/codegangsta/cli"
 	"github.com/ungerik/go-dry"
+	"github.com/urfave/cli"
 
 	"github.com/just-install/just-install/pkg/justinstall"
 )

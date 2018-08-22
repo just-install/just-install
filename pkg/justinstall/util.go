@@ -19,8 +19,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/cheggaaa/pb"
 	"github.com/ungerik/go-dry"
+	"gopkg.in/cheggaaa/pb.v1"
 )
 
 // expandString expands any environment variable in the given string, with additional variables

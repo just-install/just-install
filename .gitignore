@@ -2,11 +2,8 @@
 .vagrant/
 *.exe
 *.msi
-*.sublime-workspace
 *.wixobj
 *.wixpdb
-build/
-dist/
-just-install
-Vagrantfile.overrides.rb
-vendor/*/
+/build/
+/dist/
+/vendor/*/

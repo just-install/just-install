@@ -5,17 +5,17 @@
 _The simple package installer for Windows_
 
 [![Build status](https://ci.appveyor.com/api/projects/status/wpof4badsg7y0l3s/branch/master?svg=true)](https://ci.appveyor.com/project/lvillani/just-install/branch/master)
-[![License](http://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](http://choosealicense.com/licenses/gpl-3.0/)
-[![Semver](http://img.shields.io/badge/version-v3.4.0-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](https://choosealicense.com/licenses/gpl-3.0/)
+[![Semver](https://img.shields.io/badge/version-v3.4.0-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/just-install/support)
 
 --------------------------------------------------------------------------------
 
 just-install is a simple program which automates software installation on Windows. [Unlike the
-alternatives](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
+alternatives](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
 simple thing and do it well: download a `setup.exe` and install it, without bothering the user.
 
-To see the list of available packages head over to <http://just-install.it>.
+To see the list of available packages head over to <https://just-install.it>.
 
 
 ## Installation
@@ -23,19 +23,19 @@ To see the list of available packages head over to <http://just-install.it>.
 Run this command in a command prompt, as an Administrator:
 
 ```batch
-msiexec.exe /i http://go.just-install.it
+msiexec.exe /i https://go.just-install.it
 ```
 
 If you would like a more traditional means of installation then download
-[just-install.msi](http://go.just-install.it) and double click the file to install it yourself.
+[just-install.msi](https://go.just-install.it) and double click the file to install it yourself.
 
 If you would like to automatically install programs when `just-install.exe` is launched, use the
-customizer [here](http://just-install.it/customizer.html).
+customizer [here](https://just-install.it/customizer.html).
 
 If you want to try the next upcoming version of just-install, then run the following:
 
 ```batch
-msiexec.exe /i http://unstable.just-install.it
+msiexec.exe /i https://unstable.just-install.it
 ```
 
 ## Usage
@@ -44,7 +44,8 @@ To install a package:
 
     just-install firefox
 
-You can also use the [just-install customizer](http://just-install.it/customizer) to install a package without using the command line or installing just-install.
+You can also use the [just-install customizer](https://just-install.it/customizer) to install a
+package without using the command line or installing just-install.
 
 To view a list of available packages:
 
@@ -69,14 +70,15 @@ In case you are lost, help is always few keystrokes away:
 
 ## Development
 
-To contribute a new package, see [here](https://github.com/just-install/registry/blob/master/README.md).
+To contribute a new package, see
+[here](https://github.com/just-install/registry/blob/master/README.md).
 
 To work on just-install itself, you will need to install and set-up:
 
 * exeproxy (this simplifies adding the necessary exes to your path by placing aliases in C:\Shims)
 * The [Go](https://golang.org/) compiler
 * [Python 2.7](https://python.org/)
-* [WiX Toolset](http://wixtoolset.org/)
+* [WiX Toolset](https://wixtoolset.org/)
 
 **TIP**: You can install these dependencies with just-install itself by running:
 
@@ -113,11 +115,11 @@ memorable command, was self-contained, and could be launched from an unattended 
 
 I wanted something simple, something that would download an installer and run it silently. That's
 why I wrote just-install. You can find a complete rationale
-[on my blog post](http://lorenzo.villani.me/2013/04/08/just-install-my-stuff/)
+[on my blog post](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/)
 
 
 
 
 ## Credits
 
-The cube icon is derived from the one available from [Ionicons](http://ionicons.com/).
+The cube icon is derived from the one available from [Ionicons](https://ionicons.com/).

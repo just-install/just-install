@@ -7,9 +7,14 @@ _The simple package installer for Windows_
 [![Build status](https://ci.appveyor.com/api/projects/status/wpof4badsg7y0l3s/branch/master?svg=true)](https://ci.appveyor.com/project/lvillani/just-install/branch/master)
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](https://choosealicense.com/licenses/gpl-3.0/)
 [![Semver](https://img.shields.io/badge/version-v3.4.0-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/just-install/support)
 
---------------------------------------------------------------------------------
+---
+
+:question: **Looking for help?** We recently decommissioned our Gitter rooms. If you want to ask a
+question, please open an issue by clicking
+[here](https://github.com/just-install/helpdesk/issues/new).
+
+---
 
 just-install is a simple program which automates software installation on Windows. [Unlike the
 alternatives](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one

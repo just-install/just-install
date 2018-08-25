@@ -6,4 +6,3 @@
 *.wixpdb
 /build/
 /dist/
-/vendor/*/

@@ -11,7 +11,7 @@ cache:
     - '%GOPATH%\pkg\mod\cache -> go.sum'
 install:
     - cmd: rd /s /q C:\Go
-    - cmd: msiexec /q /i https://dl.google.com/go/go1.11rc1.windows-amd64.msi
+    - cmd: msiexec /q /i https://dl.google.com/go/go1.11.windows-amd64.msi
     - cmd: go version
     - cmd: pip install requests==2.17.3
 build_script:

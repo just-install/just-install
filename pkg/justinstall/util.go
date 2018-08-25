@@ -248,17 +248,18 @@ func extractZip(path string, extractTo string) {
 			if err != nil {
 				log.Fatalln("Unable to create destination:", destinationPath)
 			}
-			defer dest.Close()
 
 			// Open input stream
 			source, err := zipFile.Open()
 			if err != nil {
+				dest.Close()
 				log.Fatalln("Unable to open input ZIP file:", zipFile.Name)
 			}
-			defer source.Close()
 
 			// Extract file
 			io.Copy(dest, source)
+			dest.Close()
+			source.Close()
 		}
 	}
 }

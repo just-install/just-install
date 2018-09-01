@@ -43,34 +43,13 @@ If you want to try the next upcoming version of just-install, then run the follo
 msiexec.exe /i https://unstable.just-install.it
 ```
 
-## Usage
+## Quick start
 
-To install a package:
+To install a package, for example Firefox, run:
 
     just-install firefox
 
-You can also use the [just-install customizer](https://just-install.it/customizer) to install a
-package without using the command line or installing just-install.
-
-To view a list of available packages:
-
-    just-install list
-
-To update the list of available packages:
-
-    just-install update
-
-To forcibly re-download an installer and re-run it:
-
-    just-install -f firefox
-
-To force installation of a package for a specific architecture (use "x86" or "x86_64"):
-
-    just-install -a x86 go
-
-In case you are lost, help is always few keystrokes away:
-
-    just-install --help
+There are also other commands and flags that are described in the output of `just-install help`.
 
 
 ## Development
@@ -78,23 +57,10 @@ In case you are lost, help is always few keystrokes away:
 To contribute a new package, see
 [here](https://github.com/just-install/registry/blob/master/README.md).
 
-To work on just-install itself, you will need to install and set-up:
+To work on just-install itself you will need Git, the Go compiler and the WiX Toolset. You can
+install them with just-install itself:
 
-* exeproxy (this simplifies adding the necessary exes to your path by placing aliases in C:\Shims)
-* The [Go](https://golang.org/) compiler
-* [Python 2.7](https://python.org/)
-* [WiX Toolset](https://wixtoolset.org/)
-
-**TIP**: You can install these dependencies with just-install itself by running:
-
-    just-install exeproxy go python27 wix
-
-Once you have done so, run:
-
-    set PATH="%SYSTEMDRIVE%\Shims;%CD%"
-    python build.py
-
-This will produce `just-install.exe` in the current working directory.
+    just-install git go wix
 
 
 ## Frequently Asked Questions
@@ -121,8 +87,6 @@ memorable command, was self-contained, and could be launched from an unattended 
 I wanted something simple, something that would download an installer and run it silently. That's
 why I wrote just-install. You can find a complete rationale
 [on my blog post](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/)
-
-
 
 
 ## Credits

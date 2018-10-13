@@ -54,7 +54,6 @@ func build() {
 
 	cmd := exec.Command("go", "build",
 		"-ldflags", fmt.Sprintf("-s -w -X main.version=%s", getVersion()),
-		"-mod=readonly",
 		"./cmd/just-install")
 	cmd.Env = append(os.Environ(), "GOARCH=386")
 	if err := cmd.Run(); err != nil {

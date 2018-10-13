@@ -1,0 +1,43 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "gEjGS03N1eysvpQ+FCHTxPcbxXc=",
+			"path": "github.com/kardianos/osext",
+			"revision": "ae77be60afb1dcacde03767a8c37337fad28ac14",
+			"revisionTime": "2017-05-10T13:15:34Z"
+		},
+		{
+			"checksumSHA1": "KGCifxxR5cm2gz94i2iha+RIZlk=",
+			"path": "github.com/mattn/go-runewidth",
+			"revision": "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb",
+			"revisionTime": "2018-04-08T05:53:51Z"
+		},
+		{
+			"checksumSHA1": "Y0UJhkr//N5KQecsdlhbfzKGqDk=",
+			"path": "github.com/ungerik/go-dry",
+			"revision": "654ae31114c847b9b579eb1f82a6f7f350ef5d5b",
+			"revisionTime": "2018-04-11T13:39:23Z"
+		},
+		{
+			"checksumSHA1": "/IwLAWd+bVRFctg6wj1PEaONdjM=",
+			"path": "github.com/urfave/cli",
+			"revision": "934abfb2f102315b5794e15ebc7949e4ca253920",
+			"revisionTime": "2018-08-21T06:40:27Z"
+		},
+		{
+			"checksumSHA1": "TPFgqJe6HGKAcdjh+yJtRqYTlIs=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "d47a0f3392421c5624713c9a19fe781f651f8a50",
+			"revisionTime": "2018-09-21T16:08:21Z"
+		},
+		{
+			"checksumSHA1": "N7ZJBGfwAQEVggCDItJt+E9QyCM=",
+			"path": "gopkg.in/cheggaaa/pb.v1",
+			"revision": "2af8bbdea9e99e83b3ac400d8f6b6d1b8cbbf338",
+			"revisionTime": "2018-05-21T09:56:06Z"
+		}
+	],
+	"rootPath": "github.com/just-install/just-install"
+}

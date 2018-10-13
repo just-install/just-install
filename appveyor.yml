@@ -1,3 +1,4 @@
+clone_folder: C:\gopath\src\github.com\just-install\just-install
 shallow_clone: true
 skip_branch_with_pr: true
 test: off
@@ -6,9 +7,5 @@ environment:
     PATH: '%PROGRAMFILES(x86)%\WiX Toolset v3.11\bin;%PATH%'
     NETLIFY_DEPLOY_TOKEN:
         secure: JeAo8d6hrQCY73ADrmhWL0LL51VgjexXY2hX4ZxSReaPvUaV3cDOw5P+pAB3ZnIeLVKPcRshq7GwuOPBFRjqWKVnWXOvjFIkzp88Gvb6zEA=
-cache:
-    - '%GOPATH%\pkg\mod\cache -> go.sum'
-install:
-    - cmd: go version
 build_script:
     - cmd: go run make.go

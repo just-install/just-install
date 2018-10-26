@@ -38,6 +38,7 @@ func handleAuditAction(c *cli.Context) {
 		"text/plain; charset=ISO-8859-1",  // LibreOffice
 		"text/html; charset=utf-8",        // SourceForge
 		"application/x-ole-storage",       // EpicGames
+		"application/x-troff-man",         // MSIs on OSDN
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

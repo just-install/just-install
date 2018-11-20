@@ -17,7 +17,7 @@ import (
 
 const (
 	registrySupportedVersion = 4
-	registryURL              = "https://registry.just-install.it"
+	registryURL              = "https://just-install.github.io/registry/just-install-v4.json"
 )
 
 var (

@@ -7,6 +7,9 @@ All notable changes to this project are documented in this file.
 ### Changed
 
 * 64-bit only packages are now supported.
+* Default registry URL has been changed to
+  <https://just-install.github.io/registry/just-install-v4.json> to prepare for our migration
+  back to a github.io domain.
 
 ### Fixed
 

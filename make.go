@@ -15,7 +15,7 @@ import (
 
 const accessControlHeader = `
 /*
-	Access-Control-Allow-Origin: https://just-install.it
+	Access-Control-Allow-Origin: https://just-install.github.io
 `
 
 func main() {

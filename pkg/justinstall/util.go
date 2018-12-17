@@ -187,9 +187,17 @@ func download(rawurl string, destinationPath string) {
 
 	writer := io.MultiWriter(destination, progressBar)
 
-	io.Copy(writer, response.Body)
-	destination.Close()
-	os.Rename(tempDestinationPath, destinationPath)
+	if _, err := io.Copy(writer, response.Body); err != nil {
+		log.Fatalf("Error downloading file: %s\n", err)
+	}
+
+	if err := destination.Close(); err != nil {
+		log.Fatalf("Cannot close destination file: %s\n", err)
+	}
+
+	if err := os.Rename(tempDestinationPath, destinationPath); err != nil {
+		log.Fatalf("Cannot rename %s to %s (%s)\n", tempDestinationPath, destinationPath, err)
+	}
 }
 
 func CustomGet(urlStr string) (*http.Response, error) {

@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.4.3 - 2018-12-22
+
+### Fixed
+
+* Downloads interrupted with no apparent errors after about 10 seconds.
+
+
 ## 3.4.2 - 2018-11-22
 
 ### Changed

@@ -19,8 +19,9 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/ungerik/go-dry"
-	"gopkg.in/cheggaaa/pb.v1"
+	"github.com/just-install/just-install/pkg/fetch"
+	dry "github.com/ungerik/go-dry"
+	pb "gopkg.in/cheggaaa/pb.v1"
 )
 
 // expandString expands any environment variable in the given string, with additional variables
@@ -200,7 +201,10 @@ func download(rawurl string, destinationPath string) {
 	}
 }
 
-func CustomGet(urlStr string) (*http.Response, error) {
+func CustomGet(urlStr string, timeout ...time.Duration) (*http.Response, error) {
+	// FIXME(lvillani): Adding a variadic timeout argument allows us to keep backward compatibility
+	// with users of this API. This should be taken into account when designing the new fetch API.
+
 	request, err := http.NewRequest("GET", urlStr, nil)
 	if err != nil {
 		return nil, err
@@ -225,9 +229,10 @@ func CustomGet(urlStr string) (*http.Response, error) {
 	jar.SetCookies(oracleURL, oracleCookies)
 	jar.SetCookies(oracleEdeliveryURL, oracleCookies)
 
-	client := http.Client{
-		Jar:     jar,
-		Timeout: 10 * time.Second,
+	client := fetch.NewClient()
+	client.Jar = jar
+	if len(timeout) > 0 {
+		client.Timeout = timeout[0]
 	}
 
 	return client.Do(request)

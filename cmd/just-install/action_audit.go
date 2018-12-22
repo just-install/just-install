@@ -10,7 +10,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ungerik/go-dry"
+	"github.com/just-install/just-install/pkg/fetch"
+
+	dry "github.com/ungerik/go-dry"
 	"github.com/urfave/cli"
 
 	"github.com/just-install/just-install/pkg/justinstall"
@@ -68,7 +70,7 @@ func handleAuditAction(c *cli.Context) {
 	checkLink := func(rawurl string) error {
 		return retry(func() (bool, error) {
 			// Policy: retry on server or transport error, fail immediately otherwise.
-			response, err := justinstall.CustomGet(rawurl)
+			response, err := justinstall.CustomGet(rawurl, fetch.ConnectionPhaseTimeout)
 			if err != nil {
 				return true, err
 			}

@@ -10,7 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/ungerik/go-dry"
+	dry "github.com/ungerik/go-dry"
 )
 
 const accessControlHeader = `
@@ -25,6 +25,8 @@ func main() {
 
 	if shouldDeploy() {
 		deploy()
+	} else {
+		log.Println("skipping deployment to netlify")
 	}
 }
 
@@ -189,10 +191,10 @@ func getVersion() string {
 
 func shouldDeploy() bool {
 	_, ok := dry.EnvironMap()["APPVEYOR_PULL_REQUEST_NUMBER"]
-	return !ok
+	return !ok && isStableBuild()
 }
 
 func isStableBuild() bool {
 	val, ok := dry.EnvironMap()["APPVEYOR_REPO_TAG_NAME"]
-	return ok && len(val) > 0
+	return ok && len(val) > 0 && val != "unstable"
 }

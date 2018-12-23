@@ -9,3 +9,14 @@ environment:
     secure: JeAo8d6hrQCY73ADrmhWL0LL51VgjexXY2hX4ZxSReaPvUaV3cDOw5P+pAB3ZnIeLVKPcRshq7GwuOPBFRjqWKVnWXOvjFIkzp88Gvb6zEA=
 build_script:
   - cmd: go run make.go
+artifacts:
+  - path: just-install.exe
+  - path: just-install.msi
+deploy:
+  artifact: just-install.exe,just-install.msi
+  force_update: true
+  provider: GitHub
+  auth_token:
+    secure: tqgQsXIFAw9puhEL+0L65v4smni7SWhx6SMoDpBRwjxLxUKz9mVF/v61x8IpUkOx
+  on:
+    APPVEYOR_REPO_TAG: true

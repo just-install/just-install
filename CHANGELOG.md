@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.4.4 - 2018-12-23
+
+### Changes
+
+* Stable releases are now published on GitHub.
+
+
 ## 3.4.3 - 2018-12-22
 
 ### Fixed

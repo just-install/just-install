@@ -190,8 +190,14 @@ func getVersion() string {
 }
 
 func shouldDeploy() bool {
+	// Skip pull requests
 	_, ok := dry.EnvironMap()["APPVEYOR_PULL_REQUEST_NUMBER"]
-	return !ok && isStableBuild()
+	if ok {
+		return false
+	}
+
+	// Only deploy stable builds, unstable builds will go to GitHub Releases.
+	return isStableBuild()
 }
 
 func isStableBuild() bool {

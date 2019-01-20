@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ungerik/go-dry"
+	dry "github.com/ungerik/go-dry"
 )
 
 const (
@@ -138,7 +138,7 @@ func LoadRegistry(path string) Registry {
 	}
 
 	if ret.Version != registrySupportedVersion {
-		log.Fatalln("Please update to a new version of just-install by running: msiexec.exe /i http://go.just-install.it")
+		log.Fatalln("Please update to a new version of just-install by running: msiexec.exe /i https://just-install.github.io/stable/just-install.msi")
 	}
 
 	return ret

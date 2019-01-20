@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## 3.4.5 - 2018-01-20
+
+### Changes
+
+* Push stable releases to GitHub Pages in addition to GitHub releases. Changed install command shown
+  on registry version mismatch to reflect this change.
+
+
 ## 3.4.4 - 2018-12-23
 
 ### Changes

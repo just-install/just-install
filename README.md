@@ -1,6 +1,6 @@
 # Just Install
 
-<img src="https://cdn.rawgit.com/just-install/just-install/4953fdccb9614bbdb2b77991610db6b99b1757d1/misc/cube.svg" align="right" width="200" height="200"/>
+<img src="misc/cube.svg" align="right" width="200" height="200"/>
 
 _The simple package installer for Windows_
 

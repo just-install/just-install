@@ -98,6 +98,7 @@ func deploy() {
 
 	createDeployArchive()
 	uploadDeployArchive(fmt.Sprintf("https://api.netlify.com/api/v1/sites/just-install-%s.netlify.com/deploys", target))
+	ghPagesDeploy()
 }
 
 func createDeployArchive() {
@@ -168,6 +169,38 @@ func uploadDeployArchive(url string) {
 
 	if resp.StatusCode != http.StatusOK {
 		log.Fatalln("expected 200 OK, instead got", resp.StatusCode)
+	}
+}
+
+func ghPagesDeploy() {
+	// TODO: this thing is a mess, it's essentially a shell script within a Go program.
+	if !dry.FileExists("stable") {
+		log.Fatalln("must clone git@github.com:just-install/stable.git")
+	}
+
+	for _, f := range []string{"just-install.exe", "just-install.msi"} {
+		if err := dry.FileCopy(f, fmt.Sprintf("stable\\%v", f)); err != nil {
+			log.Fatalln("cannot copy", f, "to git repo")
+		}
+	}
+
+	if err := os.Chdir("stable"); err != nil {
+		log.Fatalln("cannot chdir to git repo")
+	}
+
+	cmd := exec.Command("git", "add", "-A")
+	if err := cmd.Run(); err != nil {
+		log.Fatalln("cannot add deployment artifacts")
+	}
+
+	cmd = exec.Command("git", "commit", "--amend", "--no-edit", "--reset-author", "-m", "AppVeyor Release")
+	if err := cmd.Run(); err != nil {
+		log.Fatalln("unable to commit")
+	}
+
+	cmd = exec.Command("git", "push", "-f")
+	if err := cmd.Run(); err != nil {
+		log.Fatalln("cannot push to git repo")
 	}
 }
 

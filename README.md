@@ -10,8 +10,7 @@ _The simple package installer for Windows_
 
 ---
 
-:question: **Looking for help?** We recently decommissioned our Gitter rooms. If you want to ask a
-question, please open an issue by clicking
+:question: **Looking for help?** If you want to ask a question, please open an issue by clicking
 [here](https://github.com/just-install/helpdesk/issues/new).
 
 ---
@@ -20,28 +19,11 @@ just-install is a simple program which automates software installation on Window
 alternatives](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
 simple thing and do it well: download a `setup.exe` and install it, without bothering the user.
 
-To see the list of available packages head over to <https://just-install.it>.
-
 
 ## Installation
 
-Run this command in a command prompt, as an Administrator:
+For up-to-date install instructions, please visit <https://just-install.github.io>.
 
-```batch
-msiexec.exe /i https://go.just-install.it
-```
-
-If you would like a more traditional means of installation then download
-[just-install.msi](https://go.just-install.it) and double click the file to install it yourself.
-
-If you would like to automatically install programs when `just-install.exe` is launched, use the
-customizer [here](https://just-install.it/customizer.html).
-
-If you want to try the next upcoming version of just-install, then run the following:
-
-```batch
-msiexec.exe /i https://unstable.just-install.it
-```
 
 ## Quick start
 

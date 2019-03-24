@@ -1,7 +1,9 @@
-clone_folder: C:\gopath\src\github.com\just-install\just-install
 shallow_clone: true
 skip_branch_with_pr: true
 test: off
+cache:
+  - '%GOPATH%\pkg\mod\cache -> go.sum'
+  - '%LocalAppData%\go-build'
 environment:
   GOPATH: C:\gopath
   PATH: '%PROGRAMFILES(x86)%\WiX Toolset v3.11\bin;%PATH%'

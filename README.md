@@ -15,9 +15,8 @@ _The simple package installer for Windows_
 
 ---
 
-just-install is a simple program which automates software installation on Windows. [Unlike the
-alternatives](https://lorenzo.villani.me/2013/04/08/just-install-my-stuff/), we strive to do one
-simple thing and do it well: download a `setup.exe` and install it, without bothering the user.
+just-install is a simple program which automates software installation on Windows. It tries to
+do one simple thing and do it well: download a `setup.exe` and install it, silently.
 
 
 ## Installation

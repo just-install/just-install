@@ -1,22 +1,14 @@
 package main
 
 import (
-	"archive/zip"
 	"fmt"
-	"io"
 	"log"
-	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
 
 	dry "github.com/ungerik/go-dry"
 )
-
-const accessControlHeader = `
-/*
-	Access-Control-Allow-Origin: https://just-install.github.io
-`
 
 func main() {
 	clean()
@@ -25,8 +17,6 @@ func main() {
 
 	if shouldDeploy() {
 		deploy()
-	} else {
-		log.Println("skipping deployment to netlify")
 	}
 }
 
@@ -96,80 +86,7 @@ func deploy() {
 
 	log.Println("deploying to", target)
 
-	createDeployArchive()
-	uploadDeployArchive(fmt.Sprintf("https://api.netlify.com/api/v1/sites/just-install-%s.netlify.com/deploys", target))
 	ghPagesDeploy()
-}
-
-func createDeployArchive() {
-	f, err := os.Create("deploy.zip")
-	if err != nil {
-		log.Fatalln("cannot create deployment archive:", err)
-	}
-	defer f.Close()
-
-	w := zip.NewWriter(f)
-	defer w.Close()
-
-	for _, path := range []string{"just-install.exe", "just-install.msi"} {
-		zipCopy(w, path)
-	}
-
-	zipWriteString(w, "_redirects", "/    /just-install.msi    302")
-	zipWriteString(w, "_headers", accessControlHeader)
-}
-
-func zipCopy(w *zip.Writer, path string) {
-	dst, err := w.Create(path)
-	if err != nil {
-		log.Fatalf("cannot create zip writer for entry %v: %v\n", path, err)
-	}
-
-	src, err := os.Open(path)
-	if err != nil {
-		log.Fatalf("cannot open %v for read: %v\n", path, err)
-	}
-	defer src.Close()
-
-	if _, err := io.Copy(dst, src); err != nil {
-		log.Fatalf("cannot copy %v to deployment archive: %v\n", path, err)
-	}
-}
-
-func zipWriteString(w *zip.Writer, path string, s string) {
-	dst, err := w.Create(path)
-	if err != nil {
-		log.Fatalf("cannot create zip writer for entry %v: %v\n", path, err)
-	}
-
-	if _, err := dst.Write([]byte(s)); err != nil {
-		log.Fatalf("cannot write string as entry %v: %v\n", path, err)
-	}
-}
-
-func uploadDeployArchive(url string) {
-	f, err := os.Open("deploy.zip")
-	if err != nil {
-		log.Fatalln("cannot open deploy archive:", err)
-	}
-	defer f.Close()
-
-	req, err := http.NewRequest("POST", url, f)
-	if err != nil {
-		log.Fatalln("cannot create request to Netlify's endpoint:", err)
-	}
-
-	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", dry.EnvironMap()["NETLIFY_DEPLOY_TOKEN"]))
-	req.Header.Add("Content-Type", "application/zip")
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		log.Fatalln("request to Netlify upload endpoint failed:", err)
-	}
-
-	if resp.StatusCode != http.StatusOK {
-		log.Fatalln("expected 200 OK, instead got", resp.StatusCode)
-	}
 }
 
 func ghPagesDeploy() {

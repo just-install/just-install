@@ -10,11 +10,6 @@ _The simple package installer for Windows_
 
 ---
 
-:question: **Looking for help?** If you want to ask a question, please open an issue by clicking
-[here](https://github.com/just-install/helpdesk/issues/new).
-
----
-
 just-install is a simple program which automates software installation on Windows. It tries to
 do one simple thing and do it well: download a `setup.exe` and install it, silently.
 

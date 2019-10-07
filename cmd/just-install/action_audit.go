@@ -41,6 +41,7 @@ func handleAuditAction(c *cli.Context) {
 		"text/html; charset=utf-8",        // SourceForge
 		"application/x-ole-storage",       // EpicGames
 		"application/x-troff-man",         // MSIs on OSDN
+		"application/x-executable",         // Notepad++
 	}
 
 	// retry executes f, retrying a call with exponential back-off if it returns true as its first

@@ -26,10 +26,9 @@ import (
 	"os"
 	"strings"
 
+	"github.com/just-install/just-install/pkg/justinstall"
 	"github.com/kardianos/osext"
 	"github.com/urfave/cli"
-
-	"github.com/just-install/just-install/pkg/justinstall"
 )
 
 var version = "## filled by go build ##"
@@ -139,6 +138,8 @@ func handleArguments(c *cli.Context) {
 	}
 
 	// Install packages
+	hasErrors := false
+
 	for _, pkg := range c.Args() {
 		entry, ok := registry.Packages[pkg]
 
@@ -148,11 +149,18 @@ func handleArguments(c *cli.Context) {
 			} else if onlyDownload {
 				entry.DownloadInstaller(force)
 			} else {
-				entry.JustInstall(force)
+				if err := entry.JustInstall(force); err != nil {
+					log.Printf("Error installing %v: %v", pkg, err)
+					hasErrors = true
+				}
 			}
 		} else {
 			log.Println("WARNING: Unknown package", pkg)
 		}
+	}
+
+	if hasErrors {
+		log.Fatalln("Encountered errors installing packages")
 	}
 }
 

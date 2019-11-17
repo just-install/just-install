@@ -223,7 +223,7 @@ func (e *RegistryEntry) DownloadInstaller(force bool) string {
 
 // JustInstall will download and install the given registry entry. Setting `force` to true will
 // force a re-download and re-installation the package.
-func (e *RegistryEntry) JustInstall(force bool) {
+func (e *RegistryEntry) JustInstall(force bool) error {
 	options := e.Installer.options()
 	downloadedFile := e.DownloadInstaller(force)
 
@@ -231,12 +231,18 @@ func (e *RegistryEntry) JustInstall(force bool) {
 		tempDir := e.unwrapZip(downloadedFile) // Assuming it is a zip due to JSON schema
 		installer := container.(map[string]interface{})["installer"].(string)
 
-		e.install(filepath.Join(tempDir, installer))
+		if err := e.install(filepath.Join(tempDir, installer)); err != nil {
+			return err
+		}
 	} else {
-		e.install(downloadedFile)
+		if err := e.install(downloadedFile); err != nil {
+			return err
+		}
 	}
 
 	e.CreateShims()
+
+	return nil
 }
 
 func (e *RegistryEntry) installerURL(arch string) (string, error) {
@@ -275,22 +281,22 @@ func (e *RegistryEntry) unwrapZip(containerPath string) string {
 	return extractTo
 }
 
-func (e *RegistryEntry) install(installer string) {
+func (e *RegistryEntry) install(installer string) error {
 	switch e.Installer.Kind {
 	case "advancedinstaller":
-		system(installer, "/q", "/i")
+		return system(installer, "/q", "/i")
 	case "as-is":
-		system(installer)
+		return system(installer)
 	case "easy_install_27":
-		system("\\Python27\\Scripts\\easy_install.exe", installer)
+		return system("\\Python27\\Scripts\\easy_install.exe", installer)
 	case "innosetup":
-		system(installer, "/norestart", "/sp-", "/verysilent")
+		return system(installer, "/norestart", "/sp-", "/verysilent")
 	case "msi":
-		system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
+		return system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
 	case "nsis":
-		system(installer, "/S", "/NCRC")
+		return system(installer, "/S", "/NCRC")
 	case "squirrel":
-		system(installer, "--silent")
+		return system(installer, "--silent")
 	case "custom":
 		var args []string
 
@@ -304,19 +310,25 @@ func (e *RegistryEntry) install(installer string) {
 
 		parentDir := filepath.Dir(destination)
 		log.Println("Creating", parentDir)
-		os.MkdirAll(parentDir, os.ModePerm)
+		if err := os.MkdirAll(parentDir, os.ModePerm); err != nil {
+			return err
+		}
 
 		log.Println("Copying to", destination)
-		dry.FileCopy(installer, destination)
+		if err := dry.FileCopy(installer, destination); err != nil {
+			return err
+		}
 	case "zip":
 		destination := e.destination()
 
 		log.Println("Extracting to", destination)
 
-		extractZip(installer, destination)
+		return extractZip(installer, destination)
 	default:
-		log.Fatalln("Unknown installer type:", e.Installer.Kind)
+		return fmt.Errorf("unknown installer type: %v", e.Installer.Kind)
 	}
+
+	return nil
 }
 
 func (e *RegistryEntry) destination() string {

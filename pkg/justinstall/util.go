@@ -62,11 +62,11 @@ func environMap() map[string]string {
 	return ret
 }
 
-func system(args ...string) {
+func system(args ...string) error {
 	var cmd *exec.Cmd
 
 	if len(args) == 0 {
-		return
+		return nil
 	} else if len(args) == 1 {
 		cmd = exec.Command(args[0])
 	} else {
@@ -77,26 +77,30 @@ func system(args ...string) {
 
 	err := cmd.Start()
 	if err != nil {
-		log.Fatalf(err.Error())
+		return err
 	}
 
 	if err := cmd.Wait(); err != nil {
-		if exiterr, ok := err.(*exec.ExitError); ok {
-			// The program has exited with an exit code != 0
-			if status, ok := exiterr.Sys().(syscall.WaitStatus); ok {
-				s := status.ExitStatus()
-				// msiexec returns 3010 if install needs reboot later
-				if s == 3010 {
-					log.Printf("Exit code 3010, needs reboot to complete install.")
-					return
-				}
-				// Return the original error
-				log.Fatalf(err.Error())
-			}
-		} else {
-			log.Fatalf(err.Error())
+		exiterr, ok := err.(*exec.ExitError)
+		if !ok {
+			return err
 		}
+
+		status, ok := exiterr.Sys().(syscall.WaitStatus)
+		if !ok {
+			return err
+		}
+
+		if status.ExitStatus() != 3010 {
+			return err
+		}
+
+		// msiexec returns 3010 if install needs reboot later
+		log.Printf("Exit code 3010, needs reboot to complete install.")
+		return nil
 	}
+
+	return nil
 }
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
@@ -238,13 +242,13 @@ func CustomGet(urlStr string, timeout ...time.Duration) (*http.Response, error) 
 	return client.Do(request)
 }
 
-func extractZip(path string, extractTo string) {
+func extractZip(path string, extractTo string) error {
 	os.MkdirAll(extractTo, 0700)
 
 	// Open the archive for reading
 	zipReader, err := zip.OpenReader(path)
 	if err != nil {
-		log.Fatalln("Unable to open ZIP archive:", path)
+		return err
 	}
 	defer zipReader.Close()
 
@@ -259,14 +263,14 @@ func extractZip(path string, extractTo string) {
 			// Create destination file
 			dest, err := os.Create(destinationPath)
 			if err != nil {
-				log.Fatalln("Unable to create destination:", destinationPath)
+				return err
 			}
 
 			// Open input stream
 			source, err := zipFile.Open()
 			if err != nil {
 				dest.Close()
-				log.Fatalln("Unable to open input ZIP file:", zipFile.Name)
+				return err
 			}
 
 			// Extract file
@@ -275,4 +279,6 @@ func extractZip(path string, extractTo string) {
 			source.Close()
 		}
 	}
+
+	return nil
 }

@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	dry "github.com/ungerik/go-dry"
 )
@@ -15,7 +16,7 @@ func main() {
 	build()
 	buildMsi()
 
-	if shouldDeploy() {
+	if isStableBuild() {
 		deploy()
 	}
 }
@@ -77,47 +78,33 @@ func buildMsi() {
 }
 
 func deploy() {
-	var target string
-	if isStableBuild() {
-		target = "stable"
-	} else {
-		target = "unstable"
-	}
+	// FIXME: this thing is a mess, it's essentially a shell script within a Go program.
+	log.Println("deploying")
 
-	log.Println("deploying to", target)
-
-	ghPagesDeploy()
-}
-
-func ghPagesDeploy() {
-	// TODO: this thing is a mess, it's essentially a shell script within a Go program.
-	if !dry.FileExists("stable") {
-		log.Fatalln("must clone git@github.com:just-install/stable.git")
+	if err := run("git", "clone", "git@github.com:just-install/stable.git"); err != nil {
+		log.Fatalf("could not clone stable repository: %v", err)
 	}
 
 	for _, f := range []string{"just-install.exe", "just-install.msi"} {
 		if err := dry.FileCopy(f, fmt.Sprintf("stable\\%v", f)); err != nil {
-			log.Fatalln("cannot copy", f, "to git repo")
+			log.Fatalf("cannot copy %v to git repo: %v", f, err)
 		}
 	}
 
 	if err := os.Chdir("stable"); err != nil {
-		log.Fatalln("cannot chdir to git repo")
+		log.Fatalf("cannot chdir to git repo: %v", err)
 	}
 
-	cmd := exec.Command("git", "add", "-A")
-	if err := cmd.Run(); err != nil {
-		log.Fatalln("cannot add deployment artifacts")
+	if err := run("git", "add", "-A"); err != nil {
+		log.Fatalf("cannot add deployment artifacts: %v", err)
 	}
 
-	cmd = exec.Command("git", "commit", "--amend", "--no-edit", "--reset-author", "-m", "AppVeyor Release")
-	if err := cmd.Run(); err != nil {
-		log.Fatalln("unable to commit")
+	if err := run("git", "commit", "--amend", "--no-edit", "--reset-author", "-m", "CI Release"); err != nil {
+		log.Fatalf("unable to commit: %v", err)
 	}
 
-	cmd = exec.Command("git", "push", "-f")
-	if err := cmd.Run(); err != nil {
-		log.Fatalln("cannot push to git repo")
+	if err := run("git", "push", "--force"); err != nil {
+		log.Fatalf("cannot push to git repo: %v", err)
 	}
 }
 
@@ -139,18 +126,25 @@ func getVersion() string {
 	return ret.(string)
 }
 
-func shouldDeploy() bool {
-	// Skip pull requests
-	_, ok := dry.EnvironMap()["APPVEYOR_PULL_REQUEST_NUMBER"]
-	if ok {
-		return false
-	}
-
-	// Only deploy stable builds, unstable builds will go to GitHub Releases.
-	return isStableBuild()
+func isStableBuild() bool {
+	ref, ok := dry.EnvironMap()["GITHUB_REF"]
+	return ok && strings.HasPrefix(ref, "refs/tags/")
 }
 
-func isStableBuild() bool {
-	val, ok := dry.EnvironMap()["APPVEYOR_REPO_TAG_NAME"]
-	return ok && len(val) > 0 && val != "unstable"
+func run(name string, arg ...string) error {
+	cmd := exec.Command(name, arg...)
+	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
+	cmd.Env = append(cmd.Env,
+		"GIT_AUTHOR_EMAIL=CI",
+		"GIT_AUTHOR_NAME=CI",
+		"GIT_COMMITTER_EMAIL=CI",
+		"GIT_COMMITTER_NAME=CI",
+		// FIXME: For some reason we can pull with a valid known_hosts file but pushing raises an
+		// error, hence we disable host key checking for now. Since we are going from github.com to
+		// github.com this is probably OK.
+		"GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no",
+	)
+
+	return cmd.Run()
 }

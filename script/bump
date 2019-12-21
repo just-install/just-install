@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+cd "$(dirname "${0}")/../"
+
+sed -e "s|version-v.*-blue|version-v${RELENG_VERSION}-blue|" -i "" README.md

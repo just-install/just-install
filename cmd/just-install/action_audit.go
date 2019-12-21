@@ -90,6 +90,10 @@ func handleAuditAction(c *cli.Context) {
 					// gimp does funny stuff when trying to download from appveyor, but it works properly when actually using j-i
 					return true, nil
 				}
+				if strings.Contains(response.Request.URL.Host, "eithermouse.com") {
+					// same as above
+					return true, nil
+				}
 				return false, fmt.Errorf("%s: expected status code 200, got %v", rawurl, response.StatusCode)
 			}
 

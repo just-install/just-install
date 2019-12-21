@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Install deploy key
-        uses: shimataro/ssh-key-action@v1
+        uses: shimataro/ssh-key-action@aa7b7211f80a584d3180fd08c5aef7f9e0cd7a6c
         with:
           known-hosts: ${{ secrets.STABLE_KNOWN_HOSTS }}
           private-key: ${{ secrets.STABLE_PRIVATE_DEPLOY_KEY }}

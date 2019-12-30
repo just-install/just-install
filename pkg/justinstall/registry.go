@@ -12,6 +12,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/just-install/just-install/pkg/cmd"
+	"github.com/just-install/just-install/pkg/installer"
 	dry "github.com/ungerik/go-dry"
 )
 
@@ -228,9 +230,12 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 	downloadedFile := e.DownloadInstaller(force)
 
 	if container, ok := options["container"]; ok {
-		tempDir := e.unwrapZip(downloadedFile) // Assuming it is a zip due to JSON schema
-		installer := container.(map[string]interface{})["installer"].(string)
+		tempDir := filepath.Join(os.TempDir(), crc32s(downloadedFile))
+		if err := installer.ExtractZIP(downloadedFile, tempDir); err != nil {
+			return err
+		}
 
+		installer := container.(map[string]interface{})["installer"].(string)
 		if err := e.install(filepath.Join(tempDir, installer)); err != nil {
 			return err
 		}
@@ -273,62 +278,23 @@ func (e *RegistryEntry) ExpandString(s string) string {
 	return expandString(s, map[string]string{"version": e.Version})
 }
 
-func (e *RegistryEntry) unwrapZip(containerPath string) string {
-	extractTo := filepath.Join(os.TempDir(), crc32s(containerPath))
-
-	extractZip(containerPath, extractTo)
-
-	return extractTo
-}
-
-func (e *RegistryEntry) install(installer string) error {
-	switch e.Installer.Kind {
-	case "advancedinstaller":
-		return system(installer, "/q", "/i")
-	case "as-is":
-		return system(installer)
-	case "easy_install_27":
-		return system("\\Python27\\Scripts\\easy_install.exe", installer)
-	case "innosetup":
-		return system(installer, "/norestart", "/sp-", "/verysilent")
-	case "msi":
-		return system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
-	case "nsis":
-		return system(installer, "/S", "/NCRC")
-	case "squirrel":
-		return system(installer, "--silent")
-	case "custom":
+func (e *RegistryEntry) install(path string) error {
+	if e.Installer.Kind == "custom" {
 		var args []string
 
 		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
-			args = append(args, expandString(v.(string), map[string]string{"installer": installer}))
+			args = append(args, expandString(v.(string), map[string]string{"installer": path}))
 		}
 
-		system(args...)
-	case "copy":
-		destination := e.destination()
+		return cmd.Run(args...)
+	}
 
-		parentDir := filepath.Dir(destination)
-		log.Println("Creating", parentDir)
-		if err := os.MkdirAll(parentDir, os.ModePerm); err != nil {
-			return err
-		}
-
-		log.Println("Copying to", destination)
-		if err := dry.FileCopy(installer, destination); err != nil {
-			return err
-		}
-	case "zip":
-		destination := e.destination()
-
-		log.Println("Extracting to", destination)
-
-		return extractZip(installer, destination)
-	default:
+	installerType := installer.InstallerType(e.Installer.Kind)
+	if !installerType.IsValid() {
 		return fmt.Errorf("unknown installer type: %v", e.Installer.Kind)
 	}
 
-	return nil
+	return cmd.Run(installer.Command(path, installerType)...)
 }
 
 func (e *RegistryEntry) destination() string {
@@ -354,7 +320,10 @@ func (e *RegistryEntry) CreateShims() {
 	}
 
 	if !dry.FileIsDir(shimsPath) {
-		os.MkdirAll(shimsPath, 0)
+		if err := os.MkdirAll(shimsPath, 0); err != nil {
+			// FIXME: add proper error handling
+			log.Fatalln("Could not create shim directory:", err)
+		}
 	}
 
 	if shims, ok := e.Installer.options()["shims"]; ok {
@@ -368,7 +337,10 @@ func (e *RegistryEntry) CreateShims() {
 
 			log.Printf("Creating shim for %s (%s)\n", shimTarget, shim)
 
-			system(exeproxy, "exeproxy-copy", shim, shimTarget)
+			if err := cmd.Run(exeproxy, "exeproxy-copy", shim, shimTarget); err != nil {
+				// FIXME: add proper error handling
+				log.Fatalln("Could not create shim:", err)
+			}
 		}
 	}
 }

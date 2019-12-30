@@ -1,7 +1,6 @@
 package justinstall
 
 import (
-	"archive/zip"
 	"bytes"
 	"fmt"
 	"hash/crc32"
@@ -11,11 +10,9 @@ import (
 	"net/http/cookiejar"
 	"net/url"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strconv"
 	"strings"
-	"syscall"
 	"text/template"
 	"time"
 
@@ -60,47 +57,6 @@ func environMap() map[string]string {
 	}
 
 	return ret
-}
-
-func system(args ...string) error {
-	var cmd *exec.Cmd
-
-	if len(args) == 0 {
-		return nil
-	} else if len(args) == 1 {
-		cmd = exec.Command(args[0])
-	} else {
-		cmd = exec.Command(args[0], args[1:]...)
-	}
-
-	log.Println("Running", strings.Join(args, " "))
-
-	err := cmd.Start()
-	if err != nil {
-		return err
-	}
-
-	if err := cmd.Wait(); err != nil {
-		exiterr, ok := err.(*exec.ExitError)
-		if !ok {
-			return err
-		}
-
-		status, ok := exiterr.Sys().(syscall.WaitStatus)
-		if !ok {
-			return err
-		}
-
-		if status.ExitStatus() != 3010 {
-			return err
-		}
-
-		// msiexec returns 3010 if install needs reboot later
-		log.Printf("Exit code 3010, needs reboot to complete install.")
-		return nil
-	}
-
-	return nil
 }
 
 // Convenience wrapper over download3 which passes an empty ("") `ext` parameter.
@@ -240,45 +196,4 @@ func CustomGet(urlStr string, timeout ...time.Duration) (*http.Response, error) 
 	}
 
 	return client.Do(request)
-}
-
-func extractZip(path string, extractTo string) error {
-	os.MkdirAll(extractTo, 0700)
-
-	// Open the archive for reading
-	zipReader, err := zip.OpenReader(path)
-	if err != nil {
-		return err
-	}
-	defer zipReader.Close()
-
-	// Extract all entries in the archive
-	for _, zipFile := range zipReader.File {
-		destinationPath := filepath.Join(extractTo, zipFile.Name)
-
-		if zipFile.FileInfo().IsDir() {
-			os.MkdirAll(destinationPath, zipFile.Mode())
-		} else {
-			os.MkdirAll(filepath.Dir(destinationPath), 0777)
-			// Create destination file
-			dest, err := os.Create(destinationPath)
-			if err != nil {
-				return err
-			}
-
-			// Open input stream
-			source, err := zipFile.Open()
-			if err != nil {
-				dest.Close()
-				return err
-			}
-
-			// Extract file
-			io.Copy(dest, source)
-			dest.Close()
-			source.Close()
-		}
-	}
-
-	return nil
 }

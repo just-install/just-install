@@ -159,6 +159,8 @@ type installerEntry struct {
 	Interactive bool
 	Kind        string
 	Options     map[string]interface{} // Optional
+	Preinstall  []string // Optional
+	Postinstall []string // Optional
 	X86         string
 	X86_64      string
 }
@@ -229,6 +231,10 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 	options := e.Installer.options()
 	downloadedFile := e.DownloadInstaller(force)
 
+	for _, command := range e.Installer.Preinstall {
+		cmd.Run(strings.Fields(command)...)
+	}
+
 	if container, ok := options["container"]; ok {
 		tempDir := filepath.Join(os.TempDir(), crc32s(downloadedFile))
 		if err := installer.ExtractZIP(downloadedFile, tempDir); err != nil {
@@ -243,6 +249,10 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 		if err := e.install(downloadedFile); err != nil {
 			return err
 		}
+	}
+
+	for _, command := range e.Installer.Postinstall {
+		cmd.Run(strings.Fields(command)...)
 	}
 
 	e.CreateShims()

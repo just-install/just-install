@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"runtime"
 	"strings"
@@ -11,11 +9,7 @@ import (
 	"time"
 
 	"github.com/just-install/just-install/pkg/fetch"
-
-	dry "github.com/ungerik/go-dry"
 	"github.com/urfave/cli"
-
-	"github.com/just-install/just-install/pkg/justinstall"
 )
 
 func handleAuditAction(c *cli.Context) {
@@ -44,8 +38,9 @@ func handleAuditAction(c *cli.Context) {
 		"application/x-executable",        // Notepad++
 	}
 
-	// retry executes f, retrying a call with exponential back-off if it returns true as its first
-	// return value. Ends up returning the eventual error value after a maximum of three retries.
+	// retry executes f, retrying a call with exponential back-off if it returns an error and true
+	// as its first return value. Ends up returning the eventual error value after a maximum of
+	// three retries.
 	retry := func(f func() (bool, error)) error {
 		var ret error
 
@@ -71,42 +66,20 @@ func handleAuditAction(c *cli.Context) {
 	checkLink := func(rawurl string) error {
 		return retry(func() (bool, error) {
 			// Policy: retry on server or transport error, fail immediately otherwise.
-			response, err := justinstall.CustomGet(rawurl, fetch.ConnectionPhaseTimeout)
-			if err != nil {
-				return true, err
+			err := fetch.Check(rawurl, &fetch.CheckOptions{ExpectedContentTypes: expectedContentTypes})
+			if _, ok := err.(*fetch.HTTPStatusError); ok {
+				return false, err
 			}
-			defer response.Body.Close()
-
-			if response.StatusCode >= 500 && response.StatusCode < 600 {
-				return true, fmt.Errorf("%s: returned status code %v", rawurl, response.StatusCode)
-			}
-
-			if response.StatusCode != http.StatusOK {
-				if strings.Contains(response.Request.URL.Host, "freefilesync") || strings.Contains(response.Request.URL.Host, "mediafire") {
-					// mediafire is unpredictable
-					return true, nil
+			if e, ok := err.(*fetch.ContentTypeError); ok {
+				// FIXME: move VirtualBox Extension Pack exception to the registry
+				if strings.HasSuffix(rawurl, ".vbox-extpack") && e.Received == "text/plain" {
+					return false, nil
 				}
-				if strings.Contains(response.Request.URL.Host, "download.gimp.org") {
-					// gimp does funny stuff when trying to download from appveyor, but it works properly when actually using j-i
-					return true, nil
-				}
-				if strings.Contains(response.Request.URL.Host, "eithermouse.com") {
-					// same as above
-					return true, nil
-				}
-				return false, fmt.Errorf("%s: expected status code 200, got %v", rawurl, response.StatusCode)
+
+				return false, err
 			}
 
-			contentType := response.Header.Get("Content-Type")
-
-			success := strings.HasSuffix(rawurl, ".vbox-extpack") && contentType == "text/plain"                     // VirtualBox Extension Pack has the wrong MIME type
-			success = success || strings.Contains(rawurl, "libreoffice") && contentType == "application/x-troff-man" // Some LibreOffice mirrors return the wrong MIME type
-			success = success || dry.StringInSlice(contentType, expectedContentTypes)
-			if !success {
-				return false, fmt.Errorf("%s: unexpected content type %q", rawurl, contentType)
-			}
-
-			return false, nil
+			return err != nil, err
 		})
 	}
 
@@ -144,6 +117,10 @@ func handleAuditAction(c *cli.Context) {
 	// Push jobs to workers
 	for _, name := range registry.SortedPackageNames() {
 		entry := registry.Packages[name]
+		if entry.SkipAudit {
+			log.Println("Skipping audit of", name)
+			continue
+		}
 
 		if entry.Installer.X86 != "" {
 			workerQueue <- workItem{name + " (x86)", entry.ExpandString(entry.Installer.X86)}

@@ -1,5 +1,5 @@
 // just-install - The simple package installer for Windows
-// Copyright (C) 2018 just-install authors.
+// Copyright (C) 2019 just-install authors.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import (
 // ConnectionPhaseTimeout is the timeout used as upper bound for various phases of the connection to
 // a remote host (i.e. establishing a TCP connection, TLS handshake, etc). This is kept as short as
 // possible to immediately catch transient network errors.
-const ConnectionPhaseTimeout = 5 * time.Second
+const ConnectionPhaseTimeout = 10 * time.Second
 
 // RequestTimeout is the timeout used as the upper bound for an entire HTTP request, including the
 // time needed to download the requested file.

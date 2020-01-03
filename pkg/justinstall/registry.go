@@ -10,17 +10,15 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
-	"time"
 
 	"github.com/just-install/just-install/pkg/cmd"
+	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/just-install/just-install/pkg/installer"
+	"github.com/just-install/just-install/pkg/paths"
 	dry "github.com/ungerik/go-dry"
 )
 
-const (
-	registrySupportedVersion = 4
-	registryURL              = "https://just-install.github.io/registry/just-install-v4.json"
-)
+const registrySupportedVersion = 4
 
 var (
 	arch         = "x86"
@@ -110,22 +108,6 @@ func SetArchitecture(a string) error {
 	return nil
 }
 
-// SmartLoadRegistry tries to load a cached copy downloaded from the Internet. If neither is
-// available, it tries to download it from the known location first.
-func SmartLoadRegistry(force bool) Registry {
-	download := !dry.FileExists(registryPath)
-	download = download || dry.FileTimeModified(registryPath).Before(time.Now().Add(-24*time.Hour))
-	download = download || force
-
-	if download {
-		log.Println("Updating registry from:", registryURL)
-
-		downloadRegistry()
-	}
-
-	return LoadRegistry(registryPath)
-}
-
 // LoadRegistry unmarshals the registry from a local file path.
 func LoadRegistry(path string) Registry {
 	data, err := ioutil.ReadFile(path)
@@ -144,11 +126,6 @@ func LoadRegistry(path string) Registry {
 	}
 
 	return ret
-}
-
-// Downloads the registry from the canonical URL.
-func downloadRegistry() {
-	download(registryURL, registryPath)
 }
 
 //
@@ -201,26 +178,29 @@ func (r *Registry) SortedPackageNames() []string {
 type RegistryEntry struct {
 	Version   string
 	Installer installerEntry
+	SkipAudit bool
 }
 
 // DownloadInstaller downloads the installer for the current entry in the temporary directory.
 func (e *RegistryEntry) DownloadInstaller(force bool) string {
-	options := e.Installer.options()
-
 	url, err := e.installerURL(arch)
 	if err != nil {
-		log.Fatalln("Cannot download installation package:", err)
+		// FIXME: Add proper error handling
+		log.Fatalln("Cannot determine installer URL:", err)
 	}
 
-	log.Println(arch, "-", url)
-
-	if filename, ok := options["filename"]; ok {
-		return downloadTemp(url, filename.(string), force)
-	} else if ext, ok := options["extension"]; ok {
-		return downloadExt(url, ext.(string), force)
+	downloadDir, err := paths.TempDirCreate()
+	if err != nil {
+		// FIXME: Add proper error handling
+		log.Fatalln("Could not create temporary directory:", err)
 	}
 
-	return downloadAutoExt(url, force)
+	ret, err := fetch.Fetch(url, &fetch.Options{Destination: downloadDir, Progress: true})
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	return ret
 }
 
 // JustInstall will download and install the given registry entry. Setting `force` to true will
@@ -230,7 +210,7 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 	downloadedFile := e.DownloadInstaller(force)
 
 	if container, ok := options["container"]; ok {
-		tempDir := filepath.Join(os.TempDir(), crc32s(downloadedFile))
+		tempDir := filepath.Join(paths.TempDir(), filepath.Base(downloadedFile)+"_extracted")
 		if err := installer.ExtractZIP(downloadedFile, tempDir); err != nil {
 			return err
 		}

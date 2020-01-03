@@ -13,6 +13,5 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// Package fetch provides functions to reference and download local and remote resources addressed
-// by URLs. It provides functionality similar in spirit to wget and curl.
-package fetch
+// Package paths contains functions to obtain various paths used by just-install.
+package paths

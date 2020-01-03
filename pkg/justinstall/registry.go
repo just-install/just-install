@@ -274,7 +274,12 @@ func (e *RegistryEntry) install(path string) error {
 		return fmt.Errorf("unknown installer type: %v", e.Installer.Kind)
 	}
 
-	return cmd.Run(installer.Command(path, installerType)...)
+	installerCommand, err := installer.Command(path, installerType)
+	if err != nil {
+		return err
+	}
+
+	return cmd.Run(installerCommand...)
 }
 
 func (e *RegistryEntry) destination() string {

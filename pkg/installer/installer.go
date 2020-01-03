@@ -15,6 +15,8 @@
 
 package installer
 
+import "errors"
+
 // InstallerType is a recognized installer type
 type InstallerType string
 
@@ -38,21 +40,21 @@ const (
 )
 
 // Command returns the command needed to run the given installer of the given type.
-func Command(path string, installerType InstallerType) []string {
+func Command(path string, installerType InstallerType) ([]string, error) {
 	switch installerType {
 	case AdvancedInstaller:
-		return []string{path, "/i", "/q"}
+		return []string{path, "/i", "/q"}, nil
 	case AsIs:
-		return []string{path}
+		return []string{path}, nil
 	case InnoSetup:
-		return []string{path, "/norestart", "/sp-", "/verysilent"}
+		return []string{path, "/norestart", "/sp-", "/verysilent"}, nil
 	case MSI:
-		return []string{"msiexec.exe", "/q", "/i", path, "ALLUSERS=1", "REBOOT=ReallySuppress"}
+		return []string{"msiexec.exe", "/q", "/i", path, "ALLUSERS=1", "REBOOT=ReallySuppress"}, nil
 	case NSIS:
-		return []string{path, "/S"}
+		return []string{path, "/S"}, nil
 	case Squirrel:
-		return []string{path, "--silent"}
+		return []string{path, "--silent"}, nil
 	default:
-		panic("unknown installer type")
+		return nil, errors.New("unknown installer type")
 	}
 }

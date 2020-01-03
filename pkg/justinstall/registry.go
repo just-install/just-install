@@ -267,6 +267,8 @@ func (e *RegistryEntry) install(path string) error {
 		}
 
 		return cmd.Run(args...)
+	} else if e.Installer.Kind == "zip" {
+		return installer.ExtractZIP(path, e.destination())
 	}
 
 	installerType := installer.InstallerType(e.Installer.Kind)

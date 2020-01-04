@@ -259,7 +259,20 @@ func (e *RegistryEntry) ExpandString(s string) string {
 }
 
 func (e *RegistryEntry) install(path string) error {
-	if e.Installer.Kind == "custom" {
+	// One-off, custom, installers
+	switch e.Installer.Kind {
+	case "copy":
+		destination := e.destination()
+
+		parentDir := filepath.Dir(destination)
+		log.Println("Creating", parentDir)
+		if err := os.MkdirAll(parentDir, os.ModePerm); err != nil {
+			return err
+		}
+
+		log.Println("Copying to", destination)
+		return dry.FileCopy(path, destination)
+	case "custom":
 		var args []string
 
 		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
@@ -267,8 +280,13 @@ func (e *RegistryEntry) install(path string) error {
 		}
 
 		return cmd.Run(args...)
+	case "zip":
+		log.Println("Extracting to", e.destination())
+
+		return installer.ExtractZIP(path, e.destination())
 	}
 
+	// Regular installer
 	installerType := installer.InstallerType(e.Installer.Kind)
 	if !installerType.IsValid() {
 		return fmt.Errorf("unknown installer type: %v", e.Installer.Kind)

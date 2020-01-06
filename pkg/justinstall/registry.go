@@ -16,6 +16,7 @@ import (
 	"github.com/just-install/just-install/pkg/installer"
 	"github.com/just-install/just-install/pkg/paths"
 	dry "github.com/ungerik/go-dry"
+	"github.com/gotopkg/mslnk/pkg/mslnk"
 )
 
 const registrySupportedVersion = 4
@@ -25,6 +26,7 @@ var (
 	isAmd64      = false
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\Shims")
 	shimsPathOld = os.ExpandEnv("${SystemDrive}\\just-install")
+	startMenu    = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
 	tempPath     = filepath.Join(os.TempDir(), "just-install")
 	registryPath = filepath.Join(tempPath, fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
 )
@@ -283,7 +285,25 @@ func (e *RegistryEntry) install(path string) error {
 	case "zip":
 		log.Println("Extracting to", e.destination())
 
-		return installer.ExtractZIP(path, e.destination())
+		if err := installer.ExtractZIP(path, e.destination()); err != nil {
+			return err
+		}
+
+		if shortcuts, prs := e.Installer.options()["shortcuts"]; prs {
+			for _, shortcut := range shortcuts.([]interface{}) {
+				shortcutName := expandString(shortcut.(map[string]interface{})["name"].(string), nil)
+				shortcutTarget := expandString(os.ExpandEnv(shortcut.(map[string]interface{})["target"].(string)), nil)
+				shortcutLocation := filepath.Join(startMenu, shortcutName + ".lnk")
+
+				log.Println("Creating shortcut to", shortcutTarget, "in", shortcutLocation)
+
+				if err := mslnk.LinkFile(shortcutTarget, shortcutLocation); err != nil {
+					return err
+				}
+			}
+		}
+
+		return nil
 	}
 
 	// Regular installer

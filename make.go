@@ -47,7 +47,7 @@ func build() {
 
 	cmd := exec.Command("go", "build",
 		"-ldflags", fmt.Sprintf("-s -w -X main.version=%s", getVersion()),
-		"./cmd/just-install")
+		"-trimpath", "./cmd/just-install")
 	cmd.Env = append(os.Environ(), "GOARCH=386")
 	if err := cmd.Run(); err != nil {
 		log.Fatalln("cannot build just-install:", err)

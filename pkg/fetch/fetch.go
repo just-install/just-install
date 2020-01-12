@@ -178,7 +178,7 @@ func Fetch(resource string, options *Options) (string, error) {
 	dest := options.Destination
 	if dry.FileIsDir(dest) {
 		contentDisposition := resp.Header.Get("Content-Disposition")
-		re := regexp.MustCompile(`filename="?([A-Za-z0-9\-\.]+)"?`)
+		re := regexp.MustCompile(`filename="?([\w\.\-]+)"?`)
 
 		if re.MatchString(contentDisposition) {
 			dest = filepath.Join(dest, re.FindStringSubmatch(contentDisposition)[1])

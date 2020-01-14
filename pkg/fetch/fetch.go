@@ -26,6 +26,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/cheggaaa/pb/v3"
@@ -178,10 +179,19 @@ func Fetch(resource string, options *Options) (string, error) {
 	dest := options.Destination
 	if dry.FileIsDir(dest) {
 		contentDisposition := resp.Header.Get("Content-Disposition")
-		re := regexp.MustCompile(`filename="?([\w\.\-]+)"?`)
+		re := regexp.MustCompile(`filename="?([%\w\.\-]+)"?`)
 
 		if re.MatchString(contentDisposition) {
-			dest = filepath.Join(dest, re.FindStringSubmatch(contentDisposition)[1])
+			destFilename, err := url.QueryUnescape(re.FindStringSubmatch(contentDisposition)[1])
+			if err != nil {
+				return "", err
+			}
+
+			if strings.ContainsAny(destFilename, "/\\") {
+				return "", errors.New("filename contains illegal characters")
+			}
+
+			dest = filepath.Join(dest, destFilename)
 		} else if lastLocation == nil {
 			dest = filepath.Join(dest, filepath.Base(parsedURL.Path))
 		} else {

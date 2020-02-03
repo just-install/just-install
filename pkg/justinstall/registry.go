@@ -11,12 +11,12 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/gotopkg/mslnk/pkg/mslnk"
 	"github.com/just-install/just-install/pkg/cmd"
 	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/just-install/just-install/pkg/installer"
 	"github.com/just-install/just-install/pkg/paths"
 	dry "github.com/ungerik/go-dry"
-	"github.com/gotopkg/mslnk/pkg/mslnk"
 )
 
 const registrySupportedVersion = 4
@@ -283,7 +283,7 @@ func (e *RegistryEntry) install(path string) error {
 			for _, shortcut := range shortcuts.([]interface{}) {
 				shortcutName := expandString(shortcut.(map[string]interface{})["name"].(string), nil)
 				shortcutTarget := expandString(os.ExpandEnv(shortcut.(map[string]interface{})["target"].(string)), nil)
-				shortcutLocation := filepath.Join(startMenu, shortcutName + ".lnk")
+				shortcutLocation := filepath.Join(startMenu, shortcutName+".lnk")
 
 				log.Println("Creating shortcut to", shortcutTarget, "in", shortcutLocation)
 

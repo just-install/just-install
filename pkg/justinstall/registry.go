@@ -25,7 +25,6 @@ var (
 	arch         = "x86"
 	isAmd64      = false
 	shimsPath    = os.ExpandEnv("${SystemDrive}\\Shims")
-	shimsPathOld = os.ExpandEnv("${SystemDrive}\\just-install")
 	startMenu    = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
 	tempPath     = filepath.Join(os.TempDir(), "just-install")
 	registryPath = filepath.Join(tempPath, fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
@@ -318,18 +317,6 @@ func (e *RegistryEntry) CreateShims() {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 	if !dry.FileExists(exeproxy) {
 		return
-	}
-
-	if dry.FileIsDir(shimsPathOld) {
-		fmt.Println("")
-		fmt.Println("**************************************************************************")
-		fmt.Println("Shims are now placed under " + shimsPath)
-		fmt.Println("")
-		fmt.Println("We have left your old shims at " + shimsPathOld + " but we are creating")
-		fmt.Println("the new ones at the aforementioned path and we invite you to move them")
-		fmt.Println("and update your %PATH% variable to include the new path.")
-		fmt.Println("**************************************************************************")
-		fmt.Println("")
 	}
 
 	if !dry.FileIsDir(shimsPath) {

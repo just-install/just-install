@@ -87,16 +87,6 @@ func normalizeProgramFiles() {
 // Public
 //
 
-func CleanTempDir() error {
-	if err := os.RemoveAll(tempPath); err != nil {
-		return err
-	}
-
-	createTempDir()
-
-	return nil
-}
-
 // SetArchitecture changes the architecture of future package installations.
 func SetArchitecture(a string) error {
 	if a == "x86_64" && !isAmd64 {

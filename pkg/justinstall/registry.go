@@ -9,7 +9,6 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
 
 	"github.com/gotopkg/mslnk/pkg/mslnk"
 	"github.com/just-install/just-install/pkg/cmd"
@@ -22,75 +21,13 @@ import (
 const registrySupportedVersion = 4
 
 var (
-	arch      = "x86"
-	isAmd64   = false
 	shimsPath = os.ExpandEnv("${SystemDrive}\\Shims")
 	startMenu = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
 )
 
 //
-// Package Initialization
-//
-
-func init() {
-	determineArch()
-	normalizeProgramFiles()
-}
-
-// determineArch determines the Windows architecture of the current Windows installation. It changes
-// both the "isAmd64" and "arch" globals.
-func determineArch() {
-	// Since our output is a 32-bit executable (for maximum compatibility) and all other options
-	// proved fruitless, let's just test for something that is usually available only on x86_64
-	// editions of Windows.
-	sentinel := os.Getenv("ProgramFiles(x86)")
-
-	if sentinel == "" && !dry.FileIsDir(sentinel) {
-		arch = "x86"
-		isAmd64 = false
-	} else {
-		arch = "x86_64"
-		isAmd64 = true
-	}
-}
-
-// normalizeProgramFiles re-exports environment variables so that %ProgramFiles% and
-// %ProgramFiles(x86)% always point to the same directory on 32-bit systems and %ProgramFiles%
-// points to the 64-bit directory even if we are a 32-bit binary.
-func normalizeProgramFiles() {
-	// Disabling SysWOW64 is a bad idea and going with Win32 API proved fruitless.
-	// Time to get dirty.
-	var programFiles string
-	var programFilesX86 string
-
-	if isAmd64 {
-		programFilesX86 = os.Getenv("ProgramFiles(x86)")
-		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")]
-	} else {
-		programFiles = os.Getenv("ProgramFiles")
-		programFilesX86 = programFiles
-	}
-
-	os.Setenv("ProgramFiles", programFiles)
-	os.Setenv("ProgramFiles(x86)", programFilesX86)
-}
-
-//
 // Public
 //
-
-// SetArchitecture changes the architecture of future package installations.
-func SetArchitecture(a string) error {
-	if a == "x86_64" && !isAmd64 {
-		return errors.New("This machine is not 64-bit capable")
-	} else if a != "x86" && a != "x86_64" {
-		return fmt.Errorf("Unknown architecture: %v", a)
-	}
-
-	arch = a
-
-	return nil
-}
 
 // LoadRegistry unmarshals the registry from a local file path.
 func LoadRegistry(path string) Registry {
@@ -126,7 +63,7 @@ type installerEntry struct {
 
 // options returns the architecture-specific options (if available), otherwise returns the whole
 // options map.
-func (s *installerEntry) options() map[string]interface{} {
+func (s *installerEntry) options(arch string) map[string]interface{} {
 	archSpecificOptions, ok := s.Options[arch].(map[string]interface{})
 	if !ok {
 		return s.Options
@@ -166,7 +103,7 @@ type RegistryEntry struct {
 }
 
 // DownloadInstaller downloads the installer for the current entry in the temporary directory.
-func (e *RegistryEntry) DownloadInstaller(force bool) string {
+func (e *RegistryEntry) DownloadInstaller(arch string, force bool) string {
 	url, err := e.installerURL(arch)
 	if err != nil {
 		// FIXME: Add proper error handling
@@ -189,9 +126,9 @@ func (e *RegistryEntry) DownloadInstaller(force bool) string {
 
 // JustInstall will download and install the given registry entry. Setting `force` to true will
 // force a re-download and re-installation the package.
-func (e *RegistryEntry) JustInstall(force bool) error {
-	options := e.Installer.options()
-	downloadedFile := e.DownloadInstaller(force)
+func (e *RegistryEntry) JustInstall(arch string, force bool) error {
+	options := e.Installer.options(arch)
+	downloadedFile := e.DownloadInstaller(arch, force)
 
 	if container, ok := options["container"]; ok {
 		tempDir, err := paths.TempDirCreate()
@@ -205,16 +142,16 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 		}
 
 		installer := container.(map[string]interface{})["installer"].(string)
-		if err := e.install(filepath.Join(tempDir, installer)); err != nil {
+		if err := e.install(arch, filepath.Join(tempDir, installer)); err != nil {
 			return err
 		}
 	} else {
-		if err := e.install(downloadedFile); err != nil {
+		if err := e.install(arch, downloadedFile); err != nil {
 			return err
 		}
 	}
 
-	e.CreateShims()
+	e.CreateShims(arch)
 
 	return nil
 }
@@ -247,11 +184,11 @@ func (e *RegistryEntry) ExpandString(s string) string {
 	return expandString(s, map[string]string{"version": e.Version})
 }
 
-func (e *RegistryEntry) install(path string) error {
+func (e *RegistryEntry) install(arch string, path string) error {
 	// One-off, custom, installers
 	switch e.Installer.Kind {
 	case "copy":
-		destination := e.destination()
+		destination := e.destination(arch)
 
 		parentDir := filepath.Dir(destination)
 		log.Println("Creating", parentDir)
@@ -264,19 +201,19 @@ func (e *RegistryEntry) install(path string) error {
 	case "custom":
 		var args []string
 
-		for _, v := range e.Installer.options()["arguments"].([]interface{}) {
+		for _, v := range e.Installer.options(arch)["arguments"].([]interface{}) {
 			args = append(args, expandString(v.(string), map[string]string{"installer": path}))
 		}
 
 		return cmd.Run(args...)
 	case "zip":
-		log.Println("Extracting to", e.destination())
+		log.Println("Extracting to", e.destination(arch))
 
-		if err := installer.ExtractZIP(path, e.destination()); err != nil {
+		if err := installer.ExtractZIP(path, e.destination(arch)); err != nil {
 			return err
 		}
 
-		if shortcuts, prs := e.Installer.options()["shortcuts"]; prs {
+		if shortcuts, prs := e.Installer.options(arch)["shortcuts"]; prs {
 			for _, shortcut := range shortcuts.([]interface{}) {
 				shortcutName := expandString(shortcut.(map[string]interface{})["name"].(string), nil)
 				shortcutTarget := expandString(os.ExpandEnv(shortcut.(map[string]interface{})["target"].(string)), nil)
@@ -307,11 +244,11 @@ func (e *RegistryEntry) install(path string) error {
 	return cmd.Run(installerCommand...)
 }
 
-func (e *RegistryEntry) destination() string {
-	return expandString(os.ExpandEnv(e.Installer.options()["destination"].(string)), nil)
+func (e *RegistryEntry) destination(arch string) string {
+	return expandString(os.ExpandEnv(e.Installer.options(arch)["destination"].(string)), nil)
 }
 
-func (e *RegistryEntry) CreateShims() {
+func (e *RegistryEntry) CreateShims(arch string) {
 	exeproxy := os.ExpandEnv("${ProgramFiles(x86)}\\exeproxy\\exeproxy.exe")
 	if !dry.FileExists(exeproxy) {
 		return
@@ -324,7 +261,7 @@ func (e *RegistryEntry) CreateShims() {
 		}
 	}
 
-	if shims, ok := e.Installer.options()["shims"]; ok {
+	if shims, ok := e.Installer.options(arch)["shims"]; ok {
 		for _, v := range shims.([]interface{}) {
 			shimTarget := e.ExpandString(v.(string))
 			shim := filepath.Join(shimsPath, filepath.Base(shimTarget))

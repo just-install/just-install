@@ -23,7 +23,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/just-install/just-install/pkg/justinstall"
+	"github.com/just-install/just-install/pkg/platform"
+
 	"github.com/kardianos/osext"
 	"github.com/urfave/cli"
 )
@@ -73,6 +74,9 @@ func main() {
 		Usage: "Create shims only (if exeproxy is installed)",
 	}}
 
+	// Normalize "%ProgramFiles%" and "%ProgramFiles(x86)%"
+	platform.SetNormalisedProgramFilesEnv()
+
 	// Extract arguments embedded in the executable (if any)
 	pathname, err := osext.Executable()
 	if err != nil {
@@ -104,10 +108,23 @@ func handleArguments(c *cli.Context) {
 
 	registry := loadRegistry(c)
 
-	if c.String("arch") != "" {
-		if err := justinstall.SetArchitecture(c.String("arch")); err != nil {
-			log.Fatalln(err.Error())
+	// Architecture selection
+	arch := c.String("arch")
+	switch arch {
+	case "":
+		if platform.Is64Bit() {
+			arch = "x86_64"
+		} else {
+			arch = "x86"
 		}
+	case "x86":
+		// Nothing to do
+	case "x86_64":
+		if !platform.Is64Bit() {
+			log.Fatalln("This machine cannot run 64-bit software")
+		}
+	default:
+		log.Fatalln("Unknown architecture:", arch)
 	}
 
 	// Check which packages might require an interactive installation
@@ -142,11 +159,11 @@ func handleArguments(c *cli.Context) {
 
 		if ok {
 			if onlyShims {
-				entry.CreateShims()
+				entry.CreateShims(arch)
 			} else if onlyDownload {
-				entry.DownloadInstaller(force)
+				entry.DownloadInstaller(arch, force)
 			} else {
-				if err := entry.JustInstall(force); err != nil {
+				if err := entry.JustInstall(arch, force); err != nil {
 					log.Printf("Error installing %v: %v", pkg, err)
 					hasErrors = true
 				}

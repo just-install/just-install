@@ -17,6 +17,7 @@ package installer
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/ungerik/go-dry"
 
@@ -56,7 +57,10 @@ func Command(path string, installerType InstallerType) ([]string, error) {
 	case InnoSetup:
 		return []string{path, "/norestart", "/sp-", "/verysilent"}, nil
 	case JetBrainsNSIS:
-		config := paths.TempFile("jetbrains-nsis-silent.config")
+		config, err := paths.TempFileCreate("jetbrains-nsis-silent.config")
+		if err != nil {
+			return nil, fmt.Errorf("could not create jetbrains installer config file: %w", err)
+		}
 
 		if err := dry.FileSetString(config, "mode=admin"); err != nil {
 			return nil, err

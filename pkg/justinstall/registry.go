@@ -194,7 +194,12 @@ func (e *RegistryEntry) JustInstall(force bool) error {
 	downloadedFile := e.DownloadInstaller(force)
 
 	if container, ok := options["container"]; ok {
-		tempDir := filepath.Join(paths.TempDir(), filepath.Base(downloadedFile)+"_extracted")
+		tempDir, err := paths.TempDirCreate()
+		if err != nil {
+			return err
+		}
+		tempDir = filepath.Join(tempDir, filepath.Base(downloadedFile)+"_extracted")
+
 		if err := installer.ExtractZIP(downloadedFile, tempDir); err != nil {
 			return err
 		}

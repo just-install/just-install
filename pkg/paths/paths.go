@@ -23,22 +23,17 @@ import (
 // TempFileCreate is the same as TempFile() but also creates just-install's temporary directory if
 // missing.
 func TempFileCreate(file string) (string, error) {
-	if err := os.MkdirAll(TempDir(), 0700); err != nil {
+	if err := os.MkdirAll(tempDir(), 0700); err != nil {
 		return "", err
 	}
 
-	return TempFile(file), nil
-}
-
-// TempFile returns the path to a temporary file below just-install's temporary file directory.
-func TempFile(file string) string {
-	return filepath.Join(TempDir(), file)
+	return tempFile(file), nil
 }
 
 // TempDirCreate is the same as TempDir() but also creates just-install's temporary directory if
 // missing.
 func TempDirCreate() (string, error) {
-	ret := TempDir()
+	ret := tempDir()
 
 	if err := os.MkdirAll(ret, 0700); err != nil {
 		return "", err
@@ -47,7 +42,12 @@ func TempDirCreate() (string, error) {
 	return ret, nil
 }
 
-// TempDir returns the temporary directory that must be used to store all of just-install's files.
-func TempDir() string {
+// tempFile returns the path to a temporary file below just-install's temporary file directory.
+func tempFile(file string) string {
+	return filepath.Join(tempDir(), file)
+}
+
+// tempDir returns the temporary directory that must be used to store all of just-install's files.
+func tempDir() string {
 	return filepath.Join(os.TempDir(), "just-install")
 }

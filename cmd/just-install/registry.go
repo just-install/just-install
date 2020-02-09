@@ -31,11 +31,17 @@ const registryURL = "https://just-install.github.io/registry/just-install-v4.jso
 
 func loadRegistry(c *cli.Context) justinstall.Registry {
 	src := registryURL
-	dst := paths.TempFile("registry.json")
+	dst, dstErr := paths.TempFileCreate("registry.json")
+	if dstErr != nil {
+		log.Fatalln("Could not create temporary directory to hold registry file:", dstErr)
+	}
 
 	if c.GlobalIsSet("registry") {
 		src = c.GlobalString("registry")
-		dst = paths.TempFile("registry-custom.json")
+		dst, dstErr = paths.TempFileCreate("registry-custom.json")
+		if dstErr != nil {
+			log.Fatalln("Could not create temporary directory to hold custom registry file:", dstErr)
+		}
 	}
 
 	if c.GlobalBool("force") && dry.FileExists(dst) {

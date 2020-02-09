@@ -24,7 +24,6 @@ import (
 	"strings"
 
 	"github.com/just-install/just-install/pkg/justinstall"
-	"github.com/just-install/just-install/pkg/paths"
 	"github.com/kardianos/osext"
 	"github.com/urfave/cli"
 )
@@ -73,11 +72,6 @@ func main() {
 		Name:  "shim, s",
 		Usage: "Create shims only (if exeproxy is installed)",
 	}}
-
-	// Create temporary directory
-	if tempDir, err := paths.TempDirCreate(); err != nil {
-		log.Fatalln("Could not create temporary directory:", tempDir)
-	}
 
 	// Extract arguments embedded in the executable (if any)
 	pathname, err := osext.Executable()

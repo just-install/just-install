@@ -6,3 +6,4 @@
 *.wixpdb
 /build/
 /dist/
+/just-install

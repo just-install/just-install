@@ -22,12 +22,11 @@ import (
 const registrySupportedVersion = 4
 
 var (
-	arch         = "x86"
-	isAmd64      = false
-	shimsPath    = os.ExpandEnv("${SystemDrive}\\Shims")
-	startMenu    = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
-	tempPath     = filepath.Join(os.TempDir(), "just-install")
-	registryPath = filepath.Join(tempPath, fmt.Sprintf("just-install-v%v.json", registrySupportedVersion))
+	arch      = "x86"
+	isAmd64   = false
+	shimsPath = os.ExpandEnv("${SystemDrive}\\Shims")
+	startMenu = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
+	tempPath  = filepath.Join(os.TempDir(), "just-install")
 )
 
 //

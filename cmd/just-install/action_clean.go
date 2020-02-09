@@ -10,11 +10,8 @@ import (
 )
 
 func handleCleanAction(c *cli.Context) {
+	// NOTE: the temporary directory will be recreated at the next run from main()
 	if err := os.RemoveAll(paths.TempDir()); err != nil {
-		log.Fatalln(err)
-	}
-
-	if _, err := paths.TempDirCreate(); err != nil {
 		log.Fatalln(err)
 	}
 }

@@ -26,7 +26,6 @@ var (
 	isAmd64   = false
 	shimsPath = os.ExpandEnv("${SystemDrive}\\Shims")
 	startMenu = os.ExpandEnv("${ProgramData}\\Microsoft\\Windows\\Start Menu\\Programs")
-	tempPath  = filepath.Join(os.TempDir(), "just-install")
 )
 
 //
@@ -34,13 +33,8 @@ var (
 //
 
 func init() {
-	createTempDir()
 	determineArch()
 	normalizeProgramFiles()
-}
-
-func createTempDir() {
-	os.MkdirAll(tempPath, 0700)
 }
 
 // determineArch determines the Windows architecture of the current Windows installation. It changes

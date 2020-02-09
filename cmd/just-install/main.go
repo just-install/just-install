@@ -25,7 +25,6 @@ import (
 
 	"github.com/just-install/just-install/pkg/platform"
 
-	"github.com/kardianos/osext"
 	"github.com/urfave/cli"
 )
 
@@ -78,7 +77,7 @@ func main() {
 	platform.SetNormalisedProgramFilesEnv()
 
 	// Extract arguments embedded in the executable (if any)
-	pathname, err := osext.Executable()
+	pathname, err := os.Executable()
 	if err != nil {
 		app.Run(os.Args)
 		return

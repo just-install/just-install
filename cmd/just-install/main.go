@@ -18,6 +18,7 @@ package main
 import (
 	"debug/pe"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -85,20 +86,29 @@ func main() {
 	// Extract arguments embedded in the executable (if any)
 	pathname, err := os.Executable()
 	if err != nil {
-		app.Run(os.Args)
+		if err := app.Run(os.Args); err != nil {
+			log.Fatalln(err)
+		}
+
 		return
 	}
 
 	rawOverlayData, err := getPeOverlayData(pathname)
 	if err != nil {
-		app.Run(os.Args)
+		if err := app.Run(os.Args); err != nil {
+			log.Fatalln(err)
+		}
+
 		return
 	}
 
 	stringOverlayData := string(rawOverlayData)
 	trimmedStringOverlayData := strings.Trim(stringOverlayData, "\r\n ")
 	if len(trimmedStringOverlayData) == 0 {
-		app.Run(os.Args)
+		if err := app.Run(os.Args); err != nil {
+			log.Fatalln(err)
+		}
+
 		return
 	}
 
@@ -131,10 +141,10 @@ func handleArguments(c *cli.Context) error {
 		// Nothing to do
 	case "x86_64":
 		if !platform.Is64Bit() {
-			log.Fatalln("This machine cannot run 64-bit software")
+			return errors.New("this machine cannot run 64-bit software")
 		}
 	default:
-		log.Fatalln("Unknown architecture:", arch)
+		return fmt.Errorf("unknown architecture: %v", arch)
 	}
 
 	// Check which packages might require an interactive installation
@@ -184,7 +194,7 @@ func handleArguments(c *cli.Context) error {
 	}
 
 	if hasErrors {
-		log.Fatalln("Encountered errors installing packages")
+		return errors.New("encountered errors installing packages")
 	}
 
 	return nil

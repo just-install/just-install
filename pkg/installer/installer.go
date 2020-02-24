@@ -55,7 +55,7 @@ func Command(path string, installerType InstallerType) ([]string, error) {
 	case AsIs:
 		return []string{path}, nil
 	case InnoSetup:
-		return []string{path, "/norestart", "/sp-", "/verysilent"}, nil
+		return []string{path, "/norestart", "/sp-", "/verysilent", "/allusers"}, nil
 	case JetBrainsNSIS:
 		config, err := paths.TempFileCreate("jetbrains-nsis-silent.config")
 		if err != nil {

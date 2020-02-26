@@ -23,9 +23,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/just-install/just-install/pkg/platform"
-
 	"github.com/urfave/cli"
+
+	"github.com/just-install/just-install/pkg/platform"
 )
 
 var version = "## filled by go build ##"

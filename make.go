@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	dry "github.com/ungerik/go-dry"
+	"github.com/ungerik/go-dry"
 )
 
 func main() {

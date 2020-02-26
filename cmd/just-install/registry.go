@@ -20,11 +20,12 @@ import (
 	"os"
 	"time"
 
+	"github.com/ungerik/go-dry"
+	"github.com/urfave/cli"
+
 	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/just-install/just-install/pkg/justinstall"
 	"github.com/just-install/just-install/pkg/paths"
-	dry "github.com/ungerik/go-dry"
-	"github.com/urfave/cli"
 )
 
 const registryURL = "https://just-install.github.io/registry/just-install-v4.json"

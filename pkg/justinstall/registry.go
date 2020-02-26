@@ -26,11 +26,12 @@ import (
 	"sort"
 
 	"github.com/gotopkg/mslnk/pkg/mslnk"
+	"github.com/ungerik/go-dry"
+
 	"github.com/just-install/just-install/pkg/cmd"
 	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/just-install/just-install/pkg/installer"
 	"github.com/just-install/just-install/pkg/paths"
-	dry "github.com/ungerik/go-dry"
 )
 
 const registrySupportedVersion = 4

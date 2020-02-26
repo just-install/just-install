@@ -23,8 +23,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/urfave/cli"
+
+	"github.com/just-install/just-install/pkg/fetch"
 )
 
 func handleAuditAction(c *cli.Context) {

@@ -23,12 +23,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 
 	"github.com/just-install/just-install/pkg/fetch"
 )
 
-func handleAuditAction(c *cli.Context) {
+func handleAuditAction(c *cli.Context) error {
 	expectedContentTypes := []string{
 		"application/exe",
 		"application/octet-stream",
@@ -77,7 +77,10 @@ func handleAuditAction(c *cli.Context) {
 		return ret
 	}
 
-	registry := loadRegistry(c)
+	registry, err := loadRegistry(c, c.Bool("force"))
+	if err != nil {
+		return err
+	}
 
 	checkLink := func(rawurl string) error {
 		return retry(func() (bool, error) {
@@ -159,4 +162,6 @@ func handleAuditAction(c *cli.Context) {
 
 		os.Exit(1)
 	}
+
+	return nil
 }

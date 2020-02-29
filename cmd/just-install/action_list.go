@@ -18,14 +18,20 @@ package main
 import (
 	"fmt"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
-func handleListAction(c *cli.Context) {
-	registry := loadRegistry(c)
+func handleListAction(c *cli.Context) error {
+	registry, err := loadRegistry(c, c.Bool("force"))
+	if err != nil {
+		return err
+	}
+
 	packageNames := registry.SortedPackageNames()
 
 	for _, name := range packageNames {
 		fmt.Printf("%35v - %v\n", name, registry.Packages[name].Version)
 	}
+
+	return nil
 }

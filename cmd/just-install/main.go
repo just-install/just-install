@@ -23,7 +23,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 
 	"github.com/just-install/just-install/pkg/platform"
 )
@@ -33,12 +33,11 @@ var version = "## filled by go build ##"
 func main() {
 	app := cli.NewApp()
 	app.Action = handleArguments
-	app.Author = "just-install Developers"
 	app.Name = "just-install"
 	app.Usage = "The simple package installer for Windows"
 	app.Version = version
 
-	app.Commands = []cli.Command{{
+	app.Commands = []*cli.Command{{
 		Name:   "audit",
 		Usage:  "Audit the registry",
 		Action: handleAuditAction,
@@ -56,22 +55,29 @@ func main() {
 		Action: handleUpdateAction,
 	}}
 
-	app.Flags = []cli.Flag{cli.StringFlag{
-		Name:  "arch, a",
-		Usage: "Force installation for a specific architecture (if supported by the host).",
-	}, cli.BoolFlag{
-		Name:  "download-only, d",
-		Usage: "Only download packages, do not install them",
-	}, cli.BoolFlag{
-		Name:  "force, f",
-		Usage: "Force package re-download",
-	}, cli.StringFlag{
-		Name:  "registry, r",
-		Usage: "Use the specified registry file",
-	}, cli.BoolFlag{
-		Name:  "shim, s",
-		Usage: "Create shims only (if exeproxy is installed)",
-	}}
+	app.Flags = []cli.Flag{
+		&cli.StringFlag{
+			Aliases: []string{"a"},
+			Name:    "arch",
+			Usage:   "Force installation for a specific architecture (if supported by the host).",
+		}, &cli.BoolFlag{
+			Aliases: []string{"d"},
+			Name:    "download-only",
+			Usage:   "Only download packages, do not install them",
+		}, &cli.BoolFlag{
+			Aliases: []string{"f"},
+			Name:    "force",
+			Usage:   "Force package re-download",
+		}, &cli.StringFlag{
+			Aliases: []string{"r"},
+			Name:    "registry",
+			Usage:   "Use the specified registry file",
+		}, &cli.BoolFlag{
+			Aliases: []string{"s"},
+			Name:    "shim",
+			Usage:   "Create shims only (if exeproxy is installed)",
+		},
+	}
 
 	// Normalize "%ProgramFiles%" and "%ProgramFiles(x86)%"
 	platform.SetNormalisedProgramFilesEnv()
@@ -97,15 +103,20 @@ func main() {
 	}
 
 	log.Println("Using embedded arguments: " + trimmedStringOverlayData)
-	app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...))
+	if err := app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...)); err != nil {
+		log.Fatalln(err)
+	}
 }
 
-func handleArguments(c *cli.Context) {
+func handleArguments(c *cli.Context) error {
 	force := c.Bool("force")
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
 
-	registry := loadRegistry(c)
+	registry, err := loadRegistry(c, force)
+	if err != nil {
+		return err
+	}
 
 	// Architecture selection
 	arch := c.String("arch")
@@ -129,7 +140,7 @@ func handleArguments(c *cli.Context) {
 	// Check which packages might require an interactive installation
 	var interactive []string
 
-	for _, pkg := range c.Args() {
+	for _, pkg := range c.Args().Slice() {
 		entry, ok := registry.Packages[pkg]
 		if !ok {
 			continue
@@ -153,7 +164,7 @@ func handleArguments(c *cli.Context) {
 	// Install packages
 	hasErrors := false
 
-	for _, pkg := range c.Args() {
+	for _, pkg := range c.Args().Slice() {
 		entry, ok := registry.Packages[pkg]
 
 		if ok {
@@ -175,6 +186,8 @@ func handleArguments(c *cli.Context) {
 	if hasErrors {
 		log.Fatalln("Encountered errors installing packages")
 	}
+
+	return nil
 }
 
 func getPeOverlayData(pathname string) ([]byte, error) {

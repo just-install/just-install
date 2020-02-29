@@ -16,12 +16,12 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
 	"time"
 
 	"github.com/ungerik/go-dry"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 
 	"github.com/just-install/just-install/pkg/fetch"
 	"github.com/just-install/just-install/pkg/justinstall"
@@ -30,38 +30,39 @@ import (
 
 const registryURL = "https://just-install.github.io/registry/just-install-v4.json"
 
-func loadRegistry(c *cli.Context) justinstall.Registry {
+func loadRegistry(c *cli.Context, force bool) (*justinstall.Registry, error) {
 	src := registryURL
 	dst, dstErr := paths.TempFileCreate("registry.json")
 	if dstErr != nil {
-		log.Fatalln("Could not create temporary directory to hold registry file:", dstErr)
+		return nil, fmt.Errorf("could not create temporary directory to hold registry file: %w", dstErr)
 	}
 
-	if c.GlobalIsSet("registry") {
-		src = c.GlobalString("registry")
+	if c.IsSet("registry") {
+		src = c.String("registry")
 		dst, dstErr = paths.TempFileCreate("registry-custom.json")
 		if dstErr != nil {
-			log.Fatalln("Could not create temporary directory to hold custom registry file:", dstErr)
+			return nil, fmt.Errorf("could not create temporary directory to hold custom registry file: %w", dstErr)
 		}
 	}
 
-	if c.GlobalBool("force") && dry.FileExists(dst) {
+	if force && dry.FileExists(dst) {
 		if err := os.Remove(dst); err != nil {
-			log.Fatalln("Could not delete", dst, "due to", err)
+			return nil, fmt.Errorf("could not delete %v due to %w", dst, err)
 		}
 	}
 
 	download := !dry.FileExists(dst)
 	download = download || dry.FileTimeModified(dst).Before(time.Now().Add(-24*time.Hour))
-
 	if !download {
-		return justinstall.LoadRegistry(dst)
+		ret := justinstall.LoadRegistry(dst)
+		return &ret, nil
 	}
 
 	dst, err := fetch.Fetch(src, &fetch.Options{Destination: dst, Progress: true})
 	if err != nil {
-		log.Fatalln("Error obtaining registry:", err)
+		return nil, fmt.Errorf("error obtaining registry: %w", err)
 	}
 
-	return justinstall.LoadRegistry(dst)
+	ret := justinstall.LoadRegistry(dst)
+	return &ret, nil
 }

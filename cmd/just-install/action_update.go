@@ -16,13 +16,11 @@
 package main
 
 import (
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
-func handleUpdateAction(c *cli.Context) {
-	if err := c.GlobalSet("force", "true"); err != nil {
-		panic(err)
-	}
+func handleUpdateAction(c *cli.Context) error {
+	_, err := loadRegistry(c, true)
 
-	loadRegistry(c)
+	return err
 }

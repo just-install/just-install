@@ -16,23 +16,25 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"os"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 
 	"github.com/just-install/just-install/pkg/paths"
 )
 
-func handleCleanAction(c *cli.Context) {
+func handleCleanAction(c *cli.Context) error {
 	// Yup, this is weird, but we don't want a public API that allows us to use the temporary
 	// directory before creating it elsewhere in the program.
 	tempDir, err := paths.TempDirCreate()
 	if err != nil {
-		log.Fatalln("Could not create temporary directory:", err)
+		return fmt.Errorf("could not create temporary directory: %w", err)
 	}
 
 	if err := os.RemoveAll(tempDir); err != nil {
-		log.Fatalln("Could not clean temporary directory:", err)
+		return fmt.Errorf("could not clean temporary directory: %w", err)
 	}
+
+	return nil
 }

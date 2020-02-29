@@ -215,7 +215,7 @@ func Fetch(resource string, options *Options) (string, error) {
 
 	var copyWriter io.WriteCloser = destTmpWriter
 	if options.Progress {
-		log.Println("Fetching", resource, "to", dest)
+		log.Println("fetching", resource, "to", dest)
 
 		progressBar := pb.New64(resp.ContentLength)
 		progressBar.Set(pb.Bytes, true)

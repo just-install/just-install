@@ -112,7 +112,7 @@ func main() {
 		return
 	}
 
-	log.Println("Using embedded arguments: " + trimmedStringOverlayData)
+	log.Println("using embedded arguments: " + trimmedStringOverlayData)
 	if err := app.Run(append([]string{os.Args[0]}, strings.Split(trimmedStringOverlayData, " ")...)); err != nil {
 		log.Fatalln(err)
 	}
@@ -162,7 +162,7 @@ func handleArguments(c *cli.Context) error {
 	}
 
 	if len(interactive) > 0 {
-		log.Println("These packages might require user interaction to complete their installation")
+		log.Println("these packages might require user interaction to complete their installation")
 
 		for _, pkg := range interactive {
 			log.Println("    " + pkg)
@@ -184,12 +184,12 @@ func handleArguments(c *cli.Context) error {
 				entry.DownloadInstaller(arch, force)
 			} else {
 				if err := entry.JustInstall(arch, force); err != nil {
-					log.Printf("Error installing %v: %v", pkg, err)
+					log.Printf("error installing %v: %v", pkg, err)
 					hasErrors = true
 				}
 			}
 		} else {
-			log.Println("WARNING: Unknown package", pkg)
+			log.Println("WARNING: unknown package", pkg)
 		}
 	}
 
@@ -223,7 +223,7 @@ func getPeOverlayData(pathname string) ([]byte, error) {
 
 	overlayRawData := rawfile[lastSectionEnd:]
 	if len(overlayRawData) == 0 {
-		return nil, errors.New("No overlay data found")
+		return nil, errors.New("no overlay data found")
 	}
 
 	return overlayRawData, nil

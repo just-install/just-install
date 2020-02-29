@@ -137,7 +137,7 @@ func handleAuditAction(c *cli.Context) error {
 	for _, name := range registry.SortedPackageNames() {
 		entry := registry.Packages[name]
 		if entry.SkipAudit {
-			log.Println("Skipping audit of", name)
+			log.Println("skipping audit of", name)
 			continue
 		}
 
@@ -154,7 +154,7 @@ func handleAuditAction(c *cli.Context) error {
 	workerWg.Wait()
 
 	if collectedErrors != nil {
-		log.Println("Found errors:")
+		log.Println("found errors:")
 
 		for _, err := range collectedErrors {
 			log.Println(err)

@@ -37,7 +37,7 @@ func Run(args ...string) error {
 		cmd = exec.Command(args[0], args[1:]...)
 	}
 
-	log.Println("Running", strings.Join(args, " "))
+	log.Println("running", strings.Join(args, " "))
 
 	err := cmd.Start()
 	if err != nil {

@@ -181,7 +181,7 @@ func (e *RegistryEntry) installerURL(arch string) (string, error) {
 		} else if e.Installer.X86 != "" {
 			url = e.Installer.X86
 		} else {
-			return "", errors.New("No fallback 32-bit download")
+			return "", errors.New("no fallback 32-bit download")
 		}
 	} else if arch == "x86" {
 		if e.Installer.X86 != "" {
@@ -190,7 +190,7 @@ func (e *RegistryEntry) installerURL(arch string) (string, error) {
 			return "", errors.New("64-bit only package")
 		}
 	} else {
-		return "", errors.New("Unknown architecture")
+		return "", errors.New("unknown architecture")
 	}
 
 	return e.ExpandString(url), nil
@@ -207,12 +207,12 @@ func (e *RegistryEntry) install(arch string, path string) error {
 		destination := e.destination(arch)
 
 		parentDir := filepath.Dir(destination)
-		log.Println("Creating", parentDir)
+		log.Println("creating", parentDir)
 		if err := os.MkdirAll(parentDir, os.ModePerm); err != nil {
 			return err
 		}
 
-		log.Println("Copying to", destination)
+		log.Println("copying to", destination)
 		return dry.FileCopy(path, destination)
 	case "custom":
 		var args []string
@@ -223,7 +223,7 @@ func (e *RegistryEntry) install(arch string, path string) error {
 
 		return cmd.Run(args...)
 	case "zip":
-		log.Println("Extracting to", e.destination(arch))
+		log.Println("extracting to", e.destination(arch))
 
 		if err := installer.ExtractZIP(path, e.destination(arch)); err != nil {
 			return err
@@ -235,7 +235,7 @@ func (e *RegistryEntry) install(arch string, path string) error {
 				shortcutTarget := expandString(os.ExpandEnv(shortcut.(map[string]interface{})["target"].(string)), nil)
 				shortcutLocation := filepath.Join(startMenu, shortcutName+".lnk")
 
-				log.Println("Creating shortcut to", shortcutTarget, "in", shortcutLocation)
+				log.Println("creating shortcut to", shortcutTarget, "in", shortcutLocation)
 
 				if err := mslnk.LinkFile(shortcutTarget, shortcutLocation); err != nil {
 					return err
@@ -286,11 +286,11 @@ func (e *RegistryEntry) CreateShims(arch string) {
 				os.Remove(shim)
 			}
 
-			log.Printf("Creating shim for %s (%s)\n", shimTarget, shim)
+			log.Printf("creating shim for %s (%s)\n", shimTarget, shim)
 
 			if err := cmd.Run(exeproxy, "exeproxy-copy", shim, shimTarget); err != nil {
 				// FIXME: add proper error handling
-				log.Fatalln("Could not create shim:", err)
+				log.Fatalln("could not create shim:", err)
 			}
 		}
 	}

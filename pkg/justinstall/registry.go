@@ -132,7 +132,7 @@ func (e *RegistryEntry) DownloadInstaller(arch string, force bool) string {
 		log.Fatalln("Could not create temporary directory:", err)
 	}
 
-	ret, err := fetch.Fetch(url, &fetch.Options{Destination: downloadDir, Progress: true})
+	ret, err := fetch.Fetch(url, &fetch.Options{Destination: downloadDir, Overwrite: force, Progress: true})
 	if err != nil {
 		log.Fatalln(err)
 	}

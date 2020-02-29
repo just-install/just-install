@@ -57,6 +57,7 @@ func (c *ContentTypeError) Error() string {
 // Options that influence Fetch.
 type Options struct {
 	Destination string      // Can either be a file path or a directory path. If it's a directory, it must already exist.
+	Overwrite   bool        // Overwrites existing file.
 	Progress    bool        // Whether to show the progress indicator.
 	HTTP        HTTPOptions // HTTP client options.
 }
@@ -200,7 +201,7 @@ func Fetch(resource string, options *Options) (string, error) {
 	}
 
 	// File already exists, return its path.
-	if dry.FileExists(dest) {
+	if dry.FileExists(dest) && !options.Overwrite {
 		return dest, nil
 	}
 

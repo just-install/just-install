@@ -19,7 +19,6 @@ import (
 	"log"
 	"os"
 	"runtime"
-	"strings"
 	"sync"
 	"time"
 
@@ -87,14 +86,6 @@ func handleAuditAction(c *cli.Context) error {
 			// Policy: retry on server or transport error, fail immediately otherwise.
 			err := fetch.Check(rawurl, &fetch.CheckOptions{ExpectedContentTypes: expectedContentTypes})
 			if _, ok := err.(*fetch.HTTPStatusError); ok {
-				return false, err
-			}
-			if e, ok := err.(*fetch.ContentTypeError); ok {
-				// FIXME: move VirtualBox Extension Pack exception to the registry
-				if strings.HasSuffix(rawurl, ".vbox-extpack") && e.Received == "text/plain" {
-					return false, nil
-				}
-
 				return false, err
 			}
 

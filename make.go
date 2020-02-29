@@ -140,7 +140,7 @@ func run(name string, arg ...string) error {
 		"GIT_AUTHOR_NAME=CI",
 		"GIT_COMMITTER_EMAIL=CI",
 		"GIT_COMMITTER_NAME=CI",
-		// FIXME: For some reason we can pull with a valid known_hosts file but pushing raises an
+		// HACK: For some reason we can pull with a valid known_hosts file but pushing raises an
 		// error, hence we disable host key checking for now. Since we are going from github.com to
 		// github.com this is probably OK.
 		"GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no",

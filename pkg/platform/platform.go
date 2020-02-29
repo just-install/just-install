@@ -37,7 +37,7 @@ func SetNormalisedProgramFilesEnv() {
 	var programFilesX86 string
 
 	if Is64Bit() {
-		// FIXME: We have to improvise here since we are a 32-bit process on 64-bit Windows. Find a
+		// TODO: We have to improvise here since we are a 32-bit process on 64-bit Windows. Find a
 		// way to reliably get this information from Windows, without resorting to cgo.
 		programFilesX86 = os.Getenv("ProgramFiles(x86)")
 		programFiles = programFilesX86[0:strings.LastIndex(programFilesX86, " (x86)")]

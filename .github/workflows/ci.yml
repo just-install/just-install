@@ -33,8 +33,14 @@ jobs:
           cp just-install.exe artifacts
           cp just-install.msi artifacts
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v1
+      - name: Upload just-install.exe
+        uses: actions/upload-artifact@v2
         with:
-          name: Artifacts
-          path: artifacts
+          name: just-install.exe
+          path: artifacts/just-install.exe
+
+      - name: Upload just-install.msi
+        uses: actions/upload-artifact@v2
+        with:
+          name: just-install.msi
+          path: artifacts/just-install.msi

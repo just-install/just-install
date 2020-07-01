@@ -30,7 +30,7 @@ type InstallerType string
 // IsValid returns whether the given installer type is known.
 func (it InstallerType) IsValid() bool {
 	switch it {
-	case AdvancedInstaller, AsIs, InnoSetup, JetBrainsNSIS, MSI, NSIS, Squirrel:
+	case AdvancedInstaller, Appx, AsIs, InnoSetup, JetBrainsNSIS, MSI, NSIS, Squirrel:
 		return true
 	default:
 		return false
@@ -39,6 +39,7 @@ func (it InstallerType) IsValid() bool {
 
 const (
 	AdvancedInstaller InstallerType = "advancedinstaller"
+	Appx              InstallerType = "appx"
 	AsIs              InstallerType = "as-is"
 	InnoSetup         InstallerType = "innosetup"
 	JetBrainsNSIS     InstallerType = "jetbrains-nsis"
@@ -52,6 +53,8 @@ func Command(path string, installerType InstallerType) ([]string, error) {
 	switch installerType {
 	case AdvancedInstaller:
 		return []string{path, "/i", "/q"}, nil
+	case Appx:
+		return []string{"powershell.exe", "-command", "Add-AppxPackage -Path " + path}, nil
 	case AsIs:
 		return []string{path}, nil
 	case InnoSetup:

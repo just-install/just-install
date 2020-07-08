@@ -285,12 +285,22 @@ func (e *RegistryEntry) install(installer string) error {
 	switch e.Installer.Kind {
 	case "advancedinstaller":
 		return system(installer, "/q", "/i")
+	case "appx":
+		return system("powershell.exe", "-command", "Add-AppxPackage -Path "+installer)
 	case "as-is":
 		return system(installer)
 	case "easy_install_27":
 		return system("\\Python27\\Scripts\\easy_install.exe", installer)
 	case "innosetup":
 		return system(installer, "/norestart", "/sp-", "/verysilent")
+	case "jetbrains-nsis":
+		config := filepath.Join(tempPath, "jetbrains-nsis-silent.config")
+
+		if err := dry.FileSetString(config, "mode=admin"); err != nil {
+			return err
+		}
+
+		return system(installer, "/S", "/CONFIG="+config)
 	case "msi":
 		return system("msiexec.exe", "/q", "/i", installer, "ALLUSERS=1", "REBOOT=ReallySuppress")
 	case "nsis":

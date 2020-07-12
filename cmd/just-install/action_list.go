@@ -22,7 +22,7 @@ import (
 )
 
 func handleListAction(c *cli.Context) error {
-	registry, err := loadRegistry(c, c.Bool("force"))
+	registry, err := loadRegistry(c, c.Bool("force"), !c.Bool("noprogress"))
 	if err != nil {
 		return err
 	}

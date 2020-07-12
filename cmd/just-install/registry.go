@@ -30,7 +30,7 @@ import (
 
 const registryURL = "https://just-install.github.io/registry/just-install-v4.json"
 
-func loadRegistry(c *cli.Context, force bool) (*justinstall.Registry, error) {
+func loadRegistry(c *cli.Context, force bool, progress bool) (*justinstall.Registry, error) {
 	src := registryURL
 	dst, dstErr := paths.TempFileCreate("registry.json")
 	if dstErr != nil {
@@ -58,7 +58,7 @@ func loadRegistry(c *cli.Context, force bool) (*justinstall.Registry, error) {
 		return &ret, nil
 	}
 
-	dst, err := fetch.Fetch(src, &fetch.Options{Destination: dst, Progress: true})
+	dst, err := fetch.Fetch(src, &fetch.Options{Destination: dst, Progress: progress})
 	if err != nil {
 		return nil, fmt.Errorf("error obtaining registry: %w", err)
 	}

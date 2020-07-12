@@ -68,6 +68,9 @@ func main() {
 			Aliases: []string{"f"},
 			Name:    "force",
 			Usage:   "Force package re-download",
+		}, &cli.BoolFlag{
+			Name:    "noprogress",
+			Usage:   "Don't display progress bar",
 		}, &cli.StringFlag{
 			Aliases: []string{"r"},
 			Name:    "registry",

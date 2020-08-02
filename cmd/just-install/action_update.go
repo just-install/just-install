@@ -20,7 +20,7 @@ import (
 )
 
 func handleUpdateAction(c *cli.Context) error {
-	_, err := loadRegistry(c, true)
+	_, err := loadRegistry(c, true, !c.Bool("noprogress"))
 
 	return err
 }

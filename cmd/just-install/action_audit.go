@@ -76,7 +76,7 @@ func handleAuditAction(c *cli.Context) error {
 		return ret
 	}
 
-	registry, err := loadRegistry(c, c.Bool("force"))
+	registry, err := loadRegistry(c, c.Bool("force"), !c.Bool("noprogress"))
 	if err != nil {
 		return err
 	}

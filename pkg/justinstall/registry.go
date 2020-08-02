@@ -119,7 +119,7 @@ type RegistryEntry struct {
 }
 
 // DownloadInstaller downloads the installer for the current entry in the temporary directory.
-func (e *RegistryEntry) DownloadInstaller(arch string, force bool) string {
+func (e *RegistryEntry) DownloadInstaller(arch string, force bool, progress bool) string {
 	url, err := e.installerURL(arch)
 	if err != nil {
 		// FIXME: Add proper error handling
@@ -132,7 +132,7 @@ func (e *RegistryEntry) DownloadInstaller(arch string, force bool) string {
 		log.Fatalln("Could not create temporary directory:", err)
 	}
 
-	ret, err := fetch.Fetch(url, &fetch.Options{Destination: downloadDir, Overwrite: force, Progress: true})
+	ret, err := fetch.Fetch(url, &fetch.Options{Destination: downloadDir, Overwrite: force, Progress: progress})
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -142,9 +142,9 @@ func (e *RegistryEntry) DownloadInstaller(arch string, force bool) string {
 
 // JustInstall will download and install the given registry entry. Setting `force` to true will
 // force a re-download and re-installation the package.
-func (e *RegistryEntry) JustInstall(arch string, force bool) error {
+func (e *RegistryEntry) JustInstall(arch string, force bool, progress bool) error {
 	options := e.Installer.options(arch)
-	downloadedFile := e.DownloadInstaller(arch, force)
+	downloadedFile := e.DownloadInstaller(arch, force, progress)
 
 	if container, ok := options["container"]; ok {
 		tempDir, err := paths.TempDirCreate()

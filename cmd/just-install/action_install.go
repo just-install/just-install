@@ -27,10 +27,11 @@ import (
 
 func handleInstall(c *cli.Context) error {
 	force := c.Bool("force")
+	progress := !c.Bool("noprogress")
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
 
-	registry, err := loadRegistry(c, force)
+	registry, err := loadRegistry(c, force, progress)
 	if err != nil {
 		return err
 	}
@@ -88,9 +89,9 @@ func handleInstall(c *cli.Context) error {
 			if onlyShims {
 				entry.CreateShims(arch)
 			} else if onlyDownload {
-				entry.DownloadInstaller(arch, force)
+				entry.DownloadInstaller(arch, force, progress)
 			} else {
-				if err := entry.JustInstall(arch, force); err != nil {
+				if err := entry.JustInstall(arch, force, progress); err != nil {
 					log.Printf("error installing %v: %v", pkg, err)
 					hasErrors = true
 				}

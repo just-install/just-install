@@ -69,6 +69,7 @@ func main() {
 			Name:    "force",
 			Usage:   "Force package re-download",
 		}, &cli.BoolFlag{
+			Aliases: []string{"no-progress"},
 			Name:    "noprogress",
 			Usage:   "Don't display progress bar",
 		}, &cli.StringFlag{

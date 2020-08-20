@@ -1,6 +1,6 @@
 module github.com/just-install/just-install
 
-go 1.14
+go 1.15
 
 require (
 	github.com/cheggaaa/pb/v3 v3.0.4

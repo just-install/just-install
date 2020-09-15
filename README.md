@@ -6,7 +6,7 @@ _The simple package installer for Windows_
 
 [![Build status](https://github.com/just-install/just-install/workflows/CI/badge.svg)](https://github.com/just-install/just-install/actions?query=workflow%3ACI)
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg?style=flat)](https://choosealicense.com/licenses/gpl-3.0/)
-[![Semver](https://img.shields.io/badge/version-v3.4.8-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
+[![Semver](https://img.shields.io/badge/version-v3.4.9-blue.svg?style=flat)](https://github.com/just-install/just-install/blob/master/CHANGELOG.md)
 
 ---
 

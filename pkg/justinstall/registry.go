@@ -292,7 +292,7 @@ func (e *RegistryEntry) install(installer string) error {
 	case "easy_install_27":
 		return system("\\Python27\\Scripts\\easy_install.exe", installer)
 	case "innosetup":
-		return system(installer, "/norestart", "/sp-", "/verysilent")
+		return system(installer, "/norestart", "/sp-", "/verysilent", "/allusers")
 	case "jetbrains-nsis":
 		config := filepath.Join(tempPath, "jetbrains-nsis-silent.config")
 

@@ -110,7 +110,13 @@ func deploy() {
 
 func getVersion() string {
 	if !isStableBuild() {
-		return "unstable"
+		cmd := exec.Command("git", "rev-parse", "--short", "HEAD")
+		commitShort, err := cmd.Output()
+		if err != nil {
+			log.Fatalln("cannot get last commit:", err)
+		}
+
+		return string(commitShort[:len(commitShort)-1])
 	}
 
 	f, err := dry.FileGetJSON(".releng.json")

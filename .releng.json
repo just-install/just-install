@@ -1,9 +1,0 @@
-{
-  "meta": {
-    "version": 3
-  },
-  "hooks": {
-    "post-bump": "./script/bump"
-  },
-  "version": "3.4.9"
-}

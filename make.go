@@ -43,10 +43,15 @@ func clean() {
 }
 
 func build() {
-	log.Println("building version", getVersion())
+	version, err := getVersion()
+	if err != nil {
+		log.Fatalln("could not get version string:", err)
+	}
+
+	log.Println("building version", version)
 
 	cmd := exec.Command("go", "build",
-		"-ldflags", fmt.Sprintf("-s -w -X main.version=%s", getVersion()),
+		"-ldflags", fmt.Sprintf("-s -w -X main.version=%s", version),
 		"-trimpath", "./cmd/just-install")
 	cmd.Env = append(os.Environ(), "GOARCH=386")
 	if err := cmd.Run(); err != nil {
@@ -55,11 +60,16 @@ func build() {
 }
 
 func buildMsi() {
-	log.Println("building MSI installer")
+	version, err := getVersion()
+	if err != nil {
+		log.Fatalln("could not get version string:", err)
+	}
+
+	log.Println("building MSI installer version", version)
 
 	var env []string
 	if isStableBuild() {
-		env = append(os.Environ(), fmt.Sprintf("JUST_INSTALL_MSI_VERSION=%s", getVersion()))
+		env = append(os.Environ(), fmt.Sprintf("JUST_INSTALL_MSI_VERSION=%s", version))
 	} else {
 		env = append(os.Environ(), "JUST_INSTALL_MSI_VERSION=255.0")
 	}
@@ -108,28 +118,23 @@ func deploy() {
 	}
 }
 
-func getVersion() string {
-	if !isStableBuild() {
-		cmd := exec.Command("git", "rev-parse", "--short", "HEAD")
-		commitShort, err := cmd.Output()
-		if err != nil {
-			log.Fatalln("cannot get last commit:", err)
-		}
-
-		return string(commitShort[:len(commitShort)-1])
-	}
-
-	f, err := dry.FileGetJSON(".releng.json")
+func getVersion() (string, error) {
+	out, err := exec.Command("git", "describe", "--tags").Output()
 	if err != nil {
-		log.Fatalln("cannot read .releng.json:", err)
+		return "", fmt.Errorf("could not get version string from git: %w", err)
 	}
 
-	ret, ok := f.(map[string]interface{})["version"]
-	if !ok {
-		log.Fatalln("cannot read version from .releng.json")
+	str := string(out)
+
+	if len(str) < 1 {
+		return "", fmt.Errorf("invalid version string: %v", str)
 	}
 
-	return ret.(string)
+	if str[0] != 'v' {
+		return "", fmt.Errorf("version string does not start with 'v': %v", str)
+	}
+
+	return strings.TrimSpace(str[1:]), nil
 }
 
 func isStableBuild() bool {

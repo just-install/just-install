@@ -24,13 +24,13 @@ import (
 	"github.com/urfave/cli/v2"
 
 	"github.com/just-install/just-install/pkg/fetch"
-	"github.com/just-install/just-install/pkg/justinstall"
 	"github.com/just-install/just-install/pkg/paths"
+	"github.com/just-install/just-install/pkg/registry4"
 )
 
 const registryURL = "https://just-install.github.io/registry/just-install-v4.json"
 
-func loadRegistry(c *cli.Context, force bool, progress bool) (*justinstall.Registry, error) {
+func loadRegistry(c *cli.Context, force bool, progress bool) (*registry4.Registry, error) {
 	src := registryURL
 	dst, dstErr := paths.TempFileCreate("registry.json")
 	if dstErr != nil {
@@ -54,8 +54,8 @@ func loadRegistry(c *cli.Context, force bool, progress bool) (*justinstall.Regis
 	download := !dry.FileExists(dst)
 	download = download || dry.FileTimeModified(dst).Before(time.Now().Add(-24*time.Hour))
 	if !download {
-		ret := justinstall.LoadRegistry(dst)
-		return &ret, nil
+		ret, err := registry4.Load(dst)
+		return ret, err
 	}
 
 	dst, err := fetch.Fetch(src, &fetch.Options{Destination: dst, Progress: progress})
@@ -63,6 +63,6 @@ func loadRegistry(c *cli.Context, force bool, progress bool) (*justinstall.Regis
 		return nil, fmt.Errorf("error obtaining registry: %w", err)
 	}
 
-	ret := justinstall.LoadRegistry(dst)
-	return &ret, nil
+	ret, err := registry4.Load(dst)
+	return ret, err
 }

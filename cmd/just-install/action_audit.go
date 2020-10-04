@@ -133,11 +133,21 @@ func handleAuditAction(c *cli.Context) error {
 		}
 
 		if entry.Installer.X86 != "" {
-			workerQueue <- workItem{name + " (x86)", entry.ExpandString(entry.Installer.X86)}
+			installerURL, err := expandString(entry.Installer.X86, map[string]string{"version": entry.Version})
+			if err != nil {
+				panic(err)
+			}
+
+			workerQueue <- workItem{name + " (x86)", installerURL}
 		}
 
 		if entry.Installer.X86_64 != "" {
-			workerQueue <- workItem{name + " (x86_64)", entry.ExpandString(entry.Installer.X86_64)}
+			installerURL, err := expandString(entry.Installer.X86_64, map[string]string{"version": entry.Version})
+			if err != nil {
+				panic(err)
+			}
+
+			workerQueue <- workItem{name + " (x86_64)", installerURL}
 		}
 	}
 

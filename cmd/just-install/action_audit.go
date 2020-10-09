@@ -76,6 +76,11 @@ func handleAuditAction(c *cli.Context) error {
 		return ret
 	}
 
+	lang := c.String("lang")
+	if lang == "" {
+		lang = "en-US"
+	}
+
 	registry, err := loadRegistry(c, c.Bool("force"), !c.Bool("noprogress"))
 	if err != nil {
 		return err
@@ -133,7 +138,7 @@ func handleAuditAction(c *cli.Context) error {
 		}
 
 		if entry.Installer.X86 != "" {
-			installerURL, err := expandString(entry.Installer.X86, map[string]string{"version": entry.Version})
+			installerURL, err := expandString(entry.Installer.X86, map[string]string{"version": entry.Version, "lang": lang})
 			if err != nil {
 				panic(err)
 			}
@@ -142,7 +147,7 @@ func handleAuditAction(c *cli.Context) error {
 		}
 
 		if entry.Installer.X86_64 != "" {
-			installerURL, err := expandString(entry.Installer.X86_64, map[string]string{"version": entry.Version})
+			installerURL, err := expandString(entry.Installer.X86_64, map[string]string{"version": entry.Version, "lang": lang})
 			if err != nil {
 				panic(err)
 			}

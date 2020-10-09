@@ -68,6 +68,10 @@ func main() {
 			Aliases: []string{"f"},
 			Name:    "force",
 			Usage:   "Force package re-download",
+		}, &cli.StringFlag{
+			Aliases: []string{"l"},
+			Name:    "lang",
+			Usage:   "Install apps in the specified language",
 		}, &cli.BoolFlag{
 			Aliases: []string{"no-progress"},
 			Name:    "noprogress",

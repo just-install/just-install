@@ -59,6 +59,11 @@ func handleInstall(c *cli.Context) error {
 		return err
 	}
 
+	lang := c.String("lang")
+	if lang == "" {
+		lang = "en-US"
+	}
+
 	printInteractivePackages(registry.Packages, c.Args().Slice())
 
 	// Install packages
@@ -84,7 +89,7 @@ func handleInstall(c *cli.Context) error {
 			continue
 		}
 
-		installerPath, err := fetchInstaller(entry, arch, force, progress)
+		installerPath, err := fetchInstaller(entry, arch, lang, force, progress)
 		if err != nil {
 			log.Printf("error downloading %v: %v", pkg, err)
 			hasErrors = true
@@ -172,7 +177,7 @@ func printInteractivePackages(packageMap registry4.PackageMap, requestedPackages
 }
 
 // fetchInstaller fetches the installer for the given package and returns
-func fetchInstaller(entry *registry4.Package, arch string, overwrite bool, progress bool) (string, error) {
+func fetchInstaller(entry *registry4.Package, arch string, lang string, overwrite bool, progress bool) (string, error) {
 	// Sanity check
 	if isEmptyString(entry.Installer.X86) && isEmptyString(entry.Installer.X86_64) {
 		return "", errors.New("package entry is missing both 32-bit and 64-bit installers")
@@ -198,7 +203,7 @@ func fetchInstaller(entry *registry4.Package, arch string, overwrite bool, progr
 		panic("programmer error")
 	}
 
-	installerURL, err := expandString(installerURL, map[string]string{"version": entry.Version})
+	installerURL, err := expandString(installerURL, map[string]string{"version": entry.Version, "lang": lang})
 	if err != nil {
 		return "", fmt.Errorf("could not expand installer URL's template string: %w", err)
 	}

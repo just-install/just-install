@@ -19,6 +19,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -227,10 +228,6 @@ func maybeExtractContainer(path string, options *registry4.Options) (string, err
 		return path, nil
 	}
 
-	if strings2.IsEmpty(options.Container.Installer) {
-		return "", errors.New("\"installer\" option cannot be empty")
-	}
-
 	if options.Container.Kind != "zip" {
 		return "", errors.New("only \"zip\" containers are supported")
 	}
@@ -246,7 +243,20 @@ func maybeExtractContainer(path string, options *registry4.Options) (string, err
 		return "", err
 	}
 
-	return filepath.Join(extractDir, options.Container.Installer), nil
+	if strings2.IsEmpty(options.Container.Installer) {
+		files, err := ioutil.ReadDir(extractDir)
+		if err != nil {
+			return "", err
+		}
+
+		if len(files) == 1 {
+			return filepath.Join(extractDir, files[0].Name()), nil
+		} else {
+			return "", errors.New("\"installer\" option is empty and container contains more than one file")
+		}
+	} else {
+		return filepath.Join(extractDir, options.Container.Installer), nil
+	}
 }
 
 func install(path string, kind string, options *registry4.Options) error {

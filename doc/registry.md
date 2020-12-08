@@ -33,8 +33,6 @@ This JSON object must contain at least the following two keys:
 
 * `x86`: The value is a string with the URL that must be used to download the installer. You can use
   `{{.version}}` as a placeholder for the package's version.
-* `interactive`: Set to `true` to show a warning to users that this package might require user
-  interaction to complete its installation.
 * `kind`: It can be one of the following:
   * `advancedinstaller`: Silently installs Advanced Installer packages;
   * `as-is`: Will just run the executable, as-is;

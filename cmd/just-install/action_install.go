@@ -65,8 +65,6 @@ func handleInstall(c *cli.Context) error {
 		lang = "en-US"
 	}
 
-	printInteractivePackages(registry.Packages, c.Args().Slice())
-
 	// Install packages
 	hasErrors := false
 
@@ -147,34 +145,6 @@ func getInstallArch(preferredArch string) (string, error) {
 	default:
 		return "", fmt.Errorf("unknown architecture: %v", preferredArch)
 	}
-}
-
-// printInteractivePackages prints the names of packages that require user interaction.
-func printInteractivePackages(packageMap registry4.PackageMap, requestedPackages []string) {
-	var interactive []string
-
-	for _, pkg := range requestedPackages {
-		entry, ok := packageMap[pkg]
-		if !ok {
-			continue
-		}
-
-		if entry.Installer.Interactive {
-			interactive = append(interactive, pkg)
-		}
-	}
-
-	if len(interactive) < 1 {
-		return
-	}
-
-	log.Println("these packages might require user interaction to complete their installation")
-
-	for _, pkg := range interactive {
-		log.Println("    " + pkg)
-	}
-
-	log.Println("")
 }
 
 // fetchInstaller fetches the installer for the given package and returns

@@ -55,11 +55,10 @@ type Package struct {
 
 // Installer contains information to fetch and execute the installer for a package.
 type Installer struct {
-	Interactive bool                   `json:"interactive,omitempty"`
-	Kind        string                 `json:"kind"`
-	Options     map[string]interface{} `json:"options,omitempty"`
-	X86         string                 `json:"x86,omitempty"`
-	X86_64      string                 `json:"x86_64,omitempty"`
+	Kind    string                 `json:"kind"`
+	Options map[string]interface{} `json:"options,omitempty"`
+	X86     string                 `json:"x86,omitempty"`
+	X86_64  string                 `json:"x86_64,omitempty"`
 }
 
 // OptionsForArch returns the options object for the given architecture

@@ -15,14 +15,7 @@
 
 package installer
 
-import (
-	"errors"
-	"fmt"
-
-	"github.com/ungerik/go-dry"
-
-	"github.com/just-install/just-install/pkg/paths"
-)
+import "errors"
 
 // InstallerType is a recognized installer type
 type InstallerType string
@@ -30,7 +23,7 @@ type InstallerType string
 // IsValid returns whether the given installer type is known.
 func (it InstallerType) IsValid() bool {
 	switch it {
-	case AdvancedInstaller, Appx, AsIs, InnoSetup, JetBrainsNSIS, MSI, NSIS, Squirrel:
+	case AdvancedInstaller, Appx, AsIs, InnoSetup, MSI, NSIS, Squirrel:
 		return true
 	default:
 		return false
@@ -42,7 +35,6 @@ const (
 	Appx              InstallerType = "appx"
 	AsIs              InstallerType = "as-is"
 	InnoSetup         InstallerType = "innosetup"
-	JetBrainsNSIS     InstallerType = "jetbrains-nsis"
 	MSI               InstallerType = "msi"
 	NSIS              InstallerType = "nsis"
 	Squirrel          InstallerType = "squirrel"
@@ -59,17 +51,6 @@ func Command(path string, installerType InstallerType) ([]string, error) {
 		return []string{path}, nil
 	case InnoSetup:
 		return []string{path, "/norestart", "/sp-", "/verysilent", "/allusers"}, nil
-	case JetBrainsNSIS:
-		config, err := paths.TempFileCreate("jetbrains-nsis-silent.config")
-		if err != nil {
-			return nil, fmt.Errorf("could not create jetbrains installer config file: %w", err)
-		}
-
-		if err := dry.FileSetString(config, "mode=admin"); err != nil {
-			return nil, err
-		}
-
-		return []string{path, "/S", "/CONFIG=" + config}, nil
 	case MSI:
 		return []string{"msiexec.exe", "/q", "/i", path, "ALLUSERS=1", "REBOOT=ReallySuppress"}, nil
 	case NSIS:

@@ -65,9 +65,9 @@ func main() {
 			Name:    "download-only",
 			Usage:   "Only download packages, do not install them",
 		}, &cli.BoolFlag{
-			Aliases: []string{"f"},
-			Name:    "force",
-			Usage:   "Force package re-download",
+			Aliases: []string{"i"},
+			Name:    "ignore-cache",
+			Usage:   "Ignore cached package download",
 		}, &cli.StringFlag{
 			Aliases: []string{"l"},
 			Name:    "lang",

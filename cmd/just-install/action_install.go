@@ -45,12 +45,15 @@ var (
 )
 
 func handleInstall(c *cli.Context) error {
-	force := c.Bool("force")
+	ignoreCache := c.Bool("ignore-cache")
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
 	progress := !c.Bool("noprogress")
 
-	registry, err := loadRegistry(c, force, progress)
+	// We are explicitly NOT using the value of ignoreCache here (thus passing "false"
+	// to loadRegistry's "force" argument), since forcing a registry download is done
+	// via the "update" action.
+	registry, err := loadRegistry(c, false, progress)
 	if err != nil {
 		return err
 	}
@@ -88,7 +91,7 @@ func handleInstall(c *cli.Context) error {
 			continue
 		}
 
-		installerPath, err := fetchInstaller(entry, arch, lang, force, progress)
+		installerPath, err := fetchInstaller(entry, arch, lang, ignoreCache, progress)
 		if err != nil {
 			log.Printf("error downloading %v: %v", pkg, err)
 			hasErrors = true

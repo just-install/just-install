@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/blang/semver/v4"
 	"github.com/ungerik/go-dry"
 )
 
@@ -139,7 +140,30 @@ func getVersion() (string, error) {
 
 func isStableBuild() bool {
 	ref, ok := dry.EnvironMap()["GITHUB_REF"]
-	return ok && strings.HasPrefix(ref, "refs/tags/")
+	if !ok {
+		return false
+	}
+
+	if !strings.HasPrefix(ref, "refs/tags/") {
+		return false
+	}
+
+	parts := strings.Split(ref, "refs/tags/")
+	if len(parts) != 2 {
+		log.Fatalln("could not parse tag:", ref)
+	}
+
+	splitRef := parts[1]
+	if splitRef[0] != 'v' {
+		log.Fatalln("tag doesn't start with 'v':", splitRef)
+	}
+
+	ver, err := semver.Parse(splitRef[1:])
+	if err != nil {
+		log.Fatalln("could not parse semver tag", splitRef[1:], err)
+	}
+
+	return len(ver.Build) == 0 && len(ver.Pre) == 0
 }
 
 func run(name string, arg ...string) error {

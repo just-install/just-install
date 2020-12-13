@@ -224,12 +224,12 @@ func maybeExtractContainer(path string, options *registry4.Options) (string, err
 
 		if len(files) == 1 {
 			return filepath.Join(extractDir, files[0].Name()), nil
-		} else {
-			return "", errors.New("\"installer\" option is empty and container contains more than one file")
 		}
-	} else {
-		return filepath.Join(extractDir, options.Container.Installer), nil
+
+		return "", errors.New("\"installer\" option is empty and container contains more than one file")
 	}
+
+	return filepath.Join(extractDir, options.Container.Installer), nil
 }
 
 func install(path string, kind string, options *registry4.Options) error {

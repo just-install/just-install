@@ -30,6 +30,7 @@ func (it InstallerType) IsValid() bool {
 	}
 }
 
+// Supported installer types.
 const (
 	AdvancedInstaller InstallerType = "advancedinstaller"
 	Appx              InstallerType = "appx"

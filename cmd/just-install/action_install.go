@@ -46,9 +46,9 @@ var (
 
 func handleInstall(c *cli.Context) error {
 	force := c.Bool("force")
-	progress := !c.Bool("noprogress")
 	onlyDownload := c.Bool("download-only")
 	onlyShims := c.Bool("shim")
+	progress := !c.Bool("noprogress")
 
 	registry, err := loadRegistry(c, force, progress)
 	if err != nil {

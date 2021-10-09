@@ -13,6 +13,11 @@ _The simple package installer for Windows_
 just-install is a simple program which automates software installation on Windows. It tries to
 do one simple thing and do it well: download a `setup.exe` and install it, silently.
 
+## :warning: :warning: :warning: Maintenance Mode :warning: :warning: :warning:
+
+This project is no longer being actively developed. We suggest you to switch to Microsoft's
+[winget](https://github.com/microsoft/winget-cli).
+
 
 ## Installation
 
